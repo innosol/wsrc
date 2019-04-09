@@ -1,0 +1,69 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Хүснэгт № 14</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Хүний нөөцийн судалгаа</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th >№</th> <th >Албан тушаал</th> <th >Овог, нэр</th> <th >Холбоо барих гар утас</th> <th >Ажлын утас</th> 
+					<th >Имэйл хаяг</th>
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for ajiltan1 in ajiltan %}
+				<tr>
+					
+					<td>1</td>
+					<td>{{ajiltan1.position_id}}</td>
+					<td>{{ajiltan1.emp_lname}}</td>
+					<td>{{ajiltan.emp_reg}}</td>
+					<td>mergejil</td>
+					<td>surguuli </td>
+				</tr>
+					{% endfor %}
+					{% for ajiltan2 in ajiltan2 %}
+				<tr>
+					
+					<td>1</td>
+					<td>{{ajiltan2.position_id}}</td>
+					<td>{{ajiltan2.emp_lname}}</td>
+					<td>{{ajiltan.emp_reg}}</td>
+					<td>mergejil</td>
+					<td>surguuli </td>
+				</tr>
+					{% endfor %}
+					{% for ajiltan3 in ajiltan3 %}
+				<tr>
+					
+					<td>1</td>
+					<td>{{ajiltan3.position_id}}</td>
+					<td>{{ajiltan3.emp_lname}}</td>
+					<td>{{ajiltan.emp_reg}}</td>
+					<td>mergejil</td>
+					<td>surguuli </td>
+				</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

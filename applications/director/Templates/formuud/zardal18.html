@@ -1,0 +1,61 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Хөрөнгө оруулалтын зардалд</h4>
+</div>
+<form action="{% url 'zardal18' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Урт хугацаат зээл</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z18_0 }}</td>
+          <td>{{ form.z18_1 }}</td>
+          <td>{{ form.z18_2 }}</td>
+          <td>{{ form.z18_3 }}</td>
+          <td>{{ form.z18_4 }}</td>
+          <td>{{ form.z18_5 }}</td>
+          <td>{{ form.z18_6 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z18_7 }}</td>
+          <td>{{ form.z18_8 }}</td>
+          <td>{{ form.z18_9 }}</td>
+          <td>{{ form.z18_10 }}</td>
+          <td>{{ form.z18_11 }}</td>
+          <td>{{ form.z18_12 }}</td>
+          <td>{{ form.z18_13 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z18 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal18list' date %}{% else %}{% url 'zardal18list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal18" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

@@ -1,0 +1,34 @@
+{% load static %}
+
+
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+ <h4>Төлөв өөрчлөх</h4>
+</div>
+<form id="bb_disapprove_form_id" class="form-horizontal" action="{{view_url}}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="alert alert-info">
+        Тоног төхөөрөмж, барилга байгууламжийг цуцлах уу? <span class="label label-warning">Баталгаажаагүй</span>
+      </div>
+      <div style="display: none;" id="container_chosen_objs">
+      </div>
+  </div><!-- row-fluid -->
+</div>
+
+<div class="modal1-uuganaa-footer">
+  <a class="btn btn-default" data-data="modal" aria-hidden="true">Үгүй</a>
+  <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#bb_disapprove_form_id')">Тийм</button>
+</div>
+</form>   
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script type="text/javascript">
+  $("#bb_disapprove_form_id").submit(function(eventObj){
+    //alert('submitting bb_disapprove_form_id');
+    $('input[name="chosen_objs"]:checked').clone().appendTo("#container_chosen_objs");
+  });
+</script>
+
+

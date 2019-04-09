@@ -1,0 +1,54 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>{{header_text}}</h4>
+</div>
+<form id="form_id" action="{{view_url}}" method="POST"> {% csrf_token %}
+    <div class="modal1-uuganaa-body">
+      {% if object_list %}
+        <h4><b>{{table_header_text}}</b></h4>
+          <table class = "table table-bordered">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Овог:</th>
+                <th>Нэр:</th>
+                <th>Тасаг:</th>
+                <th>Албан тушаал:</th>
+                <th>E-mail:</th>
+                <th>Утас:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in object_list %}
+              <tr>
+                <td><input type="radio" name="user_choice" value="{{i.id}}"></td>
+                <td>{{i.emp_lname}}</td>
+                <td>{{i.emp_name}}</td>
+                <td>{{i.tasag.dep_name}}</td>
+                <td>{{i.alban_tushaal.position_name}}</td>
+                <td>{{i.e_mail}}</td>
+                <td>{{i.phone}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {% else %}
+        <div class="alert alert-block alert-warning fade in">
+          <p>
+            {{no_object_text}}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+    
+      <div class="modal1-uuganaa-footer">
+          <a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+          {% if object_list %}
+          <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+          {% endif %}
+      </div>
+  </form>
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>

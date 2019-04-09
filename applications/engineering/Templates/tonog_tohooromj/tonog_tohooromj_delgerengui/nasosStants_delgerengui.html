@@ -1,0 +1,118 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Насос станцын мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    {% if obj %}
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">Насос станцын {{date|date:"Y-m-d H:i"}} үеийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Насос станцын одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Насос станцын нэр</td>
+            <td>{{obj.nasos_name}}</td>
+          </tr>
+          <tr>
+            <td>Насос станцын төрөл</td>
+            <td>{{obj.nasos_torol}}</td>
+          </tr>
+          <tr>
+            <td>Насос станцын ажиллагаа</td>
+            <td>{{obj.nasos_ajillagaa}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Аймаг, хот/</td>
+            <td>{{obj.city}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Сум, дүүрэг/</td>
+            <td>{{obj.district}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Баг, хороо/</td>
+            <td>{{obj.khoroo}}</td>
+          </tr>
+          <tr>
+            <td>Байршил</td>
+            <td>{{obj.nasos_address}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Гадна талын зураг</td>
+            <td><a href="/media/{{obj.picture_outside}}" target="_blank">Гадна талын зураг</a></td>
+          </tr>
+          <tr>
+            <td>Дотор талын зураг</td>
+            <td><a href="/media/{{obj.picture_inside}}" target="_blank">Дотор талын зураг</a></td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+    <div class="row-fluid">
+        <div class="span12">
+          <h4>Насосны жагсаалт</h4>
+          {% if sub_objects %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Марк</th>
+                <th>Үйлдвэрлэсэн улс</th>
+                <th>Хүчин чадал(м3/хон)</th>
+                <th>Тоо</th>
+                <th>Ашиглалтан орсон огноо</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in sub_objects %}
+              <tr>
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <td>
+                  {{i.mark}}
+                </td>
+                <td>
+                  {{i.country}}
+                </td>
+                <td>
+                  {{i.huchin_chadal}}
+                </td>
+                <td>
+                  {{i.too}}
+                </td>
+                <td>
+                  {{i.ashiglaltand_orson_ognoo}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class='alert alert-info'>
+          Бүртгэгдсэн насос байхгүй байна.
+          </div>
+          {% endif %}
+        </div>
+    </div>
+    {% else %}
+      <div class="alert alert-info">Насос станцын мэдээлэл олдсонгүй.</div>
+    {% endif %}
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'nasos_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

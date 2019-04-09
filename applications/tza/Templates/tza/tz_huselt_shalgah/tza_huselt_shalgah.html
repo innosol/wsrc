@@ -1,0 +1,135 @@
+{% extends 'tza_darga_base.html' %}
+{% load static %}
+{% load tag_extras %}
+
+{% block content %}
+<div class="overlay"></div>
+<div id="main-content">
+  {% if messages %}
+  <div class="feedback_messages">
+    {% for message in messages %}
+    <div {% if message.tags %}class="feedback_message_{{message.tags}}" {% else %} class="feedback_message_default" {% endif %}>
+        {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <h3 class="page-title">
+         Тусгай зөвшөөрлийн хүсэлтүүд
+        </h3>
+        <div class="row-fluid">
+          <div class="span9">
+            <div class="widget green active">
+              <div class="widget-title">
+                <h4><i class="icon-reorder"></i>Хариуцсан хүсэлтүүдийн жагсаалт</h4>
+                <span class="tools">
+                  <a class="icon-chevron-down" href="javascript:;"></a>
+                  <a class="icon-remove" href="javascript:;"></a>
+                </span>
+              </div>
+              <div class="widget-body">
+                  {% if not tz_huseltuud %}
+                    <div class="alert alert-block alert-success fade in">
+                      
+                      <p>
+                        Тусгай зөвшөөрлийн хүсэлт олдсонгүй.
+                      </p>
+                   </div>
+                  {% else %}
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Хүсэлт (илгээсэн огноо)</th>
+                          <th>Компани</th>
+                          <th>Явц</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for h in tz_huseltuud %}
+                          <tr class="ajax_delgerengui_load" url-data="{% url 'tza_huselt_delgerengui' huselt_id=h.id %}", div-id="#huselt_delgerengui_div">
+                            <td>
+                                Хүсэлт ({{ h.ilgeesen_datetime|date:"Y-m-d H:i" }})
+                            </td>
+                            <td>
+                              {{ h.tze.org_name }}
+                            </td>
+                            <td>
+                              <span class="label label-warning">{{h.yavts}}</span>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <div class="pagination">
+                        <ul>
+                            {% if page_obj.has_previous %}
+                            <li><a href="?page={{page_obj.previous_page_number}}">Өмнөх</a></li>
+                            {% endif %}
+                            {% for pg in paginator.page_range %}
+                            {% if paginator.number == pg %}
+                            <li class="active"><a href="?page={{pg}}">{{pg}}</a></li>
+                            {% else %}
+                            <li><a href="?page={{pg}}">{{pg}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                            <li><a href="?page={{page_obj.next_page_number}}">Дараах</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                  {% endif %}
+              </div>
+            </div>
+            
+            <div class="widget green active">
+              <div class="widget-title">
+                <h4><i class="icon-reorder"></i>Хүсэлтийн тухай дэлгэрэнгүй</h4>
+                <span class="tools">
+                  <a class="icon-chevron-down" href="javascript:;"></a>
+                  <a class="icon-remove" href="javascript:;"></a>
+                </span>
+              </div>
+              <div class="widget-body" id="huselt_delgerengui_div">
+                
+              </div>
+            </div>
+          </div>
+            <div class = "span3">
+              <div class="widget widget-tabs purple active">
+                <div class="widget-title">
+                  <h4><i class="icon-filter"></i> Шүүлтүүр</h4>
+                </div>
+                <div class="widget-body">
+                  <form method="GET">
+                    <button type='submit' class="btn btn-primary">Шүүх</button>
+                    {% for f in filter_form %}
+                    <div class="form-group">
+                      {{f.label}}
+                      {{f}}
+                    </div>
+                    {% endfor %}
+                    <button type='submit' class="btn btn-primary">Шүүх</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+      <!-- ****************************MODALS*************************-->
+<div id="Modal_general" class="modal1-uuganaa">
+</div>
+
+
+<!-- ****************************MODALS END*************************-->
+
+
+
+      {% endblock %} 

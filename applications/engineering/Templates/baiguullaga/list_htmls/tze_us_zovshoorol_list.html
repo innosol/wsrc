@@ -1,0 +1,59 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Ус ашиглуулах дүгнэлт, зөвшөөрөл, гэрээнүүдийн жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_uszuvshuurul %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'us_zovshoorol_insert' %}"><i class="icon-edit"></i>Ус ашиглуулах дүгнэлт, зөвшөөрөл, гэрээ нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>Дүгнэлт</th>
+			          	<th>Зөвшөөрөл</th>
+			          	<th>Гэрээ</th>
+			          	<th>Тайлбар</th>
+			          	<th>Бүртгэсэн хугацаа</th>
+			          	{% if perms.app.add_uszuvshuurul %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			          	<td>
+                          <a href="/media/{{i.dugnelt}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.dugnelt}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+                        <td>
+                          <a href="/media/{{i.zuvshuurul}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.zuvshuurul}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+                        <td>
+                          <a href="/media/{{i.geree}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.geree}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+                        <td>{{ i.name }}</td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_uszuvshuurul %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'us_zovshoorol_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+
+<script>
+$('#id_us_zovshoorol_count').text("+{{object_list|length}}");
+</script>

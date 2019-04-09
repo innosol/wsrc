@@ -1,0 +1,21 @@
+{% extends "django_messages/base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+<div id="main-content">
+  <div class="container-fluid">
+    <div class="space20"></div>
+    <h1>{% trans "View Message" %}</h1>
+    {% trans "Subject" %}: <strong>{{ message.subject }}</strong><br>
+    {% trans "Sender" %}: {{ message.sender }}<br>
+    {% trans "Date" %}: {{ message.sent_at|date:_("DATETIME_FORMAT")}}<br>
+    {% trans "Recipient" %}: {{ message.recipient }}<br>
+    {{ message.body|linebreaksbr }}<br/><br/>
+    {% ifequal message.recipient.pk user.pk %}
+    <a class="btn btn-primary" href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a>
+    {% endifequal %}
+    <a class="btn btn-important" href="{% url 'messages_delete' message.id %}">{% trans "Устгах" %}</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base_base.html' %}
+{% load static %}
+
+{% block sidebar %}
+<div class="sidebar-scroll">
+    <div id="sidebar" class="nav-collapse collapse">
+        <ul class="sidebar-menu">
+            <li class="sub-menu">
+                <a>
+                    <i class=" icon-cog"></i>
+                    <span>Хүсэлт</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  <li><a href="{% url 'hzm huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="/hzm/baiguullaga/">
+                    <i class=" icon-cog"></i>
+                    <span>Байгууллага</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="/hzm/ajiltan/">
+                    <i class=" icon-cog"></i>
+                    <span>Хүний нөөц</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="/hzm/tohooromj/">
+                    <i class=" icon-cog"></i>
+                    <span>Тоног төхөөрөмж</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="{% url 'hzm_tz_gerchilgee_list' %}">
+                    <i class=" icon-cog"></i>
+                    <span>Тусгай зөвшөөрөл</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+{% endblock %} 

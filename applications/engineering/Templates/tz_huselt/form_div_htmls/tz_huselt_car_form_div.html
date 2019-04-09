@@ -1,0 +1,72 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Цэвэр ус зөөвөрлөх автомашины мэдээлэл нэмэх</h4>
+</div>
+<form id="form_id" action="{{view_url}}" success-div-id="#huselt_delgerengui_div" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="control-group">
+          <label class="control-label">{{ form.mark.label }}</label>
+          <div class="controls">
+            {{ form.mark.errors }}{{ form.mark }}
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{{ form.no.label }}</label>
+          <div class="controls">
+            {{ form.no.errors }}{{ form.no }}
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{{ form.daats.label }}</label>
+          <div class="controls">
+            {{ form.daats.errors }}{{ form.daats }}
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{{ form.us.label }}</label>
+          <div class="controls">
+            {{ form.us.errors }}{{ form.us }}
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="control-group">
+          <label class="control-label">{{ form.gerchilgee_picture.label }}</label>
+          <div class="controls">
+            {{ form.gerchilgee_picture.errors }}{{ form.gerchilgee_picture }}
+          </div>
+        </div>
+        <h5><b>Хэрэглэгчийн тоо</b></h5>
+        <div class="control-group">
+          <label class="control-label">{{ form.hun_am_too.label }}</label>
+          <div class="controls">
+            {{ form.hun_am_too.errors }}{{ form.hun_am_too }}
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{{ form.utb_too.label }}</label>
+          <div class="controls">
+            {{ form.utb_too.errors }}{{ form.utb_too }}
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{{ form.aanb_too.label }}</label>
+          <div class="controls">
+            {{ form.aanb_too.errors }}{{ form.aanb_too }}
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Цуцлах</a>
+    <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+  </div>
+</form>   
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+

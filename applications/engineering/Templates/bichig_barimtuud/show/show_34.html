@@ -1,0 +1,41 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+{%block id_show%} id="{{h.id}}_34_show" {% endblock %}
+
+{% block header_show %}
+<button class="icon-remove close" style="float: right;"></button>
+<h3>Аудитын дүгнэлт:</h3>
+{% endblock %}
+
+{% block body_show %}
+
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+<button href="#{{h.id}}_34_edit"  data-data="modal" class="btn btn-primary">Засварлах</button>
+{% endblock %}
+
+
+
+<!-- EDIT -->
+
+
+
+{% block id_edit %}
+id="{{h.id}}_34_edit"
+{% endblock %}
+
+{% block header_edit %}
+<button class="icon-remove close" style="float: right;"></button>
+<h3>Аудитын дүгнэлт:</h3>
+{% endblock %}
+
+{% block body_edit %}
+<input readonly="True" name="huselt_id" type="hidden" class="input" value="{{ h.id }}">
+{% endblock %}
+
+{% block footer_edit %}
+<a data-data="modal" class="btn btn-default" aria-hidden="true">Цуцлах</a>
+<button type="submit" value="ulsiin_burtgeliin_gerchilgeeform" name="action" class="btn btn-primary">Хадгалах</button>
+{% endblock %}

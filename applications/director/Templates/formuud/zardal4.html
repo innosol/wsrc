@@ -1,0 +1,106 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Засвар үйлчилгээний зардал</h4>
+</div>
+<form action="{% url 'zardal4' %}" class="zardal4" method="post">{% csrf_token %}
+  <div id="zardal4-modal-body" class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Барилга байгууламж</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_0 }}</td>
+          <td>{{ form.z4_1 }}</td>
+          <td>{{ form.z4_2 }}</td>
+          <td>{{ form.z4_3 }}</td>
+          <td>{{ form.z4_4 }}</td>
+          <td>{{ form.z4_5 }}</td>
+          <td>{{ form.z4_6 }}</td>
+        </tr>
+        <tr>
+          <td>Тоног төхөөрөмж</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_7 }}</td>
+          <td>{{ form.z4_8 }}</td>
+          <td>{{ form.z4_9 }}</td>
+          <td>{{ form.z4_10 }}</td>
+          <td>{{ form.z4_11 }}</td>
+          <td>{{ form.z4_12 }}</td>
+          <td>{{ form.z4_13 }}</td>
+        </tr>
+        <tr>
+          <td>Сэлбэг хэрэгсэл</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_14 }}</td>
+          <td>{{ form.z4_15 }}</td>
+          <td>{{ form.z4_16 }}</td>
+          <td>{{ form.z4_17 }}</td>
+          <td>{{ form.z4_18 }}</td>
+          <td>{{ form.z4_19 }}</td>
+          <td>{{ form.z4_20 }}</td>
+        </tr>
+        <tr>
+          <td>Багаж хэрэгсэл</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_21 }}</td>
+          <td>{{ form.z4_22 }}</td>
+          <td>{{ form.z4_23 }}</td>
+          <td>{{ form.z4_24 }}</td>
+          <td>{{ form.z4_25 }}</td>
+          <td>{{ form.z4_26 }}</td>
+          <td>{{ form.z4_27 }}</td>
+        </tr>
+        <tr>
+          <td>Агаарын нөөцийн хангалт</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_28 }}</td>
+          <td>{{ form.z4_29 }}</td>
+          <td>{{ form.z4_30 }}</td>
+          <td>{{ form.z4_31 }}</td>
+          <td>{{ form.z4_32 }}</td>
+          <td>{{ form.z4_33 }}</td>
+          <td>{{ form.z4_34 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z4_35 }}</td>
+          <td>{{ form.z4_36 }}</td>
+          <td>{{ form.z4_37 }}</td>
+          <td>{{ form.z4_38 }}</td>
+          <td>{{ form.z4_39 }}</td>
+          <td>{{ form.z4_40 }}</td>
+          <td>{{ form.z4_41 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z4 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal4list' date %}{% else %}{% url 'zardal4list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal4" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

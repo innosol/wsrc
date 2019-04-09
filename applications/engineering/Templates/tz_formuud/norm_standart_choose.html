@@ -1,0 +1,37 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="icon-remove close" style="float: right;"></button>
+  <h3>Норм стандартыг сонгох</h3>
+</div>
+
+<form id="form_id" success-div-id="#huselt_delgerengui_div" method="POST" action="/engineering/material_choose_8/{{huselt_id}}/"> {% csrf_token %}
+  <div id="Modal_huselt_body" class="modal1-uuganaa-body">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Код</th>
+      <th>Нэр</th>
+      <th>Бүртгэгдсэн огноо</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in NormStandart_all %}
+    <tr>
+      <td><input type="checkbox" name="ids" value={{i.id}}></td>
+      <td>{{i.standart.code}}</td>
+      <td>{{i.standart.standart_name}}</td>
+      <td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a data-data="modal" class="btn btn-default">Цуцлах</a>
+    <button onclick="submit_tz_choose_form('#form_id')" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>

@@ -1,0 +1,61 @@
+<div class="sidebar-scroll">
+  <div id="sidebar" class="nav-collapse collapse">
+    <ul class="sidebar-menu">
+      <li class="sub-menu {% if permission == 1 %}active{% endif %}">
+        <a href="/engineering/tz_tables/" class="">
+          <i class=" icon-cog"></i>
+          <span>Тусгай зөвшөөрөл</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 2 %}active{% endif %}">
+        <a href="/engineering/handah_erh_list/" class="">
+          <i class=" icon-cog"></i>
+          <span>Системийн хандах эрх</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 3 %}active{% endif %}">
+        <a href="/engineering/baiguullaga/" class="">
+          <i class=" icon-cog"></i>
+          <span>Байгууллага</span>
+        </a>
+      </li>        
+      <li class="sub-menu {% if permission == 4 %}active{% endif %}">
+        <a href="/engineering/ajiltan/" class="">
+          <i class=" icon-cog"></i>
+          <span>Хүний нөөц</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 5 %}active{% endif %}">
+        <a href="/engineering/tohooromj/" class="">
+          <i class=" icon-cog"></i>
+            <span>Тоног төхөөрөмж</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 6 %}active{% endif %}">
+        <a href="/engineering/uamedee/" class="">
+          <i class=" icon-cog"></i>
+          <span>Үйл ажиллагааны тайлан</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 7 %}active{% endif %}">
+        <a href="{% url 'sez' %}" class="">
+          <i class=" icon-cog"></i>
+          <span>Санхүүгийн мэдээ</span>
+        </a>
+      </li>
+    
+      <li class="sub-menu {% if permission == 9 %}active{% endif %}">
+        <a href="{% url 'report' %}" class="">
+          <i class=" icon-cog"></i>
+          <span>Санхүүгийн тайлан</span>
+        </a>
+      </li>
+      <li class="sub-menu {% if permission == 10 %}active{% endif %}">
+        <a href="{% url 'gshu_tailan' %}" class="">
+          <i class=" icon-cog"></i>
+          <span>ГШҮ тайлан</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

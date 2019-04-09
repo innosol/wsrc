@@ -1,0 +1,130 @@
+
+  {% if not h.is_yavts_tsutslagdsan %}
+  {% if burdel_history.uta_check_finished %}
+    {% if h.is_yavts_bichig_barimt_OK %}
+      <div class="alert alert-info">
+        Бичиг баримтыг хүлээн авсан.<br>
+        {% if h.ajliin_heseg_date %}
+        <strong>Ажлын хэсэг шалгах өдөр:</strong> {{h.ajliin_heseg_date|date:"Y-m-d"}}<br>
+        {% else %}
+        <strong>Ажлын хэсэг шалгах өдөр:</strong> Товлоогүй<br>
+        {% endif %}
+        {% if h.hurliin_date %}
+        <strong>Хурлаар хэлэлцэх өдөр:</strong> {{h.hurliin_date|date:"Y-m-d"}}<br>
+        {% else %}
+        <strong>Хурлаар хэлэлцэх өдөр:</strong> Товлоогүй<br>
+        {% endif %}
+      </div>
+    {% elif h.is_yavts_tz_olgoson %}
+      <div class="alert alert-info">
+        Тусгай зөвшөөрлийн гэрчилгээг олгосон байна.
+      </div>
+    {% elif h.is_yavts_tz_olgoogui %}
+      <div class="alert alert-info">
+        Тусгай зөвшөөрлийн гэрчилгээг олгоогүй.
+      </div>
+    {% else %}
+      <div class="alert alert-info">
+        Бичиг баримтуудыг шалгаж дууссан байна.
+      </div>
+    {% endif %}
+
+  {% else %}
+    {% if burdel_history.is_uta_checked_all_material %}
+      <a href="javascript:;" style="color: white;" class="btn btn-primary ajax_div_load" url-data='{% url "huselt_check_finish_uta" huselt_id=h.id %}'>Бичиг баримт шалгаж дууссан</a>
+
+      <div class="space5"></div>
+      <div class="alert alert-info">
+        Та өөрийн {{burdel_history.materialiud_of_uta|length}} бичиг баримтуудыг шалгасан байна. Хэрвээ бичиг баримтуудыг шалгаж дууссан гэж үзвэл "Бичиг баримт шалгаж дууссан" товчлуур дээр дарна уу.
+      </div>
+
+    {% else %}
+    <div class="alert alert-info">
+      Бичиг баримтуудыг бүрэн шалгаж дуусаагүй байна. Та урдаа тэмдэглэгээтэй {{burdel_history.materialiud_of_uta|length}} бичиг баримтуудыг шалгана уу.
+    </div>
+    {% endif %}
+  {% endif %}
+    
+    
+  {% else %}
+  <div class="alert alert-block alert-warning fade in">
+    <p style="font-size: 20px;">
+      Хүсэлт цуцлагдсан байна.
+    </p>
+  </div>
+  {% endif %}
+
+  <div class="space10"></div>
+
+    {% for w in warnings %}
+      <div class="alert alert-error">
+          <strong>Анхааруулга:</strong><br>
+          {{ w.warning_message }}
+      </div>
+    {% endfor %}
+
+
+
+    {% for w in burdel_histories %} <!--Бүрдэлийн түүхүүдийг харуулна-->
+
+      <div class="widget orange active">
+        <div class="widget-title">
+          <h4><i class="icon-reorder"></i>Илгээгдсэн бичиг баримтууд ({{ w.ilgeesen_datetime|date:"Y-m-d H:i" }})</h4>
+        </div>
+        <div class="widget-body">
+          <div class="alert alert-info">
+            {% if w.cert %}
+            <strong>Тусгай зөвшөөрлийн гэрчилгээг сунгах хүсэлт</strong><br>
+            Гэрчилгээний дугаар: {{w.cert.cert_number}}<br>
+            {% else %}
+            <strong>Тусгай зөвшөөрлийн гэрчилгээ шинээр авах хүсэлт</strong><br>
+            {% endif %}
+            
+            <strong>Доорх {{ w.tz.all|length }} заалтаар хүсэлт гаргасан байна.</strong><br> 
+            {% for t in w.tz.all %}
+              {{ t.tz }} - {{ t.description }}<br>
+            {% endfor %}
+          </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Бичиг баримтын нэр</th>
+                <th>Төлөв</th>
+                <th>Огноо</th>
+                <th>Зассан ажилтан</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ttt in w.materialiud_list.all %}
+                <tr>
+                  <td style="display: none">{{ ttt.material.material_number }}</td>
+                  <td>
+                    {% if ttt.material.material_angilal == 2 %}
+                    <i class="icon-hand-right"></i>
+                    {% endif %}
+                  </td>
+                  <td><a href="javascript:;" class="ajax_div_load" url-data='{% url "uta_sent_material_show" burdel_history_id=w.id material_number=ttt.material.material_number %}'>{{ ttt.material.material_name }}</a></td>
+
+                  {% if ttt.status == 'Мэдээлэл дутуу' %}
+                  <td><span class="label label-important">{{ ttt.status }}</span></td>
+                  {% endif %}
+                  {% if ttt.status == 'Бүрдсэн' %}
+                  <td><span class="label label-success">{{ ttt.status }}</span></td>
+                  {% endif %}
+                  {% if ttt.status == 'Шаардлага хангаагүй' %}
+                  <td><span class="label label-important">{{ ttt.status }}</span></td>
+                  {% endif %}
+                  {% if ttt.status == 'Шаардлага хангасан' %}
+                  <td><span class="label label-success">{{ ttt.status }}</span></td>
+                  {% endif %}
+                  <td>{{ ttt.updated_datetime|date:"Y-m-d" }}</td>
+                  <td>{{ ttt.updated_by.user_id.emp_name }}</td>
+                </tr>
+              {% endfor %}
+            </tbody> 
+          </table>
+        </div>
+      </div>
+    {% endfor %}

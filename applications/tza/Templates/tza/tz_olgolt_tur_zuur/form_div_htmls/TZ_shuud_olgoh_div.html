@@ -1,0 +1,21 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Гэрчилгээ олгох</h4>
+</div>
+
+<form id = "form_id" action="{% url 'tz shuud olgoh' baiguullaga_id=baiguullaga_id %}" method="POST">
+<div class="modal1-uuganaa-body">
+{% csrf_token %}
+     
+{{form.as_p}}
+</div>
+
+<div class="modal1-uuganaa-footer">
+    <button class="btn btn-default div-close-button">Хаах</button>
+    <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+</div>
+</form>
+
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>

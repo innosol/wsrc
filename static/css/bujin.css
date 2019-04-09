@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+
+section{
+	display:block;
+}
+#content{
+	
+	padding-top: 5px;
+	padding-bottom: 20px;
+	display:block;
+}
+.gallery{
+	width:800px;
+}
+.gallery ul{
+	list-style: none;
+}
+.gallery li{
+	float:left;
+	margin: 10px;
+	display:block;
+}
+.gallery img{
+	display: block;
+	padding: 5px;
+	background: #42517f;
+	border: 1px solid #99adeb;
+	box-shadow: 1px 1px 1px #000;
+}
+.gallery img:hover{
+	border:1px solid #fff;

@@ -1,0 +1,59 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Цэвэр усны автомашины мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Автомашины марк</td>
+            <td>{{obj.mark}}</td>
+          </tr>
+          <tr>
+            <td>Улсын дугаар</td>
+            <td>{{obj.no}}</td>
+          </tr>
+          <tr>
+            <td>Даац (тонн)</td>
+            <td>{{obj.daats}}</td>
+          </tr>
+          <tr>
+            <td>Зөөвөрлөх усны хэмжээ</td>
+            <td>{{obj.us}}</td>
+          </tr>
+          <tr>
+            <td>Айл өрхийн тоо</td>
+            <td>{{obj.hun_am_too}}</td>
+          </tr>
+          <tr>
+            <td>УТБ-ны тоо</td>
+            <td>{{obj.utb_too}}</td>
+          </tr>
+          <tr>
+            <td>ААНБ-ны тоо</td>
+            <td>{{obj.aanb_too}}</td>
+          </tr>
+          <tr>
+            <td>Гэрчилгээний зураг</td>
+            <td><a href="/media/{{obj.gerchilgee_picture}}" target="_blank">Гэрчилгээний зураг</a></td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'car_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

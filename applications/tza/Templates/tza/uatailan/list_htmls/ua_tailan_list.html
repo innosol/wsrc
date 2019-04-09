@@ -1,0 +1,69 @@
+{% load static %}
+<div class="span6">
+       <div class="widget active red">
+         <div class="widget-title">
+          <h4>
+            <i class="icon-reorder"></i>
+            Үйл ажиллагааны тайлангийн мэдээлэл
+          </h4>
+        </div>
+        <div class="widget-body">
+          <a href="{% url 'tzes_uatailan_create' %}" class="btn btn-success">ТЗЭ ҮА тайлан үүсгэх</a>
+          <div class="space5"></div>
+          <form action="{% url 'tzes_uatailan_negtgel' %}" method='GET'>
+            <button type="submit" class="btn btn-success">Нэгтгэх</button>
+            <div class="space10"></div>
+
+            {% if object_list %}
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th><input id="checkAll" type="checkbox"></th>
+                    <th>№</th>
+                    <th>ТЗЭ</th>
+                    <th>Тайлангийн огноо</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in object_list %}
+                  <tr>
+                    <td><input type="checkbox" name="chosen_tailans" value="{{i.id}}"></td>
+                    <td>{{forloop.counter}}</td>
+                    <td><a href="javascript:;" class="ajax_delgerengui_load" url-data="{% url 'ua_tailan_material_list' i.id %}" div-id="#ua_tailan_materials">{{i.tze.org_name}} {{i.tze.org_type}}</a></td>
+                    <td>
+                      {{i.tailan_date|date:"Y-m-d"}}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <div class="alert alert-info">
+                Тайлангийн мэдээлэл олдсонгүй.
+              </div>
+            {% endif %}
+          </form>
+          </div>
+        </div>
+      </div>
+      <div class="span6" id="ua_tailan_materials">
+        <div class="widget active green">
+          <div class="widget-title">
+            <h4><i class="icon-reorder"></i>Үйл ажиллагааны тайлангийн материалууд</h4>
+          </div>
+          <div class="widget-body">
+            <div class="alert alert-info">
+              Тайлангаа сонгоно уу.
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+  });
+</script>      
+
+<script src="{% static 'assets/js/ajax_modal_showing.js' %}"></script>

@@ -1,0 +1,1178 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+    <div class='container-fluid'>
+        <div class="span12">
+            <div class="space20"></div>
+            <table class="table table-bordered table-fixed-header table-header-rotated">
+                <thead class="header">
+                    <tr>
+                        <th rowspan="3">№</th>
+                        <th rowspan="3">Үзүүлэлт</th>
+                        <th rowspan="3">Хэмжих нэгж</th>
+                        <th colspan="5">ТЗ-н Үйл ажиллагааны ангилал</th>
+                    </tr>
+                    <tr>
+                    	<th colspan="2">Төвлөрсан шугамын</th>
+                    	<th rowspan="2">Зөөвөр УТБ</th>
+                    	<th rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+                    	<th rowspan="2">Нийт дүн</th>
+                    </tr>
+                    <tr>
+                    	<th>Цэвэр ус</th>
+                    	<th>Бохир ус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr>
+                        <td>1</td>
+                        <td><b>Үндсэн материалын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1.1</td>
+                        <td>Үндсэн түүхий эд усны</td>
+                        <td>мян.төг</td>
+                        <td>{% if i.i == None %}{% else %}{{ i.i }}{% endif %}</td>
+                        <td>{% if i.i1 == None %}{% else %}{{ i.i1 }}{% endif %}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1.2</td>
+                        <td>Суурь хураамжийн зардал</td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>  
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><b>Цалингийн зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2.1</td>
+                        <td>Үндсэн ба нэмэгдэл</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.aa1 }}</td>
+                        <td>{{ i.aa2 }}</td>
+                        <td>{{ i.aa3 }}</td>
+                        <td>{{ i.aa4 }}</td>
+                        <td>{{ i.aa5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>2.2</td>
+                        <td>НДШ, ЭМДШ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ab1 }}</td>
+                        <td>{{ i.ab2 }}</td>
+                        <td>{{ i.ab3 }}</td>
+                        <td>{{ i.ab4 }}</td>
+                        <td>{{ i.ab5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>2.3</td>
+                        <td>Шагнал урамшуулал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ac1 }}</td>
+                        <td>{{ i.ac2 }}</td>
+                        <td>{{ i.ac3 }}</td>
+                        <td>{{ i.ac4 }}</td>
+                        <td>{{ i.ac5 }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ad1 }}</td>
+                        <td>{{ i.ad2 }}</td>
+                        <td>{{ i.ad3 }}</td>
+                        <td>{{ i.ad4 }}</td>
+                        <td>{{ i.ad5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><b>Ашиглалтын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3.1</td>
+                        <td>Цахилгаан</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ba1 }}</td>
+                        <td>{{ i.ba2 }}</td>
+                        <td>{{ i.ba3 }}</td>
+                        <td>{{ i.ba4 }}</td>
+                        <td>{{ i.ba5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>3.2</td>
+                        <td>Дулаан</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bb1 }}</td>
+                        <td>{{ i.bb2 }}</td>
+                        <td>{{ i.bb3 }}</td>
+                        <td>{{ i.bb4 }}</td>
+                        <td>{{ i.bb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>3.3</td>
+                        <td>Ус</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bc1 }}</td>
+                        <td>{{ i.bc2 }}</td>
+                        <td>{{ i.bc3 }}</td>
+                        <td>{{ i.bc4 }}</td>
+                        <td>{{ i.bc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>3.4</td>
+                        <td>Түлээ, нүүрс</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bd1 }}</td>
+                        <td>{{ i.bd2 }}</td>
+                        <td>{{ i.bd3 }}</td>
+                        <td>{{ i.bd4 }}</td>
+                        <td>{{ i.bd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>3.5</td>
+                        <td>Түлш шатахуун шатах тослол</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.be1 }}</td>
+                        <td>{{ i.be2 }}</td>
+                        <td>{{ i.be3 }}</td>
+                        <td>{{ i.be4 }}</td>
+                        <td>{{ i.be5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>3.6</td>
+                        <td>Тээврийн зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bf1 }}</td>
+                        <td>{{ i.bf2 }}</td>
+                        <td>{{ i.bf3 }}</td>
+                        <td>{{ i.bf4 }}</td>
+                        <td>{{ i.bf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>3.7</td>
+                        <td>Харуул хамгаалалт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bg1 }}</td>
+                        <td>{{ i.bg2 }}</td>
+                        <td>{{ i.bg3 }}</td>
+                        <td>{{ i.bg4 }}</td>
+                        <td>{{ i.bg5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.bh1 }}</td>
+                        <td>{{ i.bh2 }}</td>
+                        <td>{{ i.bh3 }}</td>
+                        <td>{{ i.bh4 }}</td>
+                        <td>{{ i.bh5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><b>Засвар үйлчилгээний зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4.1</td>
+                        <td>Барилга байгууламжийн засвар</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ca1 }}</td>
+                        <td>{{ i.ca2 }}</td>
+                        <td>{{ i.ca3 }}</td>
+                        <td>{{ i.ca4 }}</td>
+                        <td>{{ i.ca5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>4.2</td>
+                        <td>Тоног төхөөрөмжын засвар</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.cb1 }}</td>
+                        <td>{{ i.cb2 }}</td>
+                        <td>{{ i.cb3 }}</td>
+                        <td>{{ i.cb4 }}</td>
+                        <td>{{ i.cb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>4.3</td>
+                        <td>Сэлбэг хэрэгсэл</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.cc1 }}</td>
+                        <td>{{ i.cc2 }}</td>
+                        <td>{{ i.cc3 }}</td>
+                        <td>{{ i.cc4 }}</td>
+                        <td>{{ i.cc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>4.4</td>
+                        <td>Багаж хэрэгсэл</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.cd1 }}</td>
+                        <td>{{ i.cd2 }}</td>
+                        <td>{{ i.cd3 }}</td>
+                        <td>{{ i.cd4 }}</td>
+                        <td>{{ i.cd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>4.5</td>
+                        <td>Аваарийн нөөцийн хангалт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ce1 }}</td>
+                        <td>{{ i.ce2 }}</td>
+                        <td>{{ i.ce3 }}</td>
+                        <td>{{ i.ce4 }}</td>
+                        <td>{{ i.ce5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>4.6</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.cf1 }}</td>
+                        <td>{{ i.cf2 }}</td>
+                        <td>{{ i.cf3 }}</td>
+                        <td>{{ i.cf4 }}</td>
+                        <td>{{ i.cf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.cg1 }}</td>
+                        <td>{{ i.cg2 }}</td>
+                        <td>{{ i.cg3 }}</td>
+                        <td>{{ i.cg4 }}</td>
+                        <td>{{ i.cg5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><b>Ариутгал халдваргүйжүүлэлтийн зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5.1</td>
+                        <td>Хлорын зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.da1 }}</td>
+                        <td>{{ i.da2 }}</td>
+                        <td>{{ i.da3 }}</td>
+                        <td>{{ i.da4 }}</td>
+                        <td>{{ i.da5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>5.2</td>
+                        <td>Бусад ариутгалын бодис</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.db1 }}</td>
+                        <td>{{ i.db2 }}</td>
+                        <td>{{ i.db3 }}</td>
+                        <td>{{ i.db4 }}</td>
+                        <td>{{ i.db5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>5.3</td>
+                        <td>Лагийн зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.dc1 }}</td>
+                        <td>{{ i.dc2 }}</td>
+                        <td>{{ i.dc3 }}</td>
+                        <td>{{ i.dc4 }}</td>
+                        <td>{{ i.dc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>5.4</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.dd1 }}</td>
+                        <td>{{ i.dd2 }}</td>
+                        <td>{{ i.dd3 }}</td>
+                        <td>{{ i.dd4 }}</td>
+                        <td>{{ i.dd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.de1 }}</td>
+                        <td>{{ i.de2 }}</td>
+                        <td>{{ i.de3 }}</td>
+                        <td>{{ i.de4 }}</td>
+                        <td>{{ i.de5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><b>Конторын хангамжийн зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6.1</td>
+                        <td>Бичиг хэргийн зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ea1 }}</td>
+                        <td>{{ i.ea2 }}</td>
+                        <td>{{ i.ea3 }}</td>
+                        <td>{{ i.ea4 }}</td>
+                        <td>{{ i.ea5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>6.2</td>
+                        <td>Шуудан холбоо</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.eb1 }}</td>
+                        <td>{{ i.eb2 }}</td>
+                        <td>{{ i.eb3 }}</td>
+                        <td>{{ i.eb4 }}</td>
+                        <td>{{ i.eb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>6.3</td>
+                        <td>Томилолт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ec1 }}</td>
+                        <td>{{ i.ec2 }}</td>
+                        <td>{{ i.ec3 }}</td>
+                        <td>{{ i.ec4 }}</td>
+                        <td>{{ i.ec5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>6.4</td>
+                        <td>Сургалтын зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ed1 }}</td>
+                        <td>{{ i.ed2 }}</td>
+                        <td>{{ i.ed3 }}</td>
+                        <td>{{ i.ed4 }}</td>
+                        <td>{{ i.ed5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>6.5</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ee1 }}</td>
+                        <td>{{ i.ee2 }}</td>
+                        <td>{{ i.ee3 }}</td>
+                        <td>{{ i.ee4 }}</td>
+                        <td>{{ i.ee5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ef1 }}</td>
+                        <td>{{ i.ef2 }}</td>
+                        <td>{{ i.ef3 }}</td>
+                        <td>{{ i.ef4 }}</td>
+                        <td>{{ i.ef5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><b>Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7.1</td>
+                        <td>Аюулгүй ажиллагаа</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.fa1 }}</td>
+                        <td>{{ i.fa2 }}</td>
+                        <td>{{ i.fa3 }}</td>
+                        <td>{{ i.fa4 }}</td>
+                        <td>{{ i.fa5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>7.2</td>
+                        <td>Эрүүл ахуйн</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.fb1 }}</td>
+                        <td>{{ i.fb2 }}</td>
+                        <td>{{ i.fb3 }}</td>
+                        <td>{{ i.fb4 }}</td>
+                        <td>{{ i.fb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>7.3</td>
+                        <td>Иргэний хамгаалалт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.fc1 }}</td>
+                        <td>{{ i.fc2 }}</td>
+                        <td>{{ i.fc3 }}</td>
+                        <td>{{ i.fc4 }}</td>
+                        <td>{{ i.fc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>7.4</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.fd1 }}</td>
+                        <td>{{ i.fd2 }}</td>
+                        <td>{{ i.fd3 }}</td>
+                        <td>{{ i.fd4 }}</td>
+                        <td>{{ i.fd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.fe1 }}</td>
+                        <td>{{ i.fe2 }}</td>
+                        <td>{{ i.fe3 }}</td>
+                        <td>{{ i.fe4 }}</td>
+                        <td>{{ i.fe5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><b>Маркетинг, борлуулалтын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8.1</td>
+                        <td>Мэдээлэл сурталчилгааны зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ga1 }}</td>
+                        <td>{{ i.ga2 }}</td>
+                        <td>{{ i.ga3 }}</td>
+                        <td>{{ i.ga4 }}</td>
+                        <td>{{ i.ga5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>8.2</td>
+                        <td>Сургалтын зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.gb1 }}</td>
+                        <td>{{ i.gb2 }}</td>
+                        <td>{{ i.gb3 }}</td>
+                        <td>{{ i.gb4 }}</td>
+                        <td>{{ i.gb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>8.3</td>
+                        <td>Борлуулалт дэмжих урамшуулал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.gc1 }}</td>
+                        <td>{{ i.gc2 }}</td>
+                        <td>{{ i.gc3 }}</td>
+                        <td>{{ i.gc4 }}</td>
+                        <td>{{ i.gc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>8.4</td>
+                        <td>Шалгалт баталгаажуулалт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.gd1 }}</td>
+                        <td>{{ i.gd2 }}</td>
+                        <td>{{ i.gd3 }}</td>
+                        <td>{{ i.gd4 }}</td>
+                        <td>{{ i.gd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>8.5</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ge1 }}</td>
+                        <td>{{ i.ge2 }}</td>
+                        <td>{{ i.ge3 }}</td>
+                        <td>{{ i.ge4 }}</td>
+                        <td>{{ i.ge5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.gf1 }}</td>
+                        <td>{{ i.gf2 }}</td>
+                        <td>{{ i.gf3 }}</td>
+                        <td>{{ i.gf4 }}</td>
+                        <td>{{ i.gf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><b>Лаборатори шинжилгээний зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9.1</td>
+                        <td>Усны шинжилгээний зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ha1 }}</td>
+                        <td>{{ i.ha2 }}</td>
+                        <td>{{ i.ha3 }}</td>
+                        <td>{{ i.ha4 }}</td>
+                        <td>{{ i.ha5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>9.2</td>
+                        <td>Реактив бодис</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.hb1 }}</td>
+                        <td>{{ i.hb2 }}</td>
+                        <td>{{ i.hb3 }}</td>
+                        <td>{{ i.hb4 }}</td>
+                        <td>{{ i.hb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>9.3</td>
+                        <td>Шил, сав</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.hc1 }}</td>
+                        <td>{{ i.hc2 }}</td>
+                        <td>{{ i.hc3 }}</td>
+                        <td>{{ i.hc4 }}</td>
+                        <td>{{ i.hc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>9.4</td>
+                        <td>Баталгаажуулалт хяналт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.hd1 }}</td>
+                        <td>{{ i.hd2 }}</td>
+                        <td>{{ i.hd3 }}</td>
+                        <td>{{ i.hd4 }}</td>
+                        <td>{{ i.hd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>9.5</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.he1 }}</td>
+                        <td>{{ i.he2 }}</td>
+                        <td>{{ i.he3 }}</td>
+                        <td>{{ i.he4 }}</td>
+                        <td>{{ i.he5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.hf1 }}</td>
+                        <td>{{ i.hf2 }}</td>
+                        <td>{{ i.hf3 }}</td>
+                        <td>{{ i.hf4 }}</td>
+                        <td>{{ i.hf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><b>Гүйцэтгэх удирдлагын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10.1</td>
+                        <td>Цалин НДШ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ia1 }}</td>
+                        <td>{{ i.ia2 }}</td>
+                        <td>{{ i.ia3 }}</td>
+                        <td>{{ i.ia4 }}</td>
+                        <td>{{ i.ia5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>10.2</td>
+                        <td>Албан томилолт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ib1 }}</td>
+                        <td>{{ i.ib2 }}</td>
+                        <td>{{ i.ib3 }}</td>
+                        <td>{{ i.ib4 }}</td>
+                        <td>{{ i.ib5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>10.3</td>
+                        <td>Шатахуун</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ic1 }}</td>
+                        <td>{{ i.ic2 }}</td>
+                        <td>{{ i.ic3 }}</td>
+                        <td>{{ i.ic4 }}</td>
+                        <td>{{ i.ic5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>10.4</td>
+                        <td>Албан хэрэгцээ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.id1 }}</td>
+                        <td>{{ i.id2 }}</td>
+                        <td>{{ i.id3 }}</td>
+                        <td>{{ i.id4 }}</td>
+                        <td>{{ i.id5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>10.5</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ie1 }}</td>
+                        <td>{{ i.ie2 }}</td>
+                        <td>{{ i.ie3 }}</td>
+                        <td>{{ i.ie4 }}</td>
+                        <td>{{ i.ie5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.if1 }}</td>
+                        <td>{{ i.if2 }}</td>
+                        <td>{{ i.if3 }}</td>
+                        <td>{{ i.if4 }}</td>
+                        <td>{{ i.if5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><b>ТУЗ-н зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>11.1</td>
+                        <td>Цалин НДШ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ja1 }}</td>
+                        <td>{{ i.ja2 }}</td>
+                        <td>{{ i.ja3 }}</td>
+                        <td>{{ i.ja4 }}</td>
+                        <td>{{ i.ja5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>11.2</td>
+                        <td>Албан хэрэгцээ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.jb1 }}</td>
+                        <td>{{ i.jb2 }}</td>
+                        <td>{{ i.jb3 }}</td>
+                        <td>{{ i.jb4 }}</td>
+                        <td>{{ i.jb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>11.3</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.jc1 }}</td>
+                        <td>{{ i.jc2 }}</td>
+                        <td>{{ i.jc3 }}</td>
+                        <td>{{ i.jc4 }}</td>
+                        <td>{{ i.jc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.jd1 }}</td>
+                        <td>{{ i.jd2 }}</td>
+                        <td>{{ i.jd3 }}</td>
+                        <td>{{ i.jd4 }}</td>
+                        <td>{{ i.jd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><b>Үндсэн хөрөнгийн элэгдэл зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>12.1</td>
+                        <td>Үл хөдлөх хөрөнгө</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ka1 }}</td>
+                        <td>{{ i.ka2 }}</td>
+                        <td>{{ i.ka3 }}</td>
+                        <td>{{ i.ka4 }}</td>
+                        <td>{{ i.ka5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>12.2</td>
+                        <td>Техник тоног төхөөрөмж</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.kb1 }}</td>
+                        <td>{{ i.kb2 }}</td>
+                        <td>{{ i.kb3 }}</td>
+                        <td>{{ i.kb4 }}</td>
+                        <td>{{ i.kb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>12.3</td>
+                        <td>Тавилга, эд хогшил</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.kc1 }}</td>
+                        <td>{{ i.kc2 }}</td>
+                        <td>{{ i.kc3 }}</td>
+                        <td>{{ i.kc4 }}</td>
+                        <td>{{ i.kc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>12.4</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.kd1 }}</td>
+                        <td>{{ i.kd2 }}</td>
+                        <td>{{ i.kd3 }}</td>
+                        <td>{{ i.kd4 }}</td>
+                        <td>{{ i.kd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ke1 }}</td>
+                        <td>{{ i.ke2 }}</td>
+                        <td>{{ i.ke3 }}</td>
+                        <td>{{ i.ke4 }}</td>
+                        <td>{{ i.ke5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><b>Гадны үйлчилгээний зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>13.1</td>
+                        <td>Зохицуулах үйлчилгээний хөлс</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.la1 }}</td>
+                        <td>{{ i.la2 }}</td>
+                        <td>{{ i.la3 }}</td>
+                        <td>{{ i.la4 }}</td>
+                        <td>{{ i.la5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>13.2</td>
+                        <td>Түрээсийн зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.lb1 }}</td>
+                        <td>{{ i.lb2 }}</td>
+                        <td>{{ i.lb3 }}</td>
+                        <td>{{ i.lb4 }}</td>
+                        <td>{{ i.lb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>13.3</td>
+                        <td>Аудитын зардал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.lc1 }}</td>
+                        <td>{{ i.lc2 }}</td>
+                        <td>{{ i.lc3 }}</td>
+                        <td>{{ i.lc4 }}</td>
+                        <td>{{ i.lc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>13.4</td>
+                        <td>Програм хангамж</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ld1 }}</td>
+                        <td>{{ i.ld2 }}</td>
+                        <td>{{ i.ld3 }}</td>
+                        <td>{{ i.ld4 }}</td>
+                        <td>{{ i.ld5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>13.5</td>
+                        <td>Банкны үйлчилгээ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.le1 }}</td>
+                        <td>{{ i.le2 }}</td>
+                        <td>{{ i.le3 }}</td>
+                        <td>{{ i.le4 }}</td>
+                        <td>{{ i.le5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>13.6</td>
+                        <td>Шүүхйин үйлчилгээ</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.lf1 }}</td>
+                        <td>{{ i.lf2 }}</td>
+                        <td>{{ i.lf3 }}</td>
+                        <td>{{ i.lf4 }}</td>
+                        <td>{{ i.lf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>13.7</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.lg1 }}</td>
+                        <td>{{ i.lg2 }}</td>
+                        <td>{{ i.lg3 }}</td>
+                        <td>{{ i.lg4 }}</td>
+                        <td>{{ i.lg5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.lh1 }}</td>
+                        <td>{{ i.lh2 }}</td>
+                        <td>{{ i.lh3 }}</td>
+                        <td>{{ i.lh4 }}</td>
+                        <td>{{ i.lh5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><b>Татварын зардал/ААНОАТ-аас бусад/</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>14.1</td>
+                        <td>Газрын татвар</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ma1 }}</td>
+                        <td>{{ i.ma2 }}</td>
+                        <td>{{ i.ma3 }}</td>
+                        <td>{{ i.ma4 }}</td>
+                        <td>{{ i.ma5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>14.2</td>
+                        <td>Үл хөдлөх хөрөнгийн татвар</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.mb1 }}</td>
+                        <td>{{ i.mb2 }}</td>
+                        <td>{{ i.mb3 }}</td>
+                        <td>{{ i.mb4 }}</td>
+                        <td>{{ i.mb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>14.3</td>
+                        <td>Тээврийн хэрэгслийн татвар</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.mc1 }}</td>
+                        <td>{{ i.mc2 }}</td>
+                        <td>{{ i.mc3 }}</td>
+                        <td>{{ i.mc4 }}</td>
+                        <td>{{ i.mc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>14.4</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.md1 }}</td>
+                        <td>{{ i.md2 }}</td>
+                        <td>{{ i.md3 }}</td>
+                        <td>{{ i.md4 }}</td>
+                        <td>{{ i.md5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.me1 }}</td>
+                        <td>{{ i.me2 }}</td>
+                        <td>{{ i.me3 }}</td>
+                        <td>{{ i.me4 }}</td>
+                        <td>{{ i.me5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><b>Даатгалын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>15.1</td>
+                        <td>Тээврийн хэрэгслийн даатгал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.na1 }}</td>
+                        <td>{{ i.na2 }}</td>
+                        <td>{{ i.na3 }}</td>
+                        <td>{{ i.na4 }}</td>
+                        <td>{{ i.na5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>15.2</td>
+                        <td>Үл хөдлөх хөрөнгийн даатгал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.nb1 }}</td>
+                        <td>{{ i.nb2 }}</td>
+                        <td>{{ i.nb3 }}</td>
+                        <td>{{ i.nb4 }}</td>
+                        <td>{{ i.nb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>15.3</td>
+                        <td>Ажиллагсадын хариуцлагын даатгал</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.nc1 }}</td>
+                        <td>{{ i.nc2 }}</td>
+                        <td>{{ i.nc3 }}</td>
+                        <td>{{ i.nc4 }}</td>
+                        <td>{{ i.nc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>15.4</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.nd1 }}</td>
+                        <td>{{ i.nd2 }}</td>
+                        <td>{{ i.nd3 }}</td>
+                        <td>{{ i.nd4 }}</td>
+                        <td>{{ i.nd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.ne1 }}</td>
+                        <td>{{ i.ne2 }}</td>
+                        <td>{{ i.ne3 }}</td>
+                        <td>{{ i.ne4 }}</td>
+                        <td>{{ i.ne5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><b>Бусад зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>  
+                    </tr>
+                    <tr>
+                    	<th colspan="2">Үндсэн үйл ажиллагааны зардал-БӨӨ-ийн дүн</th>
+                    	<td>мян.төг</td>
+                        <td>{{ i.cg1 }}</td>
+                        <td>{{ i.cg2 }}</td>
+                        <td>{{ i.cg3 }}</td>
+                        <td>{{ i.cg4 }}</td>
+                        <td>{{ i.cg5 }}</td> 
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><b>Ажиллагсдын нийгмийн зардалд</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>17.1</td>
+                        <td>Хоолны хөнгөлөлт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pa1 }}</td>
+                        <td>{{ i.pa2 }}</td>
+                        <td>{{ i.pa3 }}</td>
+                        <td>{{ i.pa4 }}</td>
+                        <td>{{ i.pa5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>17.2</td>
+                        <td>Унааны хөнгөлөлт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pb1 }}</td>
+                        <td>{{ i.pb2 }}</td>
+                        <td>{{ i.pb3 }}</td>
+                        <td>{{ i.pb4 }}</td>
+                        <td>{{ i.pb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>17.3</td>
+                        <td>Түлээний хөнгөлөлт</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pc1 }}</td>
+                        <td>{{ i.pc2 }}</td>
+                        <td>{{ i.pc3 }}</td>
+                        <td>{{ i.pc4 }}</td>
+                        <td>{{ i.pc5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>17.4</td>
+                        <td>Тэтгэмж тусламж</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pd1 }}</td>
+                        <td>{{ i.pd2 }}</td>
+                        <td>{{ i.pd3 }}</td>
+                        <td>{{ i.pd4 }}</td>
+                        <td>{{ i.pd5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>17.5</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pe1 }}</td>
+                        <td>{{ i.pe2 }}</td>
+                        <td>{{ i.pe3 }}</td>
+                        <td>{{ i.pe4 }}</td>
+                        <td>{{ i.pe5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.pf1 }}</td>
+                        <td>{{ i.pf2 }}</td>
+                        <td>{{ i.pf3 }}</td>
+                        <td>{{ i.pf4 }}</td>
+                        <td>{{ i.pf5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><b>Хөрөнгө оруулалтын зардал</b></td>
+                        <td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>18.1</td>
+                        <td>Урт хугацаат зээлийн</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.qa1 }}</td>
+                        <td>{{ i.qa2 }}</td>
+                        <td>{{ i.qa3 }}</td>
+                        <td>{{ i.qa4 }}</td>
+                        <td>{{ i.qa5 }}</td>
+                    </tr>
+                    <tr>
+                        <td>18.2</td>
+                        <td>Бусад</td>
+                        <td>мян.төг</td>
+                        <td>{{ i.qb1 }}</td>
+                        <td>{{ i.qb2 }}</td>
+                        <td>{{ i.qb3 }}</td>
+                        <td>{{ i.qb4 }}</td>
+                        <td>{{ i.qb5 }}</td>  
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Дүн</b></td>
+                        <td>мян.төг</td>
+                        <td>{{ i.qc1 }}</td>
+                        <td>{{ i.qc2 }}</td>
+                        <td>{{ i.qc3 }}</td>
+                        <td>{{ i.qc4 }}</td>
+                        <td>{{ i.qc5 }}</td>  
+                    </tr>
+                    <tr>
+                    	<th colspan="2">БОШ - НИЙТ ЗАРДЛЫН ДҮН</th>
+                    	<td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td> 
+                    </tr>
+                    <tr>
+                    	<th colspan="2">Борлуулсан ус - биетээр</th>
+                    	<td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td> 
+                    </tr>
+                    <tr>
+                    	<th colspan="2">1 м3 усны өртөг  </th>
+                    	<td>мян.төг</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

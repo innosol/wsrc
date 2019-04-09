@@ -1,0 +1,94 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Засвар үйлчилгээний зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="3"></th>
+        <th rowspan="3">Хэмжих нэгж</th>
+        <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+        <th rowspan="3">Цахилгаан</th>
+        <th rowspan="3">Дулаан</th>
+        <th rowspan="3">Бусад</th>
+        <th rowspan="3">Нийт</th>
+      </tr>
+      <tr>
+        <th colspan="2">Төвлөрсөн шугамын</th>
+        <th rowspan="2">Зөөвөр, УТБ</th>
+        <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+      </tr>
+      <tr>
+        <th>Цэвэр ус</th>
+        <th>Бохир ус</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Барилга байгууламж</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.barilga_baiguulamj }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z4.total0 }}</th>
+      </tr>
+      <tr>
+        <td>Тоног төхөөрөмж</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.tonog_tohooromj }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z4.total1 }}</th>
+      </tr>
+      <tr>
+        <td>Сэлбэг хэрэгсэл</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.selbeg_heregsel }}</td>
+        {% endfor %}
+          <th>{{ tailan.zardal.z4.total2 }}</th>
+      </tr>
+      <tr>
+        <td>Багаж хэрэгсэл</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.bagaj_heregsel }}</td>
+        {% endfor %}
+          <th>{{ tailan.zardal.z4.total3 }}</th>
+      </tr>
+      <tr>
+        <td>Агаарын нөөцийн хангалт</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.agaariin_nootsiin_hangalt }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z4.total4 }}</th>
+      </tr>
+      <tr>
+        <td>Бусад</td>
+        <td>мян.төгрөг</td>
+        {% for z4 in tailan.zardal.z4.zasvar_uilchilgee.all %}
+        <td>{{ z4.busad }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z4.total5 }}</th>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>мян.төгрөг</th>
+        <th>{{ tailan.zardal.z4.sum0 }}</th>
+        <th>{{ tailan.zardal.z4.sum1 }}</th>
+        <th>{{ tailan.zardal.z4.sum2 }}</th>
+        <th>{{ tailan.zardal.z4.sum3 }}</th>
+        <th>{{ tailan.zardal.z4.sum4 }}</th>
+        <th>{{ tailan.zardal.z4.sum5 }}</th>
+        <th>{{ tailan.zardal.z4.sum6 }}</th>
+        <th>{{ tailan.zardal.z4.total }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="close" class="btn btn-default">Цуцлах</button>
+  <button url-data="{% if date %}{% url 'zardal4' date %}{% else %}{% url 'zardal4' %}{% endif %}"class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

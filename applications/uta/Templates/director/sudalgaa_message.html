@@ -1,0 +1,13 @@
+<div class="modal1-uuganaa-header">
+	<button class="close">&times</button>
+	<h4>Мессеж</h4>
+</div>
+<form class="form-horizontal" method="post">{% csrf_token %}
+	<div class="modal1-uuganaa-body">
+		{{ form }}
+	</div>
+	<div class="modal1-uuganaa-footer">
+		<button type="button" class="btn" data-data="close">Цуцлах</button>
+		<button type="submit" class="btn btn-success">Илгээх</button>
+	</div>
+</form>

@@ -1,0 +1,61 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Тасалдал</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Тасралтын нийт хугацаа</th>
+        <th class="span3">Тасалдалд хамрагдсан нийт иргэдийн тоо</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Төлөвлөгөөт тасалдал</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.0.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.0.too }}</td>
+      </tr>
+      <tr>
+        <td>Хүний буруутай ажиллагаанаас</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.1.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.1.too }}</td>
+      </tr>
+      <tr>
+        <td>Шугам, тоног төхөөрөмжийн гэмтлээс</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.2.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.2.too }}</td>
+      </tr>
+      <tr>
+        <td>Бусад тусгай зөвшөөрөл эзэмшигчдийн буруутай үйл ажиллагаанаас</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.3.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.3.too }}</td>
+      </tr>
+      <tr>
+        <td>Гуравдагч этгээдийн буруугаас</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.4.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.4.too }}</td>
+      </tr>
+      <tr>
+        <td>Байгалийн гамшиг /аянга, хүчтэй салхи шуурга, үер/-аас</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.5.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.5.too }}</td>
+      </tr>
+      <tr>
+        <td>Бусад шалтгаанаар</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.6.duration }}</td>
+        <td>{{ tailan.tasaldal.tasaldal.all.6.too }}</td>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>{{ tailan.tasaldal.sum0 }}</th>
+        <th>{{ tailan.tasaldal.sum1 }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="close" class="btn btn-default">Цуцлах</button>
+  <button url-data="{% if date %}{% url 'tasaldal' date %}{% else %}{% url 'tasaldal' %}{% endif %}"class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

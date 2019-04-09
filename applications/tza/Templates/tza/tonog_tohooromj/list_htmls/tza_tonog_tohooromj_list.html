@@ -1,0 +1,101 @@
+<div class="span9">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Тоног төхөөрөмжийн жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if object_list %}
+	    	<ul class="nav nav-pills">
+          <li class="active dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Үйлдлүүд<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tza_equipment_approve' %}" style="olor: #468847;">Баталгаажуулах</a></li>
+              <li><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tza_equipment_disapprove' %}" style="olor: #953b39;">Цуцлах</a></li>
+              <li><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tza_equipment_update_tze_many' %}" style="olor: #953b39;">Шилжүүлэх</a></li>
+            </ul>
+          </li>
+        </ul>
+
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+	    				<th><input id="checkAll" type="checkbox"></th>
+			          	<th>№</th>
+			          	<th>ТЗЭ</th>
+			          	<th>Нэр</th>
+			          	<th>Төрөл</th>
+			          	<th>Тоо</th>
+			          	<th>Төлөв</th>
+			          	<th>Дэлгэрэнгүй</th>
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+	    				<td><input type="checkbox" name="chosen_objs" value="{{i.id}}"></td>
+			          	<td>{{forloop.counter}}</td>
+			          	<td>{{i.tze}}</td>
+			          	<td>{{i.name}}</td>
+			          	<td>{{i.torol_id}} </td>
+			          	<td>{{i.too}}</td>
+			          	<td>
+			              {% if i.approved %}
+			                <span class="label label-success">Баталгаажсан</span>
+			              {% else %}
+			                <span class="label label-warning">Баталгаажаагүй</span>
+			              {% endif %}
+			            </td>
+			          	{% if is_history %}
+			          	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_tonog_tohooromj_delgerengui' i.id history_date.year history_date.month history_date.day history_date.hour history_date.minute %}">Дэлгэрэнгүй...</a></td>
+			          	{% else %}
+			          	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_tonog_tohooromj_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+			          	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+<div class="span3">
+	<div class="widget purple">
+		<div class="widget-title">
+			<h4><i class="icon-filter"></i>Шүүлтүүр</h4>
+		</div>
+		<div class="widget-body">
+			<form method="GET" id="filter_form">
+              {% for f in filter_form %}
+              <div class="form-group">
+                {{f.label}}
+                {{f}}
+              </div>
+              {% endfor %}
+              <button type='submit' class="btn btn-primary">Шүүх</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("#filter_form").submit(function(event){
+	event.preventDefault();
+	$.ajax({
+		url: "{% url 'tza_tonog_tohooromj_list' %}",
+		method: 'GET',
+		data: $(this).serialize()
+	}).done(function(response){
+		$('#tonog_tohooromj_list').html(response)
+	});
+});
+</script>
+
+<script type="text/javascript">
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+  });
+</script>

@@ -1,0 +1,50 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Санал гомдол</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Хэрэглэгчдээс ирүүлсэн санал гомдол</th>
+        <th>Хүлээн авсан</th>
+        <th>Шийдвэрлэсэн</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Цэвэр усны тасалдалтай холбоотой</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.0.huleen_avsan }}</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.0.shiidverlesen }}</td>
+      </tr>
+      <tr>
+        <td>Ус хангамжийн чанартай холбоотой</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.1.huleen_avsan }}</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.1.shiidverlesen }}</td>
+      </tr>
+      <tr>
+        <td>Төлбөр тооцоотой холбоотой</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.2.huleen_avsan }}</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.2.shiidverlesen }}</td>
+      </tr>
+      <tr>
+        <td>Дуудлагын засвартай холбоотой</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.3.huleen_avsan }}</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.3.shiidverlesen }}</td>
+      </tr>
+      <tr>
+        <td>Борлуулалтын байцаагч нартай холбоотой</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.4.huleen_avsan }}</td>
+        <td>{{ tailan.sanal_gomdol.sanal_gomdol.all.4.shiidverlesen }}</td>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>{{ tailan.sanal_gomdol.sum0 }}</th>
+        <th>{{ tailan.sanal_gomdol.sum1 }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

@@ -1,0 +1,467 @@
+{% extends 'base_base.html' %}
+{% load static %}
+{% block content %}
+<div id="main-content">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <form id="form_id" class="form-horizontal" action="{{view_url}}" method="POST">{% csrf_token %}
+        {% if form.Pasdws and form.Nmean %}
+        <h4>Үйлчилгээны хүртээмж</h4>
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Тухайн орон нутагт ТЗЭ-ээр үйлчлүүлж буй хүн амын тоо (жилийн эцсээр)</th>
+            <th class="span3">Тухайн орон нутгийн хүн амын тоо жилийн эцсээр</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Баталгаат ундны усаар хангагдсан хүн амын эзлэх хувь</td>
+            <td>{{form.Pasdws.errors}}{{form.Pasdws}}</td>
+            <td>{{form.Nmean.errors}}{{form.Nmean}}</td>
+            <td><input id="result_1" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+
+        {% if form.Q1 or form.Qr or form.Q2 or form.Ec or form.Na or form.Nb %}
+        <h4>Цэвэр ус олборлолт</h4>
+        {% if form.Q1 and form.Qr %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Олборлосон усны хэмжээ (м3/хоног)</th>
+            <th class="span3">Тогтоогдсон нөөц (м3/хоног)</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Олборлосон ус тогтоосон нөөцийн харьцаа</td>
+            <td>{{form.Q1.errors}}{{form.Q1}}</td>
+            <td>{{form.Qr.errors}}{{form.Qr}}</td>
+            <td><input id="result_2" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.Q2 and form.Ec %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Олборлосон ус</th>
+            <th class="span3">Нийт зарцуулсан эрчим хүч кВт.ц</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>1 м3 ус олборлоход зарцуулсан цахилгаан эрчим хүч</td>
+            <td>{{form.Q2.errors}}{{form.Q2}}</td>
+            <td>{{form.Ec.errors}}{{form.Ec}}</td>
+            <td><input id="result_3" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.Na and form.Nb %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Авсан шинжилгээний тоо</th>
+            <th class="span3">Стандартад нийцээгүй дүнгийн тоо</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Олборлосон ус тогтоосон нөөцийн харьцаа</td>
+            <td>{{form.Na.errors}}{{form.Na}}</td>
+            <td>{{form.Nb.errors}}{{form.Nb}}</td>
+            <td><input id="result_4" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% endif %}
+
+        {% if form.Qn or form.Qs1 or form.Qm or form.Qs2 or form.Nn or form.Ln %}
+        <h4>Цэвэр усны түгээлт</h4>
+        {% if form.Qn and form.Qs1 %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийлүүлсэн усны хэмжээ (мян.шоо метр)</th>
+            <th class="span3">Нийт борлуулсан усны хэмжээ (мян.шоо метр)</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Орлого болоогүй ус</td>
+            <td>{{form.Qn.errors}}{{form.Qn}}</td>
+            <td>{{form.Qs1.errors}}{{form.Qs1}}</td>
+            <td><input id="result_5" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.Qm and form.Qs2 %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Тоолууртай хэрэглэгчдийн тоо</th>
+            <th class="span3">Нийт хэрэглэгчдийн тоо</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Тоолууржилтын түвшин</td>
+            <td>{{form.Qm.errors}}{{form.Qm}}</td>
+            <td>{{form.Qs2.errors}}{{form.Qs2}}</td>
+            <td><input id="result_6" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.Nn and form.Ln %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт гэмтлийн тоо</th>
+            <th class="span3">Нийт шугамын урт</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Цэвэр усны шугамын нэгж уртад ноогдох гэмтлийн тоо</td>
+            <td>{{form.Nn.errors}}{{form.Nn}}</td>
+            <td>{{form.Ln.errors}}{{form.Ln}}</td>
+            <td><input id="result_7" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% endif %}
+
+        {% if form.BOD5input or form.BOD5output or form.COD5input or form.COD5output or form.SSinput or form.SSoutput %}
+        <h4>Цэвэрлэх байгууламж</h4>
+        {% if form.BOD5input and form.BOD5output %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орох усны биологийн хэрэгцээт хүчилтөрөгч 5 хоног, мг\л</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй биологийн хэрэгцээт хүчилтөрөгч 5 хоног</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Биологийн хэрэгцээт хүчилтөрөгч</td>
+            <td>{{form.BOD5input.errors}}{{form.BOD5input}}</td>
+            <td>{{form.BOD5output.errors}}{{form.BOD5output}}</td>
+            <td><input id="result_8a" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.COD5input and form.COD5output %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орж буй бохир усны химийн хэрэгцээт хүчилтөрөгч, мг\л</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй усны химийн хэрэгцээт хүчилтөрөгч</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Химийн хэрэгцээт хүчилтөрөгч</td>
+            <td>{{form.COD5input.errors}}{{form.COD5input}}</td>
+            <td>{{form.COD5output.errors}}{{form.COD5output}}</td>
+            <td><input id="result_8b" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.SSinput and form.SSoutput %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орж буй усан дах умбуур бодисын агууламж</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй усан дах умбуур бодисын агууламж</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Умбуур бодисын агууламж</td>
+            <td>{{form.SSinput.errors}}{{form.SSinput}}</td>
+            <td>{{form.SSoutput.errors}}{{form.SSoutput}}</td>
+            <td><input id="result_8c" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% endif %}
+
+        {% if form.Ne1 and form.N1 and form.C %}
+        <h4>Боловсон хүчний үзүүлэлт</h4>
+        <table class="table table-bordered">
+          <tr>
+            <th class="span2">Нийт ажилтны тоо</th>
+            <th class="span2">Боловсролтой ажилтны тоо</th>
+            <th class="span2">Нийт хэрэглэгчдийн тоо</th>
+            <th class="span3">Боловсон хүчний бүрдэлт</th>
+            <th class="span3">1000 хэрэглэгчдэд ноогдох ажиллагсдын тоо</th>
+          </tr>
+          <tr>
+            <td>{{form.N1.errors}}{{form.N1}}</td>
+            <td>{{form.Ne1.errors}}{{form.Ne1}}</td>
+            <td>{{form.C.errors}}{{form.C}}</td>
+            <td><input id="result_9" readonly type="text" value="" /></td>
+            <td><input id="result_10" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+
+        {% if form.BOsh or form.BOshb or form.O or form.Z or form.TsQs or form.ZTsU or form.BQs or form.ZBU or form.M or form.B %}
+        <h4>Санхүүгийн үзүүлэлт</h4>
+        {% if form.BOsh and form.BOshb %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Гүйцэтгэлээр гарсан нийт зардал</th>
+            <th class="span3">Тогтоолоор батлагдсан БОш</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Борлуулалтын орлогын шаардагдах хэмжээ</td>
+            <td>{{form.BOsh.errors}}{{form.BOsh}}</td>
+            <td>{{form.BOshb.errors}}{{form.BOshb}}</td>
+            <td><input id="result_11" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.O and form.Z %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт орлого</th>
+            <th class="span3">Нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Орлогын нэг төгрөгт ноогдох зардал</td>
+            <td>{{form.O.errors}}{{form.O}}</td>
+            <td>{{form.Z.errors}}{{form.Z}}</td>
+            <td><input id="result_12" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.TsQs and form.ZTsU %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт борлуулсан цэвэр усны хэмжээ</th>
+            <th class="span3">Цэвэр усны үйл ажиллагааны нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Борлуулсан 1 м3 цэвэр усанд ноогдох үйл ажиллагааны зардал</td>
+            <td>{{form.TsQs.errors}}{{form.TsQs}}</td>
+            <td>{{form.ZTsU.errors}}{{form.ZTsU}}</td>
+            <td><input id="result_13a" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.BQs and form.ZBU %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт бохир усны хэмжээ</th>
+            <th class="span3">Бохир усны үйл ажиллагааны нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Борлуулсан 1 м3 бохир усанд ноогдох үйл ажиллагааны зардал</td>
+            <td>{{form.BQs.errors}}{{form.BQs}}</td>
+            <td>{{form.ZBU.errors}}{{form.ZBU}}</td>
+            <td><input id="result_13b" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% if form.M and form.B %}
+        <table class="table table-bordered">
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Бэлэн мөнгөний орлого</th>
+            <th class="span3">Борлуулалтын нийт орлого</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          <tr>
+            <td>Авлага цуглуулалт</td>
+            <td>{{form.M.errors}}{{form.M}}</td>
+            <td>{{form.B.errors}}{{form.B}}</td>
+            <td><input id="result_14" readonly type="text" value="" /></td>
+          </tr>
+        </table>
+        {% endif %}
+        {% endif %}
+        
+
+        <button class="btn btn-success" type="submit">Илгээх</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    handler1();
+    handler2();
+    handler3();
+    handler4();
+    handler5();
+    handler6();
+    handler7();
+    handler8a();
+    handler8b();
+    handler8c();
+    handler9();
+
+    handler11();
+    handler12();
+    handler13a();
+    handler13b();
+    handler14();
+
+
+    $('#id_Pasdws').keyup(handler1);
+    $('#id_Nmean').keyup(handler1);
+
+    $('#id_Q1').keyup(handler2);
+    $('#id_Qr').keyup(handler2);
+    $('#id_Q2').keyup(handler3);
+    $('#id_Ec').keyup(handler3);
+    $('#id_Na').keyup(handler4);
+    $('#id_Nb').keyup(handler4);
+
+    $('#id_Qn').keyup(handler5);
+    $('#id_Qs1').keyup(handler5);
+    $('#id_Qm').keyup(handler6);
+    $('#id_Qs2').keyup(handler6);
+    $('#id_Nn').keyup(handler7);
+    $('#id_Ln').keyup(handler7);
+
+    $('#id_BOD5input').keyup(handler8a);
+    $('#id_BOD5output').keyup(handler8a);
+    $('#id_COD5input').keyup(handler8b);
+    $('#id_COD5output').keyup(handler8b);
+    $('#id_SSinput').keyup(handler8c);
+    $('#id_SSoutput').keyup(handler8c);
+
+    $('#id_Ne1').keyup(handler9);
+    $('#N1').keyup(handler9);
+    $('#id_C').keyup(handler9);
+
+    $('#id_BOsh').keyup(handler11);
+    $('#id_BOshb').keyup(handler11);
+    $('#id_O').keyup(handler12);
+    $('#id_Z').keyup(handler12);
+    $('#id_TsQs').keyup(handler13a);
+    $('#id_ZTsU').keyup(handler13a);
+    $('#id_BQs').keyup(handler13b);
+    $('#id_ZBU').keyup(handler13b);
+    $('#id_M').keyup(handler14);
+    $('#id_B').keyup(handler14);
+
+});
+
+function cal_percent(a_id, b_id, result_id)
+{
+  if ($(a_id).val()&& $(b_id).val()){
+      $(result_id).val($(a_id).val() *100/$(b_id).val());
+    }
+}
+function cal_haritsaa(a_id, b_id, result_id)
+{
+  if ($(a_id).val()&& $(b_id).val()){
+      $(result_id).val($(a_id).val()/$(b_id).val());
+    }
+}
+function cal_yalgavar_haritsaa(a_id, b_id, result_id)
+{
+  if ($(a_id).val()&& $(b_id).val()){
+      $(result_id).val(($(a_id).val()-$(b_id).val()) *100/$(a_id).val());
+    }
+}
+function cal_1000_hereglegch(a_id, b_id, result_id)
+{
+  if ($(a_id).val()&& $(b_id).val()){
+      $(result_id).val($(a_id).val() *1000/$(b_id).val());
+    }
+}
+
+function handler1(e)
+{
+  //alert("haha");
+  cal_percent("#id_Pasdws", "#id_Nmean", "#result_1");
+}
+function handler2(e)
+{
+  //alert("haha");
+  cal_percent("#id_Q1", "#id_Qr", "#result_2");
+}
+function handler3(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_Ec", "#id_Q2", "#result_3");
+}
+function handler4(e)
+{
+  //alert("haha");
+  cal_percent("#id_Nb", "#id_Na", "#result_4");
+}
+function handler5(e)
+{
+  //alert("haha");
+  cal_yalgavar_haritsaa("#id_Qn", "#id_Qs1", "#result_5");
+}
+function handler6(e)
+{
+  //alert("haha");
+  cal_percent("#id_Qm", "#id_Qs2", "#result_6");
+}
+function handler7(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_Nn", "#id_Ln", "#result_7");
+}
+function handler8a(e)
+{
+  //alert("haha");
+  cal_yalgavar_haritsaa("#id_BOD5input", "#id_BOD5output", "#result_8a");
+}
+function handler8b(e)
+{
+  //alert("haha");
+  cal_yalgavar_haritsaa("#id_COD5input", "#id_COD5output", "#result_8b");
+}
+function handler8c(e)
+{
+  //alert("haha");
+  cal_yalgavar_haritsaa("#id_SSinput", "#id_SSoutput", "#result_8c");
+}
+function handler9(e)
+{
+  //alert("haha");
+  cal_percent("#id_Ne1", "#id_N1", "#result_9");
+  cal_1000_hereglegch("#id_N1", "#id_C", "#result_10");
+}
+
+function handler11(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_BOsh", "#id_BOshb", "#result_11");
+}
+function handler12(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_Z", "#id_O", "#result_12");
+}
+function handler13a(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_ZTsU", "#id_TsQs", "#result_13a");
+}
+function handler13b(e)
+{
+  //alert("haha");
+  cal_haritsaa("#id_ZBU", "#id_BQs", "#result_13b");
+}
+function handler14(e)
+{
+  //alert("haha");
+  cal_percent("#id_M", "#id_B", "#result_14");
+}
+
+</script>
+{% endblock %}
+

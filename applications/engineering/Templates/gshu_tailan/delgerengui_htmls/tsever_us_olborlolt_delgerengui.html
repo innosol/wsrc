@@ -1,0 +1,64 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Цэвэр ус олборлолт</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+          <tr>
+            <th>
+              Гүйцэтгэлийн үзүүлэлт
+            </th>
+            <th>
+              Тооцоонд ашигласан өгөгдлүүд
+            </th>
+            <th>
+              Үр дүн
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Олборлосон ус тогтоосон нөөцийн харьцаа
+            </td>
+            <td>
+              Олборлосон усны хэмжээ (м3/хоног): {% if obj.Q1 %}{{obj.Q1}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Тогтоогдсон нөөц (м3/хоног): {% if obj.Qr %}{{obj.Qr}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_1}}</td>
+          </tr>
+          <tr>
+            <td>
+              1 м3 ус олборлоход зарцуулсан эрчим хүч:              
+            </td>
+            <td>
+              Нийт олборлосон усны хэмжээ: {% if obj.Q2 %}{{obj.Q2}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Нийт зарцуулсан эрчим хүч (кВт.ц): {% if obj.Ec %}{{obj.Ec}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_2}}</td>
+          </tr>
+          <tr>
+            <td>
+              Ундны усны чанар
+            </td>
+            <td>
+              Авсан шинжилгээний тоо: {% if obj.Na %}{{obj.Na}}{% else %}Мэдээлэл байхгүй{% endif %}
+              <br>
+              Стандартад нийцээгүй дүнгийн тоо: {% if obj.Nb %}{{obj.Nb}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_3}}</td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if obj.gshu.can_edit and perms.permission.tze_gshu_tailan_menu_view %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'gshu_tsever_us_olborlolt_insert' obj.gshu.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,65 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0px;">
+	<div class="container-fluid">
+		<div class="space20"></div>
+		<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+		<div class="space20"></div>
+		<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+		<div style="float:right;">13 - ХЭРЭГЛЭГЧИЙН САНАЛ ГОМДОЛ</div>
+		<table class="table table-bordered table-fixed-header table-header-rotated">
+			<thead class="header">
+				<tr>
+					<th colspan="2">Хэрэглэгчээс ирүүлсэн санал гомдол</th>
+					<th>Нийт тоо</th>
+					<th>Цэвэр усны тасалдалтай холбоотой</th>
+					<th>Ус хангамжийн чанартай холбоотой</th>
+					<th>Төлбөр тооцоотой холбоотой</th>
+					<th>Дуудлагын засвартай холбоотой</th>
+					<th>Борлуулалтын байцаагч нартай холбоотой</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2">{{ sudalgaa.year }} он</td>
+					<td>Хүлээн авсан</td>
+					<td><b>{{ sudalgaa.sanal_gomdol.sum0 }}</b></td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.0.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.1.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.2.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.3.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.4.huleen_avsan }}</td>
+				</tr>
+				<tr>
+					<td>Шийдвэрлэсэн</td>
+					<td><b>{{ sudalgaa.sanal_gomdol.sum1 }}</b></td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.0.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.1.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.2.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.3.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.4.shiidverlesen }}</td>
+				</tr>
+				<tr>
+					<td rowspan="2">Өссөн дүн</td>
+					<td>Хүлээн авсан</td>
+					<td><b>{{ sudalgaa.sanal_gomdol.sum0 }}</b></td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.0.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.1.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.2.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.3.huleen_avsan }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.4.huleen_avsan }}</td>
+				</tr>
+				<tr>
+					<td>Шийдвэрлэсэн</td>
+					<td><b>{{ sudalgaa.sanal_gomdol.sum1 }}</b></td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.0.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.1.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.2.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.3.shiidverlesen }}</td>
+					<td>{{ sudalgaa.sanal_gomdol.sanal_gomdol.all.4.shiidverlesen }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

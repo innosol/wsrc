@@ -1,0 +1,49 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="icon-remove close" style="float: right;"></button>
+  <h3>Машин тоног төхөөрөмжийг сонгох</h3>
+</div>
+
+<form id="form_id" success-div-id="#huselt_delgerengui_div" method="POST" action="/engineering/material_choose_15/{{huselt_id}}/"> {% csrf_token %}
+  <div id="Modal_huselt_body" class="modal1-uuganaa-body">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Тоног төхөөрөмжийн нэр</th>
+      <th>Төхөөрөмжийн төрөл</th>
+      <th>Эх үүсвэр</th>
+      <th>Тоо</th>
+      <th>Хүчин чадал</th>
+      <th>Элэгдлийн чанар</th>
+      <th>Хуримтлагдсан элэгдэл</th>
+      <th>Элэгдлийн хувь</th>
+      <th>Ашиглалтанд орсон огноо</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in Equipment_all %}
+    <tr>
+      <td><input type="checkbox" name="ids" value={{i.id}}></td>
+      <td>{{i.name}}</td>
+      <td>{{i.torol_id}}</td>
+      <td>{{i.eh_uusver}}</td>
+      <td>{{i.too}}</td>
+      <td>{{i.huchin_chadal}}</td>
+      <td>{{i.elegdliin_chanar}}</td>
+      <td>{{i.hurimtlagdsan_elegdel}}</td>
+      <td>{{i.elegdel_huvi}}</td>
+      <td>{{i.ashiglaltand_orson_ognoo|date:"Y-m-d H:i"}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a data-data="modal" class="btn btn-default">Цуцлах</a>
+    <button onclick="submit_tz_choose_form('#form_id')" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>

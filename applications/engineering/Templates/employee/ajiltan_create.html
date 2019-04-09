@@ -1,0 +1,233 @@
+{% extends 'base_base.html' %}
+{% load static %}
+{% block content %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div id="main-content">
+  <div class="container-fluid">
+    <div class="space20"></div>
+    <div class="row-fluid">
+
+      <h4>Ажилтан нэмэх</h4>
+
+      <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="row-fluid">
+              <div class="span4">
+                {{ form.baiguullaga  }}
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.emp_lname.label }}</label>
+                  <div class="form1s">
+                    {{ form.emp_lname.errors }}{{ form.emp_lname  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.emp_name.label }}</label>
+                  <div class="form1s">
+                    {{ form.emp_name.errors }}{{ form.emp_name  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.emp_reg.label }}</label>
+                  <div class="form1s">
+                    {{ form.emp_reg.errors }}{{ form.emp_reg  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.emp_birth.label }}</label>
+                  <div class="form1s">
+                    {{ form.emp_birth.errors }}{{ form.emp_birth  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.gender.label }}</label>
+                  <div class="form1s">
+                    {{ form.gender.errors }}{{ form.gender  }}
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.tasag.label }}</label>
+                  <div class="form1s">
+                    {{ form.tasag.errors }}{{ form.tasag  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.alban_tushaal.label }}</label>
+                  <div class="form1s">
+                    {{ form.alban_tushaal.errors }}{{ form.alban_tushaal  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.zereg.label }}</label>
+                  <div class="form1s">
+                    {{ form.zereg.errors }}{{ form.zereg  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.naj.label }}</label>
+                  <div class="form1s">
+                    {{ form.naj.errors }}{{ form.naj  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.tzeaj.label }}</label>
+                  <div class="form1s">
+                    {{ form.tzeaj.errors }}{{ form.tzeaj  }}
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.ndd.label }}</label>
+                  <div class="form1s">
+                    {{ form.ndd.errors }}{{ form.ndd  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.phone.label }}</label>
+                  <div class="form1s">
+                    {{ form.phone.errors }}{{ form.phone  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.e_mail.label }}</label>
+                  <div class="form1s">
+                    {{ form.e_mail.errors }}{{ form.e_mail  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.bolovsroliin_tuvshin.label }}</label>
+                  <div class="form1s">
+                    {{ form.bolovsroliin_tuvshin.errors }}{{ form.bolovsroliin_tuvshin  }}
+                  </div>
+                </div>
+                <div class="form1-group">
+                  <label class="form1-label">{{ form.picture.label }}</label>
+                  <span class="help-block">{{form.picture.help_text}}</span>
+                  <div class="form1s">
+                    {{ form.picture.errors }}{{ form.picture  }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+                <h4>Төгссөн сургуулийн жагсаалт</h4>
+                <table class="table table-bordered" id="school_table">
+                  <thead>
+                    <tr>
+                      <th width="10px">№</th>
+                      {% for form in formset.forms %}
+                        {% if forloop.first %}
+                          {% for field in form.visible_fields %}
+                            {% if field == form.DELETE %}
+                            <th style="display: none;">{{field.label_tag}}</th>
+                            {% else %}
+                            <th>{{field.label_tag}}</th>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for form in formset.forms %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      {% for field in form %}
+                        {% if field == form.DELETE or field == form.id %}
+                        <td style="display: none;">
+                            {{ field }}
+                        </td>
+                        {% else %}
+                        <td>
+                            {{field.errors}}{{ field }}
+                        </td>
+                        {% endif %}
+                      {% endfor %}
+                      {% if formset.can_delete %}
+                      <td>{{ form.DELETE }}</td>
+                      {% endif %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {{ formset.management_form }}
+
+                <h4>Мэргэшсэн, зөвлөх зэргийн гэрчилгээ</h4>
+                <table class="table table-bordered" id="engineering_certificate_table">
+                  <thead>
+                    <tr>
+                      <th width="10px">№</th>
+                      {% for form in formset1.forms %}
+                        {% if forloop.first %}
+                          {% for field in form.visible_fields %}
+                            {% if field == form.DELETE %}
+                            <th style="display: none;">{{field.label_tag}}</th>
+                            {% else %}
+                            <th>{{field.label_tag}}</th>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for form in formset1.forms %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      {% for field in form %}
+                        {% if field == form.DELETE or field == form.id %}
+                        <td style="display: none;">
+                            {{ field }}
+                        </td>
+                        {% else %}
+                        <td>
+                            {{field.errors}}{{ field }}
+                        </td>
+                        {% endif %}
+                      {% endfor %}
+                      {% if formset1.can_delete %}
+                      <td>{{ form.DELETE }}</td>
+                      {% endif %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {{ formset1.management_form }}
+
+                
+            </div> <!--row-fluid-->
+          </div> <!-- span 12 -->
+        </div><!-- row-fluid -->
+        <button type="submit" class="btn btn-primary">Хадгалах</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script src="{% static 'assets/js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+$('#school_table tbody tr').formset({
+  'table_numbering': true,
+  'addText': 'Нэмэх',
+  'deleteText': 'Устгах',
+  'prefix': '{{formset.prefix}}',
+  'formCssClass': 'dynamic-formset'
+});
+$('#engineering_certificate_table tbody tr').formset({
+  'table_numbering': true,
+  'addText': 'Нэмэх',
+  'deleteText': 'Устгах',
+  'prefix': '{{formset1.prefix}}',
+  'formCssClass': 'dynamic-formset1'
+});
+</script>
+
+
+{% endblock %}

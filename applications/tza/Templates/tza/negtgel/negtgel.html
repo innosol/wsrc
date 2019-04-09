@@ -1,0 +1,163 @@
+{% extends 'tza_darga_base.html' %}
+{% load static %}
+{% load tag_extras %}
+{% block sidebar %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div class="sidebar-scroll">
+  <div id="sidebar" class="nav-collapse collapse">
+    <ul class="sidebar-menu">
+      <li class="sub-menu">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>Хүсэлт</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          {% if user.has_tza_darga_permission %}
+          <li><a href="{% url 'tza darga huselt huvaarilah' %}">ТЗ хүсэлт хуваарьлах</a></li>
+          {% endif %}
+          <li><a href="{% url 'huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+          {% if user.has_tza_darga_permission %}
+          <li><a href="{% url 'handah erh huselt list' %}">Хандах эрх</a></li>
+          {% endif %}
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a href="{% url 'tz shuud olgoh list' %}">
+          <i class=" icon-cog"></i>
+          <span>ТЗ олголт*</span>
+        </a>
+      </li>
+      <li class="sub-menu">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>ТЗ Эзэмшигч</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          <li ><a href="/tza/baiguullaga/">Байгууллага</a></li>
+          <li><a href="/tza/ajiltan/">Хүний нөөц</a></li>
+          <li><a href="/tza/tohooromj/">Тоног төхөөрөмж</a></li>
+          <li><a href="{% url 'tza_tz_gerchilgee_list' %}">ТЗ Гэрчилгээ</a></li>
+        </ul>
+      </li>        
+      <li class="sub-menu active">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>Тайлан</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          <li><a href="/tza/uatailan/">Үйл ажиллагааны тайлан</a></li>
+          <li><a href="/tza/gshu/">Гүйцэтгэлийн шалгуур үзүүлэлт</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
+{% block content %}
+<div id="main-content">
+
+  <div class="container-fluid">
+    <div class="space20"></div>
+    <div class="row-fluid">
+      <div class="span12">
+
+        <div class="span6">
+         <div class="widget active red">
+           <div class="widget-title">
+            <h4>
+              <i class="icon-reorder"></i>
+              Үйл ажиллагааны тайлангийн нэгтгэлийн мэдээлэл
+            </h4>
+            <span class="tools">
+              <a href="javascript:;" class="icon-chevron-down"></a>
+            </span>
+          </div>
+          <div class="widget-body">
+
+            <a href="{% url 'uatailannegtgelhorvuuleh' %}" class="btn btn-success">Excel хөрвүүлэх</a>
+       <div class="pull-right">
+                {% if on %}
+                <p>{{on}} оны үйл ажиллагааны тайлангийн нэгтгэл </p>
+                {% else %}
+                <p>Үйл ажиллагааны тайлангийн нэгтгэл /Одоогийн байдлаар/ </p>
+                {%endif%}
+              </div>
+            <p></p>
+           
+            <table class="table table-nemelt">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th >НЭР</th>
+                  <th>ТӨЛӨВ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in tailans %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td><a target="_blank" href="/tza/uatailan/{{i.url}}/">{{i.material_name}} нэгтгэл</a></td>
+                  <td>
+                    {% if my_dict|get_item:i.id %}
+                    <span class="label label-success label-mini">{{my_dict|get_item:i.id}}</span> {% else %}<span class="label label-important label-mini"> Боломжгүй</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+
+      </div>
+      <div class="span6">
+        <div class="widget active green">
+          <div class="widget-title">
+            <h4><i class="icon-reorder"></i>Үйл ажиллагааны тайлангийн нэгтгэл</h4>
+            <span class="tools">
+              <a href="javascript:;" class="icon-chevron-down"></a>
+            </span>
+          </div>
+          <div class="widget-body form">
+          
+          <form action="" method="get">
+            {{ uatailan_filter.form.as_p }}
+            <input type="submit" value="Хайх" />
+          </form>
+          <div class="space20"></div>
+          <table class="table table-nemelt table-hover">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>НЭР</th>
+                <th>ОН</th>
+                <th>ИЛГЭЭСЭН ОГНОО</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for st in uatailan_filter %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td >
+                  <a href="/tza/uatailan/{{st.tze.id}}/" >{{ st.tze }}</a>
+
+                </td>
+                <td>{{ st.on }}</td>
+                <td>{{ st.begin_time }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %} 

@@ -1,0 +1,64 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Хүснэгт № 8</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Бохир усны шинжилгээний дүн /{{bohirshinj.ognoo|date:"Y-m-d"}}/</h5>
+			<p>  <i>Сүүлийн шинжилгээний үзүүлэлтийг бичнэ</i></p>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th rowspan="2">№</th> <th rowspan="2">Үзүүлэлт</th> <th rowspan="2">Стандарт үзүүлэлт</th> <th rowspan="2">Цэвэрлэх байгууламж руу орох</th> <th rowspan="2">Цэвэрлэх байгууламжаас орох</th> 
+				</tr>
+				
+				</thead>
+				<tbody>
+					
+				<tr>
+					<td>1</td>
+					<td>Умбуур бодисын тоо мг/л</td>
+					<td></td>
+					<td>{{bohirshinj.umbuuro}}  </td>
+					<td>{{bohirshinj.umbuurgarah}}  </td>
+				
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>БХХ мг/л О2</td>
+					<td></td>
+					<td>{{bohirshinj.bhho}}</td>
+					<td>{{bohirshinj.bhhgarah}} </td>
+			
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>ХХХ мг/л О2</td>
+					<td></td>
+					<td>{{bohirshinj.hhho}}</td>
+					<td>{{bohirshinj.hhhgarah}} </td>
+			
+				</tr>
+				
+				
+			
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

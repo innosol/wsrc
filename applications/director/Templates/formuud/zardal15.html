@@ -1,0 +1,83 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Даатгалын зардал</h4>
+</div>
+<form action="{% url 'zardal15' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Тээврийн хэрэгслийн даатгал</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z15_0 }}</td>
+          <td>{{ form.z15_1 }}</td>
+          <td>{{ form.z15_2 }}</td>
+          <td>{{ form.z15_3 }}</td>
+          <td>{{ form.z15_4 }}</td>
+          <td>{{ form.z15_5 }}</td>
+          <td>{{ form.z15_6 }}</td>
+        </tr>
+        <tr>
+          <td>Үл хөдлөх хөрөнгийн даатгал</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z15_7 }}</td>
+          <td>{{ form.z15_8 }}</td>
+          <td>{{ form.z15_9 }}</td>
+          <td>{{ form.z15_10 }}</td>
+          <td>{{ form.z15_11 }}</td>
+          <td>{{ form.z15_12 }}</td>
+          <td>{{ form.z15_13 }}</td>
+        </tr>
+        <tr>
+          <td>Ажилчдын хуримтлагдсан даатгал</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z15_14 }}</td>
+          <td>{{ form.z15_15 }}</td>
+          <td>{{ form.z15_16 }}</td>
+          <td>{{ form.z15_17 }}</td>
+          <td>{{ form.z15_18 }}</td>
+          <td>{{ form.z15_19 }}</td>
+          <td>{{ form.z15_20 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z15_21 }}</td>
+          <td>{{ form.z15_22 }}</td>
+          <td>{{ form.z15_23 }}</td>
+          <td>{{ form.z15_24 }}</td>
+          <td>{{ form.z15_25 }}</td>
+          <td>{{ form.z15_26 }}</td>
+          <td>{{ form.z15_27 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z15 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal15list' date %}{% else %}{% url 'zardal15list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal15" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

@@ -1,0 +1,86 @@
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>ААНБайгууллага цэвэр усны голчийн судалгаа</h4>
+</div>
+<form action="{% url 'golch' %}" method="post">{% csrf_token %}
+    <div id="golch-modal-body" class="modal1-uuganaa-body portlet-scroll-2">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Оролтын шугамын голч, мм-р</th>
+                    <th>ААНБ тоо</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>15</td>
+                    <td>{{ form.golch_0 }}</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>{{ form.golch_1 }}</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>{{ form.golch_2 }}</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>{{ form.golch_3 }}</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>{{ form.golch_4 }}</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>{{ form.golch_5 }}</td>
+                </tr>
+                <tr>
+                    <td>65</td>
+                    <td>{{ form.golch_6 }}</td>
+                </tr>
+                <tr>
+                    <td>80</td>
+                    <td>{{ form.golch_7 }}</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>{{ form.golch_8 }}</td>
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>{{ form.golch_9 }}</td>
+                </tr>
+                <tr>
+                    <td>150</td>
+                    <td>{{ form.golch_10 }}</td>
+                </tr>
+                <tr>
+                    <td>200</td>
+                    <td>{{ form.golch_11 }}</td>
+                </tr>
+                <tr>
+                    <td>250</td>
+                    <td>{{ form.golch_12 }}</td>
+                </tr>
+                <tr>
+                    <td>300</td>
+                    <td>{{ form.golch_13 }}</td>
+                </tr>
+                <tr>
+                    <td>400-с дээш</td>
+                    <td>{{ form.golch_14 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal1-uuganaa-footer">
+        {% if golch %}
+        <a href="javascript:;" url-data="{% url 'golchlist' %}" class="btn btn-default ajax_div_load">Буцах</a>
+        {% else %}
+        <a data-data="close" class="btn btn-default">Цуцлах</a>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Хадгалах</button>
+    </div>
+</form>

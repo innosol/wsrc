@@ -1,0 +1,373 @@
+<div class="widget active green">
+  <div class="widget-title">
+    <h4><i class="icon-reorder"></i>Гүйцэтгэлийн шалгуур үзүүлэлтийн тайлан</h4>
+  </div>
+  <div class="widget-body">
+
+    <div class="alert alert-info">
+      {{gshu.tze.org_name}} {{gshu.tze.org_type}}-ийн {{gshu.tailan_date|date:"Y"}} оны ГШҮ тайлангийн материал
+    </div>
+
+
+    {% if gshu.can_edit and perms.auth.tze_gshu_tailan_menu_view %}
+    <a class="btn btn-primary" href="{% url 'gshu_insert' gshu.id %}">Засах</a>
+    {% endif %}
+
+    {% if perms.auth.tza_mergejilten_permission %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'tza_gshu_check' gshu.id %}">Төлөв өөрчлөх</a>
+    {% endif %}
+
+
+    {% if gshu.uzuulelt_1 %}
+        <h3>Үйлчилгээны хүртээмж</h3>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Тухайн орон нутагт ТЗЭ-ээр үйлчлүүлж буй хүн амын тоо (жилийн эцсээр)</th>
+            <th class="span3">Тухайн орон нутгийн хүн амын тоо жилийн эцсээр</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Баталгаат ундны усаар хангагдсан хүн амын эзлэх хувь</td>
+            <td>{{gshu.Pasdws}}</td>
+            <td>{{gshu.Nmean}}</td>
+            <td>{{result1}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+
+        {% if gshu.uzuulelt_2 or gshu.uzuulelt_3 or gshu.uzuulelt_4 %}
+        <h3>Цэвэр ус олборлолт</h3>
+        {% if gshu.uzuulelt_2 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Олборлосон усны хэмжээ (м3/хоног)</th>
+            <th class="span3">Тогтоогдсон нөөц (м3/хоног)</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Олборлосон ус тогтоосон нөөцийн харьцаа</td>
+            <td>{{gshu.Q1}}</td>
+            <td>{{gshu.Qr}}</td>
+            <td>{{result2}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_3 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Олборлосон ус</th>
+            <th class="span3">Нийт зарцуулсан эрчим хүч кВт.ц</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1 м3 ус олборлоход зарцуулсан цахилгаан эрчим хүч</td>
+            <td>{{gshu.Q2}}</td>
+            <td>{{gshu.Ec}}</td>
+            <td>{{result3}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_4 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Авсан шинжилгээний тоо</th>
+            <th class="span3">Стандартад нийцээгүй дүнгийн тоо</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Олборлосон ус тогтоосон нөөцийн харьцаа</td>
+            <td>{{gshu.Na}}</td>
+            <td>{{gshu.Nb}}</td>
+            <td>{{result4}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        {% endif %}
+
+        {% if gshu.uzuulelt_6 or gshu.uzuulelt_7 or gshu.uzuulelt_5 %}
+        <h3>Цэвэр усны түгээлт</h3>
+        {% if gshu.uzuulelt_5 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийлүүлсэн усны хэмжээ (мян.шоо метр)</th>
+            <th class="span3">Нийт борлуулсан усны хэмжээ (мян.шоо метр)</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Орлого болоогүй ус</td>
+            <td>{{gshu.Qn}}</td>
+            <td>{{gshu.Qs1}}</td>
+            <td>{{result5}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_6 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Тоолууртай хэрэглэгчдийн тоо</th>
+            <th class="span3">Нийт хэрэглэгчдийн тоо</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Тоолууржилтын түвшин</td>
+            <td>{{gshu.Qm}}</td>
+            <td>{{gshu.Qs2}}</td>
+            <td>{{result6}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_7 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт гэмтлийн тоо</th>
+            <th class="span3">Нийт шугамын урт</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Цэвэр усны шугамын нэгж уртад ноогдох гэмтлийн тоо</td>
+            <td>{{gshu.Nn}}</td>
+            <td>{{gshu.Ln}}</td>
+            <td>{{result7}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        {% endif %}
+
+        {% if gshu.uzuulelt_8 %}
+        <h3>Цэвэрлэх байгууламж</h3>
+
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орох усны биологийн хэрэгцээт хүчилтөрөгч 5 хоног, мг\л</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй биологийн хэрэгцээт хүчилтөрөгч 5 хоног</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Биологийн хэрэгцээт хүчилтөрөгч</td>
+            <td>{{gshu.BOD5input}}</td>
+            <td>{{gshu.BOD5output}}</td>
+            <td>{{result8a}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="space10"></div>
+
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орж буй бохир усны химийн хэрэгцээт хүчилтөрөгч, мг\л</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй усны химийн хэрэгцээт хүчилтөрөгч</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Химийн хэрэгцээт хүчилтөрөгч</td>
+            <td>{{gshu.COD5input}}</td>
+            <td>{{gshu.COD5output}}</td>
+            <td>{{result8b}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="space10"></div>
+
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Цэвэрлэх байгууламж руу орж буй усан дах умбуур бодисын агууламж</th>
+            <th class="span3">Цэвэрлэх байгууламжаас гарч буй усан дах умбуур бодисын агууламж</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Умбуур бодисын агууламж</td>
+            <td>{{gshu.SSinput}}</td>
+            <td>{{gshu.SSoutput}}</td>
+            <td>{{result8c}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        {% endif %}
+
+        {% if gshu.uzuulelt_9 and gshu.uzuulelt_10 %}
+        <h3>Боловсон хүчний үзүүлэлт</h3>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span2">Нийт ажилтны тоо</th>
+            <th class="span2">Боловсролтой ажилтны тоо</th>
+            <th class="span2">Нийт хэрэглэгчдийн тоо</th>
+            <th class="span3">Боловсон хүчний бүрдэлт</th>
+            <th class="span3">1000 хэрэглэгчдэд ноогдох ажиллагсдын тоо</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{gshu.N1}}</td>
+            <td>{{gshu.Ne1}}</td>
+            <td>{{gshu.C}}</td>
+            <td>{{result9}}</td>
+            <td>{{result10}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_11 or gshu.uzuulelt_12 or gshu.uzuulelt_13 or gshu.uzuulelt_14 %}
+        <h3>Санхүүгийн үзүүлэлт</h3>
+        {% if gshu.uzuulelt_11 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Гүйцэтгэлээр гарсан нийт зардал</th>
+            <th class="span3">Тогтоолоор батлагдсан БОш</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Борлуулалтын орлогын шаардагдах хэмжээ</td>
+            <td>{{gshu.BOsh}}</td>
+            <td>{{gshu.BOshb}}</td>
+            <td>{{result11}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_12 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт орлого</th>
+            <th class="span3">Нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Орлогын нэг төгрөгт ноогдох зардал</td>
+            <td>{{gshu.O}}</td>
+            <td>{{gshu.Z}}</td>
+            <td>{{result12}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_13 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт борлуулсан цэвэр усны хэмжээ</th>
+            <th class="span3">Цэвэр усны үйл ажиллагааны нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Борлуулсан 1 м3 цэвэр усанд ноогдох үйл ажиллагааны зардал</td>
+            <td>{{gshu.TsQs}}</td>
+            <td>{{gshu.ZTsU}}</td>
+            <td>{{result13a}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="space10"></div>
+
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Нийт бохир усны хэмжээ</th>
+            <th class="span3">Бохир усны үйл ажиллагааны нийт зардал</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Борлуулсан 1 м3 бохир усанд ноогдох үйл ажиллагааны зардал</td>
+            <td>{{gshu.BQs}}</td>
+            <td>{{gshu.ZBU}}</td>
+            <td>{{result13b}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        <div class="space10"></div>
+        {% if gshu.uzuulelt_14 %}
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th class="span3">Үзүүлэлтийн нэр</th>
+            <th class="span3">Бэлэн мөнгөний орлого</th>
+            <th class="span3">Борлуулалтын нийт орлого</th>
+            <th class="span3">Үзүүлэлтийн утга</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Авлага цуглуулалт</td>
+            <td>{{gshu.M}}</td>
+            <td>{{gshu.B}}</td>
+            <td>{{result14}}</td>
+          </tr>
+          </tbody>
+        </table>
+        {% endif %}
+        {% endif %}
+  </div>
+</div>

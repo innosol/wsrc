@@ -1,0 +1,94 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Лаборатори, шинжилгээний зардал</h4>
+</div>
+<form action="{% url 'zardal9' %}" class="zardal9" method="post">{% csrf_token %}
+  <div id="zardal9-modal-body" class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Усны шинжилгээ</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z9_0 }}</td>
+          <td>{{ form.z9_1 }}</td>
+          <td>{{ form.z9_2 }}</td>
+          <td>{{ form.z9_3 }}</td>
+          <td>{{ form.z9_4 }}</td>
+          <td>{{ form.z9_5 }}</td>
+          <td>{{ form.z9_6 }}</td>
+        </tr>
+        <tr>
+          <td>Реактив бодис</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z9_7 }}</td>
+          <td>{{ form.z9_8 }}</td>
+          <td>{{ form.z9_9 }}</td>
+          <td>{{ form.z9_10 }}</td>
+          <td>{{ form.z9_11 }}</td>
+          <td>{{ form.z9_12 }}</td>
+          <td>{{ form.z9_13 }}</td>
+        </tr>
+        <tr>
+          <td>Шил сав</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z9_14 }}</td>
+          <td>{{ form.z9_15 }}</td>
+          <td>{{ form.z9_16 }}</td>
+          <td>{{ form.z9_17 }}</td>
+          <td>{{ form.z9_18 }}</td>
+          <td>{{ form.z9_19 }}</td>
+          <td>{{ form.z9_20 }}</td>
+        </tr>
+        <tr>
+          <td>Баталгаажуулалт хяналт</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z9_21 }}</td>
+          <td>{{ form.z9_22 }}</td>
+          <td>{{ form.z9_23 }}</td>
+          <td>{{ form.z9_24 }}</td>
+          <td>{{ form.z9_25 }}</td>
+          <td>{{ form.z9_26 }}</td>
+          <td>{{ form.z9_27 }}</td>    
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z9_28 }}</td>
+          <td>{{ form.z9_29 }}</td>
+          <td>{{ form.z9_30 }}</td>
+          <td>{{ form.z9_31 }}</td>
+          <td>{{ form.z9_32 }}</td>
+          <td>{{ form.z9_33 }}</td>
+          <td>{{ form.z9_34 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z9 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal9list' date %}{% else %}{% url 'zardal9list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal9" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

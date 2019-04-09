@@ -1,0 +1,61 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space20"></div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th rowspan="2"><div><span>Сар</span></div></th>
+						<th rowspan="2"><div><span>Үзүүлэлт</span></div></th>
+						<th rowspan="2"><div><span>Тухайн компаны нийт хэрэглэгчдийн тоо</span></div></th>
+						<th rowspan="2"><div><span>Хэмжих нэгж</span></div></th>
+						<th rowspan="2"><div><span>Төлөвлөгөөт тасалдал</span></div></th>
+						<th colspan="2">Хангачийн буруутай үйл ажиллагаанаас</th>
+						<th rowspan="2"><div><span>Бусад тусгай зөвшөөрөл эзэмшигчийн буруугаас</span></div></th>
+						<th rowspan="2"><div><span>Гуравдагч этгээдийн буруугаас</span></div></th>
+						<th rowspan="2"><div><span>Байгалийн гамшиг /аянга, хүчтэй салхи шуурга, үер/-аас</span></div></th>
+						<th rowspan="2"><div><span>Бусад шалтгаанаар</span></div></th>
+						<th rowspan="2"><div><span>Компанийн дүн</span></div></th>
+					</tr>
+					<tr>
+						<th><div><span>Хүний буруутай үйл ажиллагаанаас</span></div></th>
+						<th><div><span>Шугам, тоног төхөөрөмжийн гэмтлээс</span></div></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for f in tailan %}
+					<tr>
+						<td rowspan="2">{{ f.month }}</td>
+						<td>тасралтын нийт хугацаа</td>
+						<td rowspan="2" style="text-align:center">{{ users.htoo__sum }}</td>
+						<td>минут</td>
+						<td>{{ f.tasaldal.tasaldal.all.0.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.1.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.2.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.3.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.4.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.5.duration }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.6.duration }}</td>
+						<td>{{ f.duration.duration__sum }}</td>
+					</tr>
+					<tr>
+						<td>тасалдалд хамрагдсан нийт хэрэглэгчдийн тоо</td>
+						<td>тоо</td>
+						<td>{{ f.tasaldal.tasaldal.all.0.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.1.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.2.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.3.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.4.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.5.too }}</td>
+						<td>{{ f.tasaldal.tasaldal.all.6.too }}</td>
+						<td>{{ f.too.too__sum }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

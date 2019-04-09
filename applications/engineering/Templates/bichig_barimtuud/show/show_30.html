@@ -1,0 +1,15 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+{% block header_show %}
+Санхүү эдийн засгийн үзүүлэлт:
+{% endblock %}
+
+{% block body_show %}
+
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=30 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endblock %}
+

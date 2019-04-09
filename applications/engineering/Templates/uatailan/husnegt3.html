@@ -1,0 +1,117 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Хүснэгт № 3</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}"  {% if baiguullaga.org_type %} {{baiguullaga.org_type}} {% endif %}-ний цэвэр усны шинжилгээний дүн /{{shinjilgee.ognoo|date:"Y-m-d"}}/</h5>
+			<p>  <i>Сүүлийн шинжилгээний үзүүлэлтийг бичнэ</i></p>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th rowspan="2">№</th> <th rowspan="2">Үзүүлэлт</th> <th rowspan="2">Стандарт үзүүлэлт</th> <th rowspan="2">Шинжилгээний дүн</th> 
+				</tr>
+				
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>Ерөнхий хатуулаг</td>
+					<td></td>
+					<td>{{shinjilgee.hatuulag}}</td>
+					
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Магни</td>
+					<td></td>
+					<td>{{shinjilgee.magni}}</td>
+			
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Кальци</td>
+					<td></td>
+					<td>{{shinjilgee.kalitsi}}</td>
+			
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Хлорид</td>
+					<td></td>
+					<td>{{shinjilgee.hlorid}}</td>
+		
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Сульфат</td>
+					<td></td>
+					<td>{{shinjilgee.sulifat}}</td>
+	
+				</tr>
+			
+				<tr>
+					<td>6</td>
+					<td>pH</td>
+					<td></td>
+					<td>{{shinjilgee.ph}}</td>
+				
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Аммиак</td>
+					<td></td>
+					<td>{{shinjilgee.ammiak}}</td>
+	
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Нитрит</td>
+					<td></td>
+					<td>{{shinjilgee.nitrit}}</td>
+			
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Амт</td>
+					<td></td>
+					<td>{{shinjilgee.amt}}</td>
+
+				</tr>
+		
+				<tr>
+					<td>10</td>
+					<td>Үнэр</td>
+					<td></td>
+					<td>{{shinjilgee.uner}} </td>
+				
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Нийт нянгийн тоо</td>
+					<td></td>
+					<td>{{shinjilgee.nyan}} </td>
+				
+				</tr>
+				
+			
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

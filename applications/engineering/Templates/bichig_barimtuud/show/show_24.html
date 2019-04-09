@@ -1,0 +1,39 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+
+{% block header_show %}
+Бохир усны шинжилгээ:
+{% endblock %}
+
+{% block body_show %}
+{% if bohir_shinjilgee %}
+	<table class="table table-bordered">
+ 	<thead>
+ 		<th>Огноо</th>
+ 		<th>МХЕГ-ын дүгнэлт</th>
+ 		<th>Дэлгэрэнгүй</th>
+ 	</thead>
+ 	<tbody>
+ 		<td>{{bohir_shinjilgee.ognoo|date:"Y-m-d"}}</td>
+ 		<td><a href="/media/{{bohir_shinjilgee.mheg_dugnelt}}" target="_blank">МХЕГ-ын дүгнэлт файл</a></td>
+ 		<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tz_huselt_bohir_shijilgee_delgerengui' bohir_shinjilgee.id %}">Дэлгэрэнгүй...</a></td>
+ 	</tbody>
+ </table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Бохир усны шинжилгээ бүртгэгдээгүй байна. "Бохир усны шинжилгээ нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+</div>
+ {% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+{% if bohir_shinjilgee %}
+<a class="btn btn-primary ajax_div_load" url-data= "{% url 'tz_huselt_bohir_shijilgee_update' h.burdel.id %}"><i class="icon-edit"></i>Бохир усны шинжилгээ засах</a>
+{% else %}
+<a class="btn btn-primary ajax_div_load" url-data= "{% url 'tz_huselt_bohir_shijilgee_insert' h.burdel.id %}"><i class="icon-edit"></i>Бохир усны шинжилгээ нэмэх</a>
+{% endif %}
+{% endblock %}
+

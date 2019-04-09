@@ -1,0 +1,72 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Тусгай зөвшөөрөл эзэмшигчийн хэрэглэгчийн тоо</h4>
+</div>
+<div class="modal1-uuganaa-body">
+ <table class="table">
+        <tr>
+            <th>Үзүүлэлтүүд</th>
+            <th>Хэмжих нэгж</th>
+            <th>Цэвэр ус</th>
+            <th>Бохир ус</th>
+        </tr>
+        <tr>
+            <td>ААНБайгууллага /тоолууртай/</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.0.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.1.htoo }}</td>
+        </tr>
+        <tr>
+            <td>ААНБайгууллага /тоолуургүй/</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.2.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.3.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.4.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.5.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.6.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.7.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Зөөврөөр</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.8.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.9.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх /тоолууртай/</td>            
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.10.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.11.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх /тоолуургүй/</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.12.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.13.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Ус түгээх байр -УТБ</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.14.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.15.htoo }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх зөөврөөр</td>
+            <td>тоо, ш</td>
+            <td>{{ hereglegch.hereglegch.all.16.htoo }}</td>
+            <td>{{ hereglegch.hereglegch.all.17.htoo }}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal1-uuganaa-footer">
+    <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

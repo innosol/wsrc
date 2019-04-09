@@ -1,0 +1,88 @@
+<div class="span9">
+	<div class="widget purple">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>{{list_header}}</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_ajiltan %}
+	    	<p><a class="btn btn-primary" href="{% url 'ajiltan_create' %}"><i class="icon-edit"></i>Ажилтан нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			        	<th>№</th>
+						<th>Овог</th>
+						<th>Нэр</th>
+						<th>Төрсөн огноо</th>
+						<th>Албан тушаал</th>
+						{% if perms.app.add_ajiltan %}
+						<th><i class="icon-edit"></i></th>
+						<th><i class="icon-remove"></i></th>
+						{% endif %}
+						<th>Дэлгэрэнгүй</th>
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.emp_lname}}</td>
+						<td>{{i.emp_name}}</td>
+						<td>{{i.emp_birth|date:"Y-m-d"}}</td>
+						<td>{{i.alban_tushaal}}</td>
+						{% if perms.app.add_ajiltan %}
+						<td>
+						<a class="btn btn-primary" href="{% url 'ajiltan_update' i.id%}"><i class="icon-edit"></i></a></td>
+						<td>
+						 <a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_ajiltan_delete' i.id %}"><i class="icon-remove"></i></a>
+						</td>
+						{% endif %}
+						{% if is_history %}
+						<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ajiltan_delgerengui' i.id history_date.year history_date.month history_date.day history_date.hour history_date.minute %}">Дэлгэрэнгүй...</a></td>
+						{% else %}
+						<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ajiltan_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+						{% endif %}
+			        </tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+<div class="span3">
+	<div class="widget purple">
+		<div class="widget-title">
+			<h4><i class="icon-filter"></i>Шүүлтүүр</h4>
+		</div>
+		<div class="widget-body">
+			<form method="GET" id="filter_form">
+              {% for f in filter_form %}
+              <div class="form-group">
+                {{f.label}}
+                {{f}}
+              </div>
+              {% endfor %}
+              <button type='submit' class="btn btn-primary">Шүүх</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("#filter_form").submit(function(event){
+	event.preventDefault();
+	$.ajax({
+		url: "{% url 'tza_ts_baig_list' %}",
+		method: 'GET',
+		data: $(this).serialize()
+	}).done(function(response){
+		$('#tonog_tohooromj_list').html(response)
+	});
+});
+</script>

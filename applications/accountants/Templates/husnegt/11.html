@@ -1,0 +1,161 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space20"></div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th colspan="2">Үзүүлэлтүүд</th>
+						<th>Хэмжих нэгж</th>
+						<th>Цэвэр ус</th>
+						<th>Бохир ус</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="11">1</td>
+						<td colspan="2"><b>Тухайн байгууллагаар үйлчлүүлж буй нийт хэрэглэгч</b></td>
+						<td>тоо</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="6">ААНБ-н хэрэглэгч</td>
+						<td>тоолууртай</td>
+						<td>тоо</td>
+						<td>{{ users.hereglegch.all.0.htoo }}</td>
+						<td>{{ users.hereglegch.all.1.htoo }}</td>
+					</tr>
+					<tr>
+						<td>тоолуургүй</td>
+						<td>тоо</td>
+						<td>{{ users.hereglegch.all.2.htoo }}</td>
+						<td>{{ users.hereglegch.all.3.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>тоо</td>
+						<td>{{ users.hereglegch.all.4.htoo }}</td>
+						<td>{{ users.hereglegch.all.5.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>тоо</td>
+						<td>{{ users.hereglegch.all.6.htoo }}</td>
+						<td>{{ users.hereglegch.all.7.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Зөөврөөр ААНБ</td>
+						<td>тоо</td>
+						<td>{{ users.hereglegch.all.8.htoo }}</td>
+						<td>{{ users.hereglegch.all.9.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>тоо</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="4">Ахуйн хэрэглэгч</td>
+						<td>Айл өрх /тоолууртай/</td>
+						<td>өрх</td>
+						<td>{{ users.hereglegch.all.10.htoo }}</td>
+						<td>{{ users.hereglegch.all.11.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /тоолуургүй/</td>
+						<td>өрх</td>
+						<td>{{ users.hereglegch.all.12.htoo }}</td>
+						<td>{{ users.hereglegch.all.13.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /Ус түгээх байрнаас/</td>
+						<td>өрх</td>
+						<td>{{ users.hereglegch.all.14.htoo }}</td>
+						<td>{{ users.hereglegch.all.15.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>өрх</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="12">2</td>
+						<td colspan="2"><b>Нийт борлуулсан ус - биетээр</b></td>
+						<td>мян.м<sup>3</sup></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="6">ААНБ-н хэрэглэгч</td>
+						<td>тоолууртай</td>
+						<td>тоо</td>
+						<td>{{ i0 }}</td>
+						<td>{{ i1 }}</td>
+					</tr>
+					<tr>
+						<td>тоолуургүй</td>
+						<td>тоо</td>
+						<td>{{ i2 }}</td>
+						<td>{{ i3 }}</td>
+					</tr>
+					<tr>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>тоо</td>
+						<td>{{ i4 }}</td>
+						<td>{{ i5 }}</td>
+					</tr>
+					<tr>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>тоо</td>
+						<td>{{ i6 }}</td>
+						<td>{{ i7 }}</td>
+					</tr>
+					<tr>
+						<td>Зөөврөөр ААНБ</td>
+						<td>тоо</td>
+						<td>{{ i8 }}</td>
+						<td>{{ i9 }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>тоо</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="7">Ахуйн хэрэглэгч</td>
+						<td>Айл өрх /тоолууртай/</td>
+						<td>өрх</td>
+						<td>{{ i10 }}</td>
+						<td>{{ i11 }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /тоолуургүй/</td>
+						<td>өрх</td>
+						<td>{{ i12 }}</td>
+						<td>{{ i13 }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /Ус түгээх байрнаас/</td>
+						<td>өрх</td>
+						<td>{{ i14 }}</td>
+						<td>{{ i15 }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>өрх</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

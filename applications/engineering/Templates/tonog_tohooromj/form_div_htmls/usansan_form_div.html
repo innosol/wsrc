@@ -1,0 +1,112 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Усан сангийн мэдээлэл нэмэх</h4>
+</div>
+<form  id="form_id" success-div-id="#tonog_tohooromj_list" action="{% url 'usansan_insert' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {{form.non_field_errors}}
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="control-group">
+              <input type="hidden" value="{{ baiguullaga }}" name="tze">
+              <label class="control-label">{{ form.usansan_helber.label }}</label>
+              <div class="controls">
+                {{ form.usansan_helber.errors }}{{ form.usansan_helber }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.ner.label }}</label>
+              <div class="controls">
+                {{ form.ner.errors }}{{ form.ner }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.city.label }}</label>
+              <div class="controls">
+                {{ form.city.errors }}{{form.city}}
+              </div>
+            </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.district.label }}</label>
+            <div class="controls">
+              {{ form.district.errors }}{{form.district}}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.khoroo.label }}</label>
+            <div class="controls">
+              {{ form.khoroo.errors }}{{form.khoroo}}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.usansan_address.label }}</label>
+            <div class="controls">
+              {{ form.usansan_address.errors }}{{ form.usansan_address }}
+            </div>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="control-group">
+            <label class="control-label">{{ form.ashiglaltand_orson_ognoo.label }}</label>
+            <div class="controls">
+              {{ form.ashiglaltand_orson_ognoo.errors }}{{ form.ashiglaltand_orson_ognoo }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.bagtaamj.label }}</label>
+            <div class="controls">
+              {{ form.bagtaamj.errors }}{{ form.bagtaamj }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.huurai_hlor.label }}</label>
+            <div class="controls">
+              {{ form.huurai_hlor.errors }}{{ form.huurai_hlor }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.shingen_hlor.label }}</label>
+            <div class="controls">
+              {{ form.shingen_hlor.errors }}{{ form.shingen_hlor }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.davsnii_uusmal.label }}</label>
+            <div class="controls">
+              {{ form.davsnii_uusmal.errors }}{{ form.davsnii_uusmal }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.usansan_haruul.label }}</label>
+            <div class="controls">
+              {{ form.usansan_haruul.errors }}{{ form.usansan_haruul }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.bairshiliin_photo.label }}</label>
+            <div class="controls">
+              {{ form.bairshiliin_photo.errors }}{{ form.bairshiliin_photo }}
+            </div>
+          </div>
+        </div>
+
+      </div> <!--row-fluid-->
+    </div> <!-- span 12 -->
+  </div><!-- row-fluid -->
+</div>
+
+<div class="modal1-uuganaa-footer">
+  <button class="btn btn-default div-close-button">Хаах</button>
+  <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+</form>   
+
+
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+

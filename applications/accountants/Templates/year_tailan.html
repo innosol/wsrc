@@ -1,0 +1,147 @@
+{% extends 'base_base.html' %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="space20"></div>
+				<div class="widget blue active">
+					<div class="widget-title">
+						<h4><i class="icon-reorder"></i> {{ name }} оны санхүүгийн тайлан</h4>
+            <span class="tools">
+              <a href="javascript:;" class="icon-chevron-down"></a>
+            </span>
+					</div>
+					<div class="widget-body">
+            <div class="bs-docs-example">
+              <ul class="nav nav-pills">
+                {% comment %}
+                <li class="active"><a href="#">Excel рүү хөрвүүлэх</a></li>
+                <li class="dropdown">
+                  <a href="#" data-toggle="dropdown" role="button" id="drop4" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
+                  <ul aria-labelledby="drop4" role="menu" class="dropdown-menu" id="menu1">
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Another action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Something else here</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Separated link</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" data-toggle="dropdown" role="button" id="drop5" class="dropdown-toggle">Dropdown 2 <b class="caret"></b></a>
+                  <ul aria-labelledby="drop5" role="menu" class="dropdown-menu" id="menu2">
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Another action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Something else here</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Separated link</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" data-toggle="dropdown" role="button" id="drop6" class="dropdown-toggle">Dropdown 3 <b class="caret"></b></a>
+                  <ul aria-labelledby="drop5" role="menu" class="dropdown-menu" id="menu3">
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Another action</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Something else here</a></li>
+                    <li role="presentation"><a href="#" tabindex="-1" role="menuitem">Separated link</a></li>
+                  </ul>
+                </li>
+                {% endcomment %}
+              </ul>
+            </div>
+						<table class="table table-bordered table-nemelt table-striped">
+              <thead>
+                <tr>
+                	<th class="nem"><input type="checkbox"></th>
+                  <th>№</th>
+                  <th class="nem">НЭР</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<tr>
+              		<td class="nem"><input type="checkbox"></td>
+              		<td class="nem">1</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 1 %}" target="_blank">БАЙГУУЛЛАГЫН ТОДОРХОЙЛОЛТ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">2</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 2 %}" target="_blank">1 - НИЙТ ТЭЗҮ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">3</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 3 %}" target="_blank">2 - НИЙТ ЗАРДАЛ, ОРЛОГО</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">4</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 4 %}" target="_blank">3 - ТЗ - ТЭЗҮ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">5</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 5 %}" target="_blank">4 - ОРЛОГЫН БҮТЭЦ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">6</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 6 %}" target="_blank">4A,4Б - ОРЛОГЫН ЗАДАРГАА САРААР</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">7</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 7 %}" target="_blank">5 - ЗАРДАЛ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">8</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 8 %}" target="_blank">5А - ЗАРДАЛ САРААР</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">9</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 9 %}" target="_blank">6 - ЦАЛИН</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">10</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 10 %}" target="_blank">7 - ӨРТӨГ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">11</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 11 %}" target="_blank">8 - ХЭРЭГЛЭГЧ СУУРЬ ҮНЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">12</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 12 %}" target="_blank">9 - ААНБ ГОЛЧИЙН СУДАЛГАА</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">13</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 13 %}" target="_blank">10 - ХӨРӨНГӨ ОРУУЛАЛТЫН МЭДЭЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">14</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 14 %}" target="_blank">11 - УСНЫ ТАСАЛДЛЫН МЭДЭЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">15</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 15 %}" target="_blank">12 - ТЕХНИКИЙН НӨХЦӨЛ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">16</td>
+              		<td class="nem"><a href="{% url 'report' baiguullaga.id name 16 %}" target="_blank">13 - ХЭРЭГЛЭГЧИЙН САНАЛ ГОМДОЛ</a></td>
+              	</tr>
+              </tbody>
+          	</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

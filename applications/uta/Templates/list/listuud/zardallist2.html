@@ -1,0 +1,69 @@
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Цалингийн зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th rowspan="3"></th>
+                <th rowspan="3">Хэмжих нэгж</th>
+                <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+                <th rowspan="3">Цахилгаан</th>
+                <th rowspan="3">Дулаан</th>
+                <th rowspan="3">Бусад</th>
+                <th rowspan="3">Нийт</th>
+            </tr>
+            <tr>
+                <th colspan="2">Төвлөрсөн шугамын</th>
+                <th rowspan="2">Зөөвөр, УТБ</th>
+                <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+            </tr>
+            <tr>
+                <th>Цэвэр ус</th>
+                <th>Бохир ус</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Үндсэн ба нэмэгдэл цалин</td>
+                <td>мян.төгрөг</td>
+                {% for z in tailan.zardal.z2.tsalin.all %}
+                <td>{{ z.undsen_ba_nemegdel_tsalin }}</td>
+                {% endfor %}
+                <th>{{ tailan.zardal.z2.total0 }}</th>
+            </tr>
+            <tr>
+                <td>Үндсэн ба нэмэгдэл цалин</td>
+                <td>мян.төгрөг</td>
+                {% for z in tailan.zardal.z2.tsalin.all %}
+                <td>{{ z.ndsh_emdsh }}</td>
+                {% endfor %}
+                <th>{{ tailan.zardal.z2.total1 }}</th>
+            </tr>
+            <tr>
+                <td>Шагнал урамшуулал</td>
+                <td>мян.төгрөг</td>
+                {% for z in tailan.zardal.z2.tsalin.all %}
+                <td>{{ z.shagnal_uramshuulal }}</td>
+                {% endfor %}
+                <th>{{ tailan.zardal.z2.total2 }}</th>
+            </tr>
+            <tr>
+                <th>Нийт</th>
+                <th>мян.төгрөг</th>
+                <th>{{ tailan.zardal.z2.sum0 }}</th>
+                <th>{{ tailan.zardal.z2.sum1 }}</th>
+                <th>{{ tailan.zardal.z2.sum2 }}</th>
+                <th>{{ tailan.zardal.z2.sum3 }}</th>
+                <th>{{ tailan.zardal.z2.sum4 }}</th>
+                <th>{{ tailan.zardal.z2.sum5 }}</th>
+                <th>{{ tailan.zardal.z2.sum6 }}</th>
+                <th>{{ tailan.zardal.z2.total }}</th>    
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal1-uuganaa-footer">
+    <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

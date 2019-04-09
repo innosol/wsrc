@@ -1,0 +1,41 @@
+    {% extends "ajax_div_base.html" %}
+    {% load static %}
+    
+    {% block header_name %}
+        {{tze.org_name}} компанийн эзэмшиж буй тусгай зөвшөөрөл
+    {% endblock %}
+    {% block body %}
+    {% if certs %}
+      <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Гэрчилгээний дугаар</th>
+                <th>Заалтууд</th>
+                <th>Тогтоолын он, сар, өдөр</th>
+                <th>Тогтоолын дугаар</th>
+                <th>Хүчинтэй хугацаа (хүртэл)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in certs %}
+            <tr>
+                <td>{{c.cert_number}}</td>
+                <td>{%for i in c.tz_id.all%}{{i.tz}}<br>{%endfor%}</td>
+                <td>{{c.togtool_date|date:"Y-m-d"}}</td>
+                <td>{{c.togtool_number}}</td>
+                <td>{{c.certificate_end_date|date:"Y-m-d"}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <div class="alert alert-block alert-warning fade in">
+            Системд бүртгэлтэй тусгай зөвшөөрлийн гэрчилгээ олдсонгүй.
+       </div>
+      {% endif %}
+    {% endblock %}
+    {% block footer %}
+      <button class="btn btn-default div-close-button" data-data="modal" aria-hidden="true">Хаах</button>
+    {% endblock %}
+
+

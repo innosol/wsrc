@@ -1,0 +1,45 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Санхүүгийн үзүүлэлт</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+          <tr>
+            <td>Цэвэрлэх байгууламж руу орох усны биологийн хэрэгцээт хүчилтөрөгч 5 хоног, мг\л </td>
+            <td>{% if obj.BOD5input %}{{obj.BOD5input}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Цэвэрлэх байгууламжаас гарч буй биологийн хэрэгцээт хүчилтөрөгч 5 хоног</td>
+            <td>{% if obj.BOD5output %}{{obj.BOD5output}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Цэвэрлэх байгууламж руу орж буй бохир усны химийн хэрэгцээт хүчилтөрөгч, мг\л</td>
+            <td>{% if obj.COD5input %}{{obj.COD5input}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Цэвэрлэх байгууламжаас гарч буй усны химийн хэрэгцээт хүчилтөрөгч</td>
+            <td>{% if obj.COD5output %}{{obj.COD5output}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Цэвэрлэх байгууламж руу орж буй усан дах умбуур бодисын агууламж</td>
+            <td>{% if obj.SSinput %}{{obj.SSinput}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Цэвэрлэх байгууламжаас гарч буй усан дах умбуур бодисын агууламж</td>
+            <td>{% if obj.SSoutput %}{{obj.SSoutput}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'gshu_sanhuu_uzuulelt_insert' obj.gshu.id %}">Засах</a>
+
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,80 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Гүний худгийн мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if obj %}
+        {% if is_history %}
+        <div class="alert alert-info">Худгийн {{date|date:"Y-m-d H:i"}} үеийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Худгийн одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Байршил</td>
+            <td>{{obj.city}}<br>{{obj.district}}<br>{{obj.khoroo}}<br>{{obj.hudag_address}}</td>
+          </tr>
+          <tr>
+            <td>Насосны марк</td>
+            <td>{{obj.mark}}</td>
+          </tr>
+          <tr>
+            <td>Насос үйлдвэрлэсэн улс</td>
+            <td>{{obj.country}}</td>
+          </tr>
+          <tr>
+            <td>Насосны хүчин чадал (м3/хон)</td>
+            <td>{{obj.huchin_chadal}}</td>
+          </tr>
+          <tr>
+            <td>Насосны хүчин чадал (м3/хон)</td>
+            <td>{{obj.nasos_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Цооногийн гүн</td>
+            <td>{{obj.tsoonog}}</td>
+          </tr>
+          <tr>
+            <td>Олборлож буй ус (м3/хон)</td>
+            <td>{{obj.olborloj_bui_us}}</td>
+          </tr>
+          <tr>
+            <td>Эх үүсвэрийн харуул, хамгаалалт</td>
+            <td>{{obj.haruul}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Тайлбар /Ажиллаж байгаа эсэх/</td>
+            <td>{{obj.tailbar}}</td>
+          </tr>
+          <tr>
+            <td>Гадна талын зураг</td>
+            <td><a href="/media/{{obj.outside_picture}}" target="_blank">Гадна талын зураг</a></td>
+          </tr>
+          <tr>
+            <td>Дотор талын зураг</td>
+            <td><a href="/media/{{obj.inside_picture}}" target="_blank">Дотор талын зураг</a></td>
+          </tr>
+        </table>
+        {% else %}
+        <div class="alert alert-info">Худгийн мэдээлэл олдсонгүй.</div>
+        {% endif %}
+      </div>
+    </div><!-- row-fluid -->
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'hudag_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>
+

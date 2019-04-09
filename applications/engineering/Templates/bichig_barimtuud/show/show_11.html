@@ -1,0 +1,72 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Үйлдвэрийн технологи, схем:
+{% endblock %}
+
+{% block body_show %}
+<div ><a url-data="{% url 'uildver_tech_schema_insert_tz' %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Үйлдвэрийн технологи, схем нэмэх</a></div>
+<div class="space10"></div>
+{% if uildver %}
+  {% if h.burdel.uildver_tech_schemas.all %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын үйлдвэрийн технологи, схем зураг нийт {{ uildver|length }} бүртгэгдсэн байгаагаас доорх {{ h.burdel.uildver_tech_schemas.all|length }} {% if h.burdel.uildver_tech_schemas.all|length == 1 %} мэдээллийг {% else %} мэдээллүүдийг {% endif %} тусгай зөвшөөрөл хүсэх хүсэлтэд хавсаргасан байна.
+    </p>
+    <p>
+      Хэрвээ үйлдвэрийн технологи, схем зураг системд нэмж бүртгэх бол "Үйлдвэрийн технологи, схем нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд хавсаргасан мэдээллийг өөрчлөх бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Үйлдвэрийн технологи, схем</th>                           
+        <th>Бүртгэгдсэн огноо</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for iu in h.burdel.uildver_tech_schemas.all %}
+      <tr>
+        <td>
+          <a class="fancybox" rel="group" href="/media/{{iu.schema}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{iu.schema}}/" alt="Istanbul"/></a>
+        </td>
+        <td>{{iu.begin_time|date:"Y-m-d H:i"}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын үйлдвэрийн технологи, схем зураг нийт {{ uildver|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ үйлдвэрийн технологи, схем зураг системд нэмж бүртгэх бол "Үйлдвэрийн технологи, схем нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ мэдээлэл хавсаргах бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+   {% endif %}
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын үйлдвэрийн технологи, схем зураг бүртгэгдээгүй байна. Хэрвээ байгууллагын үйлдвэрийн технологи, схем зурагыг системд бүртгэх бол "Үйлдвэрийн технологи, схем нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if uildver %}
+<a href="javascript:;" url-data='{% url "material_choose 11" huselt_id=h.id %}' class="btn btn-primary ajax_div_load">Сонгох</a>
+{% endif %}
+{% endblock %}
+
+

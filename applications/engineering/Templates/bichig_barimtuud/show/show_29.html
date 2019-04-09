@@ -1,0 +1,63 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Бохир усыг тусгай зориулалтын машинаар зөөвөрлөх үйлчилгээний чиглэлээр:
+{% endblock %}
+
+{% block body_show %}
+<p><a url-data="{% url 'tz_bohir_car_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Бохир усны автомашин нэмэх</a></p>
+{% if ebohircar %}
+    <div class="alert alert-block alert-info fade in">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын тусгай зориулалтын машин нийт {{ebohircar|length}} бүртгэлтэй байна.
+    </p>
+    <p>
+      Хэрвээ машин нэмж бүртгэх бол "Бохир усны автомашин нэмэх" дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ материалын статус солих бол "Статус солих" дээр дарна уу.
+    </p>
+   </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Машины марк</th>
+          <th>Улсын дугаар</th>
+          <th>Даац (тонн)</th>
+          <th>Дэлгэрэнгүй</th>
+        </tr>
+      </thead>
+      <tbody id="table-body-numbering_show29">
+        {% for i in ebohircar %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.mark}}</td>
+          <td>{{i.no}}</td>
+          <td>{{i.daats}}</td>
+          <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_bohir_car_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+       </tr>
+       {% endfor %}
+     </table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Системд бүртгэгдсэн байгууллагын тусгай зориулалтын автомашин байхгүй байна. "Бохир усны машин нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+ </div>
+{% endif %}
+
+     </tbody>
+   </table>
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+{% if ebohircar %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=29 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+
+

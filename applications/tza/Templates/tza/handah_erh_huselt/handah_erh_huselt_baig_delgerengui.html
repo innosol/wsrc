@@ -1,0 +1,45 @@
+    {% extends "ajax_div_base.html" %}
+    {% load static %}
+    
+    {% block header_name %}
+        {{baig.org_name}} компанийн мэдээлэл
+    {% endblock %}
+    {% block body %}
+      <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Байгууллагын нэр, хэлбэр:</th>
+                <td>{{baig.org_name}} {{baig.org_type}}</td>
+            </tr>
+            <tr>
+                <th>Регистерийн дугаар:</th>
+                <td>{{baig.reg_num}}</td>
+            </tr>
+            <tr>
+                <th>Улсын бүртгэлийн дугаар:</th>
+                <td>{{baig.ubd}}</td>
+            </tr>
+            <tr>
+                <th>Захирлын овог:</th>
+                <td>{{zahiral.emp_lname}}</td>
+            </tr>
+            <tr>
+                <th>Захирлын нэр:</th>
+                <td>{{zahiral.emp_name}}</td>
+            </tr>
+            <tr>
+                <th>Захирлын РД:</th>
+                <td>{{zahiral.emp_reg}}</td>
+            </tr>
+            <tr>
+                <th>Захирлын э-мэйл:</th>
+                <td>{{zahiral.e_mail}}</td>
+            </tr>
+        </tbody>
+      </table>
+    {% endblock %}
+    {% block footer %}
+      <button class="btn btn-default div-close-button" data-data="modal" aria-hidden="true">Хаах</button>
+    {% endblock %}
+
+

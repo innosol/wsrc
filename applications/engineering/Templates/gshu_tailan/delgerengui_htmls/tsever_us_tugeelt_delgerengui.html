@@ -1,0 +1,83 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Цэвэр ус түгээлт</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+          <tr>
+            <th>
+              Гүйцэтгэлийн үзүүлэлт
+            </th>
+            <th>
+              Тооцоонд ашигласан өгөгдлүүд
+            </th>
+            <th>
+              Үр дүн
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Орлого болоогүй ус
+            </td>
+            <td>
+              Олборлосон усны хэмжээ (м3/хоног): {% if obj.Q1 %}{{obj.Q1}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Тогтоогдсон нөөц (м3/хоног): {% if obj.Qr %}{{obj.Qr}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_1}}</td>
+          </tr>
+          <tr>
+            <td>
+              Тоолууржилтын түвшин             
+            </td>
+            <td>
+              Тоолууртай хэрэглэгчдийн тоо: {% if obj.Qm %}{{obj.Qm}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Нийт хэрэглэгчдийн тоо: {% if obj.Qs2 %}{{obj.Qs2}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_2}}</td>
+          </tr>
+          <tr>
+            <td>
+              Цэвэр усны шугамын нэгж уртад ноогдох гэмтлийн тоо
+            </td>
+            <td>
+              Нийт гэмтлийн тоо: {% if obj.Nn %}{{obj.Nn}}{% else %}Мэдээлэл байхгүй{% endif %}
+              <br>
+              Нийт шугамын урт: {% if obj.Ln %}{{obj.Ln}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result_3}}</td>
+          </tr>
+        </table>
+        <table class="table table-bordered">
+          <tr>
+            <td>Нийлүүлсэн усны хэмжээ (мян.шоо метр)</td>
+            <td>{% if obj.Qn %}{{obj.Qn}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Нийт борлуулсан усны хэмжээ (мян.шоо метр)</td>
+            <td>{% if obj.Qs1 %}{{obj.Qs1}}{% else %}Мэдээлэл байхгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if obj.gshu.can_edit and perms.permission.tze_gshu_tailan_menu_view %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'gshu_tsever_us_tugeelt_insert' obj.gshu.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

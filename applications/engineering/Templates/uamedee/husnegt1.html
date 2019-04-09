@@ -1,0 +1,56 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Маягт № 2,5</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны мэдээ</h5>
+			<h5>"{{ baiguullaga }}"  ХК-ний Удирдах болон технологич, инженер, мэргэжилтэй ажилчдын тодорхойлолт</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th >№</th> <th >Овог, нэр</th> <th >Нас</th> 
+					<th >РД</th> <th >Мэргэжил</th> <th >Төгссөн сургууль</th> 
+					<th >Дипломын №</th> <th >мэргэжлийн үнэмлэхний дугаар</th><th >мэргэжлийн зэрэг</th><th >Тухайн байгууллагад ажиллласан жил</th><th >Ажлын туршлага</th> <th >Албан тушаал</th> <th >НДД</th> 
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for ajiltan in ajiltan %}
+				<tr>
+					
+					<td>{{ajiltan.id}}</td>
+					<td>{{ajiltan.emp_lname}} {{ajiltan.emp_name}}</td>
+					<td>{{ajiltan.nas}}</td>
+					<td>{{ajiltan.emp_reg}}</td>
+					<td>mergejil</td>
+					<td>surguuli </td>
+					<td>diplom</td>
+					<td>unemleh</td>
+					<td>zereg</td>
+					<td>{{ajiltan.tzeaj}}</td>
+					<td>{{ajiltan.naj}}</td>
+					<td>{{ajiltan.position_id}}</td>
+					<td>{{ajiltan.ndd}} </td>
+
+				</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>".......................".......ХК-ний Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

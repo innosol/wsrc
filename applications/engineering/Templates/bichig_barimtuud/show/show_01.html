@@ -1,0 +1,70 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Байгууллагын ерөнхий мэдээлэл</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered" >
+    <tbody>
+      <tr>
+        <td>РД</td>
+        <td>{{baiguullaga.reg_num}}</td>
+      </tr>
+      <tr>
+        <td>УБД</td>
+        <td>{{baiguullaga.ubd}}</td>
+      </tr>
+      <tr>
+        <td>Нэр</td>
+        <td>{{baiguullaga.org_name}}</td>
+      </tr>
+      <tr>
+        <td>Төрөл</td>
+        <td>{{baiguullaga.org_type}}</td>
+      </tr>
+      <tr>
+        <td>Байгуулагдсан огноо</td>
+        <td>{{baiguullaga.org_date|date:"Y-m-d"}}</td>
+      </tr>
+      <tr>
+        <td>Утас</td>
+        <td>{{baiguullaga.phone}}</td>
+      </tr>
+      <tr>
+        <td>Имэйл</td>
+        <td>{{baiguullaga.e_mail}}</td>
+      </tr>
+      <tr>
+        <td>Факс</td>
+        <td>{{baiguullaga.fax}}</td>
+      </tr>
+      <tr>
+        <td>Аймаг/хот</td>
+        <td>{{baiguullaga.city}}</td>
+      </tr>
+      <tr>
+        <td>Сум/дүүрэг</td>
+        <td>{{baiguullaga.khoroo}}</td>
+      </tr>
+      <tr>
+        <td>Баг/хороо</td>
+        <td>{{baiguullaga.district}}</td>
+      </tr>
+      <tr>
+        <td>Зураг</td>
+        <td><a class="fancybox" rel="group" href="/media/{{baiguullaga.gerchilgee_picture}}" ><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{baiguullaga.gerchilgee_picture}}/" alt="Istanbul"/>
+          </a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  {% comment %}
+  <a href="#insert_baiguullagaModal" data-data="modal" class="btn btn-success"><i class="icon-edit"></i></a>
+  {% endcomment %}
+  <button class="btn btn-default" data-data="close">Хаах</button>
+  <a href="{% url 'org_update' %}" class="btn btn-primary">Засварлах</a>
+</div>
+
+
+

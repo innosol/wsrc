@@ -1,0 +1,57 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Боловсон хүчний үзүүлэлт</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+          <tr>
+            <th>
+              Гүйцэтгэлийн үзүүлэлт
+            </th>
+            <th>
+              Тооцоонд ашигласан өгөгдлүүд
+            </th>
+            <th>
+              Үр дүн
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Боловсон хүчний бүрдэлт (хувь)
+            </td>
+            <td>
+              Боловсролтой ажилтны тоо: {% if obj.Ne1 %}{{obj.Ne1}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Нийт ажилтны тоо: {% if obj.N1 %}{{obj.N1}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>
+              {{result_burdelt}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              1000 хэрэглэгчдэд ноогдох ажилчдын тоо
+            </td>
+            <td>
+              Нийт хэрэглэгчдийн тоо: {% if obj.C %}{{obj.C}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Нийт ажилтны тоо: {% if obj.N1 %}{{obj.N1}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>
+              {{result_hereglegch}}
+            </td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if obj.gshu.can_edit and perms.auth.tze_gshu_tailan_menu_view %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'gshu_bolovson_huchnii_uzuulelt_insert' obj.gshu.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

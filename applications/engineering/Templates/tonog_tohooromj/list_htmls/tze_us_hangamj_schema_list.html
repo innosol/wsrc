@@ -1,0 +1,86 @@
+{% load static %}
+<div class="span9">
+	<div class="widget terques">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Ус хангамжийн схем зургийн жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_bb %}
+	    	<p>
+	    		<a class="btn btn-primary ajax_div_load" url-data= "{% url 'hudag_zurag_insert' %}"><i class="icon-edit"></i>Ус хангамжийн системийн схем зураг</a>
+	    	</p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>№</th>
+			          	<th>Тайлбар</th>
+			          	<th>Зураг</th>
+			          	<th>Бүртгэсэн огноо</th>
+			          	{% if perms.app.add_bb %}
+			          	<th><i class="icon-remove"></i></th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			         	<td>{{forloop.counter}}</td>
+			         	<td>{{i.comments}}</td>
+			         	<td>
+			         		<a href="/media/{{i.bairshliin_picture}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.bairshliin_picture}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+			         	</td>
+			         	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			         	{% if perms.app.add_bb %}
+			         	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_us_hangamj_schema_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+<div class="span3">
+	<div class="widget purple">
+		<div class="widget-title">
+			<h4><i class="icon-filter"></i>Шүүлтүүр</h4>
+		</div>
+		<div class="widget-body">
+			<form method="GET" id="filter_form">
+              {% for f in filter_form %}
+              <div class="form-group">
+                {{f.label}}
+                {{f}}
+              </div>
+              {% endfor %}
+              <button type='submit' class="btn btn-primary">Шүүх</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("#filter_form").submit(function(event){
+	event.preventDefault();
+	$.ajax({
+		url: "{% url 'tza_us_tugeeh_list' %}",
+		method: 'GET',
+		data: $(this).serialize()
+	}).done(function(response){
+		$('#tonog_tohooromj_list').html(response)
+	});
+});
+</script>
+
+<script>
+$('#us_hangamj_schema_count').text("+{{object_list|length}}");
+</script>

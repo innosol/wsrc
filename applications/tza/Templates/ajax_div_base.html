@@ -1,0 +1,21 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>{% block header_name %}Улсын бүртгэлийн гэрчилгээ{%endblock%}</h4>
+</div>
+<div class="modal1-uuganaa-body">
+	{% block body %}
+
+     {% endblock %}
+</div>
+
+<div class="modal1-uuganaa-footer">
+{% block footer %}
+  <button class="btn btn-default div-close-button">Хаах</button>
+  <button class="btn btn-primary" onclick="submitForm('#gerchilgee_olgoh')">Хадгалах</button>
+{% endblock%}
+</div>
+
+{% block javascript %}
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+{% endblock %}

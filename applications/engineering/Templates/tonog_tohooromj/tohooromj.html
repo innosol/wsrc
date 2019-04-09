@@ -1,0 +1,193 @@
+{% extends 'base_base.html' %}
+{% load static %}
+{% load tag_extras %}
+{% block content %}
+<div id="main-content">
+
+  <div class="container-fluid">
+    <div class="span12">
+      <div class="widget-body">
+        <div class="row-fluid">
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-block alert-success fade in">
+                <button data-dismiss="alert" class="close" type="button">×</button>
+                <h4 class="alert-heading">{{ message }}</h4>
+            </div>
+            {% endfor %}
+          {% endif %}
+            <div class="metro-nav">
+              <div  class="metro-nav-block half nav-block-red ajax_delgerengui_load" url-data="{{url_hudag_list}}", div-id="#tonog_tohooromj_list">
+                <a data-toggle="tab"   href="#tab_b" >
+                  <i class="icon-user"></i>
+                  <div class="info" id="id_hudag_count">+{{hudag_count}}</div>
+                  <div class="status">Гүний худаг</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-light-purple ajax_delgerengui_load" url-data="{{url_usansan_list}}", div-id="#tonog_tohooromj_list">
+                <a  href="#tab_m" data-toggle="tab">
+                  <i class="icon-shopping-cart"></i>
+                  <div class="info" id="id_usansan_count">+{{usansan_count}}</div>
+                  <div class="status">Усан сан</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-block-yellow ajax_delgerengui_load" url-data="{{url_nasos_list}}", div-id="#tonog_tohooromj_list">
+                <a  href="#tab_d" data-toggle="tab">
+                  <i class="icon-tags"></i>
+                  <div class="info" id="id_nasos_count">+{{nasos_count}}</div>
+                  <div class="status">Насос станц</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-olive ajax_delgerengui_load" url-data="{{url_lab_list}}", div-id="#tonog_tohooromj_list">
+                <a  href="#tab_e" data-toggle="tab">
+                  <i class="icon-comments-alt"></i>
+                  <div class="info" id="id_lab_count">+{{lab_count}}</div>
+                  <div class="status">Лаборатори</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-deep-terques ajax_delgerengui_load" url-data="{{url_sh_suljee_list}}", div-id="#tonog_tohooromj_list">
+                <a  href="#tab_f" data-toggle="tab">
+                  <i class="icon-eye-open"></i>
+                  <div class="info" id="id_sh_suljee_count">+{{sh_suljee_count}}</div>
+                  <div class="status">Шугам сүлжээ</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-block-red ajax_delgerengui_load" url-data="{{url_ts_baig_list}}", div-id="#tonog_tohooromj_list">
+                <a  href="#tab_g" data-toggle="tab">
+                  <i class="icon-bar-chart"></i>
+                  <div class="info" id="id_ts_baig_count">+{{ts_baig_count}}</div>
+                  <div class="status">Цэвэршүүлэх болон, цэвэрлэх байгууламж</div>
+                </a>
+              </div>
+              <div  class="metro-nav-block half nav-light-blue ajax_delgerengui_load" url-data="{{url_us_hangamj_schema_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_k" data-toggle="tab">
+                    <i class="icon-tasks"></i>
+                    <div class="info"><b>+{{us_hangamj_schema_count}}</b></div>
+                    <div class="status"><b>Ус хангамжийн системийн схем зураг</b></div>
+                  </a>
+                </div>
+            </div>
+            <div class="metro-nav">
+                
+                <div  class="metro-nav-block half nav-block-yellow ajax_delgerengui_load" url-data="{{url_water_car_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_i" data-toggle="tab">
+                    <i class="icon-user"></i>
+                    <div class="info" id="id_water_car_count">+{{water_car_count}}</div>
+                    <div class="status">Зөөврийн усны машин</div>
+                  </a>
+                </div>
+                <div  class="metro-nav-block half nav-light-green ajax_delgerengui_load" url-data="{{url_bohir_car_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_j" data-toggle="tab">
+                    <i class="icon-tags"></i>
+                    <div class="info" id="id_bohir_car_count">+{{bohir_car_count}}</div>
+                    <div class="status">Бохир усны машин</div>
+                  </a>
+                </div>
+                <div  class="metro-nav-block half nav-light-blue ajax_delgerengui_load" url-data="{{url_us_damjuulah_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_k" data-toggle="tab">
+                    <i class="icon-tasks"></i>
+                    <div class="info" id="id_us_damjuulah_count">+{{us_damjuulah_count}}</div>
+                    <div class="status">Ус, дулаан дамжуулах төв</div>
+                  </a>
+                </div>
+                <div  class="metro-nav-block half nav-deep-terques ajax_delgerengui_load" url-data="{{url_us_tugeeh_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_l" data-toggle="tab">
+                    <i class="icon-envelope"></i>
+                    <div class="info" id="id_us_tugeeh_count">+{{us_tugeeh_count}}</div>
+                    <div class="status">Ус түгээх байр</div>
+                  </a>
+                </div>
+                <div class="metro-nav-block half nav-block-orange ajax_delgerengui_load" url-data="{{url_equipment_list}}", div-id="#tonog_tohooromj_list">
+                  <a href="#tab_n" data-toggle="tab">
+                    <i class="icon-tasks"></i>
+                    <div class="info" id="id_equipment_count">+{{equipment_count}}</div>
+                    <div class="status">Тоног төхөөрөмж</div>
+                  </a>
+                </div>
+                <div  class="metro-nav-block half nav-light-blue ajax_delgerengui_load" url-data="{{url_abb_list}}", div-id="#tonog_tohooromj_list">
+                  <a  href="#tab_k" data-toggle="tab">
+                    <i class="icon-tasks"></i>
+                    <div class="info" id="id_hariutsaj_barilguud_count">+{{hariutsaj_barilguud_count}}</div>
+                    <div class="status">Хариуцаж буй барилга орон сууц</div>
+                  </a>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid" id="tonog_tohooromj_list">
+      <div class="span12">
+        <div class="widget red active">
+          <div class="widget-title">
+                <h4><i class="icon-reorder"></i>Гүний худаг жагсаалт</h4>
+            </div>
+            <div class="widget-body">
+              {% if perms.app.add_hudag %}
+              <p>
+              <a class="btn btn-primary ajax_div_load" url-data= "{% url 'hudag_insert' %}"><i class="icon-edit"></i>Гүний худаг нэмэх</a>
+              </p>
+              {% endif %}
+              {% if object_list %}
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>№</th>
+                    <th>Байршил</th>
+                          <th>Цооногийн гүн,м</th>
+                          <th>Олборлож буй ус</th>
+                          <th>Эх үүсвэрийн хамгаалалт</th>
+                          <th>Ашиглалтанд орсон огноо</th>
+                          <th>Бүртгэгдсэн огноо</th>
+                          {% if perms.app.add_hudag %}
+                          <th><i class="icon-edit"></i></th>
+                          <th><i class="icon-remove"></i></th>
+                          {% endif %}
+                          <th>Дэлгэрэнгүй</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in object_list %}
+                  <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{i.city}},<br>{{i.district}},<br>{{i.khoroo}},<br>{{i.hudag_address}}</td>
+                          <td>{{i.tsoonog}}</td>
+                          <td>{{i.olborloj_bui_us}}</td>
+                          <td>{{i.haruul}}</td>
+                          <td>{{i.ashiglaltand_orson_ognoo}}</td>
+                          <td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+                          {% if perms.app.add_hudag %}
+                          <td>
+                            <a class="btn btn-primary ajax_div_load" url-data= "{% url 'hudag_insert' i.id %}"><i class="icon-edit"></i></a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_bb_delete' i.id %}"><i class="icon-remove"></i></a>
+                        </td>
+                        {% endif %}
+                        <td><a class="ajax_div_load" url-data="{% url 'tze_gunii_hudag_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <div class='alert alert-info'>
+                Мэдээлэл олдсонгүй.
+              </div>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ****************************MODALS*************************-->
+  <div id="Modal_general" class="modal1-uuganaa">
+    
+  </div>
+
+
+
+{% endblock %} 

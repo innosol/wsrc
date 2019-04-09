@@ -1,0 +1,101 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Гадны үйлчилгээний хөлс</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="3"></th>
+        <th rowspan="3">Хэмжих нэгж</th>
+        <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+        <th rowspan="3">Цахилгаан</th>
+        <th rowspan="3">Дулаан</th>
+        <th rowspan="3">Бусад</th>
+        <th rowspan="3">Нийт</th>
+      </tr>
+      <tr>
+        <th colspan="2">Төвлөрсөн шугамын</th>
+        <th rowspan="2">Зөөвөр, УТБ</th>
+        <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+      </tr>
+      <tr>
+        <th>Цэвэр ус</th>
+        <th>Бохир ус</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Зохицуулах үйлчилгээний хөлс</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.zohitsuulah_uilchilgeenii_hols }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total0 }}</th>
+      </tr>
+      <tr>
+        <td>Түрээс</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.turees }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total1 }}</th>
+      </tr>
+      <tr>
+        <td>Аудит</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.audit }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total2 }}</th>
+      </tr>
+      <tr>
+        <td>Програм хангамж</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.program_hangamj }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total3 }}</th>
+      </tr>
+      <tr>
+        <td>Банкны үйлчилгээ</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.banknii_uilchilgee }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total4 }}</th>
+      </tr>
+      <tr>
+        <td>Шүүхийн үйлчилгээ</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.shuuhiin_uilchilgee }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total5 }}</th>
+      </tr>
+      <tr>
+        <td>Бусад</td>
+        <td>мян.төгрөг</td>
+        {% for z13 in tailan.zardal.z13.gadnii_uilchilgee.all %}
+        <td>{{ z13.busad }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z13.total6 }}</th>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>мян.төгрөг</th>
+        <th>{{ tailan.zardal.z13.sum0 }}</th>
+        <th>{{ tailan.zardal.z13.sum1 }}</th>
+        <th>{{ tailan.zardal.z13.sum2 }}</th>
+        <th>{{ tailan.zardal.z13.sum3 }}</th>
+        <th>{{ tailan.zardal.z13.sum4 }}</th>
+        <th>{{ tailan.zardal.z13.sum5 }}</th>
+        <th>{{ tailan.zardal.z13.sum6 }}</th>
+        <th>{{ tailan.zardal.z13.total }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

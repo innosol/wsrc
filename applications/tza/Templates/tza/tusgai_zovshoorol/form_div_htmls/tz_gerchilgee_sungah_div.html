@@ -1,0 +1,54 @@
+
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>Гэрчилгээ сунгах</h4>
+ </div>
+ {% if certificate.is_sungah_bolomjtoi %}
+ <form  id="form_id" action="{% url 'tza_tz_gerchilgee_sungah' certificate.id %}" id="equipmentform" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {{form}}
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+    <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+  </div>
+</form>
+{% else %}
+  <div class="modal1-uuganaa-body">
+    {% if certificate.get_sungaltuud %}
+      <div class="alert alert-info">
+        <h4>Гэрчилгээг {{certificate.get_sungaltuud|length}} удаа сунгасан байна.</h4>
+      </div>
+    {% elif certificate.is_tolov_huchingui %}
+      <div class="alert alert-info">
+        <h4>Гэрчилгээ хүчингүй тул сунгах боломжгүй.</h4>
+      </div>
+    {% elif not certificate.is_left_less_than_90_days %}
+      <div class="alert alert-info">
+        <h4>Гэрчилгээний хугацаа дуусахад 90-ээс их хоног үлдсэн тул сунгах боломжгүй.</h4>
+      </div>
+    {% else %}
+      <div class="alert alert-info">
+        <h4>Гэрчилгээг сунгах боломжгүй.</h4>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+  </div>
+
+
+{% endif %}
+
+
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>

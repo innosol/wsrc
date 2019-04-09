@@ -1,0 +1,213 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span7">
+			<div class="space20"></div>
+			<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+			<div class="space20"></div>
+			<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+			<div style="float:right;">5 - ЗАРДАЛ</div>
+      <table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th>Зардлын төрөл</th>
+						<th>хэмжих нэгж</th>
+						<th>Тухайн оны жилийн дүнгээр {{ sudalgaa.year }} он</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Үндсэн түүхийн эд -усны зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z2 }}</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Үндсэн ба нэмэгдэл цалин</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z2.nem0 }}</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Байгууллагаас төлөх ЭМ, НДШ</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z2.ndsh_emdsh }}</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Ашиглалтын зардал - Цахилгаан</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z3.nem0 }}</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Ашиглалтын зардал - Дулаан</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z3.nem1 }}</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Ашиглалтын зардал - Ус</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z3.nem2 }}</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Түлш шатахууны зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z3.nem4 }}</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Харуул хамгаалалтын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z3.nem6 }}</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Засвар, үйлчилгээний зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z4.nem }}</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Ариутгал халдваргүйжүүлэлтийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z5.nem }}</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Конторын хангамжийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z6.nem }}</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Хөдөлмөр хамгааллын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z7.nem }}</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Маркетинг, борлуулалтын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z8.nem }}</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Лаборатори, шинжилгээний зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z9.nem }}</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Гүйцэтгэх удирдлагын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z10.nem }}</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>ТҮЗ-ын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z11.nem }}</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Үндсэн хөрөнгийн элэгдлийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z12.nem }}</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>Зохицуулалтын үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z13.nem0 }}</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>Гадны үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z13.nem }}</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Татварын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z14.nem }}</td>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td>Даатгалын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z15.nem }}</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>Үйл ажиллагааны бусад зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z16.count }}</td>
+					</tr>
+					<tr>
+						<th colspan="2">Үндсэн үйл ажиллагааны зардал(БӨӨ)-н  дүн</th>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Ажиллагсдын нийгмийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z17.nem }}</td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Хөрөнгө оруулалтын зардалд</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z18.nem }}</td>
+					</tr>
+					<tr>
+						<th colspan="2">Хөрөнгө оруулалтын өгөөжийн дүн</th>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="2">Борлуулалтын орлогын шаардагдах хэмжээ / БОШ /</th>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Шагнал урамшуулал</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.shagnal_uramshuulal }}</td>
+					</tr>
+					<tr>
+						<td>26</td>
+						<td>Спорт, соёлын арга хэмжээ</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.sport_soyliin_arga_hemjee }}</td>
+					</tr>
+					<tr>
+						<td>27</td>
+						<td>Бусад</td>
+						<td>мян.төг</td>
+						<td>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.busad }}</td>
+					</tr>
+					<tr>
+						<th colspan="2">Үндсэн бус үйл ажиллагааны зардлын дүн</th>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="2"><h5>УХАТ-н үйл ажиллагааны нийт Зардлын дүн</h5></th>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

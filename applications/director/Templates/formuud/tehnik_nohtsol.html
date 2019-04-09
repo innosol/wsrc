@@ -1,0 +1,37 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>ЦЭВЭР УСААР ХАНГАХ, БОХИР УС ТАТАН ЗАЙЛУУЛАХ ТЕХНИКИЙН НӨХЦӨЛ ОЛГОЛТ</h4>
+</div>
+<form action="{% url 'tehniknohtsol' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Үзүүлэлт</th>
+          <th>Тоо</th>
+          <th>Усны хэрэглээ-м3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Техникийн нөхцөл хүсч өргөдөл гаргасан иргэд, ААНБ</td>
+          <td>{{ form.tn_0 }}</td>
+          <td>{{ form.tn_1 }}</td>
+        </tr>
+        <tr>
+          <td>Техникийн нөхцөл олгосон иргэд, ААНБ</td>
+          <td>{{ form.tn_2 }}</td>
+          <td>{{ form.tn_3 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.tehnik_nohtsol %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'tehniknohtsollist' date %}{% else %}{% url 'tehniknohtsollist' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

@@ -1,0 +1,106 @@
+{% load static %}
+<div style="width: 800px;">
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Хүсэлт гаргах</h4>
+</div>
+<form id="form_id" action="{{view_url}}" method="POST"> {% csrf_token %}
+    <div class="modal1-uuganaa-body">
+      {{form.huselt_angilal.errors}}
+      {{form.huselt_angilal}}
+      <div id="hodoo-oron-nutag-huselt" {% if not form.tz_choices_hodoo_oron_nutag.errors %} style="display: none;" {% endif %}>
+        <div class="alert alert-info">
+          Доорх заалтуудаас сонгоно уу.
+        </div>
+        {{form.tz_choices_hodoo_oron_nutag.errors}}
+        {{form.tz_choices_hodoo_oron_nutag}}
+      </div>
+      <div id="bohir-us-zoovorloh-huselt" style="display: none;">
+        <div class="alert alert-info bohir-us">
+          12.2.14-Бохир усыг тусгай зориулалтын машинаар зөөвөрлөх үйлчилгээ
+        </div>
+      </div>
+      <div id="tsever-us-olborloh-huselt" style="display: none;">
+        <div class="alert alert-info">
+          12.2.1-Хот, суурины ус хангамжийн эх үүсвэрийн барилга байгууламжийн ашиглалт, засвар, үйлчилгээ<br>
+          12.2.2-Ус олборлох, цэвэршүүлэх байгууламжийн ашиглалт, засвар, үйлчилгээ
+        </div>
+      </div>
+      <div id="oron-suuts-huselt" {% if not form.tz_choices_oron_suuts.errors %} style="display: none;" {% endif %}>
+        <div class="alert alert-info">
+          12.2.4 - Цэвэр ус түгээх шугам сүлжээний ашиглалт, засвар, үйлчилгээ<br>
+          12.2.5 - Орон сууцны доторх цэвэр, бохир усны шугам сүлжээний ашиглалт, засвар, үйлчилгээ<br>
+          12.2.6 - Ус дамжуулах төвийн ашиглалт, засвар, үйлчилгээ<br>
+          12.2.7 - Бохир усны гаргалгааны шугам сүлжээний ашиглалт, засвар, үйлчилгээ<br>
+          12.2.8 - Бохир ус цуглуулах шугам сүлжээний ашиглалт, засвар, үйлчилгээ<br><br>
+          <strong>Дараах заалтуудаас нэмэлтээр сонгох боломжтой.</strong>
+        </div>
+
+        {{form.tz_choices_oron_suuts}}
+      </div>
+      
+    </div>
+      <div class="modal1-uuganaa-footer">
+          <a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+          <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хүсэлт гаргах</button>
+      </div>
+  </form>
+</div>
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+
+<script>
+$(document).ready(function() {
+  $('input[type="radio"]').click(function() {
+    
+    if ($("#id_huselt_angilal_0").is(":checked"))
+    {
+      $("#hodoo-oron-nutag-huselt").show('blind');
+    }
+    else
+    {
+      $("#hodoo-oron-nutag-huselt").hide('blind');
+    }
+
+
+
+    if ($("#id_huselt_angilal_1").is(":checked"))
+    {
+      $("#oron-suuts-huselt").show('blind');
+    }
+    else
+    {
+      $("#oron-suuts-huselt").hide('blind');
+    }
+
+
+
+
+
+
+
+    if ($("#id_huselt_angilal_2").is(":checked"))
+    {
+      $("#tsever-us-olborloh-huselt").show('blind');
+    }
+    else
+    {
+      $("#tsever-us-olborloh-huselt").hide('blind');
+    }
+
+
+
+
+
+    if ($("#id_huselt_angilal_3").is(":checked"))
+    {
+      $("#bohir-us-zoovorloh-huselt").show('blind');
+    }
+    else
+    {
+      $("#bohir-us-zoovorloh-huselt").hide('blind');
+    }
+  });
+});
+</script>

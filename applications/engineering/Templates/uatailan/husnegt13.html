@@ -1,0 +1,81 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">үснэгт № 3</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний цэвэр усны шинжилгээний дүн</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th rowspan="2">№</th> <th rowspan="2">Боловсролын зэрэг</th> <th rowspan="2">Хүний тоо</th> 
+				</tr>
+				
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>Удирдах ажилтан</td>
+					
+					<td>{{ajiltan1|length}} </td>
+					
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Инженер техникийн ажилтан</td>
+					
+					<td>{{ajiltan2|length}}</td>
+			
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Мэргэжлийн ажилтан</td>
+					
+					<td>{{ajiltan3|length}}</td>
+			
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Ус түгээх байрны түгээгч</td>
+					<td></td>
+					
+		
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Бусад</td>
+					
+					<td>{{ajiltan4|length}}</td>
+	
+				</tr>
+			
+				<tr>
+					<td>6</td>
+					<td>Нийт ажилтны тоо</td>
+					
+					<td>{{ajiltan|length}} </td>
+				
+				</tr>
+
+				
+			
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

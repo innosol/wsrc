@@ -1,0 +1,354 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+{% load app_tags %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space20"></div>
+			<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+			<div class="space20"></div>
+			<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+			<div style="float:right;">5А - ЗАРДАЛ САРААР</div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th width="150px">Зардлын төрлүүд</th>
+						<th>Хэмжих нэгж</th>
+						<th>1-р сар</th>
+						<th>2-р сар</th>
+						<th>3-р сар</th>
+						<th>4-р сар</th>
+						<th>5-р сар</th>
+						<th>6-р сар</th>
+						<th>7-р сар</th>
+						<th>8-р сар</th>
+						<th>9-р сар</th>
+						<th>10-р сар</th>
+						<th>11-р сар</th>
+						<th>12-р сар</th>
+						<th>{{ sudalgaa.year }} онд</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><b>Үндсэн түүхий эд усны</b></td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{tailan.zardal.z1}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>2</td> <td>Үндсэн ба нэмэгдэл цалин</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z2.nem0 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z2.nem0 }}</td>
+					</tr>
+					<tr>
+						<td>3</td> <td>Байгууллагаас төлөх ЭМ, НДШ</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z2.ndsh_emdsh %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z2.ndsh_emdsh }}</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Цахилгаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z3.nem0 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z3.nem0 }}</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Дулаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z3.nem1 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z3.nem1 }}</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Ус - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z3.nem2 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z3.nem2 }}</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Түлш шатахуун, тээврийн зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z3.nem4 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z3.nem4 }}</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Харуул хамгаалалтын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z3.nem6 %}</td>
+						{% endfor %}
+						<td>{{ sudalgaa.zardal.z3.nem6 }}</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Засвар үйлчилгээний зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z4.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z4.nem }}</th>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Ариутгал халдваргүйжүүлэлтийн зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z5.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z5.nem }}</th>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Конторын хангамжийн зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z6.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z6.nem }}</th>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Хөдөлмөр хамгааллын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z7.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z7.nem }}</th>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Маркетинг, борлуулалтын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z8.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z8.nem }}</th>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Лаборатори, шинжилгээний зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z9.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z9.nem }}</th>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Гүйцэтгэх удирдлагын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z10.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z10.nem }}</th>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>ТУЗ-ын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z11.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z11.nem }}</th>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Үндсэн хөрөнгийн элэгдэл зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z12.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z12.nem }}</th>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>Зохицуулах үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z13.nem0 %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z13.nem0 }}</th>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>Гадны үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z13.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z13.nem }}</th>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Татварын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z14.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z14.nem }}</th>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td>Даатгалын зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z15.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z15.nem }}</th>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>Үндсэн үйл ажиллагааны бусад зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z16.count %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z16.count }}</th>
+					</tr>
+					<tr>
+						<td colspan="2">Үндсэн үйл ажиллагааны зардлын дүн</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z17.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z17.nem }}</th>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Ажиллагсдын нийгмийн зардал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z17.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z17.nem }}</th>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Хөрөнгө оруулалтын зардалд</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z18.nem %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z18.nem }}</th>
+					</tr>
+					<tr>
+						<td colspan="2">Хөрөнгө оруулалтын өгөөжийн дүн</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="2">Борлуулалтын орлогын шаардагдах хэмжээ / БОШ /</th>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Шагнал урамшуулал</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.shagnal_uramshuulal %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.shagnal_uramshuulal }}</th>
+					</tr>
+					<tr>
+						<td>26</td>
+						<td>Спорт, соёлын арга хэмжээ</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.sport_soyliin_arga_hemjee %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.sport_soyliin_arga_hemjee }}</th>
+					</tr>
+					<tr>
+						<td>27</td>
+						<td>Бусад</td>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.busad %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.busad }}</th>
+					</tr>
+					<tr>
+						<th colspan="2">Үндсэн бус үйл ажиллагааны зардлын дүн</th>
+						<td>мян.төг</td>
+						{% for i in "xxxxxxxxxxxx" %}
+						<td>{% huvaah_12 sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.busad %}</td>
+						{% endfor %}
+						<th>{{ sudalgaa.zardal.z19.undsen_bus_uil_ajillagaa.all.0.busad }}</th>
+					</tr>
+					<tr>
+						<th colspan="2">УХАТ-н үйл ажиллагааны нийт Зардлын дүн</th>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

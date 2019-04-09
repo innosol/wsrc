@@ -1,0 +1,78 @@
+    {% extends "ajax_div_base.html" %}
+    {% load static %}
+    
+    {% block header_name %}
+        Тусгай зөвшөөрлийн гэрчилгээ дэлгэрэнгүй мэдээлэл
+    {% endblock %}
+    {% block body %}
+    <div class="alert alert-info">
+        {% if sungalt %}
+            {% for s in sungalt %}
+                {{s.ognoo|date:"Y-m-d"}}-ны өдөр сунгасан.
+            {% endfor %}
+        {% else %}
+        Сунгалт хийгдээгүй байна.
+
+        {% endif %}
+    </div>
+      <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Эзэмшигч байгууллага:</th>
+                <td>{{certificate.tze}}</td>
+            </tr>
+            <tr>
+                <th>Төлөв:</th>
+                <td>{{certificate.tolov}}</td>
+            </tr>
+            <tr>
+                <th>Заалтууд:</th>
+                <td>
+                    {% for i in certificate.tz_id.all%}
+                        {{i}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Гэрчилгээний дугаар:</th>
+                <td>{{certificate.cert_number}}</td>
+            </tr>
+            <tr>
+                <th>Тогтоолын огноо:</th>
+                <td>{{certificate.togtool_date|date:"Y-m-d"}}</td>
+            </tr>
+            <tr>
+                <th>Тогтоолын дугаар:</th>
+                <td>{{certificate.togtool_number}}</td>
+            </tr>
+            
+            <tr>
+                <th>Хүчинтэй хугацаа (хүртэл):</th>
+                <td>{{certificate.certificate_end_date|date:"Y-m-d"}}</td>
+            </tr>
+            
+            <tr>
+                <th>Гэрчилгээний хуулбар:</th>
+                {% if certificate.cert_file %}
+                    <td><a href="/media/{{certificate.cert_file}}" target="_blank">Гэрчилгээний хуулбар</a>
+                        {% if perms.auth.tza_mergejilten_permission %}
+                        <br>Өөрчлөх бол <a href="javascript:;" class="ajax_div_load" url-data="{% url 'tza_tz_gerchilgee_huulbar_insert' certificate.id %}">энд</a> дарна уу.
+                        {% endif %}
+                    </td>
+                {% else %}
+                    <td>Гэрчилгээний хуулбар байхгүй.
+                        {% if perms.auth.tza_mergejilten_permission %}
+                        <br>Хуулбар оруулах бол <a href="javascript:;" class="ajax_div_load" url-data="{% url 'tza_tz_gerchilgee_huulbar_insert' certificate.id %}">энд</a> дарна уу.
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+            
+        </tbody>
+      </table>
+    {% endblock %}
+    {% block footer %}
+      <button class="btn btn-default div-close-button" data-data="modal" aria-hidden="true">Хаах</button>
+    {% endblock %}
+
+

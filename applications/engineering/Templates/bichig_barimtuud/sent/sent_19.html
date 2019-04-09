@@ -1,0 +1,60 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Цэвэр усны лаборатори::</h4>
+</div>
+
+<div class="modal1-uuganaa-body">
+  {% if tz_material_status_bind.status == 'Шаардлага хангаагүй' %}
+  <div class="alert alert-error">
+    {{ tz_material_status_bind.tatgalzsan_tailbar }}
+  </div>
+  {% endif %}
+
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>№</th>
+				<th>Төрөл</th>
+				<th>Шинжилгээний төрлийн тоо</th>
+				<th>Ашиглалтанд орсон огноо</th>
+				<th>Дэлгэрэнгүй</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in burdel_history.labs.all %}
+			<tr>
+				<td>{{forloop.counter}}</td>
+				<td>{{i.torol}}</td>
+				<td>{{i.shinjilgee_count}}</td>
+				<td>{{i.ashiglaltand_orson_ognoo}}</td>
+				<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_lab_delgerengui' i.id burdel_history.ilgeesen_datetime.year burdel_history.ilgeesen_datetime.month burdel_history.ilgeesen_datetime.day burdel_history.ilgeesen_datetime.hour burdel_history.ilgeesen_datetime.minute %}">Дэлгэрэнгүй...</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<div class="modal1-uuganaa-footer">
+    <button class="btn btn-default div-close-button">Хаах</button>
+    {% if burdel_history.now_checking %}
+      {% if material_angilal == 3 %}
+        {% if not burdel_history.hzm_check_finished and perms.auth.hzm_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% elif material_angilal == 2 %}
+        {% if not burdel_history.uta_check_finished and perms.auth.uta_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% elif material_angilal == 1 %}
+        {% if not burdel_history.tza_check_finished and perms.auth.tza_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+</div>
+
+
+
+

@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+ <h4 style="min-width: 500px;">{{material.material_name}}</h4>
+</div>
+<form id="form_id" success-div-id="#huselt_delgerengui_div" class="form-horizontal" action="{{view_url}}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="row-fluid">        
+          <div style="color: red;">
+            {% if form.non_field_errors %}
+              {% for error in form.non_field_errors %}
+                <div class="errorlist">{{ error }}</div>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div class="control-group">
+            <label class="control-label">{{ form.status.label }}</label>
+            <div class="controls">
+              {{ form.status.errors }}{{ form.status }}
+            </div>
+          </div>
+          <div class="control-group">
+            <label id="label_tailbar" class="control-label">{{ form.tailbar.label }}</label>
+            <div class="controls">
+              {{ form.tailbar.errors }}{{ form.tailbar }}
+            </div>
+          </div>
+      </div> <!--row-fluid-->
+    </div> <!-- span 12 -->
+  </div><!-- row-fluid -->
+</div>
+
+<div class="modal1-uuganaa-footer">
+  <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+  <button onclick="submit_tz_choose_form('#form_id')" name="action" class="btn btn-success">Хадгалах</button>
+</div>
+</form>   
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script type="text/javascript">
+  
+  $('#label_tailbar').hide(); // hide initially
+  $('#id_tailbar').hide();
+  
+
+  $('input[name$="status"]').click(function(){
+    if($('#id_status_1').is(':checked'))
+    {
+      $('#label_tailbar').show();
+      $('#id_tailbar').show();
+    }
+    else
+    {
+      $('#label_tailbar').hide();
+      $('#id_tailbar').hide();
+    }
+  });
+
+</script>

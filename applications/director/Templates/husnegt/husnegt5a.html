@@ -1,0 +1,226 @@
+
+{% extends 'husnegt/husnegt1.html' %}
+{% load static %}
+{% block content %}
+{% for a in zardal2 %}
+{{ a }}
+{% endfor %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<meta http-equiv="content-type" content="text/plain; charset=UTF-8"/>
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space20"></div>
+			<button id="example" class="btn btn-primary pull-right">Excel</button>
+			<a href="{% url 'export' %}" class="btn btn-success">Excel</a>
+			<div class="space20"></div>
+			<table id="table" class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th>Зардлын төрлүүд</th>
+						<th>Хэмжих нэгж</th>
+						<th>{{ tailan.name }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><b>Үндсэн түүхий эд усны</b></td>
+						<td>мян.төг</td>
+						<td>{% if tailan.zardal.z1 %}{{tailan.zardal.z1}}{% else %}0{% endif %}</td>
+					</tr>
+					<tr>
+						<td>2</td> <td>Үндсэн ба нэмэгдэл цалин</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z2.undsen_ba_nemegdel_tsalin_total }}</td>
+					</tr>
+					<tr>
+						<td>3</td> <td>Байгууллагаас төлөх ЭМ, НДШ</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z2.ndsh_emdsh_total }}</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Цахилгаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z3.tsahilgaan_total }}</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Дулаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z3.dulaan_total }}</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Ус - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z3.us_total }}</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Түлш шатахуун, тээврийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z3.tulsh_shatahuun_shatah_toslol_total }}</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Харуул хамгаалалтын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z3.haruul_hamgaalalt_total }}</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Засвар үйлчилгээний зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z4.total }}</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Ариутгал халдваргүйжүүлэлтийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z5.total }}</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Конторын хангамжийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z6.total }}</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Хөдөлмөр хамгааллын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z7.total }}</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Маркетинг, борлуулалтын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z8.total }}</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Лаборатори, шинжилгээний зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z9.total }}</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Гүйцэтгэх удирдлагын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z10.total }}</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>ТУЗ-ын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z11.total }}</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Үндсэн хөрөнгийн элэгдэл зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z12.total }}</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>Зохицуулах үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z13.zohitsuulah_uilchilgeenii_hols_total }}</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>Гадны үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z13.total }}</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Татварын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z14.total }}</td>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td>Даатгалын зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z15.total }}</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>Үндсэн үйл ажиллагааны бусад зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z16.total }}</td>
+					</tr>
+					<tr>
+						<td colspan="2">Үндсэн үйл ажиллагааны зардлын дүн</td>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Ажиллагсдын нийгмийн зардал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z17.total }}</td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Хөрөнгө оруулалтын зардалд</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z18.total }}</td>
+					</tr>
+					<tr>
+						<td colspan="2">Хөрөнгө оруулалтын өгөөжийн дүн</td>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">БОРЛУУЛАЛТЫН ОРЛОГЫН ШААРДАГДАХ ХЭМЖЭЭ / БОШ /</td>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Шагнал урамшуулал</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z19.shagnal_uramshuulal }}</td>
+					</tr>
+					<tr>
+						<td>26</td>
+						<td>Спорт соёлын арга хэмжээ</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z19.sport_soyliin_arga_hemjee }}</td>
+					</tr>
+					<tr>
+						<td>27</td>
+						<td>Бусад</td>
+						<td>мян.төг</td>
+						<td>{{ tailan.zardal.z19.busad }}</td>
+					</tr>
+					<tr>
+						<td colspan="2">Үндсэн бус үйл ажиллагааны зардлын дүн</td>
+						<td>мян.төг</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">УХАТ-н үйл ажиллагааны нийт Зардлын дүн</td>
+						<td>мян.төг</td>
+						<td>{{ total }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#example').click(function(){
+		$("#table").table2excel({
+			exclude: ".noExl",
+			name: "Excel Document Name",
+			filename: "myFileName"
+		});
+	});
+</script>
+{% endblock %}

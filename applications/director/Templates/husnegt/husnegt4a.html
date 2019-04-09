@@ -1,0 +1,100 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+    <div class='container-fluid'>
+        <div class="span12">
+        	<div class="space20"></div>
+            <table class="table table-bordered table-striped table-fixed-header">
+                <thead class="header">
+					<tr>
+						<th colspan="3" rowspan="2">Хэрэглэгчийн ангилал</th>
+						<th rowspan="2">хэмжих нэгж</th>
+						<th rowspan="2">{{ tailan.orlogo.name }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td colspan="16">БОРЛУУЛАЛТЫН БИЧИЛТ ХИЙСЭН НИЙТ УСНЫ БИЕТ ХЭМЖЭЭ</td>
+					</tr>
+					<tr>
+						<td>1.1</td>
+						<td colspan="2">Цэвэр усны борлуулалтын дүн</td>
+						<td>мян.м<sup>3</sup></td>
+						<td><b>{{ tsever }}</b></td>
+					</tr>
+					<tr>
+						<td>1.1.1</td>
+						<td rowspan="3">ААНБ-ын хэрэглэгч</td>
+						<td>ААНБайгууллага</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.2.too }}</td>
+					</tr>
+					<tr>
+						<td>1.1.2</td>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.4.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.1.3</td>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.6.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.1.4</td>
+						<td rowspan="2">Ахуйн хэрэглэгч</td>
+						<td>тоолууртай</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.10.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.1.5</td>
+						<td>тоолуургүй</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.12.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.2</td>
+						<td colspan="2">Бохир ус татан зайлуулсан орлогын дүн</td>
+						<td>мян.м<sup>3</sup></td>
+						<td><b>{{ bohir }}</b></td> 
+					</tr>
+					<tr>
+						<td>1.2.1</td>
+						<td rowspan="3">ААНБ-ын хэрэглэгч</td>
+						<td>ААНБайгууллага</td> <td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.3.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.2.2</td>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.5.too }}</td>
+					</tr>
+					<tr>
+						<td>1.2.3</td>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.7.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.2.4</td>
+						<td rowspan="2">Ахуйн хэрэглэгч</td>
+						<td>тоолууртай</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.11.too }}</td> 
+					</tr>
+					<tr>
+						<td>1.2.5</td>
+						<td>тоолуургүй</td>
+						<td>мян.м<sup>3</sup></td>
+						<td>{{ tailan.orlogo.buteegdehuun.all.13.too }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

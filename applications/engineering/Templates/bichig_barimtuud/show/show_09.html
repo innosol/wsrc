@@ -1,0 +1,55 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Хууль дүрэм, норм норматив
+{% endblock %}
+
+{% block body_show %}
+<div><a url-data="{% url 'tz_huuli_durem_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Хууль дүрэм, норм норматив нэмэх</a></div>
+<div class="space10"></div>
+{% if akt %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын дагаж мөрддөг хууль дүрэм, норм норматив нийт {{ akt|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ нэмж бүртгэх бол "Хууль дүрэм, норм норматив нэмэх" товчлуур дээр дарна уу.
+    </p>
+   </div>
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>БНбД код</th>                             
+      <th>БНбД нэр</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ia in akt %}
+    <tr>
+      <td>
+        {{ia.durem.code}}
+      </td>
+      <td>{{ia.durem.name}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын дагаж мөрддөг хууль дүрэм, норм норматив бүртгэгдээгүй байна. Хэрвээ байгууллагын дагаж мөрддөг хууль дүрэм, норм нормативыг бүртгэх бол "Хууль дүрэм, норм норматив нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if akt %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=9 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+

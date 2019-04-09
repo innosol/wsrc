@@ -1,0 +1,47 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Үндсэн материалын зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td width="200">Авсан ус цэвэр</td>
+        <td>м3</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.0.undsen_tuuhii_ed_usnii }}</td>
+      </tr>
+      <tr>
+        <td width="200">Нийлүүлсэн ус бохир</td>
+        <td>м3</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.1.undsen_tuuhii_ed_usnii }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Хэмжих нэгж</th>
+        <th>Зөөвөр, УТБ</th>
+        <th width="120">Бусад (Бохир өргөх насос, г,м)</th>
+        <th>Цахилгаан</th>
+        <th>Дулаан</th>
+        <th>Бусад</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Үндсэн түүхий эд усны</td>
+        <td>мян.төгрөг</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.2.undsen_tuuhii_ed_usnii }}</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.3.undsen_tuuhii_ed_usnii }}</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.4.undsen_tuuhii_ed_usnii }}</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.5.undsen_tuuhii_ed_usnii }}</td>
+        <td>{{ tailan.zardal.z1.undsen_material.all.6.undsen_tuuhii_ed_usnii }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

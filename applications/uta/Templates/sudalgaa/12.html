@@ -1,0 +1,157 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% load app_tags %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span7">
+			<div class="space20"></div>
+			<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+			<div class="space20"></div>
+			<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+			<div style="float:right;">11 - УСНЫ ТАСАЛДЛЫН МЭДЭЭ</div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th>Цэвэр усны оролтын шугамын голч, мм-р</th>
+						<th>ААНБ-н тоо</th>
+						<th>нэгж үнэ</th>
+						<th>1 сарын орлогын дүн мян.төг</th>
+						<th>{{ sudalgaa.year }}-оны орлогын дүн мян.төг</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>15</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.0.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.0.une }}</td>
+						<th>{{ sum0 }}</th>
+						<th>{{ nem0 }}</th>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>20</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.1.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.1.une }}</td>
+						<th>{{ sum1 }}</th>
+						<th>{{ nem1 }}</th>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>25</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.2.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.2.une }}</td>
+						<th>{{ sum2 }}</th>
+						<th>{{ nem2 }}</th>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>32</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.3.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.3.une }}</td>
+						<th>{{ sum3 }}</th>
+						<th>{{ nem3 }}</th>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>40</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.4.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.4.une }}</td>
+						<th>{{ sum4 }}</th>
+						<th>{{ nem4 }}</th>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>50</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.5.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.5.une }}</td>
+						<th>{{ sum5 }}</th>
+						<th>{{ nem5 }}</th>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>65</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.6.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.6.une }}</td>
+						<th>{{ sum6 }}</th>
+						<th>{{ nem6 }}</th>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>80</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.7.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.7.une }}</td>
+						<th>{{ sum7 }}</th>
+						<th>{{ nem7 }}</th>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>100</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.8.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.8.une }}</td>
+						<th>{{ sum8 }}</th>
+						<th>{{ nem8 }}</th>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>125</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.9.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.9.une }}</td>
+						<th>{{ sum9 }}</th>
+						<th>{{ nem9 }}</th>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>150</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.10.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.10.une }}</td>
+						<th>{{ sum10 }}</th>
+						<th>{{ nem10 }}</th>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>200</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.11.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.11.une }}</td>
+						<th>{{ sum11 }}</th>
+						<th>{{ nem11 }}</th>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>250</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.12.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.12.une }}</td>
+						<th>{{ sum12 }}</th>
+						<th>{{ nem12 }}</th>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>300</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.13.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.13.une }}</td>
+						<th>{{ sum13 }}</th>
+						<th>{{ nem13 }}</th>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>400, -с дээш</td>
+						<td>{{ sudalgaa.golch.all.0.buteegdehuun.all.14.too }}</td>
+						<td>{{ sudalgaa.tariff_hereglegch.all.1.tariff.all.14.une }}</td>
+						<th>{{ sum14 }}</th>
+						<th>{{ nem14 }}</th>
+					</tr>
+					<tr>
+						<td colspan="2">НИЙТ ДҮН</td>
+						<th>{{ sudalgaa.golch.all.0.total }}</th>
+						<th></th>
+						<th>{{ count0 }}</th>
+						<th>{{ count1 }}</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

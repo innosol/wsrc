@@ -1,0 +1,116 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Гүний худаг нэмэх</h4>
+</div>
+<form  id="form_id" success-div-id="#huselt_delgerengui_div" action= "/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="control-group">
+            <label class="control-label">{{ form.city.label }}</label>
+            <div class="controls">
+              {{ form.city.errors }}{{ form.city }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.district.label }}</label>
+            <div class="controls">
+              {{ form.district.errors }}{{ form.district }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.khoroo.label }}</label>
+            <div class="controls">
+              {{ form.khoroo.errors }}{{ form.khoroo }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.hudag_address.label }}</label>
+            <div class="controls">
+              {{ form.hudag_address.errors }}{{ form.hudag_address }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.mark.label }}</label>
+            <div class="controls">
+              {{ form.mark.errors }}{{ form.mark }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.country.label }}</label>
+            <div class="controls">
+              {{ form.country.errors }}{{ form.country }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.huchin_chadal.label }}</label>
+            <div class="controls">
+              {{ form.huchin_chadal.errors }}{{ form.huchin_chadal }}
+            </div>
+            </div>
+            <div class="control-group">
+            <label class="control-label">{{ form.nasos_ognoo.label }}</label>
+            <div class="controls">
+              {{ form.nasos_ognoo.errors }}{{ form.nasos_ognoo }}
+            </div>
+            </div>
+          </div>
+          <div class="span6">
+            <div class="control-group">
+              <label class="control-label">{{ form.olborloj_bui_us.label }}</label>
+              <div class="controls">
+                {{ form.olborloj_bui_us.errors }}{{ form.olborloj_bui_us }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.tsoonog.label }}</label>
+              <div class="controls">
+                {{ form.tsoonog.errors }}{{ form.tsoonog }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.ashiglaltand_orson_ognoo.label }}</label>
+              <div class="controls">
+                {{ form.ashiglaltand_orson_ognoo.errors }}{{ form.ashiglaltand_orson_ognoo }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.haruul.label }}</label>
+              <div class="controls">
+                {{ form.haruul.errors }}{{ form.haruul }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.tailbar.label }}</label>
+              <div class="controls">
+                {{ form.tailbar.errors }}{{ form.tailbar }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.outside_picture.label }}</label>
+              <div class="controls">
+                {{ form.outside_picture.errors }}{{ form.outside_picture }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.inside_picture.label }}</label>
+              <div class="controls">
+                {{ form.inside_picture.errors }}{{ form.inside_picture }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <button class="btn btn-default div-close-button" type="button">Хаах</button>
+    <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+  </div>
+</form>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<!script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,22 @@
+{% extends "base_base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block sidebar %}
+<div class="sidebar-scroll">
+  <div id="sidebar" class="nav-collapse collapse">
+    <ul class="subnavilist">
+	  <li><a href="{% url 'home' %} ">&raquo;&nbsp;{% trans "Нүүр" %}</a></li>
+	  <li><a href="{% url 'messages_inbox' %} ">&raquo;&nbsp;{% trans "Миний мессеж" %}</a></li>
+	  <li><a href="{% url 'messages_outbox' %} ">&raquo;&nbsp;{% trans "Илгээсэн мессежүүд" %}</a></li>
+	  <li><a href="{% url 'messages_compose' %} ">&raquo;&nbsp;{% trans "Шинэ мессеж" %}</a></li>
+	  <li><a href="{% url 'messages_trash' %} ">&raquo;&nbsp;{% trans "Хогийн сав" %}</a></li>
+	</ul>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin: 0px;">
+	<div class="container-fluid">
+	</div>
+</div>
+{% endblock %}

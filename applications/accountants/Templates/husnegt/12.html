@@ -1,0 +1,153 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% load app_tags %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span7">
+			<div class="space20"></div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th>Цэвэр усны оролтын шугамын голч, мм-р</th>
+						<th>ААНБ-н тоо</th>
+						<th>нэгж үнэ</th>
+						<th>1 сарын орлогын дүн мян.төг</th>
+						<th>2014-оны орлогын дүн мян.төг</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>15</td>
+						<td>{{ golch.buteegdehuun.all.0.too }}</td>
+						<td>{% multiply tariff.tariff.all.0.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.0.une golch.buteegdehuun.all.0.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.0.une golch.buteegdehuun.all.0.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>20</td>
+						<td>{{ golch.buteegdehuun.all.1.too }}</td>
+						<td>{% multiply tariff.tariff.all.1.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.1.une golch.buteegdehuun.all.1.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.1.une golch.buteegdehuun.all.1.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>25</td>
+						<td>{{ golch.buteegdehuun.all.2.too }}</td>
+						<td>{% multiply tariff.tariff.all.2.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.2.une golch.buteegdehuun.all.2.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.2.une golch.buteegdehuun.all.2.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>32</td>
+						<td>{{ golch.buteegdehuun.all.3.too }}</td>
+						<td>{% multiply tariff.tariff.all.3.une 1000  %}</td>
+						<td>{% multiply tariff.tariff.all.3.une golch.buteegdehuun.all.3.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.3.une golch.buteegdehuun.all.3.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>40</td>
+						<td>{{ golch.buteegdehuun.all.4.too }}</td>
+						<td>{% multiply tariff.tariff.all.4.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.4.une golch.buteegdehuun.all.4.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.4.une golch.buteegdehuun.all.4.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>50</td>
+						<td>{{ golch.buteegdehuun.all.5.too }}</td>
+						<td>{% multiply tariff.tariff.all.5.une 1000  %}</td>
+						<td>{% multiply tariff.tariff.all.5.une golch.buteegdehuun.all.5.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.5.une golch.buteegdehuun.all.5.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>65</td>
+						<td>{{ golch.buteegdehuun.all.6.too }}</td>
+						<td>{% multiply tariff.tariff.all.6.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.6.une golch.buteegdehuun.all.6.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.6.une golch.buteegdehuun.all.6.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>80</td>
+						<td>{{ golch.buteegdehuun.all.7.too }}</td>
+						<td>{% multiply tariff.tariff.all.7.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.7.une golch.buteegdehuun.all.7.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.7.une golch.buteegdehuun.all.7.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>100</td>
+						<td>{{ golch.buteegdehuun.all.8.too }}</td>
+						<td>{% multiply tariff.tariff.all.8.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.8.une golch.buteegdehuun.all.8.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.8.une golch.buteegdehuun.all.8.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>125</td>
+						<td>{{ golch.buteegdehuun.all.9.too }}</td>
+						<td>{% multiply tariff.tariff.all.9.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.9.une golch.buteegdehuun.all.9.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.9.une golch.buteegdehuun.all.9.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>150</td>
+						<td>{{ golch.buteegdehuun.all.10.too }}</td>
+						<td>{% multiply tariff.tariff.all.10.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.10.une golch.buteegdehuun.all.10.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.10.une golch.buteegdehuun.all.10.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>200</td>
+						<td>{{ golch.buteegdehuun.all.11.too }}</td>
+						<td>{% multiply tariff.tariff.all.11.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.11.une golch.buteegdehuun.all.11.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.11.une golch.buteegdehuun.all.11.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>250</td>
+						<td>{{ golch.buteegdehuun.all.12.too }}</td>
+						<td>{% multiply tariff.tariff.all.12.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.12.une golch.buteegdehuun.all.12.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.12.une golch.buteegdehuun.all.12.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>300</td>
+						<td>{{ golch.buteegdehuun.all.13.too }}</td>
+						<td>{% multiply tariff.tariff.all.13.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.13.une golch.buteegdehuun.all.13.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.13.une golch.buteegdehuun.all.13.too 12 %}</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>400, -с дээш</td>
+						<td>{{ golch.buteegdehuun.all.14.too }}</td>
+						<td>{% multiply tariff.tariff.all.14.une 1000 %}</td>
+						<td>{% multiply tariff.tariff.all.14.une golch.buteegdehuun.all.14.too %}</td>
+						<td>{% multiply3 tariff.tariff.all.14.une 1000 golch.buteegdehuun.all.14.too 12 %}</td>
+					</tr>
+					<tr>
+						<td colspan="2">НИЙТ ДҮН</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

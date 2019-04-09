@@ -1,0 +1,65 @@
+{% extends "ajax_div_base.html" %}
+
+{% load static %}
+
+{% block header_name %}
+"{{tz_huselt.tze.org_name}} {{tz_huselt.tze.org_type}}"-ийн {{tz_huselt.ilgeesen_datetime|date:"Y-m-d"}} өдөр илгээсэн тусгай зөвшөөрлийн хүсэлт
+{% endblock %}
+
+{% block body %}
+<div class="alert alert-block alert-warning fade in">
+  <h4 class="alert-heading">Тусгай зөвшөөрлийн гэрчилгээ олгох уу?</h4>
+  <p>
+    Тухайн байгууллага төлбөрөө төлсөн тохиолдолд тусгай зөвшөөрөл олгогдох буюу тусгай зөвшөөрлийн гэрчилгээг олгоно.
+  </p>
+</div>
+<div id='validation_errors' style="color: red;"></div>
+  <form id="material_check_form" action="{% url 'tz_gerchilgee_olgoh' huselt_id=huselt_id%}" method="POST"> {% csrf_token %}
+    {{form}}
+  </form>
+{% endblock %}
+
+{% block footer %}
+<button class="btn btn-default div-close-button">Хаах</button>
+<button class="btn btn-primary" onclick="if_valid_then_submit('#material_check_form')">Хадгалах</button>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script type="text/javascript">
+  
+    $('label[for="id_tailbar"]').hide(); // hide initially
+    $('#id_tailbar').hide();
+    $('#material_check_form').validate({
+      errorLabelContainer: '#validation_errors',
+      rules: {
+        tolov: {required: true},
+      },
+      messages: {
+        tolov: "Тусгай зөвшөөрлийн төлвийг сонгоно уу.",
+      }
+    })
+
+    function if_valid_then_submit(form_id){
+      if ($(form_id).valid()){
+        submitForm(form_id);
+      }
+    }
+  
+
+  $('input[name$="status"]').click(function(){
+    if($('#id_status_1').is(':checked'))
+    {
+      $('label[for="id_tailbar"]').show();
+      $('#id_tailbar').show();
+    }
+    else
+    {
+      $('label[for="id_tailbar"]').hide();
+      $('#id_tailbar').hide();
+    }
+  });
+
+</script>
+{% endblock %}

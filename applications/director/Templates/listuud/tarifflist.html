@@ -1,0 +1,72 @@
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Тусгай зөвшөөрөл эзэмшигч ус борлуулах тариф үнэ</h4>
+</div>
+<div class="modal1-uuganaa-body">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Үзүүлэлтүүд</th>
+            <th>Хэмжих нэгж</th>
+            <th>Цэвэр ус</th>
+            <th>Бохир ус</th>
+        </tr>
+        <tr>
+            <td>ААНБайгууллага</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.0.une }}</td>
+            <td>{{ tariffus.tariff.all.1.une }}</td>
+        </tr>
+        <tr>
+            <td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.2.une }}</td>
+            <td>{{ tariffus.tariff.all.3.une }}</td>
+        </tr>
+        <tr>
+            <td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.4.une }}</td>
+            <td>{{ tariffus.tariff.all.5.une }}</td>
+        </tr>
+        <tr>
+            <td>ААНБ Зөөврөөр</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.6.une }}</td>
+            <td>{{ tariffus.tariff.all.7.une }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх /тоолууртай/</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.8.une }}</td>
+            <td>{{ tariffus.tariff.all.9.une }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх /тоолуургүй/</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.10.une }}</td>
+            <td>{{ tariffus.tariff.all.11.une }}</td>
+        </tr>
+        <tr>
+            <td>Ус түгээх байр -УТБ</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.12.une }}</td>
+            <td>{{ tariffus.tariff.all.13.une }}</td>
+        </tr>
+        <tr>
+            <td>Айл өрх зөөврөөр</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.tariff.all.14.une }}</td>
+            <td>{{ tariffus.tariff.all.15.une }}</td>
+        </tr>
+        <tr>
+            <td>Хэрэглэгчийн суурь үнэ</td>
+            <td>төгрөг/м3</td>
+            <td>{{ tariffus.suuri_une }}</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="modal1-uuganaa-footer">
+    <button data-data="close" class="btn btn-default">Цуцлах</button>
+    <button url-data="{% url 'tariff' %}"class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

@@ -1,0 +1,78 @@
+{% extends 'uta/uta_home.html' %}
+
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+    <div class="space20"></div>
+    <div class="row-fluid">
+      <div class="span8">
+    		<div class="widget blue active">
+    			<div class="widget-title">
+    				<h4> Санхүү эдийн засгийн мэдээ</h4>
+          </div>
+    			<div class="widget-body">
+            <table class="table table-nemelt table-striped">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th class="nem">НЭР</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for b in orgs %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td class="nem"><a href="{% url 'uta_report' b.id %}">{{ b.org_name }} {{ b.org_type }}</a></td> 
+                </tr>
+                {% endfor %}
+              </tbody>
+          	</table>
+            <div class="pagination pagination-large pagination-centered">
+              <ul>
+              {% if orgs.has_previous %}
+              <li><a href="?page={{ orgs.previous_page_number }}">«</a></li>
+              {% endif %}
+
+              {% if orgs.has_two_previous %}
+              <li><a href="?page={{ orgs.two_previous_page_number }}">{{ orgs.two_previous_page_number }}</a></li>
+              {% endif %}
+
+              {% if orgs.has_previous %}
+              <li><a href="?page={{ orgs.previous_page_number }}">{{ orgs.previous_page_number }}</a></li>
+              {% endif %}
+              {% if not_pagination %}
+              <li class="active"><a>{{ orgs.number }}</a></li>
+              {% endif %}
+              {% if orgs.has_next %}
+              <li><a href="?page={{ orgs.next_page_number }}">{{ orgs.next_page_number }}</a></li>
+              {% endif %}
+
+              {% if orgs.has_two_next %}
+              <li><a href="?page={{ orgs.two_next_page_number }}">{{ orgs.two_next_page_number }}</a></li>
+              {% endif %}
+              {% if orgs.has_next %}
+              <li><a href="?page={{ orgs.next_page_number }}">»</a></li>
+              {% endif %}
+              </ul>
+            </div>
+    			</div>
+    		</div>
+      </div>
+      <div class="span4">
+        <div class="widget purple active">
+          <div class="widget-title">
+            <h4> Шүүлтүүр</h4>
+          </div>
+          <div class="widget-body">
+            <form method="GET" class="hidden-phone" style="margin: 0px;">
+                {{ filter.as_table }}
+                <button class="btn" type='submit'>Хайх</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+{% endblock %}

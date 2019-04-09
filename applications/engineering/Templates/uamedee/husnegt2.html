@@ -1,0 +1,53 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Маягт № 4</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны мэдээ</h5>
+			<h5>"{{ baiguullaga }}"  ХК-ний байгууллагын хүний нөөцийн мэдээлэл</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th >№</th> 
+					<th >Mэргэжил</th> 
+					<th >Тоо</th> 
+					<th >Дундаж нас</th> 
+					<th >Ажилласан дундаж жил</th> 
+					<th >Мэргэжлийн зэрэг</th> 
+					 
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for ajiltan in ajiltan %}
+				<tr>
+					
+					<td>1</td>
+					<td>{{ajiltan.emp_lname}}</td>
+					<td>{{ajiltan.nas}}</td>
+					<td>{{ajiltan.emp_reg}}</td>
+					<td>mergejil</td>
+					<td>surguuli </td>
+					
+				</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>".......................".......ХК-ний Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

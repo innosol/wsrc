@@ -1,0 +1,54 @@
+{% extends 'report.html' %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="space20"></div>
+				<div class="widget blue active">
+					<div class="widget-title">
+						<h4><i class="icon-reorder"></i> {{ baiguullaga }} Санхүү эдийн засгийн мэдээ</h4>
+			            <span class="tools">
+			              <a href="javascript:;" class="icon-chevron-down"></a>
+			            </span>
+								</div>
+								<div class="widget-body">
+			            <div class="input-group date">
+			              <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+			            </div>
+									<table class="table table-nemelt table-striped">
+			              <thead>
+			                <tr>
+			                  <th>№</th>
+			                  <th class="nem">НЭР</th>
+			                </tr>
+			              </thead>
+			              <tbody>
+			                {% for t in tailan %}
+			                <tr>
+			                  <td>{{ forloop.counter }}</td>
+			                  <td class="nem"><a href="{% url 'report' t %}">{{ t }} оны санхүүгийн тайлан</a></td>
+			                </tr>
+			                {% endfor %}
+			              </tbody>
+			          	</table>
+			          	<div class="">
+			              <span class="step-links">
+			                {% if tailan.has_previous %}
+			                  <a href="?page={{ sariin_tailan.previous_page_number }}">Өмнөх</a>
+			                {% endif %}
+			                <span class="current">
+			                  Page {{ tailan.number }} of {{ tailan.paginator.num_pages }}.
+			                </span>
+			                {% if tailan.has_next %}
+			                  <a href="?page={{ tailan.next_page_number }}">Дараах</a>
+			                {% endif %}
+			              </span>
+			          	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

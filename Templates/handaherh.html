@@ -1,0 +1,46 @@
+{% extends 'base_base.html' %}
+{% block header %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<body style="background:white; display: block;">
+    <div class="row-fluid" style=" margin-top: -30px;">
+        <div class="span8 offset2">
+            <div class="widget gray active">
+                <div class="widget-title"><h3>Хандах эрх авах хүсэлт</h3></div>
+                <div class="widget-body">
+                    <form class="form-horizontal" action="" method="post">{% csrf_token %}
+                        {% if form.non_field_errors %}
+                        <div class="non-field-errors">
+                        {% for err in form.non_field_errors %}
+                        <div class="alert alert-error">
+                            <button data-dismiss="alert" class="close">×</button>
+                            <strong>{{ err }}</strong>
+                        </div>
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% for f in form %}
+                        <div class="control-group">
+                            <label class="control-label nemelt-label">{{ f.label }}</label>
+                            <div class="controls">
+                                {{ f }}
+                                {% if f.errors %}
+                                    <span class="help-inline" style="color:red;">{{ f.errors }}</span>
+                                {% else %}
+                                    <span class="help-inline">{{ f.help_text }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Хүсэлт илгээх</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Тоног төхөөрөмжийн мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Тоног төхөөрөмжийн нэр</td>
+            <td>{{obj.name}}</td>
+          </tr>
+          <tr>
+            <td>Төхөөрөмжийн төрөл</td>
+            <td>{{obj.torol_id}}</td>
+          </tr>
+          <tr>
+            <td>Тоо</td>
+            <td>{{obj.too}}</td>
+          </tr>
+          <tr>
+            <td>Хүчин чадал</td>
+            <td>{{obj.huchin_chadal}}</td>
+          </tr>
+          <tr>
+            <td>Элэгдлийн чанар</td>
+            <td>{{obj.elegdliin_chanar}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Баланс үнэ</td>
+            <td>{{obj.balans_une}}</td>
+          </tr>
+          <tr>
+            <td>Хуримтлагдсан элэгдэл</td>
+            <td>{{obj.hurimtlagdsan_elegdel}}</td>
+          </tr>
+          <tr>
+            <td>Элэгдлийн хувь</td>
+            <td>{{obj.elegdel_huvi}}</td>
+          </tr>
+          <tr>
+            <td>Өмчийн хэлбэр</td>
+            <td>{{obj.eh_uusver}}</td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'tonog_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,226 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span8">
+			<div class="space20"></div>
+			<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+			<div class="space20"></div>
+			<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+			<div style="float:right;">9 - ЦАЛИН</div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th>Зардлын төрөл</th>
+						<th>Хэмжих нэгж</th>
+						<th>{{ sudalgaa.year }} оны жилийн дүнгээр</th>
+					</tr>
+				</thead>
+					<tr>
+						<td rowspan="10">1</td>
+						<td>Ажиллагсадын тоо</td>
+						<td>тоо</td>
+						<td></td>
+				</tr>
+				<tr>
+					<td>Үүнээс-Үндсэн цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.niit_undsen_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>-Нэмэгдэл</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.niit_nemegdel }}</td>
+				</tr>
+				<tr>
+					<td>-Сарын үр дүн</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.niit_sariin }}</td>
+				</tr>
+				<tr>
+					<td>Жилийн үр дүнгийн шагналт цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.niit_jiliin }}</td>
+				</tr>
+				<tr>
+					<td>Нийт цалингийн сан</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.niit }}</td>
+				</tr>
+				<tr>
+					<td>Нэмэгдэл цалингийн эзлэх хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.nemegdel_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Сарын шагналт цалингийн хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.sariin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>ЖҮДШ цалингийн дундаж хэмжээ</td>
+					<td>сар</td>
+					<td>{{ sudalgaa.tsalin.jiliin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Дундаж цалин /сарын/</td>
+					<td>төг</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td rowspan="10">2</td><td>Удирдлага</td>
+					<td>тоо</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Үүнээс-Үндсэн цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.undsen_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>-Нэмэгдэл</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.nemegdel }}</td>
+				</tr>
+				<tr>
+					<td>-Сарын үр дүн</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.sariin_ur_dun }}</td>
+				</tr>
+				<tr>
+					<td>Жилийн үр дүнгийн шагналт цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.jiliin_ur_dun_shagnalt_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>Нийт цалингийн сан</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.niit_salary }}</td>
+				</tr>
+				<tr>
+					<td>Нэмэгдэл цалингийн эзлэх хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.nemegdel_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Сарын шагналт цалингийн хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.sariin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>ЖҮДШ цалингийн дундаж хэмжээ</td>
+					<td>сар</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.0.jiliin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Дундаж цалин /сарын/</td>
+					<td>төг</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td rowspan="10">3</td><td>ИТА, Албан хаагч</td>
+					<td>тоо</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Үүнээс-Үндсэн цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.undsen_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>-Нэмэгдэл</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.nemegdel }}</td>
+				</tr>
+				<tr>
+					<td>-Сарын үр дүн</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.sariin_ur_dun }}</td>
+				</tr>
+				<tr>
+					<td>Жилийн үр дүнгийн шагналт цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.jiliin_ur_dun_shagnalt_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>Нийт цалингийн сан</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.niit_salary }}</td>
+				</tr>
+				<tr>
+					<td>Нэмэгдэл цалингийн эзлэх хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.nemegdel_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Сарын шагналт цалингийн хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.sariin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>ЖҮДШ цалингийн дундаж хэмжээ</td>
+					<td>сар</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.1.jiliin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Дундаж цалин /сарын/</td>
+					<td>төг</td>
+					<td></td>
+				</tr>
+				
+				<tr>
+					<td rowspan="10">4</td><td>Ажилчид</td>
+					<td>тоо</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Үүнээс-Үндсэн цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.undsen_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>-Нэмэгдэл</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.nemegdel }}</td>
+				</tr>
+				<tr>
+					<td>-Сарын үр дүн</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.sariin_ur_dun }}</td>
+				</tr>
+				<tr>
+					<td>Жилийн үр дүнгийн шагналт цалин</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.jiliin_ur_dun_shagnalt_tsalin }}</td>
+				</tr>
+				<tr>
+					<td>Нийт цалингийн сан</td>
+					<td>мян.төг</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.niit_salary }}</td>
+				</tr>
+				<tr>
+					<td>Нэмэгдэл цалингийн эзлэх хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.nemegdel_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Сарын шагналт цалингийн хувь</td>
+					<td>%</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.sariin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>ЖҮДШ цалингийн дундаж хэмжээ</td>
+					<td>сар</td>
+					<td>{{ sudalgaa.tsalin.tsalin.all.2.jiliin_huvi }} %</td>
+				</tr>
+				<tr>
+					<td>Дундаж цалин /сарын/</td>
+					<td>төг</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

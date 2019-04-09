@@ -1,0 +1,78 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+{{form.errors}}
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="span6">
+       <div class="control-group">
+        <input type="hidden" value="{{ baiguullaga }}" name="tze">
+        <label class="control-label">{{ form.ognoo.label }}</label>
+        <div class="controls">
+          {{ form.ognoo.errors }}{{ form.ognoo }}
+        </div>
+      </div>
+      <h5><b>Цэвэрлэх байгууламж руу орох</b></h5>
+      <div class="control-group">
+        <label class="control-label">{{ form.umbuuro.label }}</label>
+        <div class="controls">
+          {{ form.umbuuro.errors }}{{ form.umbuuro }}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">{{ form.bhho.label }}</label>
+        <div class="controls">
+          {{ form.bhho.errors }}{{ form.bhho }}
+        </div>
+      </div>
+           <div class="control-group">
+      <label class="control-label">{{ form.hhho.label }}</label>
+      <div class="controls">
+        {{ form.hhho.errors }}{{ form.hhho }}
+      </div>
+    </div>
+
+    </div>
+    <div class="span6">
+      <h5><b>Цэвэрлэх байгууламжаас гарах</b></h5>
+          <div class="control-group">
+      <label class="control-label">{{ form.umbuurgarah.label }}</label>
+      <div class="controls">
+        {{ form.umbuurgarah.errors }}{{ form.umbuurgarah }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.bhhgarah.label }}</label>
+      <div class="controls">
+        {{ form.bhhgarah.errors }}{{ form.bhhgarah }}
+      </div>
+    </div>
+     <div class="control-group">
+      <label class="control-label">{{ form.hhhgarah.label }}</label>
+      <div class="controls">
+        {{ form.hhhgarah.errors }}{{ form.hhhgarah }}
+      </div>
+    </div>
+
+        <div class="control-group">
+      <label class="control-label">{{ form.analysis.label }}</label>
+      <div class="controls">
+        {{ form.analysis.errors }}{{ form.analysis }}
+      </div>
+    </div>
+  </div>
+
+
+</div> <!--row-fluid-->
+
+
+</div> <!-- span 12 -->
+</div><!-- row-fluid -->
+
+
+<script type="text/javascript">
+
+  //formAjaxSubmit('#ts_baiguulamj form', '#ts_baiguulamj');
+</script>

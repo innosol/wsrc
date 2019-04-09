@@ -1,0 +1,61 @@
+{% extends 'base_base.html' %}
+{% load static %}
+
+   {% block sidebar %}
+<div class="sidebar-scroll">
+    <div id="sidebar" class="nav-collapse collapse">
+        <ul class="sidebar-menu">
+            <li class="sub-menu active">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>Хүсэлт</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  {% if user.has_tza_darga_permission %}
+                  <li><a href="{% url 'tza darga huselt huvaarilah' %}">ТЗ хүсэлт хуваарилах</a></li>
+                  {% endif %}
+                  <li><a href="{% url 'huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+                  {% if user.has_tza_darga_permission %}
+                  <li><a href="{% url 'handah erh huselt list' %}">Хандах эрх</a></li>
+                  {% endif %}
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="{% url 'tz shuud olgoh list' %}">
+                    <i class=" icon-cog"></i>
+                    <span>ТЗ олголт*</span>
+                </a>
+            </li>
+            <li class="sub-menu ">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>ТЗ Эзэмшигч</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  <li><a href="/tza/baiguullaga/">Байгууллага</a></li>
+                  <li><a href="/tza/ajiltan/">Хүний нөөц</a></li>
+                  <li><a href="/tza/tohooromj/">Тоног төхөөрөмж</a></li>
+                  <li><a href="{% url 'tza_tz_gerchilgee_list' %}">ТЗ Гэрчилгээ</a></li>
+                </ul>
+            </li>        
+            <li class="sub-menu">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>Тайлан</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  <li><a href="/tza/uatailan/">Үйл ажиллагааны тайлан</a></li>
+                  <li><a href="/tza/gshu/">Гүйцэтгэлийн шалгуур үзүүлэлт</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+{% block content %}
+
+{% endblock %} 

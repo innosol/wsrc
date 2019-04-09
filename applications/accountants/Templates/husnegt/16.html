@@ -1,0 +1,63 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0px;">
+	<div class="container-fluid">
+		<div class="space20"></div>
+		<table class="table table-bordered table-fixed-header table-header-rotated">
+			<thead class="header">
+				<tr>
+					<th colspan="2">Хэрэглэгчээс ирүүлсэн санал гомдол</th>
+					<th>Нийт тоо</th>
+					<th>Цэвэр усны тасалдалтай холбоотой</th>
+					<th>Ус хангамжийн чанартай холбоотой</th>
+					<th>Төлбөр тооцоотой холбоотой</th>
+					<th>Дуудлагын засвартай холбоотой</th>
+					<th>Борлуулалтын байцаагч нартай холбоотой</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for t in tailan %}
+				<tr>
+					<td rowspan="2">{{ t.month }} сар</td>
+					<td>Хүлээн авсан</td>
+					<td><b>{{ t.huleen.huleen_avsan_ognoo__sum }}</b></td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.0.huleen_avsan_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.1.huleen_avsan_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.2.huleen_avsan_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.3.huleen_avsan_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.4.huleen_avsan_ognoo }}</td>
+				</tr>
+				<tr>
+					<td>Шийдвэрлэсэн</td>
+					<td><b>{{ t.shiid.shiidverlesen_ognoo__sum }}</b></td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.0.shiidverlesen_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.1.shiidverlesen_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.2.shiidverlesen_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.3.shiidverlesen_ognoo }}</td>
+					<td>{{ t.sanal_gomdol.sanal_gomdol.all.4.shiidverlesen_ognoo }}</td>
+				</tr>
+				{% endfor %}
+				<tr>
+					<td rowspan="2">Өссөн дүн</td>
+					<td>Хүлээн авсан</td>
+					<td><b>{{ niit }}</b></td>
+					<td>{{ a }}</td>
+					<td>{{ b }}</td>
+					<td>{{ d }}</td>
+					<td>{{ e }}</td>
+					<td>{{ f }}</td>
+				</tr>
+				<tr>
+					<td>Шийдвэрлэсэн</td>
+					<td><b>{{ niit1 }}</b></td>
+					<td>{{ a1 }}</td>
+					<td>{{ b1 }}</td>
+					<td>{{ d1 }}</td>
+					<td>{{ e1 }}</td>
+					<td>{{ f1 }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

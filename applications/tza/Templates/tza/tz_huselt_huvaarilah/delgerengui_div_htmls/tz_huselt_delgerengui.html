@@ -1,0 +1,55 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Тусгай зөвшөөрлийн хүсэлтийн дэлгэрэнгүй мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <tr>
+        <th>Илгээсэн байгууллага:</th>
+        <td>{{tz_huselt.tze.org_name}}</td>
+      </tr>
+      <tr>
+        <th>Хүсэлтийн явц:</th>
+        <td>{{tz_huselt.yavts}}</td>
+      </tr>
+      <tr>
+        <th>Хариуцсан ТЗА-ны мэргэжилтэн:</th>
+        <td>{{tz_huselt.tza_mergejilten.emp_name}}</td>
+      </tr>
+      <tr>
+        <th>Хариуцсан ҮТА-ны мэргэжилтэн:</th>
+        <td>{{tz_huselt.uta_mergejilten.emp_name}}</td>
+      </tr>
+      <tr>
+        <th>Илгээсэн огноо:</th>
+        <td>{{tz_huselt.ilgeesen_datetime|date:"Y-m-d"}}</td>
+      </tr>
+      <tr>
+        <th>Ажлын хэсэг очиж шалгах өдөр:</th>
+        <td>{% if tz_huselt.ajliin_heseg_date %}
+              {{tz_huselt.ajliin_heseg_date|date:"Y-m-d"}}
+            {% else %}
+              Товлогдоогүй.
+            {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <th>Хурлаар орох өдөр:</th>
+        <td>{% if tz_huselt.hurliin_date %}
+              {{tz_huselt.hurliin_date|date:"Y-m-d"}}
+            {% else %}
+              Товлогдоогүй.
+            {% endif %}
+        </td>
+      </tr>
+
+    </table>
+    
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

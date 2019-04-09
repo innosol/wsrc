@@ -1,0 +1,53 @@
+
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Ажлын байрны дүгнэлт</h4>
+</div>
+
+<div class="modal1-uuganaa-body">
+  {% if tz_material_status_bind.status == 'Шаардлага хангаагүй' %}
+  <div class="alert alert-error">
+    {{ tz_material_status_bind.tatgalzsan_tailbar }}
+  </div>
+  {% endif %}
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Ажлын байрны дүгнэлт</th>                           
+        <th>Бүртгэгдсэн огноо</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for iu in burdel_history.ajliin_bair_dugnelts.all %}
+      <tr>
+        <td>
+          <a class="fancybox" rel="group" href="/media/{{iu.dugnelt}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{iu.dugnelt}}/" alt="Istanbul"/></a>
+        </td>
+        <td>{{iu.begin_time|date:"Y-m-d H:i"}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="modal1-uuganaa-footer">
+    <button class="btn btn-default div-close-button">Хаах</button>
+    {% if burdel_history.now_checking %}
+      {% if material_angilal == 3 %}
+        {% if not burdel_history.hzm_check_finished and perms.auth.hzm_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% elif material_angilal == 2 %}
+        {% if not burdel_history.uta_check_finished and perms.auth.uta_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% elif material_angilal == 1 %}
+        {% if not burdel_history.tza_check_finished and perms.auth.tza_mergejilten_permission %}
+        <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+</div>

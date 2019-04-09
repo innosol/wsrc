@@ -1,0 +1,24 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'assets/js/a.js' %}"></script>
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Байгууллага нэмэх</h4>
+</div>
+<form id="form_id" class="form-horizontal" action="{% url 'add new baiguullaga' %}" method="POST">{% csrf_token %}
+  <div class="modal1-uuganaa-body portlet-scroll-2">
+    {% for f in form %}
+        <div class="control-group">
+            <label class="control-label nemelt-label">{{ f.label }}</label>
+            <div class="controls">
+                {{ f.errors }}{{ f }}
+            </div>
+        </div>
+    {% endfor %}
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <button class="btn btn-default div-close-button">Хаах</button>
+    <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+  </div>
+</form>
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>

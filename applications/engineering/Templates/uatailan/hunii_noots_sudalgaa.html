@@ -1,0 +1,65 @@
+{% extends 'base_base.html' %}
+{% load tag_extras %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Хүснэгт № 12</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Хүний нөөцийн судалгаа</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th>№</th>
+					<th>Овог</th>
+					<th>Нэр</th>
+					<th>Хүйс</th>
+					<th>Төрсөн он, сар, өдөр</th>
+					<th>РД</th>
+					<th>Албан тушаал</th>
+					<th>Дэлгэрэнгүй</th>
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for i in object_list %}
+				<tr>
+					
+					<td>{{forloop.counter}}</td>
+					<td>{{i.emp_lname}}</td>
+					<td>{{i.emp_name}}</td>
+					<td>{{i.gender}}</td>
+					<td>{{i.emp_birth|date:"Y-m-d"}}
+					<td>{{i.emp_reg}}</td>
+					<td>{{i.alban_tushaal.position_name}}</td>
+					{% if is_history %}
+						<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ajiltan_delgerengui' i.id history_date.year history_date.month history_date.day history_date.hour history_date.minute %}">Дэлгэрэнгүй...</a></td>
+						{% else %}
+						<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ajiltan_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+					{% endif %}
+				</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+
+
+<!-- ****************************MODALS*************************-->
+  <div id="Modal_general" class="modal1-uuganaa">
+    
+  </div>
+<script>
+</script>
+{% endblock %}

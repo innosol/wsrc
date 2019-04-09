@@ -1,0 +1,71 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Ажлын байрны дүгнэлт:
+{% endblock %}
+
+{% block body_show %}
+<div ><a url-data="{% url 'ajliin_bair_dugnelt_insert_tz' %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Ажлын байрны дүгнэлт нэмэх</a></div>
+<div class="space10"></div>
+{% if ajliinbair %}
+  {% if h.burdel.ajliin_bair_dugnelts.all %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын ажлын байрны дүгнэлт нийт {{ ajliinbair|length }} бүртгэгдсэн байгаагаас доорх {{ h.burdel.ajliin_bair_dugnelts.all|length }} {% if h.burdel.ajliin_bair_dugnelts.all|length == 1 %} дүгнэлтийг {% else %} дүгнэлтүүдийг {% endif %} тусгай зөвшөөрөл хүсэх хүсэлтэд хавсаргасан байна.
+    </p>
+    <p>
+      Хэрвээ ажлын байрны дүгнэлт системд нэмж бүртгэх бол "Ажлын байрны дүгнэлт нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд хавсаргасан дүгнэлтийг өөрчлөх бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Ажлын байрны дүгнэлт</th>                           
+        <th>Бүртгэгдсэн огноо</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for iu in h.burdel.ajliin_bair_dugnelts.all %}
+      <tr>
+        <td>
+          <a class="fancybox" rel="group" href="/media/{{iu.dugnelt}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{iu.dugnelt}}/" alt="Istanbul"/></a>
+        </td>
+        <td>{{iu.begin_time|date:"Y-m-d H:i"}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын ажлын байрны дүгнэлт нийт {{ ajliinbair|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ ажлын байрны дүгнэлт системд нэмж бүртгэх бол "Ажлын байрны дүгнэлт нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ дүгнэлт хавсаргах бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+   {% endif %}
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын ажлын байрны дүгнэлт бүртгэгдээгүй байна. Хэрвээ байгууллагын ажлын байрны дүгнэлтыг системд бүртгэх бол "Ажлын байрны дүгнэлт нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if ajliinbair %}
+<a href="javascript:;" url-data='{% url "material_choose 13" huselt_id=h.id %}' class="btn btn-primary ajax_div_load">Сонгох</a>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,104 @@
+{% extends 'uta/uta_home.html' %}
+
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="row-fuild">
+			<div class="span12">
+				<div class="space20"></div>
+				<div class="widget blue active">
+					<div class="widget-title">
+						<h4>Санхүү эдийн засгийн мэдээ</h4>
+						<span class="tools"><a href="javascript:;" class="icon-chevron-down"></a></span>
+					</div>
+					<div class="widget-body">
+						<form id="status" action="{% url 'tolov' %}" method="post">
+							<div class="bs-docs-example">
+				              <ul class="nav nav-pills">
+				                <li class="active dropdown">
+				                  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Төлөв өөрчлөх <b class="caret"></b></a>
+				                  <ul class="dropdown-menu">
+				                    <li><a id="s1" href="#modal" data-data="gold" style="olor: #468847;">Хүлээн авах</a></li>
+				                    <li><a id="s2" href="#modal" data-data="gold" style="olor: #953b39;">Буцаах</a></li>
+				                  </ul>
+				                </li>
+				              </ul>
+				            </div>
+							<table class="table table-bordered table-nemelt">
+								<thead>
+									<tr>
+										<th><input id="selectall" type="checkbox"></th>
+										<th>№</th>
+										<th>Байгууллага</th>
+										<th class="nem">НЭР</th>
+										<th>Төлөв</th>
+										<th>Огноо</th>
+									</tr>
+								</thead>
+								<tbody>
+									<input id="t" type="hidden" value="1" name="t">
+									{% for t in tailan %}
+									<tr>
+										<td><input {% comment %}{% if t.yvts == "Хүлээн авсан" %}disabled="disabled"{% else %}class="case"{% endif %}{% endcomment %} class="case" type="checkbox" name="tailan" value="{{ t.id }}"></td>
+										<td>{{ forloop.counter }}</td>
+										<td>{{ t.tze }}</td>
+										<td class="nem">
+											<a href="{% url 'check_list' t.tze.id t.id %}">{{ t.year }} оны {{ t.month }} сарын санхүүгийн мэдээ</a>
+										</td>
+										<td><span class="label {% if t.yvts == 'Илгээсэн' %}label-warning{% elif t.yvts == 'Буцаасан' %}label-important{% else %}label-success{% endif %}">{{ t.yvts }}</span></td>
+										<td>{{ t.end_time|date:"Y-m-d" }}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							<div id="modal" class="gold">
+								<div class="gold-header">
+									<button type="button" class="close">&times</button>
+									<h4>Төлөв өөрчлөх</h4>
+								</div>
+								<div class="gold-body">
+									Тайлангийн төлөв өөрчлөх үү?  <span id="sp" class="label">Хүлээн авах</span>
+								</div>
+								<div class="gold-footer">
+									<button type="button" data-data="gold" class="btn btn-default">Цуцлах</button>
+									<button type="submit" class="btn btn-success">Зөвшөөрөх</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("#selectall").click(function () {
+			$('.case').attr('checked', this.checked);
+		});
+
+		$(".case").click(function(){
+			if($(".case").length == $(".case:checked").length) {
+				$("#selectall").attr("checked", "checked");
+			}
+			else {
+				$("#selectall").removeAttr("checked");
+			}
+		});
+	});
+	$(function(){
+		$("#s1").click(function () {
+			$('#sp').removeClass('label-important').addClass('label-success');
+			$('#sp').text('Хүлээн авах');
+			$('#t').val(0);
+		});
+
+		$("#s2").click(function () {
+			$('#sp').removeClass('label-success').addClass('label-important');
+			$('#sp').text('Буцаах');
+			$('#t').val(1);
+		});
+	});
+</script>
+{% endblock %}

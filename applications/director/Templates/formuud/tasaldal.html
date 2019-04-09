@@ -1,0 +1,62 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Усны тасалдалын мэдээ</h4>
+</div>
+<form action="{% url 'tasaldal' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Тасралтын нийт хугацаа</th>
+          <th class="span3">Тасалдалд хамрагдсан нийт иргэдийн тоо</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Төлөвлөгөөт тасалдал</td>
+          <td>{{ form.t_0 }}</td>
+          <td>{{ form.t_1 }}</td>
+        </tr>
+        <tr>
+          <td>Хүний буруутай ажиллагаанаас</td>
+          <td>{{ form.t_2 }}</td>
+          <td>{{ form.t_3 }}</td>
+        </tr>
+        <tr>
+          <td>Шугам, тоног төхөөрөмжийн гэмтлээс</td>
+          <td>{{ form.t_4 }}</td>
+          <td>{{ form.t_5 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад тусгай зөвшөөрөл эзэмшигчдийн буруутай үйл ажиллагаанаас</td>
+          <td>{{ form.t_6 }}</td>
+          <td>{{ form.t_7 }}</td>
+        </tr>
+        <tr>
+          <td>Гуравдагч этгээдийн буруугаас</td>
+          <td>{{ form.t_8 }}</td>
+          <td>{{ form.t_9 }}</td>
+        </tr>
+        <tr>
+          <td>Байгалийн гамшиг /аянга, хүчтэй салхи шуурга, үер/-аас</td>
+          <td>{{ form.t_10 }}</td>
+          <td>{{ form.t_11 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад шалтгаанаар</td>
+          <td>{{ form.t_12 }}</td>
+          <td>{{ form.t_13 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.tasaldal %}
+    <a url-data="{% if date %}{% url 'tasaldallist' date %}{% else %}{% url 'tasaldallist' %}{% endif %}" href="javascript:;" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

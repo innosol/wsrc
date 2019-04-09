@@ -1,0 +1,72 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Цалингийн зардал</h4>
+</div>
+<form method="post" class="form-horizontal">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Үндсэн ба нэмэгдэл цалин</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z2_0 }}</td>
+          <td>{{ form.z2_1 }}</td>
+          <td>{{ form.z2_2 }}</td>
+          <td>{{ form.z2_3 }}</td>
+          <td>{{ form.z2_4 }}</td>
+          <td>{{ form.z2_5 }}</td>
+          <td>{{ form.z2_6 }}</td>
+        </tr>
+        <tr>
+          <td>НДШ, ЭМДШ</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z2_7 }}</td>
+          <td>{{ form.z2_8 }}</td>
+          <td>{{ form.z2_9 }}</td>
+          <td>{{ form.z2_10 }}</td>
+          <td>{{ form.z2_11 }}</td>
+          <td>{{ form.z2_12 }}</td>
+          <td>{{ form.z2_13 }}</td>
+        </tr>
+        <tr>
+          <td>Шагнал урамшуулал</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z2_14 }}</td>
+          <td>{{ form.z2_15 }}</td>
+          <td>{{ form.z2_16 }}</td>
+          <td>{{ form.z2_17 }}</td>
+          <td>{{ form.z2_18 }}</td>
+          <td>{{ form.z2_19 }}</td>
+          <td>{{ form.z2_20 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z2 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal2list' date %}{% else %}{% url 'zardal2list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

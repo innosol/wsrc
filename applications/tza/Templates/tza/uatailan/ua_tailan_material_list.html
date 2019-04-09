@@ -1,0 +1,106 @@
+{% load static %}
+{% load tag_extras %}
+
+  <div class="widget active green">
+    <div class="widget-title">
+      <h4>
+        <i class="icon-reorder"></i>
+        Үйл ажиллагааны тайлангийн материалууд
+      </h4>
+    </div>
+    <div class="widget-body">
+      <div class="alert alert-info">
+        <strong>{{obj.tze.org_name}} {{obj.tze.org_type}}</strong>-ийн  үйл ажиллагааны тайлан ({{obj.tailan_date|date:"Y-m-d"}} өдрийн байдлаар)<br>
+
+        <strong>Гэрчилгээний тоо:</strong> {{obj.certificates.all.count}}<br>
+
+        {% for i in obj.certificates.all %}
+          <br>
+          <strong>Гэрчилгээний дугаар:</strong> {{i.cert_number}}<br>
+          <strong>Заалтууд:</strong><br>
+          {% for j in i.tz_id.all %}
+           {{j}}<br>
+          {% endfor %}
+        {% endfor %}
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Материалын нэр</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if obj.gunii_hudags %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_husnegt1' obj.id %}" target="_blank">Гүний худгийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.tsevershuuleh %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_tsevershuuleh' obj.id%}" target="_blank">Цэвэршүүлэх байгууламжийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.tseverleh %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_tseverleh' obj.id%}" target="_blank">Цэвэрлэх байгууламжийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.usansan %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_usansan' obj.id%}" target="_blank">Усан сангийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.tsever_nasos_stants %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_nasosstants' obj.id%}" target="_blank">Цэвэр усны насос станцын судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.bohir_nasos_stants %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_husnegt10_bohir_nasos' obj.id%}" target="_blank">Бохир усны насос станцын судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.lab %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_lab' obj.id%}" target="_blank">Лабораторийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.tsever_usnii_shugam %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_tsever_usnii_shugam' obj.id%}" target="_blank">Цэвэр усны шугам сүлжээний судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.bohir_usnii_shugam %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_bohir_usnii_shugam' obj.id%}" target="_blank">Бохир усны шугам сүлжээний судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.abb %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_abb' obj.id%}" target="_blank">Ашиглалтыг хариуцаж буй барилга орон сууцны судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.us_tugeeh %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_us_tugeeh_bair' obj.id%}" target="_blank">Ус түгээх байрны судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.water_car %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_water_car' obj.id%}" target="_blank">Зөөврийн ус түгээх тээврийн хэрэгслийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.bohir_car %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_bohir_car' obj.id%}" target="_blank">Бохир усны тээврийн хэрэгслийн судалгаа</a></td>
+          </tr>
+          {% endif %}
+          {% if obj.ajiltans %}
+          <tr>
+            <td><a href="{% url 'tza_ua_tailan_ajiltan' obj.id%}" target="_blank">Ажилчдын судалгаа</a></td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>

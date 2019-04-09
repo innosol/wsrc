@@ -1,0 +1,82 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Бусад зардал</h4>
+</div>
+<form action="{% url 'zardal16' %}" class="zardal16" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <a id="addScnt" class="btn btn-primary">Талбар нэмэх +</a>
+    <div class="space10"></div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody id="p_scents">
+        {% for t in tailan.zardal.z16.busad_zardal.all %}
+        <tr>
+          <td><input value="{{ t.name }}" type="text" class="input-small" name="z16_0" required="True"/></td>
+          <td>мян.төгрөг</td>
+          <td><input value="{{ t.busad.all.0.value }}" type="text" class="input-small zar" name="z16_1" required="True"/></td>
+          <td><input value="{{ t.busad.all.1.value }}" type="text" class="input-small zar" name="z16_2" required="True"/></td>
+          <td><input value="{{ t.busad.all.2.value }}" type="text" class="input-small zar" name="z16_3" required="True"/></td>
+          <td><input value="{{ t.busad.all.3.value }}" type="text" class="input-small zar" name="z16_4" required="True"/></td>
+          <td><input value="{{ t.busad.all.4.value }}" type="text" class="input-small zar" name="z16_5" required="True"/></td>
+          <td><input value="{{ t.busad.all.5.value }}" type="text" class="input-small zar" name="z16_6" required="True"/></td>
+          <td><input value="{{ t.busad.all.6.value }}" type="text" class="input-small zar" name="z16_7" required="True"/></td>
+          <td></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z16 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal16list' date %}{% else %}{% url 'zardal16list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal16" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>
+<script type="text/javascript">
+  $(function() {
+    var scntDiv = $('#p_scents');
+    var value =$('#hide');
+    var i = $('#p_scents').size() + 1;
+    $('#addScnt').click(function() {
+    $('<tr><td><input value="" type="text" class="input-small" name="z16_0" required="True"/></td><td>мян.төгрөг</td><td><input value="0" type="text" class="input-small zar" name="z16_1" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_2" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_3" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_4" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_5" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_6" required="True"/></td><td><input value="0" type="text" class="input-small zar" name="z16_7" required="True"/></td><td><a href="javascript:;" id="remScnt"><i class="icon-remove-sign"></i></a></td></tr>').appendTo(scntDiv);
+      value.val(i).trigger('change');
+      i++;
+      $(".input-small.zar").keyup(function( event ) {
+        if (!/^\d*\.?\d*$/.test($(this).val())) {
+        $(this).val('0');
+        }
+      });
+      return false;
+    });
+    $('#remScnt').live('click', function() { 
+      if( i > 2 ) {
+        $(this).parents('tr').remove();
+        i--;
+      }
+      return false;
+    });
+  });
+</script>

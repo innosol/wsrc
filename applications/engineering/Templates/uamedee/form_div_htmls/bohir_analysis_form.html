@@ -1,0 +1,460 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>Бохир усны шинжилгээ нэмэх</h4>
+ </div>
+<form  id="form_id" action="{{view_url}}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+    	<div class="span6">
+    		<div class="control-group">
+          <label class="control-label">{{ form.mheg_dugnelt.label }}</label>
+          <div class="controls">
+            {{ form.mheg_dugnelt.errors }}{{ form.mheg_dugnelt }}
+          </div>
+	       </div>
+    	</div>
+    	<div class="span6">
+    		<div class="control-group">
+          <label class="control-label">{{ form.ognoo.label }}</label>
+          <div class="controls">
+            {{ form.ognoo.errors }}{{ form.ognoo }}
+          </div>
+	       </div>
+    	</div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th rowspan="2">№</th>
+                    <th rowspan="2">Үзүүлэлтийн нэр</th>
+                    <th rowspan="2">Хэмжих нэгж</th>
+                    <th colspan="2">Оролт</th>
+                    <th colspan="2">Гаралт</th>
+                </tr>
+                <tr>
+                    <th>Зөвшөөрөгдөх дээд хэмжээ</th>
+                    <th>Шинжилгээний дүн</th>
+                    <th>Зөвшөөрөгдөх дээд хэмжээ</th>
+                    <th>Шинжилгээний дүн</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>{{form.temperature_input.label}}</td>
+                    <td>Цельс</td>
+                    <td>20</td>
+                    <td>{{form.temperature_input.errors}}{{form.temperature_input}}</td>
+                    <td>20</td>
+                    <td>{{form.temperature_output.errors}}{{form.temperature_output}}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>{{form.orchin_input.label}}</td>
+                    <td>-</td>
+                    <td>6-9</td>
+                    <td>{{form.orchin_input.errors}}{{form.orchin_input}}</td>
+                    <td>6-9</td>
+                    <td>{{form.orchin_output.errors}}{{form.orchin_output}}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>{{form.uner_input.label}}</td>
+                    <td>Мэдрэхүй</td>
+                    <td>Үнэргүй</td>
+                    <td>{{form.uner_input.errors}}{{form.uner_input}}</td>
+                    <td>Үнэргүй</td>
+                    <td>{{form.uner_output.errors}}{{form.uner_output}}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>{{form.umbuuro_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>30</td>
+                    <td>{{form.umbuuro_input.errors}}{{form.umbuuro_input}}</td>
+                    <td>30</td>
+                    <td>{{form.umbuuro_output.errors}}{{form.umbuuro_output}}</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>{{form.bhho_input.label}}</td>
+                    <td>мгО/л</td>
+                    <td>20</td>
+                    <td>{{form.bhho_input.errors}}{{form.bhho_input}}</td>
+                    <td>20</td>
+                    <td>{{form.bhho_output.errors}}{{form.bhho_output}}</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>{{form.hhho_input.label}}</td>
+                    <td>мгО/л</td>
+                    <td>50</td>
+                    <td>{{form.hhho_input.errors}}{{form.hhho_input}}</td>
+                    <td>50</td>
+                    <td>{{form.hhho_output.errors}}{{form.hhho_output}}</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>{{form.pich_input.label}}</td>
+                    <td>мгО/л</td>
+                    <td>20</td>
+                    <td>{{form.pich_input.errors}}{{form.pich_input}}</td>
+                    <td>20</td>
+                    <td>{{form.pich_output.errors}}{{form.pich_output}}</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>{{form.davs_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1000</td>
+                    <td>{{form.davs_input.errors}}{{form.davs_input}}</td>
+                    <td>1000</td>
+                    <td>{{form.davs_output.errors}}{{form.davs_output}}</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>{{form.niit_azot_input.label}}</td>
+                    <td>мгN/л</td>
+                    <td>15</td>
+                    <td>{{form.niit_azot_input.errors}}{{form.niit_azot_input}}</td>
+                    <td>15</td>
+                    <td>{{form.niit_azot_output.errors}}{{form.niit_azot_output}}</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>{{form.niit_phosphor_input.label}}</td>
+                    <td>мгP/л</td>
+                    <td>1.5</td>
+                    <td>{{form.niit_phosphor_input.errors}}{{form.niit_phosphor_input}}</td>
+                    <td>1.5</td>
+                    <td>{{form.niit_phosphor_output.errors}}{{form.niit_phosphor_output}}</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>{{form.huhert_ustorogch_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{form.huhert_ustorogch_input.errors}}{{form.huhert_ustorogch_input}}</td>
+                    <td>0.5</td>
+                    <td>{{form.huhert_ustorogch_output.errors}}{{form.huhert_ustorogch_output}}</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>{{form.uldegdel_hlor_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{form.uldegdel_hlor_input.errors}}{{form.uldegdel_hlor_input}}</td>
+                    <td>1</td>
+                    <td>{{form.uldegdel_hlor_output.errors}}{{form.uldegdel_hlor_output}}</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>{{form.barii_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1.5</td>
+                    <td>{{form.barii_input.errors}}{{form.barii_input}}</td>
+                    <td>1.5</td>
+                    <td>{{form.barii_output.errors}}{{form.barii_output}}</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>{{form.binder_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.0001</td>
+                    <td>{{form.binder_input.errors}}{{form.binder_input}}</td>
+                    <td>0.0001</td>
+                    <td>{{form.binder_output.errors}}{{form.binder_output}}</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>{{form.bor_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{form.bor_input.errors}}{{form.bor_input}}</td>
+                    <td>0.5</td>
+                    <td>{{form.bor_output.errors}}{{form.bor_output}}</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>{{form.vanadii_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{form.vanadii_input.errors}}{{form.vanadii_input}}</td>
+                    <td>0.1</td>
+                    <td>{{form.vanadii_output.errors}}{{form.vanadii_output}}</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>{{form.zes_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{form.zes_input.errors}}{{form.zes_input}}</td>
+                    <td>1</td>
+                    <td>{{form.zes_output.errors}}{{form.zes_output}}</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>{{form.kadmi_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.03</td>
+                    <td>{{form.kadmi_input.errors}}{{form.kadmi_input}}</td>
+                    <td>0.03</td>
+                    <td>{{form.kadmi_output.errors}}{{form.kadmi_output}}</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>{{form.kobalt_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.02</td>
+                    <td>{{form.kobalt_input.errors}}{{form.kobalt_input}}</td>
+                    <td>0.02</td>
+                    <td>{{form.kobalt_output.errors}}{{form.kobalt_output}}</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>{{form.mangan_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{form.mangan_input.errors}}{{form.mangan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{form.mangan_output.errors}}{{form.mangan_output}}</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>{{form.anzan_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{form.anzan_input.errors}}{{form.anzan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{form.anzan_output.errors}}{{form.anzan_output}}</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>{{form.mongon_us_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.001</td>
+                    <td>{{form.mongon_us_input.errors}}{{form.mongon_us_input}}</td>
+                    <td>0.001</td>
+                    <td>{{form.mongon_us_output.errors}}{{form.mongon_us_output}}</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>{{form.nikel_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.2</td>
+                    <td>{{form.nikel_input.errors}}{{form.nikel_input}}</td>
+                    <td>0.2</td>
+                    <td>{{form.nikel_output.errors}}{{form.nikel_output}}</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>{{form.selen_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.02</td>
+                    <td>{{form.selen_input.errors}}{{form.selen_input}}</td>
+                    <td>0.02</td>
+                    <td>{{form.selen_output.errors}}{{form.selen_output}}</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>{{form.strontsi_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>2</td>
+                    <td>{{form.strontsi_input.errors}}{{form.strontsi_input}}</td>
+                    <td>2</td>
+                    <td>{{form.strontsi_output.errors}}{{form.strontsi_output}}</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>{{form.tomor_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{form.tomor_input.errors}}{{form.tomor_input}}</td>
+                    <td>1</td>
+                    <td>{{form.tomor_output.errors}}{{form.tomor_output}}</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>{{form.uran_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{form.uran_input.errors}}{{form.uran_input}}</td>
+                    <td>0.05</td>
+                    <td>{{form.uran_output.errors}}{{form.uran_output}}</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>{{form.har_tugalga_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{form.har_tugalga_input.errors}}{{form.har_tugalga_input}}</td>
+                    <td>0.1</td>
+                    <td>{{form.har_tugalga_output.errors}}{{form.har_tugalga_output}}</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>{{form.niit_hrom_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.3</td>
+                    <td>{{form.niit_hrom_input.errors}}{{form.niit_hrom_input}}</td>
+                    <td>0.3</td>
+                    <td>{{form.niit_hrom_output.errors}}{{form.niit_hrom_output}}</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>{{form.valent_6_hrom_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.01</td>
+                    <td>{{form.valent_6_hrom_input.errors}}{{form.valent_6_hrom_input}}</td>
+                    <td>0.01</td>
+                    <td>{{form.valent_6_hrom_output.errors}}{{form.valent_6_hrom_output}}</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td>{{form.hongon_tsagaan_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{form.hongon_tsagaan_input.errors}}{{form.hongon_tsagaan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{form.hongon_tsagaan_output.errors}}{{form.hongon_tsagaan_output}}</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>{{form.huntsel_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.01</td>
+                    <td>{{form.huntsel_input.errors}}{{form.huntsel_input}}</td>
+                    <td>0.01</td>
+                    <td>{{form.huntsel_output.errors}}{{form.huntsel_output}}</td>
+                </tr>
+                <tr>
+                    <td>33</td>
+                    <td>{{form.tsair_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>3</td>
+                    <td>{{form.tsair_input.errors}}{{form.tsair_input}}</td>
+                    <td>3</td>
+                    <td>{{form.tsair_output.errors}}{{form.tsair_output}}</td>
+                </tr>
+                <tr>
+                    <td>34</td>
+                    <td>{{form.tsagaan_tugalga_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{form.tsagaan_tugalga_input.errors}}{{form.tsagaan_tugalga_input}}</td>
+                    <td>0.05</td>
+                    <td>{{form.tsagaan_tugalga_output.errors}}{{form.tsagaan_tugalga_output}}</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>{{form.niit_tsianid_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{form.niit_tsianid_input.errors}}{{form.niit_tsianid_input}}</td>
+                    <td>0.05</td>
+                    <td>{{form.niit_tsianid_output.errors}}{{form.niit_tsianid_output}}</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td>{{form.choloot_tsianid_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.005</td>
+                    <td>{{form.choloot_tsianid_input.errors}}{{form.choloot_tsianid_input}}</td>
+                    <td>0.005</td>
+                    <td>{{form.choloot_tsianid_output.errors}}{{form.choloot_tsianid_output}}</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>{{form.phenol_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{form.phenol_input.errors}}{{form.phenol_input}}</td>
+                    <td>0.05</td>
+                    <td>{{form.phenol_output.errors}}{{form.phenol_output}}</td>
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td>{{form.benza_piren_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.005</td>
+                    <td>{{form.benza_piren_input.errors}}{{form.benza_piren_input}}</td>
+                    <td>0.005</td>
+                    <td>{{form.benza_piren_output.errors}}{{form.benza_piren_output}}</td>
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td>{{form.ooh_tos_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>5</td>
+                    <td>{{form.ooh_tos_input.errors}}{{form.ooh_tos_input}}</td>
+                    <td>5</td>
+                    <td>{{form.ooh_tos_output.errors}}{{form.ooh_tos_output}}</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>{{form.erdes_tos_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{form.erdes_tos_input.errors}}{{form.erdes_tos_input}}</td>
+                    <td>1</td>
+                    <td>{{form.erdes_tos_output.errors}}{{form.erdes_tos_output}}</td>
+                </tr>
+                <tr>
+                    <td>41</td>
+                    <td>{{form.ugaagch_bodis_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>2.5</td>
+                    <td>{{form.ugaagch_bodis_input.errors}}{{form.ugaagch_bodis_input}}</td>
+                    <td>2.5</td>
+                    <td>{{form.ugaagch_bodis_output.errors}}{{form.ugaagch_bodis_output}}</td>
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td>{{form.trichlor_ethylen_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.2</td>
+                    <td>{{form.trichlor_ethylen_input.errors}}{{form.trichlor_ethylen_input}}</td>
+                    <td>0.2</td>
+                    <td>{{form.trichlor_ethylen_output.errors}}{{form.trichlor_ethylen_output}}</td>
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td>{{form.tetrachlor_ethylen_input.label}}</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{form.tetrachlor_ethylen_input.errors}}{{form.tetrachlor_ethylen_input}}</td>
+                    <td>0.1</td>
+                    <td>{{form.tetrachlor_ethylen_output.errors}}{{form.tetrachlor_ethylen_output}}</td>
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td>{{form.gedes_nyan_input.label}}</td>
+                    <td>-</td>
+                    <td>1мл-т илрэхгүй</td>
+                    <td>{{form.gedes_nyan_input.errors}}{{form.gedes_nyan_input}}</td>
+                    <td>1мл-т илрэхгүй</td>
+                    <td>{{form.gedes_nyan_output.errors}}{{form.gedes_nyan_output}}</td>
+                </tr>
+            </tbody>
+        </table>
+      
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+    <div class="modal1-uuganaa-footer">
+      <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+      <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+    </div>
+  </form>   
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+
+
+
+

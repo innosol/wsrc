@@ -1,0 +1,756 @@
+{% extends 'base_base.html' %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">  
+    <div class="row-fluid">
+      <div class="span4">
+        {{ chart_zardal }}
+        <h4>Санхүүгийн мэдээний гүйцэтгэл</h4>
+        <canvas id="chart-area"/></canvas>
+      </div>
+      <div class="span4">
+        <h4>Орлогын статистик үзүүлэлт</h4>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="span4">
+        <h4>Зардлын статистик үзүүлэлт</h4>
+        <canvas id="bar"></canvas>
+      </div>
+    </div>
+    <div class="space20"></div>
+    <div class="row-fluid">
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-block alert-success fade in">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <h4 class="alert-heading">{{ message }}</h4>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if umnuh_tailan %}
+    <a href="{% url 'copy' tailan.id umnuh_tailan %}" class="btn btn-success">Өмнөх сарын тайлан татах</a>
+    <div class="space20"></div>
+    {% endif %}
+    <div class="row-fluid">    
+      {% if tailan.yvts == 'Хийгдэж байна' or tailan.yvts == 'Буцаасан' %}
+      <div class="span6">
+        <div class="widget red active">
+          <div class="widget-title">
+            <h4>
+              {% if tailan.month == 0 %}
+              {{ tailan.year }} оны санхүүгийн судалгаа
+              {% else %}
+              {{ tailan.year }} оны {{ tailan.month }} сарын санхүүгийн мэдээ
+              {% endif %}
+            </h4>
+            <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a></span>
+          </div>
+          <div class="widget-body">
+            {% if hiigdej_bui == 0 and should %}
+            <a href="{% if date %}{% url 'sendtailan'  tailan.id %}{% else %}{% url 'sendtailan' tailan.id %}{% endif %}" class="btn btn-success">Илгээх</a>
+            {% else %}
+            <button disabled="true" class="btn btn-disabled">Илгээх</button>
+            {% endif %}
+            <div class="clearfix pull-right">
+              <div class="btn-group">
+                <button class="btn btn-primary" data-toggle="dropdown">Тайлантай холбоотой тохиргоо <i class="icon-angle-down"></i></button>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a url-data="{% if hereglegch %}{% url 'hereglegchlist' %}{% else %}{% url 'hereglegch' %}{% endif %}" class="ajax_div_load" href="javascript:;">Хэрэглэгчдийн тоо</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" url-data="{% if golch %}{% url 'golchlist' %}{% else %}{% url 'golch' %}{% endif %}" class="ajax_div_load">ААНБайгууллага цэвэр усны голч</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" url-data="{% if golch_hangagch %}{% url 'golchhangagchlist' %}{% else %}{% url 'golchhangagch' %}{% endif %}" class="ajax_div_load">Хангагчаас авсан цэвэр усны голч</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="space10"></div>
+              <div class="btn-group pull-right">
+                <button class="btn btn-info" data-toggle="dropdown">Тариф <i class="icon-angle-down"></i></button>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a url-data="{% if tariffus %}{% url 'tarifflist' %}{% else %}{% url 'tariff' %}{% endif %}" class="ajax_div_load" href="javascript:;">Усны үйлчилгээний үнэ</a>
+                  </li>
+                  <li>
+                    <a url-data="{% if ol %}{% url 'ushudaldanavahlist' %}{% else %}{% url 'ushudaldanavah' %}{% endif %}" class="ajax_div_load" href="javascript:;">Ус худалдан авах үнэ</a>
+                  </li>
+                  <li>
+                    <a url-data="{% if tariffgolch %}{% url 'golchiinsuuriunelist' %}{% else %}{% url 'golchiinsuuriune' %}{% endif %}" class="ajax_div_load" href="javascript:;">Голчийн суурь үнэ</a>                      
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="space20"></div>
+            <table class="table table-nemelt table=bordered table-height">
+              <thead>
+                <tr>
+                  <th>ТАЙЛАН</th>
+                  <th class="nem">НЭР</th>
+                  <th>ТӨЛӨВ</th>
+                </tr>    
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="2" class="nem" style="vertical-align: top;">Орлого</td>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.orlogo.buteegdehuun.all %}{% url 'orlogolist' date %}{% else %}{% url 'orlogo' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Усны бичилт</a></td>
+                    {% else %}
+                    <a url-data="{% if tailan.orlogo.buteegdehuun.all %}{% url 'orlogolist' %}{% else %}{% url 'orlogo' %}{% endif %}" href="javascript:;" class="ajax_div_load">Усны бичилт</a></td>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.orlogo.buteegdehuun.all %}
+                    <span class="label {% if tailan.orlogo.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.orlogo.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.busad_orlogo %}{% url 'busadorlogolist' date %}{% else %}{% url 'busadorlogo' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Бусад орлого</a></td>
+                    {% else %}
+                    <a url-data="{% if tailan.busad_orlogo %}{% url 'busadorlogolist' %}{% else %}{% url 'busadorlogo' %}{% endif %}" href="javascript:;" class="ajax_div_load">Бусад орлого</a></td>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.busad_orlogo %}
+                    <span class="label {% if tailan.busad_orlogo.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.busad_orlogo.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                </tr>
+                <tr>
+                  <td rowspan="19" class="nem" style="vertical-align: top;">Зардал</td>
+                  {% if ol %}
+                  {% if ol.torol1 and not ol.torol2 %}
+                    <td><p>Үндсэн материалын зардал</p></td>
+                    <td><span class="label label-info label-mini">Хийгдэхгүй</span></td>
+                  {% else %}
+                    <td>
+                      {% if date %}
+                      <a href="javascript:;" class="ajax_div_load" url-data="{% if tailan.zardal.z1 %}{% url 'zardal1list' date %}{% else %}{% url 'zardal1' date %}{% endif %}">Үндсэн материалын зардал</a>
+                      {% else %}
+                      <a href="javascript:;" class="ajax_div_load" url-data="{% if tailan.zardal.z1 %}{% url 'zardal1list' %}{% else %}{% url 'zardal1' %}{% endif %}">Үндсэн материалын зардал</a>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if tailan.zardal.z1 %}
+                        <span class="label {% if tailan.zardal.z1.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z1.yvts }}</span>
+                      {% else %}
+                        <span class="label label-warning label-mini">Хийгдэж байна</span>
+                      {% endif %}
+                  </td>
+                  {% endif %}
+                  {% else %}
+                    <td><a href="javascript:;" id="message-une">Үндсэн материалын зардал</a></td>
+                    <td><span class="label label-warning label-mini">Хийгдэж байна</span></td>
+                  {% endif %}
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z2 %}{% url 'zardal2list' date %}{% else %}{% url 'zardal2' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Цалингийн зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z2 %}{% url 'zardal2list' %}{% else %}{% url 'zardal2' %}{% endif %}" href="javascript:;" class="ajax_div_load">Цалингийн зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z2 %}
+                    <span class="label {% if tailan.zardal.z2.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z2.yvts }}</span></td>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z3 %}{% url 'zardal3list' date %}{% else %}{% url 'zardal3' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Ашиглалтын зардал</a></td>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z3 %}{% url 'zardal3list' %}{% else %}{% url 'zardal3' %}{% endif %}" href="javascript:;" class="ajax_div_load">Ашиглалтын зардал</a></td>
+                    {% endif %}
+                  <td>
+                    {% if tailan.zardal.z3 %}
+                    <span class="label {% if tailan.zardal.z3.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z3.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z4 %}{% url 'zardal4list' date %}{% else %}{% url 'zardal4' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Засвар үйлчилгээний зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z4 %}{% url 'zardal4list' %}{% else %}{% url 'zardal4' %}{% endif %}" href="javascript:;" class="ajax_div_load">Засвар үйлчилгээний зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z4 %}
+                    <span class="label {% if tailan.zardal.z4.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z4.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z5 %}{% url 'zardal5list' date %}{% else %}{% url 'zardal5' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Ариутгал халдваргүйжүүлэлтийн зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z5 %}{% url 'zardal5list' %}{% else %}{% url 'zardal5' %}{% endif %}" href="javascript:;" class="ajax_div_load">Ариутгал халдваргүйжүүлэлтийн зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z5 %}
+                    <span class="label {% if tailan.zardal.z5.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z5.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z6 %}{% url 'zardal6list' date %}{% else %}{% url 'zardal6' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Конторын хангамжийн зардал</a></td>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z6 %}{% url 'zardal6list' %}{% else %}{% url 'zardal6' %}{% endif %}" href="javascript:;" class="ajax_div_load">Конторын хангамжийн зардал</a></td>
+                    {% endif %}
+                  <td>
+                    {% if tailan.zardal.z6 %}
+                    <span class="label {% if tailan.zardal.z6.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z6.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z7 %}{% url 'zardal7list' date %}{% else %}{% url 'zardal7' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z7 %}{% url 'zardal7list' %}{% else %}{% url 'zardal7' %}{% endif %}" href="javascript:;" class="ajax_div_load">Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z7 %}
+                    <span class="label {% if tailan.zardal.z7.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z7.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z8 %}{% url 'zardal8list' date %}{% else %}{% url 'zardal8' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Маркетинг борлуулалтын зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z8 %}{% url 'zardal8list' %}{% else %}{% url 'zardal8' %}{% endif %}" href="javascript:;" class="ajax_div_load">Маркетинг борлуулалтын зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z8 %}
+                    <span class="label {% if tailan.zardal.z8.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z8.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>                  
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z9 %}{% url 'zardal9list' date %}{% else %}{% url 'zardal9' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Лабораторын зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z9 %}{% url 'zardal9list' %}{% else %}{% url 'zardal9' %}{% endif %}" href="javascript:;" class="ajax_div_load">Лабораторын зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z9 %}
+                    <span class="label {% if tailan.zardal.z9.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z9.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z10 %}{% url 'zardal10list' date %}{% else %}{% url 'zardal10' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Гүйцэтгэх удирдлагын зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z10 %}{% url 'zardal10list' %}{% else %}{% url 'zardal10' %}{% endif %}" href="javascript:;" class="ajax_div_load">Гүйцэтгэх удирдлагын зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z10 %}
+                    <span class="label {% if tailan.zardal.z10.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z10.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z11 %}{% url 'zardal11list' date %}{% else %}{% url 'zardal11' date %}{% endif %}" href="javascript:;" class="ajax_div_load">ТУЗ-н зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z11 %}{% url 'zardal11list' %}{% else %}{% url 'zardal11' %}{% endif %}" href="javascript:;" class="ajax_div_load">ТУЗ-н зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z11 %}
+                    <span class="label {% if tailan.zardal.z11.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z11.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z12 %}{% url 'zardal12list' date %}{% else %}{% url 'zardal12' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Үндсэн хөрөнгийн элэгдэл зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z12 %}{% url 'zardal12list' %}{% else %}{% url 'zardal12' %}{% endif %}" href="javascript:;" class="ajax_div_load">Үндсэн хөрөнгийн элэгдэл зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z12 %}
+                    <span class="label {% if tailan.zardal.z12.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z12.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z13 %}{% url 'zardal13list' date %}{% else %}{% url 'zardal13' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Гадны үйлчилгээний зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z13 %}{% url 'zardal13list' %}{% else %}{% url 'zardal13' %}{% endif %}" href="javascript:;" class="ajax_div_load">Гадны үйлчилгээний зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z13 %}
+                    <span class="label {% if tailan.zardal.z13.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z13.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z14 %}{% url 'zardal14list' date %}{% else %}{% url 'zardal14' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Татварын зардал/ААНОАТ-аас бусад/</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z14 %}{% url 'zardal14list' %}{% else %}{% url 'zardal14' %}{% endif %}" href="javascript:;" class="ajax_div_load">Татварын зардал/ААНОАТ-аас бусад/</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z14 %}
+                    <span class="label {% if tailan.zardal.z14.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z14.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z15 %}{% url 'zardal15list' date %}{% else %}{% url 'zardal15' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Даатгалын зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z15 %}{% url 'zardal15list' %}{% else %}{% url 'zardal15' %}{% endif %}" href="javascript:;" class="ajax_div_load">Даатгалын зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z15 %}
+                    <span class="label {% if tailan.zardal.z15.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z15.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z16 %}{% url 'zardal16list' date %}{% else %}{% url 'zardal16' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Бусад зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z16 %}{% url 'zardal16list' %}{% else %}{% url 'zardal16' %}{% endif %}" href="javascript:;" class="ajax_div_load">Бусад зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z16 %}
+                    <span class="label {% if tailan.zardal.z16.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z16.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z17 %}{% url 'zardal17list' date %}{% else %}{% url 'zardal17' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Ажиллагсдын нийгмийн зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z17 %}{% url 'zardal17list' %}{% else %}{% url 'zardal17' %}{% endif %}" href="javascript:;" class="ajax_div_load">Ажиллагсдын нийгмийн зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z17 %}
+                    <span class="label {% if tailan.zardal.z17.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z17.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z18 %}{% url 'zardal18list' date %}{% else %}{% url 'zardal18' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Хөрөнгө оруулалтын зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z18 %}{% url 'zardal18list' %}{% else %}{% url 'zardal18' %}{% endif %}" href="javascript:;" class="ajax_div_load">Хөрөнгө оруулалтын зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z18 %}
+                    <span class="label {% if tailan.zardal.z18.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z18.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.zardal.z19 %}{% url 'zardal19list' date %}{% else %}{% url 'zardal19' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Үндсэн бус үйл ажиллагааны зардал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.zardal.z19 %}{% url 'zardal19list' %}{% else %}{% url 'zardal19' %}{% endif %}" href="javascript:;" class="ajax_div_load">Үндсэн бус үйл ажиллагааны зардал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.zardal.z19 %}
+                    <span class="label {% if tailan.zardal.z19.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z19.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="3" class="nem" style="vertical-align: top;">Хэрэглэгч</td>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.sanal_gomdol %}{% url 'sanalgomdollist' date %}{% else %}{% url 'sanalgomdol' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Санал гомдол</a>
+                    {% else %}
+                    <a url-data="{% if tailan.sanal_gomdol %}{% url 'sanalgomdollist' %}{% else %}{% url 'sanalgomdol' %}{% endif %}" href="javascript:;" class="ajax_div_load">Санал гомдол</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.sanal_gomdol %}
+                    <span class="label {% if tailan.sanal_gomdol.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.sanal_gomdol.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.tehnik_nohtsol %}{% url 'tehniknohtsollist' date %}{% else %}{% url 'tehniknohtsol' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Техникийн нөхцөл</a>
+                    {% else %}
+                    <a url-data="{% if tailan.tehnik_nohtsol %}{% url 'tehniknohtsollist' %}{% else %}{% url 'tehniknohtsol' %}{% endif %}" href="javascript:;" class="ajax_div_load">Техникийн нөхцөл</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.tehnik_nohtsol %}
+                    <span class="label {% if tailan.tehnik_nohtsol.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tehnik_nohtsol.yvts }}</span></td>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}                 
+                </tr>
+                <tr>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.tasaldal %}{% url 'tasaldallist' date %}{% else %}{% url 'tasaldal' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Тасалдал</a>
+                    {% else %}
+                    <a url-data="{% if tailan.tasaldal %}{% url 'tasaldallist' %}{% else %}{% url 'tasaldal' %}{% endif %}" href="javascript:;" class="ajax_div_load">Тасалдал</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.tasaldal %}
+                    <span class="label {% if tailan.tasaldal.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tasaldal.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="nem" style="vertical-align: top;">Цалин</td>
+                  <td>
+                    {% if date %}
+                    <a url-data="{% if tailan.tsalin %}{% url 'tsalinlist' date %}{% else %}{% url 'tsalin' date %}{% endif %}" href="javascript:;" class="ajax_div_load">Цалин</a>
+                    {% else %}
+                    <a url-data="{% if tailan.tsalin %}{% url 'tsalinlist' %}{% else %}{% url 'tsalin' %}{% endif %}" href="javascript:;" class="ajax_div_load">Цалин</a>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if tailan.tsalin %}
+                    <span class="label {% if tailan.tsalin.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tsalin.yvts }}</span>
+                    {% else %}
+                    <span class="label label-warning label-mini">Хийгдэж байна</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <div class="span6">
+        <div class="widget active blue">
+          <div class="widget-title">
+            <h4>Санхүү эдийн засгийн мэдээ</h4>
+            <span class="tools">
+              <a href="javascript:;" class="icon-chevron-down"></a>
+            </span>
+          </div>
+          <div class="widget-body form">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-calendar"></i></span>
+              <input id="reservation" type="text" class=" m-ctrl-medium" />
+            </div>
+            {% if not tailan %}
+            <div class="clearfix pull-right">
+              <div class="btn-group">
+                <button class="btn btn-primary" data-toggle="dropdown">Тайлантай холбоотой тохиргоо <i class="icon-angle-down"></i></button>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a {% if hereglegch %}url-data="{% url 'hereglegchlist' %}"{% else %}url-data="{% url 'hereglegch' %}"{% endif %} class="ajax_div_load" href="javascript:;">Хэрэглэгчдийн тоо</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" url-data="{% if golch %}{% url 'golchlist' %}{% else %}{% url 'golch' %}{% endif %}" class="ajax_div_load">ААНБайгууллага цэвэр усны голч</a>
+                  </li>
+                  <li>
+                    <a href="javascript:;" url-data="{% if golch_hangagch %}{% url 'golchhangagchlist' %}{% else %}{% url 'golchhangagch' %}{% endif %}" class="ajax_div_load">Хангагчаас авсан цэвэр усны голч</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="space10"></div>
+              <div class="btn-group pull-right">
+                <button class="btn btn-info" data-toggle="dropdown">Тариф <i class="icon-angle-down"></i></button>
+                <ul class="dropdown-menu pull-right">
+                  <li>
+                    <a url-data="{% if tariffus %}{% url 'tarifflist' %}{% else %}{% url 'tariff' %}{% endif %}" class="ajax_div_load" href="javascript:;">Усны үйлчилгээний үнэ</a>
+                  </li>
+                  <li>
+                    <a url-data="{% if ol %}{% url 'ushudaldanavahlist' %}{% else %}{% url 'ushudaldanavah' %}{% endif %}" class="ajax_div_load" href="javascript:;">Ус худалдан авах үнэ</a>
+                  </li>
+                  <li>
+                    <a url-data={% if tariffgolch %}"{% url 'golchiinsuuriunelist' %}"{% else %}"{% url 'golchiinsuuriune' %}"{% endif %} class="ajax_div_load" href="javascript:;">Голчийн суурь үнэ</a>                      
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {% endif %}
+            <div class="space20"></div>
+            <table class="table table-nemelt table-hover">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th class="nem">НЭР</th>
+                  <th>Төлөв</th>
+                  <th>ИЛГЭЭСЭН ОГНОО</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for st in sariin_tailan %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>
+                    <a href="{% url 'check_list' st.tze.id st.id %}">
+                      {{ st.year }} оны {{ st.month }} сарын санхүүгийн мэдээ
+                    </a>
+                  </td>
+                  <td><span class="label {% if st.yvts == 'Илгээсэн' %}label-warning{% elif st.yvts == 'Буцаасан' %}label-important{% else %}label-success{% endif %}">{{ st.yvts }}</span></td>
+                  <td>{{ st.begin_time|date:"Y-m-d H:i" }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <div class="">
+            <span class="step-links">
+              {% if sariin_tailan.has_previous %}
+              <a href="?page={{ sariin_tailan.previous_page_number }}">Өмнөх</a>
+              {% endif %}
+              <span class="current">
+                Page {{ sariin_tailan.number }} of {{ sariin_tailan.paginator.num_pages }}.
+              </span>
+              {% if sariin_tailan.has_next %}
+                <a href="?page={{ sariin_tailan.next_page_number }}">Дараах</a>
+              {% endif %}
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="widget active purple">
+          <div class="widget-title">
+            <h4>Санхүү эдийн засгийн судалгаа</h4>
+            <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a></span>
+          </div>
+          <div class="widget-body">
+            <table class="table table-nemelt table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>№</th>
+                  <th class="nem">НЭР</th>
+                  <th>Төлөв</th>
+                  <th>ҮҮССЭН ОГНОО</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for s in sudalgaa %}
+                <tr>
+                  <td>
+                    {% if date == s.id|slugify %}
+                      <i class="icon-hand-right"></i>
+                    {% endif %}
+                  </td>
+                  <td>{{ forloop.counter }}</td>
+                  <td>
+                    <a href="{% url 'sudalgaa' s.id %}">
+                      {{ s.year }} оны {{ s.month }} сарын санхүүгийн cудалгаа
+                    </a>
+                  </td>
+                  <td>
+                    <span class="label {% if s.yvts == 'Илгээсэн' %}label-success{% elif s.yvts == 'Хийгдэж байна' %}label-warning{% elif s.yvts == 'Буцаасан' %}label-important{% else %}label-success{% endif %}">{{ s.yvts }}</span>
+                  </td>
+                  <td>{{ s.begin_time|date:"Y-m-d H:i" }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="Modal_general" class="modal1-uuganaa">
+</div>
+{% if tailan.yvts == 'Хийгдэж байна' or tailan.yvts == 'Буцаасан'%}
+<script>
+    var doughnutData = [
+        {
+            value: {{ butsaasan }},
+            color: "#E74955",
+            highlight: "#FF5A5E",
+            label: "Буцаагдсан мэдээ"
+        },
+        {
+            value: {{ ilgeesen }},
+            color: "#A5D16C",
+            highlight: "#BAD598",
+            label: "Хадгалсан санхүүгийн мэдээ"
+        },
+        {
+            value: {{ hiigdej_bui }},
+            color: "#FCB322",
+            highlight: "#FFC870",
+            label: "Хийгдэж буй мэдээ"
+        },
+        {
+            value: {{ hiigdehgui }},
+            color: "#32c2cd",
+            highlight: "#32cddd",
+            label: "Хийгдэхгүй санхүүгийн мэдээ"
+        },
+    ];
+</script>
+{% else %}
+<script type="text/javascript">
+  
+    var doughnutData = [
+        {
+            value: 23,
+            color: "#E74955",
+            highlight: "#FF5A5E",
+            label: "Хаагдсан санхүүгийн мэдээ"
+        },
+    ];
+</script>
+{% endif %}
+<script type="text/javascript">
+    var lineChartData = {
+        labels : ["1 сар","2 сар","3 сар","4 сар","5 сар","6 сар","7 сар","8 сар","9 сар","10 сар","11 сар","12 сар"],
+        datasets : [
+            {
+                label: "My First dataset",
+                fillColor : "rgba(220,220,220,0.2)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data : [{% for c in chart_previous_orlogo %}{{ c }},{% endfor %}]
+            },
+            {
+                label: "My Second dataset",
+                fillColor : "rgba(151,187,205,0.2)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(151,187,205,1)",
+                data : [{% for c in chart_orlogo %}{{ c }},{% endfor %}]
+            }
+        ]
+
+    }
+
+    var barChartData = {
+        labels : ["1 сар","2 сар","3 сар","4 сар","5 сар","6 сар","7 сар","8 сар","9 сар","10 сар","11 сар","12 сар"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data : [{% for c in chart_previous_zardal %}{{ c }},{% endfor %}]
+            },
+            {
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,0.8)",
+                highlightFill : "rgba(151,187,205,0.75)",
+                highlightStroke : "rgba(151,187,205,1)",
+                data : [{% for c in chart_zardal %}{{ c }},{% endfor %}]
+            }
+        ]
+
+    }
+
+    window.onload = function(){
+
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        var ctx1 = document.getElementById("canvas").getContext("2d");
+        var ctx2 = document.getElementById("bar").getContext("2d");
+
+        window.myBar = new Chart(ctx2).Bar(barChartData, {responsive : true});
+        window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true});
+        window.myLine = new Chart(ctx1).Line(lineChartData, {responsive: true});
+    };
+</script>
+{% if not ol %}
+<script type="text/javascript">
+  document.querySelector('#message-une').onclick = function(){
+    swal("Ус худалдан авах үнэ тарифыг бөглөнө үү!");
+  };
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Хүсэлт илгээх</h4>
+</div>
+<form id="form_id" action="{{view_url}}" method="POST"> {% csrf_token %}
+    <div class="modal1-uuganaa-body">
+      {{form}}
+    </div>
+      <div class="modal1-uuganaa-footer">
+          <a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+          <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хүсэлт илгээх</button>
+      </div>
+  </form>
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>

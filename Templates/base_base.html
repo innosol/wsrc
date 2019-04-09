@@ -1,0 +1,296 @@
+{% load static %}
+{% load tag_extras %}
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+{% load inbox %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<html>
+<head>
+  {% block css %}
+  <meta charset="utf-8" />
+  <title>ХОТ, СУУРИНЫ УС ХАНГАМЖ, АРИУТГАХ ТАТУУРГЫН АШИГЛАЛТ, ҮЙЛЧИЛГЭЭГ ЗОХИЦУУЛАХ ЗӨВЛӨЛ</title>
+  <link rel="shortcut icon" href="{% static 'assets/img/logos.png' %}" type="image/png">
+  <link href="{% static 'assets/asset/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/asset/bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/asset/bootstrap/css/bootstrap-fileupload.css' %}" rel="stylesheet" />
+
+  <link href="{% static 'assets/css/nemelt.css' %}" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'assets/asset/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+  
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/css/style-responsive.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/css/style-default.css' %}" rel="stylesheet"/>
+  
+  <link href="{% static 'assets/table-fixed-header-master/table-fixed-header.css' %}" rel='stylesheet'>
+  
+  <link href="{% static 'assets/asset/bootstrap-datepicker/css/datepicker.css' %}"  rel="stylesheet"/>
+  <link href="{% static 'assets/asset/bootstrap-daterangepicker/daterangepicker.css' %}"  rel="stylesheet"/>
+  <link href="{% static 'assets/asset/bootstrap-timepicker/compiled/timepicker.css' %}"  rel="stylesheet"/>
+
+  <link href="{% static 'assets/asset/sweetalert-master/dist/sweetalert.css' %}"  rel="stylesheet"/>
+  <script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.formset.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/js/chainedfk.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'assets/asset/bootstrap-timepicker/js/bootstrap-timepicker.js' %}"></script>
+  <script src="{% static 'assets/asset/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+
+
+  
+
+
+
+  <script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+$.ajax({
+  url: "{% url 'tze-set-notifications-read' %}",
+})
+});
+
+//Document Click
+$(document).click(function()
+{
+$("#notificationContainer").hide();
+});
+
+
+});
+</script>
+<style>
+#notification_li{position:relative}
+#notificationContainer {
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 50px;
+margin-left: -350px;
+width: 400px;
+z-index: 2000;
+display: none;
+}
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 360px;
+}
+#notificationTitle {
+z-index: 1000;
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+color: #888;
+}
+#notificationsBody {
+max-height: 400px;
+overflow: auto;
+}
+#notificationFooter {
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+.notif-action {
+  width: 200px;
+  position: relative;
+  left: 30px;
+  font-size: 12px;
+}
+.notif {
+  min-height: 70px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.notif-unread {
+  min-height: 70px;
+  border-bottom: 1px solid #ccc;
+  position: relative; 
+  background-color: #edeff5;
+}
+.notif:last-child {
+  border-bottom: none;
+  }
+#notif-ul {
+  margin: 0px;
+}
+.notif-timesince {
+  font-size: 10px;
+  color: #999;
+  margin-left: 30px;
+}
+
+</style>
+
+  {% endblock %}
+</head>
+<body class="fixed-top">
+<div class="overlay"></div>
+<div class="se-pre-con"><img width="200" height="200" src="{% static 'assets/img/loading_colors.gif' %}"></div>
+  {% block header %}
+    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <div class="sidebar-toggle-box hidden-phone">
+            <div class="icon-reorder tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+          </div>
+          <p class="brand" style="width: 400px; margin-right: -40px; margin-bottom: -100px; height: 10px;">
+            <img width="40" height="40"  style="margin-top: -15px;" src="{% static 'assets/img/logos.png' %}">
+            <b style="font-size: 14px; color: white; margin-top:-100px;">БҮРТГЭЛ МЭДЭЭЛЛИЙН СИСТЕМ</b>  
+          </p>
+          <div class="top-nav" style="padding-left: -1000px;">
+            <ul class="nav pull-right top-menu" >
+              <li class="dropdown notify-row" id="header_inbox_bar">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-envelope-alt"></i>
+                  <span class="badge badge-warning">{% inbox_count %}</span>
+                </a>
+                <ul class="dropdown-menu extended inbox">
+                  <li>
+                    <p>Танд {% inbox_count %} мессеж ирсэн байна</p>
+                  </li>
+                  {% for u in unread_message %}
+                  <li>
+                    <a href="{{ u.get_absolute_url }}">
+                      <span class="subject">
+                        <span class="from">{{ u.sender }}</span>
+                      </span>
+                      <span class="message">
+                        {{ u.body|truncatechars:"50" }}
+                      </span>
+                    </a>
+                  </li>
+                  {% endfor %}
+                  <li>
+                    <a href="{% url 'messages_inbox' %}">Бүх мессежийг харах</a>
+                  </li>
+                </ul>
+              </li>
+              <li id="notification_li" class='dropdown notify-row'>
+                <a href="#" id="notificationLink" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-bell-alt"></i>
+                  {% if unread_count %}
+                  <span id="notification_count" class="badge badge-important">{{unread_count}}</span>
+                  {% endif %}
+                </a>
+              <div id="notificationContainer">
+              <div id="notificationTitle">Мэдэгдлүүд</div>
+              <div id="notificationsBody" class="notifications">
+                {% if notifications %}
+                <ul id="notif-ul">
+                {% for i in notifications %}
+                <a href="{{i.data|get_item:'url_data'}}">
+                  <li class="{% if i.unread %} notif-unread {% else %}notif {% endif %}">
+                      <div class="notif-action">{{i.verb}}</div>
+                      <div class="notif-timesince">{{i.timesince}} ago</div>
+                  </li>
+                </a>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <div class="alert alert-info">Мэдэгдэл байхгүй байна.</div>
+                {% endif %}
+              </div>
+              <div id="notificationFooter"><a href="{% url 'tze_notifications_list_all' %}">Бүгдийг харах</a></div>
+              </div>
+
+              </li>
+              {% if user.user_id %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="username">{{ user.user_id.alban_tushaal }} | {{ user.user_id.emp_name }}</span>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                  {% comment %}<li><a href="#"><i class="icon-user"></i>Миний мэдээлэл</a></li>{% endcomment %}
+                  <li><a href="/logout/"><i class="icon-key"></i>Системээс гарах</a></li>
+                </ul>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+    <div id="container" class="row-fluid">
+  {% block sidebar %}
+    {% include "tze_sidebar.html" %}
+  {% endblock %}
+
+  {% block content %}
+    <div id="main-content">
+      <div class="container-fluid">
+      </div>
+    </div> 
+  {% endblock %} 
+  </div>
+  {% block footer %}
+    <div id="footer">
+      &copy;Хот, суурины ус хангамж, ариутгах татуургын ашиглалт, үйлчилгээг зохицуулах зөвлөл 2015 <a href="http://innosol.mn">ИнноСолюшн ХХК</a>
+    </div>
+  {% endblock %}
+  <!-- ie8 fixes -->
+  <!--[if lt IE 9]>
+  <script src="js/excanvas.js"></script>
+  <script src="js/respond.js"></script>
+  <![endif]-->
+{% block javascript %}
+
+
+
+<script src="{% static 'assets/js/jquery-validate.bootstrap-tooltip.js' %}"></script>
+
+<script src="{% static 'assets/table-fixed-header-master/table-fixed-header.js' %}"></script>
+<script src="{% static 'assets/js/jquery.nicescroll.js'%}" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'assets/asset/data-tables/jquery.dataTables.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/asset/data-tables/DT_bootstrap.js' %}"></script>
+<script src="{% static 'assets/js/dynamic-table.js' %}"></script>
+<script src="{% static 'assets/asset/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/common-scripts.js' %}"></script>
+<script src="{% static 'assets/asset/sweetalert-master/dist/sweetalert-dev.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'assets/asset/chosen-bootstrap/chosen/chosen.jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/asset/clockface/js/clockface.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/asset/bootstrap-daterangepicker/date.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/asset/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/asset/bootstrap-colorpicker/js/bootstrap-colorpicker.js' %}"></script>
+
+<script src="{% static 'assets/js/form-component.js' %}"></script>
+<!-- Uuganaa nemsen code -->
+<script type="text/javascript" src="{% static 'assets/js/a.js' %}"></script>
+
+<!-- Charts.js -->
+<script src="{% static 'assets/asset/chart-master/Chart-Uuganaa.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+
+
+<script src="{% static 'assets/js/ajax_modal_showing.js' %}"></script>
+<script type="text/javascript">
+AjaxSubmit('#myModal1 form', '#myModal1');
+</script>
+{% endblock %}
+  </body>
+</html>

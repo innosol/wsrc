@@ -1,0 +1,57 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Цалин</h4>
+</div>
+<form class="form-horizontal" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="modal1-uuganaa-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Ажилчдын тоо</th>
+            <th>Үндсэн цалин</th>
+            <th>Нэмэгдэл</th>
+            <th>Сарын үр дүн</th>
+            <th width="150">Жилийн үр дүнгийн шагналт цалин</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <td>Удирдлага</td>
+            <td>{{ form.tsalin_0 }}</td>
+            <td>{{ form.tsalin_1 }}</td>
+            <td>{{ form.tsalin_2 }}</td>
+            <td>{{ form.tsalin_3 }}</td>
+            <td>{{ form.tsalin_4 }}</td>
+          </tr>
+          <tr>
+            <td>ИТА, Албан хаагч</td>
+            <td>{{ form.tsalin_5 }}</td>
+            <td>{{ form.tsalin_6 }}</td>
+            <td>{{ form.tsalin_7 }}</td>
+            <td>{{ form.tsalin_8 }}</td>
+            <td>{{ form.tsalin_9 }}</td>
+          </tr>
+          <tr>
+            <td>Ажилчид </td>
+            <td>{{ form.tsalin_10 }}</td>
+            <td>{{ form.tsalin_11 }}</td>
+            <td>{{ form.tsalin_12 }}</td>
+            <td>{{ form.tsalin_13 }}</td>
+            <td>{{ form.tsalin_14 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.tsalin %}
+    <a url-data="{% if date %}{% url 'tsalinlist' date %}{% else %}{% url 'tsalinlist' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

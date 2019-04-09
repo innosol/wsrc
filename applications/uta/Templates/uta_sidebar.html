@@ -1,0 +1,59 @@
+{% extends 'base_base.html' %}
+{% load static %}
+
+{% block sidebar %}
+<div class="sidebar-scroll">
+    <div id="sidebar" class="nav-collapse collapse">
+        <ul class="sidebar-menu">
+            <li class="sub-menu">
+                <a>
+                    <i class=" icon-cog"></i>
+                    <span>Хүсэлт</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    {% if user.has_uta_darga_permission %}
+                    <li><a href="{% url 'uta darga huselt huvaarilah' %}">ТЗ хуваарилах</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'uta huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+                    <li><a href="{% url 'sudalgaa_list' %}">Судалгаа шалгах</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="{% url 'check_sez' %}" class="">
+                    <i class=" icon-cog"></i>
+                    <span>Шалгах</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>ТЗ Эзэмшигч</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li class="sub"><a href="/uta/baiguullaga/">Байгууллага</a></li>
+                    <li><a href="/uta/ajiltan/">Хүний нөөц</a></li>
+                    <li><a href="/uta/tohooromj/">Тоног төхөөрөмж</a></li>
+                    <li><a href="{% url 'uta_tz_gerchilgee_list' %}">ТЗ гэрчилгээ</a></li>
+                </ul>
+            </li>       
+            <li class="sub-menu">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>Тайлан</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  <li><a href="{% url 'uta_report' %}">СЭЗ тайлан</a></li>
+                  <li><a href="{% url 'uta_gshu_menu' %}">Гүйцэтгэлийн шалгуур үзүүлэлт</a></li>
+                  <li><a href="javascript:;">Нэгтгэл</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+{% endblock %} 

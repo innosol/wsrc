@@ -1,0 +1,45 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+ <h4>Хэлтсийн ажилчдын жагсаалт</h4>
+</div>
+
+<div class="modal1-uuganaa-body">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="alert alert-info">
+        <p>
+          {{baiguullaga.org_name}} {{baiguullaga.org_type}} -ийн {{tasag_object.dep_name}} хэлтсийн ажилчдын жагсаалт
+        </p>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Албан тушаал</th>
+            <th>Овог</th>
+            <th>Нэр</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in object_list %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+              {{i.alban_tushaal}}
+            </td>
+            <td>{{i.emp_lname}}</td>
+            <td>{{i.emp_name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div> <!-- span 12 -->
+  </div><!-- row-fluid -->
+</div>
+
+<div class="modal1-uuganaa-footer">
+  <a class="btn btn-default" data-data="modal" aria-hidden="true">Хаах</a>
+</div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

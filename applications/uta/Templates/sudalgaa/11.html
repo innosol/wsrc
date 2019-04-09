@@ -1,0 +1,178 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space20"></div>
+			<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+			<div class="space20"></div>
+			<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+			<div style="float:right;">8 - ХЭРЭГЛЭГЧ СУУРЬ ҮНЭ</div>
+			<table class="table table-bordered table-fixed-header table-header-rotated">
+				<thead class="header">
+					<tr>
+						<th>№</th>
+						<th colspan="2">Үзүүлэлтүүд</th>
+						<th>Хэмжих нэгж</th>
+						<th>Цэвэр ус</th>
+						<th>Бохир ус</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="11">1</td>
+						<td colspan="2"><b>Тухайн байгууллагаар үйлчлүүлж буй нийт хэрэглэгч</b></td>
+						<td>тоо</td>
+						<th>{{ sudalgaa.hereglegch.niit_tsever_count }}</th>
+						<th>{{ sudalgaa.hereglegch.niit_bohir_count }}</th>
+					</tr>
+					<tr>
+						<td rowspan="6">ААНБ-н хэрэглэгч</td>
+						<td>тоолууртай</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.0.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.1.htoo }}</td>
+					</tr>
+					<tr>
+						<td>тоолуургүй</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.2.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.3.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.4.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.5.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.6.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.7.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Зөөврөөр ААНБ</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.8.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.9.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>тоо</td>
+						<th>{{ sudalgaa.hereglegch.aanb_tsever_count }}</th>
+						<th>{{ sudalgaa.hereglegch.aanb_bohir_count }}</th>
+					</tr>
+					<tr>
+						<td rowspan="4">Ахуйн хэрэглэгч</td>
+						<td>Айл өрх /тоолууртай/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.10.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.11.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /тоолуургүй/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.12.htoo }}</td>
+						<td>{{ sudalgaa.hereglegch.hereglegch.all.13.htoo }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /Ус түгээх байрнаас, зөөврөөр/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.hereglegch.utb_zoovor_tsever_count }}</td>
+						<td>{{ sudalgaa.hereglegch.utb_zoovor_bohir_count }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>өрх</td>
+						<th>{{ sudalgaa.hereglegch.ahuin_tsever_count }}</th>
+						<th>{{ sudalgaa.hereglegch.ahuin_bohir_count }}</th>
+					</tr>
+					<tr>
+						<td rowspan="12">2</td>
+						<td colspan="2"><b>Нийт борлуулсан ус - биетээр</b></td>
+						<td>мян.м<sup>3</sup></td>
+						<th>{{ sudalgaa.orlogo.all_tsever_count }}</th>
+						<th>{{ sudalgaa.orlogo.all_bohir_count }}</th>
+					</tr>
+					<tr>
+						<td rowspan="5">ААНБ-н хэрэглэгч</td>
+						<td>ААНБайгууллага</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.2.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.3.too }}</td>
+					</tr>
+					<tr>
+						<td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.4.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.5.too }}</td>
+					</tr>
+					<tr>
+						<td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.6.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.7.too }}</td>
+					</tr>
+					<tr>
+						<td>Зөөврөөр ААНБ</td>
+						<td>тоо</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.8.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.9.too }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>тоо</td>
+						<th>{{ sudalgaa.orlogo.aanb_tsever_count }}</th>
+						<th>{{ sudalgaa.orlogo.aanb_bohir_count }}</th>
+					</tr>
+					<tr>
+						<td rowspan="7">Ахуйн хэрэглэгч</td>
+						<td>Айл өрх /тоолууртай/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.10.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.11.too }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /тоолуургүй/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.12.too }}</td>
+						<td>{{ sudalgaa.orlogo.buteegdehuun.all.13.too }}</td>
+					</tr>
+					<tr>
+						<td>Айл өрх /Ус түгээх байрнаас, зөөврөөр/</td>
+						<td>өрх</td>
+						<td>{{ sudalgaa.orlogo.utbz_tsever_count }}</td>
+						<td>{{ sudalgaa.orlogo.utbz_tsever_count }}</td>
+					</tr>
+					<tr>
+						<td>Ахуйн нийт дүн</td>
+						<td>өрх</td>
+						<th>{{ sudalgaa.orlogo.ahuin_tsever_count }}</th>
+						<th>{{ sudalgaa.orlogo.ahuin_bohir_count }}</th>
+					</tr>
+				</tbody>
+			</table>
+			<div class="space20"></div>
+			<table class="table table-bordered table-header-rotated" style="width: 800px; margin-left: 200px;">
+				<thead>
+					<tr>
+						<th>Суурь хураамж тооцох нийт өрхийн тоо</th>
+						<th>нэгж үнэ</th>
+						<th>1 сарын орлогын дүн  мян.төг</th>
+						<th>{{ sudalgaa.year }} оны орлогын дүн  мян,төг</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>{{ sudalgaa.orlogo.all_orh_count }}</th>
+						<th>{{ sudalgaa.tariff_hereglegch_us.suuri_une }}</th>
+						<th>{{ sudalgaa.suuri_une_count }}</th>
+						<th>{{ sudalgaa.suuri_12_count }}</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

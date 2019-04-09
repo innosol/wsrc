@@ -1,0 +1,104 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+{{form.errors}}
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="span6">
+       <div class="control-group">
+        <input type="hidden" value="{{ baiguullaga }}" name="tze">
+        <label class="control-label">{{ form.ognoo.label }}</label>
+        <div class="controls">
+          {{ form.ognoo.errors }}{{ form.ognoo }}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">{{ form.hatuulag.label }}</label>
+        <div class="controls">
+          {{ form.hatuulag.errors }}{{ form.hatuulag }}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">{{ form.magni.label }}</label>
+        <div class="controls">
+          {{ form.magni.errors }}{{ form.magni }}
+        </div>
+      </div>
+           <div class="control-group">
+      <label class="control-label">{{ form.kalitsi.label }}</label>
+      <div class="controls">
+        {{ form.kalitsi.errors }}{{ form.kalitsi }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.hlorid.label }}</label>
+      <div class="controls">
+        {{ form.hlorid.errors }}{{ form.hlorid }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.sulifat.label }}</label>
+      <div class="controls">
+        {{ form.sulifat.errors }}{{ form.sulifat }}
+      </div>
+    </div>
+    </div>
+    <div class="span6">
+     <div class="control-group">
+      <label class="control-label">{{ form.ph.label }}</label>
+      <div class="controls">
+        {{ form.ph.errors }}{{ form.ph }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.ammiak.label }}</label>
+      <div class="controls">
+        {{ form.ammiak.errors }}{{ form.ammiak }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.nitrit.label }}</label>
+      <div class="controls">
+        {{ form.nitrit.errors }}{{ form.nitrit }}
+      </div>
+    </div>
+         <div class="control-group">
+      <label class="control-label">{{ form.amt.label }}</label>
+      <div class="controls">
+        {{ form.amt.errors }}{{ form.amt }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.uner.label }}</label>
+      <div class="controls">
+        {{ form.uner.errors }}{{ form.uner }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.nyan.label }}</label>
+      <div class="controls">
+        {{ form.nyan.errors }}{{ form.nyan }}
+      </div>
+    </div>
+        <div class="control-group">
+      <label class="control-label">{{ form.analysis.label }}</label>
+      <div class="controls">
+        {{ form.analysis.errors }}{{ form.analysis }}
+      </div>
+    </div>
+  </div>
+
+
+</div> <!--row-fluid-->
+
+
+</div> <!-- span 12 -->
+</div><!-- row-fluid -->
+
+
+<script type="text/javascript">
+
+  formAjaxSubmit('#ts_baiguulamj form', '#ts_baiguulamj');
+</script>

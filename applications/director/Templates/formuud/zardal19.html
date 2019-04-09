@@ -1,0 +1,54 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Үндсэн бус үйл ажиллагааны зардал</h4>
+</div>
+<form action="{% url 'zardal19' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Нэр</th>
+          <th>Хэмжих нэгж</th>
+          <th>Ус</th>
+          <th>Цахилгаан</th>
+          <th>Дулаан</th>
+          <th>Бусад</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Шагнал урамшуулал</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z19_0 }}</td>
+          <td>{{ form.z19_1 }}</td>
+          <td>{{ form.z19_2 }}</td>
+          <td>{{ form.z19_3 }}</td>
+        </tr>
+        <tr>
+          <td>Спорт соёлын арга хэмжээ</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z19_4 }}</td>
+          <td>{{ form.z19_5 }}</td>
+          <td>{{ form.z19_6 }}</td>
+          <td>{{ form.z19_7 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z19_8 }}</td>
+          <td>{{ form.z19_9 }}</td>
+          <td>{{ form.z19_10 }}</td>
+          <td>{{ form.z19_11 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z19 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal19list' date %}{% else %}{% url 'zardal19list' date %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

@@ -1,0 +1,60 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Зөөврийн ус хангамжийн үйлчилгээний чиглэлээр:
+{% endblock %}
+
+{% block body_show %}
+<p><a url-data="{% url 'tz_water_car_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Зөөврийн усны автомашин нэмэх</a></p>
+
+{% if ewatercar %}
+    <div class="alert alert-block alert-info fade in">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын зөөврийн усны автомашин нийт {{ewatercar|length}} бүртгэлтэй байна.
+    </p>
+    <p>
+      Хэрвээ машин нэмж бүртгэх бол "Зөөврийн усны автомашин нэмэх" дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ материалын статус солих бол "Статус солих" дээр дарна уу.
+    </p>
+   </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Машины марк</th>
+          <th>Улсын дугаар</th>
+          <th>Даац (тонн)</th>
+          <th>Дэлгэрэнгүй</th>
+        </tr>
+      </thead>
+      <tbody id="table-body-numbering_show28">
+        {% for i in ewatercar %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.mark}}</td>
+          <td>{{i.no}}</td>
+          <td>{{i.daats}}</td>
+          <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_water_car_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+       </tr>
+       {% endfor %}
+     </table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Системд бүртгэгдсэн байгууллагын зөөврийн усны автомашин байхгүй байна. "Зөөврийн усны автомашин нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+ </div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+{% if ewatercar %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=28 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}

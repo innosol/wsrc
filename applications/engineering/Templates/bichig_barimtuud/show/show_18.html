@@ -1,0 +1,64 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+
+{% block header_show %}
+Насос станц
+{% endblock %}
+
+{% block body_show %}
+<a url-data="{% url 'tz_nasosStants_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Насос нэмэх</a>
+<div class="space10"></div>
+{% if enasos %}
+<div class="alert alert-block alert-info fade in">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд насос станц нийт {{enasos|length}} бүртгэлтэй байна.
+    </p>
+    <p>
+      Хэрвээ насос станц нэмж бүртгэх бол "Насос нэмэх" дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ материалын статус солих бол "Статус солих" дээр дарна уу.
+    </p>
+  </div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>№</th>
+				<th>Байршил</th> 
+				<th>Станцын нэр</th>
+				<th>Ажиллагааны хэлбэр</th>
+				<th>Ашиглалтанд орсон огноо</th>
+				<th>Дэлгэрэнгүй</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in enasos %}
+			<tr>
+				<td>{{forloop.counter}}</td>
+				<td>{{i.city}}<br>{{i.district}}<br>{{i.khoroo}}<br>{{i.nasos_address}}</td>
+				<td>{{i.nasos_name}}</td>
+				<td>{{i.nasos_ajillagaa}}</td>
+				<td>{{i.ashiglaltand_orson_ognoo}}</td>
+				<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_nasosStants_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Системд насос станц бүртгэгдээгүй байна. "Насос нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if enasos %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=18 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Санал гомдол</h4>
+</div>
+<form id="sanal_gomdol" action="{% url 'sanalgomdol' %}" method="post">{% csrf_token %}
+  <div id="sanalgomdol-modal-body" class="modal1-uuganaa-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Хэрэглэгчдээс ирүүлсэн санал гомдол</th>
+          <th>Хүлээн авсан</th>
+          <th>Шийдвэрлэсэн</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Цэвэр усны тасалдалтай холбоотой</td>
+          <td>{{ form.sg_0 }}</td>
+          <td>{{ form.sg_1 }}</td>
+        </tr>
+        <tr>
+          <td>Ус хангамжийн чанартай холбоотой</td>
+          <td>{{ form.sg_2 }}</td>
+          <td>{{ form.sg_3 }}</td>
+        </tr>
+        <tr>
+          <td>Төлбөр тооцоотой холбоотой</td>
+          <td>{{ form.sg_4 }}</td>
+          <td>{{ form.sg_5 }}</td>
+        </tr>
+        <tr>
+          <td>Дуудлагын засвартай холбоотой</td>
+          <td>{{ form.sg_6 }}</td>
+          <td>{{ form.sg_7 }}</td>
+        </tr>
+        <tr>
+          <td>Борлуулалтын байцаагч нартай холбоотой</td>
+          <td>{{ form.sg_8 }}</td>
+          <td>{{ form.sg_9 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.sanal_gomdol %}
+    <a url-data="{% if date %}{% url 'sanalgomdollist' date %}{% else %}{% url 'sanalgomdollist' %}{% endif %}" href="javascript:;" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

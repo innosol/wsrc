@@ -1,0 +1,26 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Бусад орлого</h4>
+</div>
+<form class="form-horinzontal" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered table-striped">
+      <tbody>
+        {% for f in form %}
+        <tr>
+          <td>{{ f.label }}</td>
+          <td>{{ f }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.busad_orlogo %}
+    <a url-data="{% if date %}{% url 'busadorlogolist' date %}{% else %}{% url 'busadorlogolist' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

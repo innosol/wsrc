@@ -1,0 +1,190 @@
+{% extends 'tza_darga_base.html' %}
+{% load static %}
+{% load tag_extras %}
+{% block sidebar %}
+<div class="sidebar-scroll">
+  <div id="sidebar" class="nav-collapse collapse">
+    <ul class="sidebar-menu">
+      <li class="sub-menu">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>Хүсэлт</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          {% if user.has_tza_darga_permission %}
+          <li><a href="{% url 'tza darga huselt huvaarilah' %}">ТЗ хүсэлт хуваарьлах</a></li>
+          {% endif %}
+          <li><a href="{% url 'huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+          {% if user.has_tza_darga_permission %}
+          <li><a href="{% url 'handah erh huselt list' %}">Хандах эрх</a></li>
+          {% endif %}
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a href="{% url 'tz shuud olgoh list' %}">
+          <i class=" icon-cog"></i>
+          <span>ТЗ олголт*</span>
+        </a>
+      </li>
+      <li class="sub-menu">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>ТЗ Эзэмшигч</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          <li ><a href="/tza/baiguullaga/">Байгууллага</a></li>
+          <li><a href="/tza/ajiltan/">Хүний нөөц</a></li>
+          <li><a href="/tza/tohooromj/">Тоног төхөөрөмж</a></li>
+          <li><a href="{% url 'tza_tz_gerchilgee_list' %}">Тусгай зөвшөөрөл</a></li>
+        </ul>
+      </li>        
+      <li class="sub-menu active">
+        <a class="">
+          <i class=" icon-cog"></i>
+          <span>Тайлан</span>
+          <span class="arrow"></span>
+        </a>
+        <ul class="sub">
+          <li  class="sub active"><a href="/tza/uatailan/">Үйл ажиллагааны тайлан</a></li>
+          <li><a href="/tza/gshu/">Гүйцэтгэлийн шалгуур үзүүлэлт</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="main-content">
+  {% if messages %}
+  <div class="feedback_messages">
+    {% for message in messages %}
+    <div {% if message.tags %}class="feedback_message_{{message.tags}}" {% else %} class="feedback_message_default" {% endif %}>
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="container-fluid">
+      <div class="widget-body">
+        <div class="row-fluid">
+          <div class="span12">
+          <!--BEGIN METRO STATES-->
+          <div class="metro-nav">
+            <div  class="metro-nav-block nav-light-purple double ajax_delgerengui_load" url-data="{% url 'tza_ua_tailan_list' %}", div-id="#ua_list">
+              <a  href="#tab_a" data-toggle="tab">
+                <i class="icon-tags"></i>
+                <div class="info">+{{eshinj|length}}</div>
+                <div class="status">Үйл ажиллагааны тайлан
+                </div>
+              </a>
+            </div>
+            <div  class="metro-nav-block half nav-block-blue ajax_delgerengui_load" url-data="{% url 'tza_water_shinjilgee_list' %}", div-id="#ua_list">
+              <a  href="#tab_c" data-toggle="tab">
+                <i class="icon-tags"></i>
+                <div class="info">+{{water|length}}</div>
+                <div class="status">Цэвэр усны шинжилгээ</div>
+              </a>
+            </div>
+            <div  class="metro-nav-block half nav-block-yellow ajax_delgerengui_load" url-data="{% url 'tza_bohir_shinjilgee_list' %}", div-id="#ua_list">
+              <a  href="#tab_d" data-toggle="tab">
+                <i class="icon-tags"></i>
+                <div class="info">+{{bohir|length}}</div>
+                <div class="status">Бохир усны шинжилгээ</div>
+              </a>
+            </div>
+          </div>
+          <!--END METRO STATES-->
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid" id="ua_list">
+      <div class="span6">
+       <div class="widget active red">
+         <div class="widget-title">
+          <h4>
+            <i class="icon-reorder"></i>
+            Үйл ажиллагааны тайлангийн мэдээлэл
+          </h4>
+        </div>
+        <div class="widget-body">
+          <a href="{% url 'tzes_uatailan_create' %}" class="btn btn-success">ТЗЭ ҮА тайлан үүсгэх</a>
+          <div class="space5"></div>
+          <form action="{% url 'tzes_uatailan_negtgel' %}" method='GET'>
+            <button type="submit" class="btn btn-success">Нэгтгэх</button>
+            <div class="space10"></div>
+
+            {% if object_list %}
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th><input id="checkAll" type="checkbox"></th>
+                    <th>№</th>
+                    <th>ТЗЭ</th>
+                    <th>Тайлангийн огноо</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in object_list %}
+                  <tr>
+                    <td><input type="checkbox" name="chosen_tailans" value="{{i.id}}"></td>
+                    <td>{{forloop.counter}}</td>
+                    <td><a href="javascript:;" class="ajax_delgerengui_load" url-data="{% url 'ua_tailan_material_list' i.id %}" div-id="#ua_tailan_materials">{{i.tze.org_name}} {{i.tze.org_type}}</a></td>
+                    <td>
+                      {{i.tailan_date|date:"Y-m-d"}}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <div class="alert alert-info">
+                Тайлангийн мэдээлэл олдсонгүй.
+              </div>
+            {% endif %}
+          </form>
+          </div>
+        </div>
+      </div>
+      <div class="span6" id="ua_tailan_materials">
+        <div class="widget active green">
+          <div class="widget-title">
+            <h4><i class="icon-reorder"></i>Үйл ажиллагааны тайлангийн материалууд</h4>
+          </div>
+          <div class="widget-body">
+            <div class="alert alert-info">
+              Тайлангаа сонгоно уу.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ****************************MODALS*************************-->
+  <div id="Modal_general" class="modal1-uuganaa">
+    
+  </div>
+
+<script type="text/javascript">
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+  });
+</script>
+
+
+
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+
+
+
+
+{% endblock %}

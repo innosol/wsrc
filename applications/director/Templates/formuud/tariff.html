@@ -1,0 +1,80 @@
+
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Тусгай зөвшөөрөл эзэмшигч ус борлуулах тариф үнэ</h4>
+</div>
+<form action="{% url 'tariff' %}" method="post">{% csrf_token %}
+    <div id="tariff-modal-body" class="modal1-uuganaa-body portlet-scroll-2">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Үзүүлэлтүүд</th>
+                <th>Хэмжих нэгж</th>
+                <th>Цэвэр ус</th>
+                <th>Бохир ус</th>
+            </tr>
+            <tr>
+                <td>ААНБайгууллага</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_0 }}</td>
+                <td>{{ form.su_1 }}</td>
+            </tr>
+            <tr>
+                <td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_2 }}</td>
+                <td>{{ form.su_3 }}</td>
+            </tr>
+            <tr>
+                <td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_4 }}</td>
+                <td>{{ form.su_5 }}</td>
+            </tr>
+            <tr>
+                <td>ААНБ Зөөврөөр</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_6 }}</td>
+                <td>{{ form.su_7 }}</td>
+            </tr>
+            <tr>
+                <td>Айл өрх /тоолууртай/</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_8 }}</td>
+                <td>{{ form.su_9 }}</td>
+            </tr>
+            <tr>
+                <td>Айл өрх /тоолуургүй/</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_10 }}</td>
+                <td>{{ form.su_11 }}</td>
+            </tr>
+            <tr>
+                <td>Ус түгээх байр -УТБ</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_12 }}</td>
+                <td>{{ form.su_13 }}</td>
+            </tr>
+            <tr>
+                <td>Айл өрх зөөврөөр</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_14 }}</td>
+                <td>{{ form.su_15 }}</td>
+            </tr>
+            <tr>
+                <td>Хэрэглэгчийн суурь үнэ</td>
+                <td>төгрөг/м3</td>
+                <td>{{ form.su_16 }}</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal1-uuganaa-footer">
+        {% if tariffus %}
+        <a url-data="{% url 'tarifflist' %}" class="btn btn-default ajax_div_load">Буцах</a>
+        {% else %}
+        <a data-data="close" class="btn btn-default">Цуцлах</a>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Хадгалах</button>
+        
+    </div>
+</form>

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Санхүү судалгаа</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if object_list %}
+	    		{% for i in object_list %}
+	    			<a href="{% url 'sudalgaa' i.year %}">{{ i.year }} санхүүгийн судалгаа</a><br>
+	    		{% endfor %}
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>

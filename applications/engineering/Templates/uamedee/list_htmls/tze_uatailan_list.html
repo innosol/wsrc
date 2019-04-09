@@ -1,0 +1,88 @@
+
+
+<div class="span6">
+   <div class="widget active red">
+     <div class="widget-title">
+      <h4>
+        <i class="icon-reorder"></i>
+        Үйл ажиллагааны тайлангийн мэдээлэл
+      </h4>
+      <span class="tools">
+        <a href="javascript:;" class="icon-chevron-down"></a>
+      </span>
+    </div>
+    <div class="widget-body">
+
+
+      <div class="pull-right">
+        {% if on %}
+        <p>{{on}} оны үйл ажиллагааны тайлан </p>
+        {% else %}
+        <p>Үйл ажиллагааны тайлан/одоогийн байдлаар/ </p>
+        {%endif%}
+      </div>
+
+      <p></p>
+      {% if tailans %}
+      <table class="table table-nemelt">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th class="nem">НЭР</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in tailans %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a target="_blank" href="/engineering/uatailan/{{i.url}}/">{{i.material_name}}</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        Үйл ажиллагааны тайлан бүрдүүлэх шаардлагагүй
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="widget active green">
+      <div class="widget-title">
+        <h4><i class="icon-reorder"></i>Үйл ажиллагааны тайлан</h4>
+        <span class="tools">
+          <a href="javascript:;" class="icon-chevron-down"></a>
+        </span>
+      </div>
+      <div class="widget-body form">
+        <form action="" method="get">
+          {{ uatailan_ognoo_filter.form.as_p }}
+          <input type="submit" value="Хайх" />
+        </form>
+        <div class="space20"></div>
+        <table class="table table-nemelt table-hover">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>НЭР</th>
+              <th>ОН</th>
+              <th>ИЛГЭЭСЭН ОГНОО</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for st in uatailan_ognoo_filter %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td >
+                <a href="/engineering/uamedee/" >{{ st.tze }}</a>
+
+              </td>
+              <td>{{ st.on }}</td>
+              <td>{{ st.begin_time }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

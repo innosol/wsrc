@@ -1,0 +1,41 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Үйлчилгээний хүртээмж</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+          <tr>
+            <th>
+              Гүйцэтгэлийн үзүүлэлт
+            </th>
+            <th>
+              Тооцоонд ашигласан өгөгдлүүд
+            </th>
+            <th>
+              Үр дүн
+            </th>
+          </tr>
+          <tr>
+            <td>Баталгаат ундны усаар хангагдсан хүн амын эзлэх хувь</td>
+            <td>
+              Тухайн орон нутгийн хүн амын тоо (жилийн эцсээр): {% if obj.Nmean %}{{obj.Nmean}}{% else %}Мэдээлэл байхгүй{% endif %}<br>
+              Тухайн орон нутагт ТЗЭ-ээр үйлчлүүлж буй хүн амын тоо: {% if obj.Pasdws %}{{obj.Pasdws}}{% else %}Мэдээлэл байхгүй{% endif %}
+            </td>
+            <td>{{result}}</td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if obj.gshu.can_edit and perms.permission.tze_gshu_tailan_menu_view %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'gshu_uilchilgeenii_hurteemj_insert' obj.gshu.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

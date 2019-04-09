@@ -1,0 +1,58 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Үндсэн бус үйл ажиллагааны зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">    
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Нэр</th>
+        <th>Хэмжих нэгж</th>
+        <th>Ус</th>
+        <th>Цахилгаан</th>
+        <th>Дулаан</th>
+        <th>Бусад</th>
+        <th>Нийт</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Шагнал урамшуулал</td>
+        <td>мян.төгрөг</td>
+        {% for t in tailan.zardal.z19.undsen_bus_uil_ajillagaa.all %}
+        <td>{{ t.shagnal_uramshuulal }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z19.total0 }}</th>
+      </tr>
+      <tr>
+        <td>Спорт соёлын арга хэмжээ</td>
+        <td>мян.төгрөг</td>
+        {% for t in tailan.zardal.z19.undsen_bus_uil_ajillagaa.all %}
+        <td>{{ t.sport_soyliin_arga_hemjee }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z19.total1 }}</th>
+      </tr>
+      <tr>
+        <td>Бусад</td>
+        <td>мян.төгрөг</td>
+        {% for t in tailan.zardal.z19.undsen_bus_uil_ajillagaa.all %}
+        <td>{{ t.busad }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z19.total2 }}</th>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>мян.төгрөг</th>
+        <th>{{ tailan.zardal.z19.sum0 }}</th>
+        <th>{{ tailan.zardal.z19.sum1 }}</th>
+        <th>{{ tailan.zardal.z19.sum2 }}</th>
+        <th>{{ tailan.zardal.z19.sum3 }}</th>
+        <th>{{ tailan.zardal.z19.total }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="close" class="btn btn-default">Цуцлах</button>
+  <button url-data="{% if date %}{% url 'zardal19' date %}{% else %}{% url 'zardal19' %}{% endif %}"class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

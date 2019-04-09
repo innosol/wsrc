@@ -1,0 +1,9 @@
+{% for f in form %}
+<div class="control-group">
+  <label class="control-label">{{ f.label }}</label>
+  <div class="controls">
+  	{{ f }}
+  	<div style="margin-top:5px;">{{ f.errors }}</div>
+  </div>
+</div>
+{% endfor %}

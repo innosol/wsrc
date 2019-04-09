@@ -1,0 +1,38 @@
+{% extends 'base_base.html' %}
+
+
+  {% block content %}
+    <div id="main-content">
+      <div class="container-fluid">
+      	<div class="space20"></div>
+      	<div class="row-fluid">
+      		<div class="span12">
+      			<h4>Мэдэгдлүүд<h4>
+      		</div>
+      	</div>
+
+      	<div class="row-fluid">
+      	<table class="table ">
+      		<thead>
+      			<tr>
+	      			<th>
+	      				Огноо
+	      			</th>
+	      			<th>
+	      				Агуулга
+	      			</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+		      	{% for i in object_list %}
+		      	<tr>
+		      		<td>{{i.timestamp|date:"Y-m-d H:i"}}</td>
+		      		<td>{{i.verb}}</td>
+		      	</tr>
+		      	{% endfor %}
+      		</tbody>
+      	</table>
+      	</div>
+      </div>
+    </div> 
+  {% endblock %} 

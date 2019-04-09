@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="row-fluid">
+              <div class="span12">
+                <div class="widget purple">
+                  <div class="widget-title">
+                            <h4> Албан тушаалын ерөнхий мэдээлэл</h4>
+                            <span class="tools">
+                                <a href="javascript:;" class="icon-chevron-down"></a>
+                            </span>
+                  </div>
+                  <div class="widget-body">
+                  <div>
+                  <div class="clearfix">
+                            <div class="btn-group">
+                                <a href="#myModal5" data-toggle="modal1" id="editable-sample_new" class="btn green">Албан тушаалын ерөнхий мэдээлэл <i class="icon-plus"></i></a>
+                            </div>
+
+                  </div>
+                        <div class="space20"></div>
+                    <table class="table table-striped table-bordered" id="sample_1">
+                            <thead>
+                            <tr>
+                                <th>Байгууллагын төрөл</th>
+                                <th class="hidden-phone">Байгууллагын нэр</th>
+                                <th class="hidden-phone">Алба</th>
+                                <th class="hidden-phone">Албан тушаал</th>
+                                <th class="hidden-phone">Төлөв</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for o in albantushaal %}
+                            <tr class="odd gradeX">
+                                <td>{{ o.position_name }}</td>
+                                <td class="hidden-phone"><a href="#">{{ o.dep_id.baiguullaga }}</a></td>
+                                <td class="hidden-phone">{{ o.dep_id }}</td>
+                                <td class="center hidden-phone">{{ o.position_name }}</td>
+                                <td class="hidden-phone"><span class="label label-success">Approved</span></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+<form action="" method="post">{% csrf_token %}
+<div id="myModal5" class="modal hide fade">
+  <div class="modal-header">
+    Алба нэмэх
+  </div>
+  <div class="modal-body">
+    {{ form.name.errors }}{{ form.name }}
+  </div>
+  <div class="modal-footer">
+    <a href="#myModal6" data-toggle="modal1" data-dismiss="modal" class="btn btn-primary">Илгээх</a>
+  </div>
+</div>
+<div id="myModal6" class="modal1 hide fade">
+  <div class="modal1-header">
+    Алба нэмэх
+  </div>
+  <div class="modal1-body">
+    {{ form.dep.errors }}{{ form.dep }}<br>
+    {{ form.status.errors }}{{ form.status }}
+  </div>
+  <div class="modal1-footer">
+    <a href="#myModal5" data-toggle="modal1" data-dismiss="modal" class="btn btn-primary">Буцах</a>
+    <button name="action" type="submit" class="btn btn-primary">Хадгалах</button>
+  </div>
+</div>
+</form>
+	</div>
+</div>
+{% endblock %}

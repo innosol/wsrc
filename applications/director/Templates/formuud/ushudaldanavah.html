@@ -1,0 +1,48 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Ус худалдан авах тариф үнэ</h4>
+</div>
+<form id="form_id" class="form-horizontal" action="{% url 'ushudaldanavah' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="errorlist">{{ error }}</div>
+      {% endfor %}
+    {% endif %}
+    <div class="control-group">
+      <label class="control-label">{{ form.torol1.label }}</label>
+      <div class="controls">
+        {{ form.torol1 }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">{{ form.torol2.label }}</label>
+      <div class="controls">
+        {{ form.torol2 }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Цэвэр ус</label>
+      <div class="controls">
+        {{ form.tsever }}{{ form.tsever.errors }}
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Бохир ус</label>
+      <div class="controls">
+      {{ form.bohir }}{{ form.bohir.errors }}
+      </div>
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if ol %}
+    <a href="javascript:;" url-data="{% url 'ushudaldanavahlist' %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" onclick="submitForm_modal_general_ajax('#form_id')" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+

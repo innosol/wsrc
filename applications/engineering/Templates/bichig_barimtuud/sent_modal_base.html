@@ -1,0 +1,21 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>{% block header_name %}Улсын бүртгэлийн гэрчилгээ{%endblock%}</h4>
+</div>
+<div class="modal1-uuganaa-body">
+	{% block body %}
+
+     {% endblock %}
+</div>
+
+<div class="modal1-uuganaa-footer">
+    {% block footer %}
+    <button class="btn btn-default div-close-button">Хаах</button>
+    {% if do %}
+    <button class="btn btn-primary ajax_div_load" url-data='{{material_check_url}}'>Статус өөрчлөх</button>
+    {% endif %}
+  
+  {% endblock%}
+</div>
+

@@ -1,0 +1,1114 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+  <div class='container-fluid'>
+    <div class="span12">
+      <div class="space20"></div>
+      <table class="table table-bordered table-fixed-header table-header-rotated">
+        <thead class="header">
+          <tr>
+            <th rowspan="3">№</th>
+            <th rowspan="3">Үзүүлэлт</th>
+            <th rowspan="3">Хэмжих нэгж</th>
+            <th colspan="5">ТЗ-н Үйл ажиллагааны ангилал</th>
+          </tr>
+          <tr>
+          	<th colspan="2">Төвлөрсан шугамын</th>
+          	<th rowspan="2">Зөөвөр УТБ</th>
+          	<th rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+          	<th rowspan="2">Нийт дүн</th>
+          </tr>
+          <tr>
+          	<th>Цэвэр ус</th>
+          	<th>Бохир ус</th>
+          </tr>
+        </thead>
+        <tbody>
+        	<tr>
+            <td>1</td>
+            <td><b>Үндсэн материалын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>1.1</td>
+            <td>Үндсэн түүхий эд усны</td>
+            <td>мян.төг</td>
+            <td>{% if sudalgaa.zardal.z1 %}{{ sudalgaa.zardal1_tsever }}{% else %}0{% endif %}</td>
+            <td>{% if sudalgaa.zardal.z1 %}{{ sudalgaa.zardal1_bohir }}{% else %}0{% endif %}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>Суурь хураамжийн зардал</td>
+            <td>мян.төг</td>
+            <td>{% if sudalgaa.zardal.z1 %}{{ sudalgaa.zardal1_suuri_une }}{% else %}0{% endif %}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>  
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>  
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><b>Цалингийн зардал</b></td>
+            <td colspan="6">мян.төг</td>
+          </tr>
+          <tr>
+            <td>2.1</td>
+            <td>Үндсэн ба нэмэгдэл</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.0.undsen_ba_nemegdel_tsalin }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.1.undsen_ba_nemegdel_tsalin }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.2.undsen_ba_nemegdel_tsalin }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.3.undsen_ba_nemegdel_tsalin }}</td>
+            <th>{{ sudalgaa.zardal.z2.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>2.2</td>
+            <td>НДШ, ЭМДШ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z2.ndsh_emdsh }}</td>
+            <td colspan="3"></td>
+            <th>{{ sudalgaa.zardal.z2.ndsh_emdsh }}</th>
+          </tr>
+          <tr>
+            <td>2.3</td>
+            <td>Шагнал урамшуулал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.0.shagnal_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.1.shagnal_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.2.shagnal_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z2.tsalin.all.3.shagnal_uramshuulal }}</td>
+            <th>{{ sudalgaa.zardal.z2.nem1 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z2.sum_sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z2.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z2.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z2.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z2.nem }}</th>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><b>Ашиглалтын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>3.1</td>
+            <td>Цахилгаан</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.tsahilgaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.tsahilgaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.tsahilgaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.tsahilgaan }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>3.2</td>
+            <td>Дулаан</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.dulaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.dulaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.dulaan }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.dulaan }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem1 }}</th>  
+          </tr>
+          <tr>
+            <td>3.3</td>
+            <td>Ус</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.us }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.us }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.us }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.us }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>3.4</td>
+            <td>Түлээ, нүүрс</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.tulee_nuurs }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.tulee_nuurs }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.tulee_nuurs }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.tulee_nuurs }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>3.5</td>
+            <td>Түлш шатахуун шатах тослол</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.tulsh_shatahuun_shatah_toslol }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.tulsh_shatahuun_shatah_toslol }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.tulsh_shatahuun_shatah_toslol }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.tulsh_shatahuun_shatah_toslol }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem4 }}</th>
+          </tr>
+          <tr>
+            <td>3.6</td>
+            <td>Тээврийн зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.teever }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.teever }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.teever }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.teever }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem5 }}</th>
+          </tr>
+          <tr>
+            <td>3.7</td>
+            <td>Харуул хамгаалалт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.0.haruul_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.1.haruul_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.2.haruul_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z3.ashiglalt.all.3.haruul_hamgaalalt }}</td>
+            <th>{{ sudalgaa.zardal.z3.nem6 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z3.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z3.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z3.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z3.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z3.nem }}</th>  
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><b>Засвар үйлчилгээний зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>4.1</td>
+            <td>Барилга байгууламжийн засвар</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.barilga_baiguulamj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.barilga_baiguulamj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.barilga_baiguulamj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.barilga_baiguulamj }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>4.2</td>
+            <td>Тоног төхөөрөмжын засвар</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.tonog_tohooromj }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem1 }}</th> 
+          </tr>
+          <tr>
+            <td>4.3</td>
+            <td>Сэлбэг хэрэгсэл</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.selbeg_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.selbeg_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.selbeg_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.selbeg_heregsel }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>4.4</td>
+            <td>Багаж хэрэгсэл</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.bagaj_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.bagaj_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.bagaj_heregsel }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.bagaj_heregsel }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem3 }}</th>  
+          </tr>
+          <tr>
+            <td>4.5</td>
+            <td>Аваарийн нөөцийн хангалт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.agaariin_nootsiin_hangalt }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.agaariin_nootsiin_hangalt }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.agaariin_nootsiin_hangalt }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.agaariin_nootsiin_hangalt }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem4 }}</th>
+          </tr>
+          <tr>
+            <td>4.6</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z4.zasvar_uilchilgee.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z4.nem5 }}</th>
+          </tr>
+          <tr>
+            <th></th>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z4.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z4.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z4.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z4.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z4.nem }}</th>  
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><b>Ариутгал халдваргүйжүүлэлтийн зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>5.1</td>
+            <td>Хлорын зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.0.chlor }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.1.chlor }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.2.chlor }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.3.chlor }}</td>
+            <th>{{ sudalgaa.zardal.z5.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>5.2</td>
+            <td>Бусад ариутгалын бодис</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.0.busad_ariutgal }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.1.busad_ariutgal }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.2.busad_ariutgal }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.3.busad_ariutgal }}</td>
+            <th>{{ sudalgaa.zardal.z5.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>5.3</td>
+            <td>Лагийн зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.0.lag }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.1.lag }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.2.lag }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.3.lag }}</td>
+            <th>{{ sudalgaa.zardal.z5.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>5.4</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z5.ariutgal.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z5.nem3 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z5.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z5.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z5.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z5.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z5.nem }}</th>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><b>Конторын хангамжийн зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>6.1</td>
+            <td>Бичиг хэргийн зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.0.bichig_hereg }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.1.bichig_hereg }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.2.bichig_hereg }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.3.bichig_hereg }}</td>
+            <th>{{ sudalgaa.zardal.z6.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>6.2</td>
+            <td>Шуудан холбоо</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.0.shuudan_holboo }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.1.shuudan_holboo }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.2.shuudan_holboo }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.3.shuudan_holboo }}</td>
+            <th>{{ sudalgaa.zardal.z6.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>6.3</td>
+            <td>Томилолт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.0.tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.1.tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.2.tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.3.tomilolt }}</td>
+            <th>{{ sudalgaa.zardal.z6.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>6.4</td>
+            <td>Сургалтын зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.0.surgaltiin_zardal }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.1.surgaltiin_zardal }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.2.surgaltiin_zardal }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.3.surgaltiin_zardal }}</td>
+            <th>{{ sudalgaa.zardal.z6.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>6.5</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z6.kontor.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z6.nem4 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z6.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z6.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z6.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z6.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z6.nem }}</th>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><b>Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>7.1</td>
+            <td>Аюулгүй ажиллагаа</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.0.ayulgui_ajillagaa }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.1.ayulgui_ajillagaa }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.2.ayulgui_ajillagaa }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.3.ayulgui_ajillagaa }}</td>
+            <th>{{ sudalgaa.zardal.z7.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>7.2</td>
+            <td>Эрүүл ахуйн</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.0.eruul_ahui }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.1.eruul_ahui }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.2.eruul_ahui }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.3.eruul_ahui }}</td>
+            <th>{{ sudalgaa.zardal.z7.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>7.3</td>
+            <td>Иргэний хамгаалалт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.0.irgenii_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.1.irgenii_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.2.irgenii_hamgaalalt }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.3.irgenii_hamgaalalt }}</td>
+            <th>{{ sudalgaa.zardal.z7.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>7.4</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z7.hodolmor_hamgaalal.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z7.nem3 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z7.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z7.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z7.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z7.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z7.nem }}</th>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><b>Маркетинг, борлуулалтын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>8.1</td>
+            <td>Мэдээлэл сурталчилгааны зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.0.medeelel_surtalchilgaa }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.1.medeelel_surtalchilgaa }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.2.medeelel_surtalchilgaa }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.3.medeelel_surtalchilgaa }}</td>
+            <th>{{ sudalgaa.zardal.z8.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>8.2</td>
+            <td>Сургалтын зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.0.surgalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.1.surgalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.2.surgalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.3.surgalt }}</td>
+            <th>{{ sudalgaa.zardal.z8.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>8.3</td>
+            <td>Борлуулалт дэмжих урамшуулал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.0.borluulalt_demjih_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.1.borluulalt_demjih_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.2.borluulalt_demjih_uramshuulal }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.3.borluulalt_demjih_uramshuulal }}</td>
+            <th>{{ sudalgaa.zardal.z8.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>8.4</td>
+            <td>Шалгалт баталгаажуулалт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.0.shalgalt_batalgaajuulalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.1.shalgalt_batalgaajuulalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.2.shalgalt_batalgaajuulalt }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.3.shalgalt_batalgaajuulalt }}</td>
+            <th>{{ sudalgaa.zardal.z8.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>8.5</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z8.marketing.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z8.nem4 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z8.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z8.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z8.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z8.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z8.nem }}</th>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><b>Лаборатори шинжилгээний зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>9.1</td>
+            <td>Усны шинжилгээний зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.0.usnii_shinjilgee }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.1.usnii_shinjilgee }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.2.usnii_shinjilgee }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.3.usnii_shinjilgee }}</td>
+            <th>{{ sudalgaa.zardal.z9.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>9.2</td>
+            <td>Реактив бодис</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.0.reactive_bodis }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.1.reactive_bodis }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.2.reactive_bodis }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.3.reactive_bodis }}</td>
+            <th>{{ sudalgaa.zardal.z9.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>9.3</td>
+            <td>Шил, сав</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.0.shil_sav }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.1.shil_sav }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.2.shil_sav }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.3.shil_sav }}</td>
+            <th>{{ sudalgaa.zardal.z9.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>9.4</td>
+            <td>Баталгаажуулалт хяналт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.0.batalgaajuulalt_hyanalt }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.1.batalgaajuulalt_hyanalt }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.2.batalgaajuulalt_hyanalt }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.3.batalgaajuulalt_hyanalt }}</td>
+            <th>{{ sudalgaa.zardal.z9.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>9.5</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z9.laboratory.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z9.nem4 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z9.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z9.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z9.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z9.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z9.nem }}</th>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><b>Гүйцэтгэх удирдлагын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>10.1</td>
+            <td>Цалин НДШ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.0.tsalin_ndsh }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.1.tsalin_ndsh }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.2.tsalin_ndsh }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.3.tsalin_ndsh }}</td>
+            <th>{{ sudalgaa.zardal.z10.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>10.2</td>
+            <td>Албан томилолт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.0.alban_tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.1.alban_tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.2.alban_tomilolt }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.3.alban_tomilolt }}</td>
+            <th>{{ sudalgaa.zardal.z10.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>10.3</td>
+            <td>Шатахуун</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.0.shatahuun }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.1.shatahuun }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.2.shatahuun }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.3.shatahuun }}</td>
+            <th>{{ sudalgaa.zardal.z10.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>10.4</td>
+            <td>Албан хэрэгцээ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.0.alban_heregtsee }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.1.alban_heregtsee }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.2.alban_heregtsee }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.3.alban_heregtsee }}</td>
+            <th>{{ sudalgaa.zardal.z10.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z10.guitsetgeh_udirdlaga.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z10.nem4 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z10.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z10.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z10.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z10.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z10.nem }}</th>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><b>ТУЗ-н зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>11.1</td>
+            <td>Цалин НДШ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.0.tsalin_ndsh_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.1.tsalin_ndsh_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.2.tsalin_ndsh_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.3.tsalin_ndsh_tuz }}</td>
+            <th>{{ sudalgaa.zardal.z11.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>11.2</td>
+            <td>Албан хэрэгцээ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.0.alban_heregtsee_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.1.alban_heregtsee_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.2.alban_heregtsee_tuz }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.3.alban_heregtsee_tuz }}</td>
+            <th>{{ sudalgaa.zardal.z11.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>11.3</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z11.tuz.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z11.nem2 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z11.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z11.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z11.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z11.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z11.nem }}</th>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><b>Үндсэн хөрөнгийн элэгдэл зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>12.1</td>
+            <td>Үл хөдлөх хөрөнгө</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.0.ul_hodloh_horongo }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.1.ul_hodloh_horongo }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.2.ul_hodloh_horongo }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.3.ul_hodloh_horongo }}</td>
+            <th>{{ sudalgaa.zardal.z12.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>12.2</td>
+            <td>Техник тоног төхөөрөмж</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.0.tehnik_tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.1.tehnik_tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.2.tehnik_tonog_tohooromj }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.3.tehnik_tonog_tohooromj }}</td>
+            <th>{{ sudalgaa.zardal.z12.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>12.3</td>
+            <td>Тавилга, эд хогшил</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.0.tavilga_ed_hogshil }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.1.tavilga_ed_hogshil }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.2.tavilga_ed_hogshil }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.3.tavilga_ed_hogshil }}</td>
+            <th>{{ sudalgaa.zardal.z12.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>12.4</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z12.undsen_horongiin_elegdel.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z12.nem3 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z12.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z12.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z12.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z12.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z12.nem }}</th>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td><b>Гадны үйлчилгээний зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>13.1</td>
+            <td>Зохицуулах үйлчилгээний хөлс</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.zohitsuulah_uilchilgeenii_hols }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.zohitsuulah_uilchilgeenii_hols }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.zohitsuulah_uilchilgeenii_hols }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.zohitsuulah_uilchilgeenii_hols }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>13.2</td>
+            <td>Түрээсийн зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.turees }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.turees }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.turees }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.turees }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>13.3</td>
+            <td>Аудитын зардал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.audit }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.audit }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.audit }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.audit }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>13.4</td>
+            <td>Програм хангамж</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.program_hangamj }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.program_hangamj }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.program_hangamj }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.program_hangamj }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>13.5</td>
+            <td>Банкны үйлчилгээ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.banknii_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.banknii_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.banknii_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.banknii_uilchilgee }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem4 }}</th>
+          </tr>
+          <tr>
+            <td>13.6</td>
+            <td>Шүүхйин үйлчилгээ</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.shuuhiin_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.shuuhiin_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.shuuhiin_uilchilgee }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.shuuhiin_uilchilgee }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem5 }}</th>
+          </tr>
+          <tr>
+            <td>13.7</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z13.gadnii_uilchilgee.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z13.nem6 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z13.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z13.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z13.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z13.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z13.nem }}</th>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td><b>Татварын зардал/ААНОАТ-аас бусад/</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>14.1</td>
+            <td>Газрын татвар</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.0.gazriin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.1.gazriin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.2.gazriin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.3.gazriin_tatvar }}</td>
+            <th>{{ sudalgaa.zardal.z14.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>14.2</td>
+            <td>Үл хөдлөх хөрөнгийн татвар</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.0.ul_hodloh_horongiin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.1.ul_hodloh_horongiin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.2.ul_hodloh_horongiin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.3.ul_hodloh_horongiin_tatvar }}</td>
+            <th>{{ sudalgaa.zardal.z14.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>14.3</td>
+            <td>Тээврийн хэрэгслийн татвар</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.0.teevriin_heregsliin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.1.teevriin_heregsliin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.2.teevriin_heregsliin_tatvar }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.3.teevriin_heregsliin_tatvar }}</td>
+            <th>{{ sudalgaa.zardal.z14.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>14.4</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z14.tatvar.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z14.nem3 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z14.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z14.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z14.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z14.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z14.nem }}</th>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td><b>Даатгалын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>15.1</td>
+            <td>Тээврийн хэрэгслийн даатгал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.0.teevriin_heregsliin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.1.teevriin_heregsliin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.2.teevriin_heregsliin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.3.teevriin_heregsliin_daatgal }}</td>
+            <th>{{ sudalgaa.zardal.z15.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>15.2</td>
+            <td>Үл хөдлөх хөрөнгийн даатгал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.0.ul_hodloh_horongiin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.1.ul_hodloh_horongiin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.2.ul_hodloh_horongiin_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.3.ul_hodloh_horongiin_daatgal }}</td>
+            <th>{{ sudalgaa.zardal.z15.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>15.3</td>
+            <td>Ажиллагсадын хариуцлагын даатгал</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.0.alijchdiin_hurimtlagdsan_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.1.alijchdiin_hurimtlagdsan_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.2.alijchdiin_hurimtlagdsan_daatgal }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.3.alijchdiin_hurimtlagdsan_daatgal }}</td>
+            <th>{{ sudalgaa.zardal.z15.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>15.4</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z15.daatgal.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z15.nem3 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z15.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z15.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z15.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z15.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z15.nem }}</th>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td><b>Бусад зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          {% for busad in sudalgaa.zardal.z16.busad_zardal.all %}
+          <tr>
+            <td>16.{{ forloop.counter }}</td>
+            <td>{{ busad.name }}</td>
+            <td>мян.төгрөг</td>
+            <td>{{ busad.busad.all.0.value }}</td>
+            <td>{{ busad.busad.all.1.value }}</td>
+            <td>{{ busad.busad.all.2.value }}</td>
+            <td>{{ busad.busad.all.3.value }}</td>
+            <th>{{ busad.nem }}</th>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z16.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z16.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z16.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z16.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z16.count }}</th>  
+          </tr>
+          <tr>
+          	<th colspan="2">Үндсэн үйл ажиллагааны зардал-БӨӨ-ийн дүн</th>
+          	<td>мян.төг</td>
+            <td>{{ sudalgaa.boo_zardal_sum0 }}</td>
+            <td>{{ i.cg2 }}</td>
+            <td>{{ i.cg3 }}</td>
+            <td>{{ i.cg4 }}</td>
+            <td>{{ i.cg5 }}</td> 
+          </tr>
+          <tr>
+            <td>17</td>
+            <td><b>Ажиллагсдын нийгмийн зардалд</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>17.1</td>
+            <td>Хоолны хөнгөлөлт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.0.hoolnii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.1.hoolnii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.2.hoolnii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.3.hoolnii_hongololt }}</td>
+            <th>{{ sudalgaa.zardal.z17.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>17.2</td>
+            <td>Унааны хөнгөлөлт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.0.unaanii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.1.unaanii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.2.unaanii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.3.unaanii_hongololt }}</td>
+            <th>{{ sudalgaa.zardal.z17.nem1 }}</th>
+          </tr>
+          <tr>
+            <td>17.3</td>
+            <td>Түлээний хөнгөлөлт</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.0.tuleenii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.1.tuleenii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.2.tuleenii_hongololt }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.3.tuleenii_hongololt }}</td>
+            <th>{{ sudalgaa.zardal.z17.nem2 }}</th>
+          </tr>
+          <tr>
+            <td>17.4</td>
+            <td>Тэтгэмж тусламж</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.0.tetgemj_tuslamj }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.1.tetgemj_tuslamj }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.2.tetgemj_tuslamj }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.3.tetgemj_tuslamj }}</td>
+            <th>{{ sudalgaa.zardal.z17.nem3 }}</th>
+          </tr>
+          <tr>
+            <td>17.5</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z17.ajilchid_niigmiin.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z17.nem4 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z17.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z17.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z17.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z17.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z17.nem }}</th>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td><b>Хөрөнгө оруулалтын зардал</b></td>
+            <td>мян.төг</td>
+            <td colspan="5"></td>
+          </tr>
+          <tr>
+            <td>18.1</td>
+            <td>Урт хугацаат зээлийн</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.0.urt_hugatsaat_zeel }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.1.urt_hugatsaat_zeel }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.2.urt_hugatsaat_zeel }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.3.urt_hugatsaat_zeel }}</td>
+            <th>{{ sudalgaa.zardal.z18.nem0 }}</th>
+          </tr>
+          <tr>
+            <td>18.2</td>
+            <td>Бусад</td>
+            <td>мян.төг</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.0.busad }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.1.busad }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.2.busad }}</td>
+            <td>{{ sudalgaa.zardal.z18.horongo_oruulalt.all.3.busad }}</td>
+            <th>{{ sudalgaa.zardal.z18.nem1 }}</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><b>Дүн</b></td>
+            <td>мян.төг</td>
+            <th>{{ sudalgaa.zardal.z18.sum0 }}</th>
+            <th>{{ sudalgaa.zardal.z18.sum1 }}</th>
+            <th>{{ sudalgaa.zardal.z18.sum2 }}</th>
+            <th>{{ sudalgaa.zardal.z18.sum3 }}</th>
+            <th>{{ sudalgaa.zardal.z18.nem }}</th>
+          </tr>
+          <tr>
+          	<th colspan="2">БОШ - НИЙТ ЗАРДЛЫН ДҮН</th>
+          	<td>мян.төг</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+          </tr>
+          <tr>
+          	<th colspan="2">Борлуулсан ус - биетээр</th>
+          	<td>мян.төг</td>
+            <td>{{ sudalgaa.orlogo.all_tsever_count }}</td>
+            <td>{{ sudalgaa.orlogo.all_bohir_count }}</td>
+            <td colspan="2"></td>
+            <td></td> 
+          </tr>
+          <tr>
+        	  <th colspan="2">1 м3 усны өртөг  </th>
+        	  <td>мян.төг</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

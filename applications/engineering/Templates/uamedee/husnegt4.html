@@ -1,0 +1,61 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Маягт № 7</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны мэдээ</h5>
+			<h5>"{{ baiguullaga }}"  ХК-ний Машин механизм, тоног төхөөрөмжийн жагсаалт</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+					
+				<tr>
+					<th >№</th> 
+					<th >Машин механизм, тоног төхөөрөмжийн нэр</th> 
+					<th >Тоо ширхэг</th> 
+					<th >Хүчин чадал</th> 
+					<th >Элэгдэлтийн чанар</th> 
+					<th >Ашиглалтанд орсон он</th> 
+					<th >Балансын үнэ</th> 
+					<th >Хуримтлагдсан элэгдэл</th> 
+					<th >Элэгдлийн хувь</th> 
+					<th >Эх үүсвэр</th> 
+									 
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for tonog in tonog %}
+				<tr>
+					<th >{{tonog.torol_id}} </th> 
+					<th >{{tonog.name}} </th> 
+					<th >{{tonog.too}} </th> 
+					<th >{{tonog.huchin_chadal}}</th> 
+					<th >{{tonog.elegdliin_chanar}}</th> 
+					<th >{{tonog.ashiglaltand_orson_ognoo}}</th> 
+					<th >{{tonog.balans_une}}</th> 
+					<th >{{tonog.hurimtlagdsan_elegdel}} </th> 
+					<th >{{tonog.elegdel_huvi}}</th> 
+					<th >{{tonog.eh_uusver}}</th> 
+									
+				</tr>
+			{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>".......................".......ХК-ний Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

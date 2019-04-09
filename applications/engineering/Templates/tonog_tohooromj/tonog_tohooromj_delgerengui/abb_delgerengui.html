@@ -1,0 +1,63 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Хариуцаж буй барилга орон сууцны мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+<div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Байршил</td>
+            <td>{{obj.city}},<br>{{obj.district}},<br>{{obj.khoroo}},<br>{{obj.address}}</td>
+          </tr>
+          <tr>
+            <td>Барилгын нэр, дугаар</td>
+            <td>{{obj.barilga_ner}}</td>
+          </tr>
+          <tr>
+            <td>Нийт өрхийн тоо</td>
+            <td>{{obj.niit}}</td>
+          </tr>
+          <tr>
+            <td>Тоолууртай өрхийн тоо</td>
+            <td>{{obj.tooluurjilt_too}}</td>
+          </tr>
+          <tr>
+            <td>Аж ахуй нэгжийн тоо</td>
+            <td>{{obj.aan_too}}</td>
+          </tr>
+          <tr>
+            <td>Тоолууртай ААН-ийн тоо</td>
+            <td>{{obj.tooluurjilt_too_aan}}</td>
+          </tr>
+          <tr>
+            <td>Зураг</td>
+            <td><a href="/media/{{obj.photo}}" target="_blank">Зураг</a></td>
+          </tr>
+          <tr>
+            <td>Улсын акт</td>
+            <td><a href="/media/{{obj.ulsiinakt}}" target="_blank">Улсын акт</a></td>
+          </tr>
+          <tr>
+            <td>Гэрээ</td>
+            <td><a href="/media/{{obj.geree}}" target="_blank">Гэрээ</a></td>
+          </tr>
+        </table>
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+          </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'tonog_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,51 @@
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 0.4;
+}
+
+
+.form-horizontal .form1s {
+  *display: inline-block;
+  *padding-left: 20px;
+  margin-left: 180px;
+  padding: 0.5% 0px;
+  *margin-left: 0;
+}
+
+.form-horizontal .form1-label {
+  float: left;
+  width: 200px;
+  padding: 0.5% 0px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.form-horizontal .form1-group {
+  margin-bottom: 0px;
+  *zoom: 1;
+}
+
+.form-horizontal .form1-group:after {
+  clear: both;
+}
+.form-horizontal .form1-group::before, .form-horizontal .form1-group::after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.form1-column1 {
+  position: absolute;
+  padding-left: 0px;
+  width: 50%;
+}
+
+.form1-column2 {
+  position: absolute;
+  margin-left: 45%;
+  width: 50%;
+}
+
+.form1s .org_description {
+  width: 275px;
+  max-height: 125px;
+}

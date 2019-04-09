@@ -1,0 +1,102 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Ашиглалтын зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="3"></th>
+        <th rowspan="3">Хэмжих нэгж</th>
+        <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+        <th rowspan="3">Цахилгаан</th>
+        <th rowspan="3">Дулаан</th>
+        <th rowspan="3">Бусад</th>
+        <th rowspan="3">Нийт</th>
+      </tr>
+      <tr>
+        <th colspan="2">Төвлөрсөн шугамын</th>
+        <th rowspan="2">Зөөвөр, УТБ</th>
+        <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+      </tr>
+      <tr>
+        <th>Цэвэр ус</th>
+        <th>Бохир ус</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Цахилгаан</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.tsahilgaan }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total0 }}</b></td>
+      </tr>
+      <tr>
+        <td>Дулаан</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.dulaan }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total1 }}</b></td>
+      </tr>
+      <tr>
+        <td>Ус</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.us }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total2 }}</b></td>
+      </tr>
+      <tr>
+        <td>Түлээ нүүрс</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.tulee_nuurs }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total3 }}</b></td>
+      </tr>
+      <tr>
+        <td>Түлш шатахуун шатах тослох</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.tulsh_shatahuun_shatah_toslol }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total4 }}</b></td>
+      </tr>
+      <tr>
+        <td>Тээвэр</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.teever }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total5 }}</b></td>
+      </tr>
+      <tr>
+        <td>Харуул хамгаалалт</td>
+        <td>мян.төгрөг</td>
+        {% for z3 in tailan.zardal.z3.ashiglalt.all %}
+        <td>{{ z3.haruul_hamgaalalt }}</td>
+        {% endfor %}
+        <td><b>{{ tailan.zardal.z3.total6 }}</b></td>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <td>мян.төгрөг</td>
+        <th>{{ tailan.zardal.z3.sum0 }}</th>
+        <th>{{ tailan.zardal.z3.sum1 }}</th>
+        <th>{{ tailan.zardal.z3.sum2 }}</th>
+        <th>{{ tailan.zardal.z3.sum3 }}</th>
+        <th>{{ tailan.zardal.z3.sum4 }}</th>
+        <th>{{ tailan.zardal.z3.sum5 }}</th>
+        <th>{{ tailan.zardal.z3.sum6 }}</th>
+        <td><b>{{ tailan.zardal.z3.total }}</b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="close" class="btn btn-default">Цуцлах</button>
+  <button url-data="{% if date %}{% url 'zardal3' date %}{% else %}{% url 'zardal3' %}{% endif %}"class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

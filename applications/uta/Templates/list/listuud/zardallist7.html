@@ -1,0 +1,77 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</h4>
+</div>
+<div class="modal1-uuganaa-body">    
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="3"></th>
+        <th rowspan="3">Хэмжих нэгж</th>
+        <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+        <th rowspan="3">Цахилгаан</th>
+        <th rowspan="3">Дулаан</th>
+        <th rowspan="3">Бусад</th>
+        <th rowspan="3">Нийт</th>
+      </tr>
+      <tr>
+        <th colspan="2">Төвлөрсөн шугамын</th>
+        <th rowspan="2">Зөөвөр, УТБ</th>
+        <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+      </tr>
+      <tr>
+        <th>Цэвэр ус</th>
+        <th>Бохир ус</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Аюулгүй ажиллагаа</td>
+        <td>мян.төгрөг</td>
+        {% for z7 in tailan.zardal.z7.hodolmor_hamgaalal.all %}
+        <td>{{ z7.ayulgui_ajillagaa }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z7.total0 }}</th>
+      </tr>
+      <tr>
+        <td>Эрүүл ахуй</td>
+        <td>мян.төгрөг</td>
+        {% for z7 in tailan.zardal.z7.hodolmor_hamgaalal.all %}
+        <td>{{ z7.eruul_ahui }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z7.total1 }}</th>
+      </tr>
+      <tr>
+        <td>Иргэний хамгаалалт</td>
+        <td>мян.төгрөг</td>
+        {% for z7 in tailan.zardal.z7.hodolmor_hamgaalal.all %}
+        <td>{{ z7.irgenii_hamgaalalt }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z7.total2 }}</th>
+      </tr>
+      <tr>
+        <td>Бусад</td>
+        <td>мян.төгрөг</td>
+        {% for z7 in tailan.zardal.z7.hodolmor_hamgaalal.all %}
+        <td>{{ z7.busad }}</td>
+        {% endfor %}
+        <th>{{ tailan.zardal.z7.total3 }}</th>
+      </tr>
+      <tr>
+        <th>Нийт</th>
+        <th>мян.төгрөг</th>
+        <th>{{ tailan.zardal.z7.sum0 }}</th>
+        <th>{{ tailan.zardal.z7.sum1 }}</th>
+        <th>{{ tailan.zardal.z7.sum2 }}</th>
+        <th>{{ tailan.zardal.z7.sum3 }}</th>
+        <th>{{ tailan.zardal.z7.sum4 }}</th>
+        <th>{{ tailan.zardal.z7.sum5 }}</th>
+        <th>{{ tailan.zardal.z7.sum6 }}</th>
+        <th>{{ tailan.zardal.z7.total }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

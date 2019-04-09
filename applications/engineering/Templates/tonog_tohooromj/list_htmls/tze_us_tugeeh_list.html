@@ -1,0 +1,91 @@
+<div class="span9">
+	<div class="widget terques">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Ус түгээх байрны жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_bb %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'us_tugeeh_insert' %}"><i class="icon-edit"></i>Ус түгээх байр нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>№</th>
+			          	<th>Ус түгээх байрны төрөл</th>
+			          	<th>Дугаар (Нэр)</th>
+			          	<th>Бүртгэсэн огноо</th>
+			          	{% if perms.app.add_bb %}
+			          	<th>Угаалга акт нэмэх</th>
+			          	<th><i class="icon-edit"></i></th>
+			          	<th><i class="icon-remove"></i></th>
+			          	{% endif %}
+			          	<th>Дэлгэрэнгүй</th>
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			         	<td>{{forloop.counter}}</td>
+			         	<td>{{i.barilga}}</td>
+			         	<td>{{i.dugaar}}</td>
+			         	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			         	{% if perms.app.add_bb %}
+			         	<td>
+			         		<a class="btn btn-primary ajax_div_load" url-data= "{% url 'tze_us_tugeeh_wash_edit' i.id %}"><i class="icon-plus"></i></a>
+			         	</td>
+			         	<td>
+			           		<a class="btn btn-primary ajax_div_load" url-data= "{% url 'us_tugeeh_insert' i.id %}"><i class="icon-edit"></i></a>
+			         	</td>
+			         	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_bb_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			         	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_us_tugeeh_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+<div class="span3">
+	<div class="widget purple">
+		<div class="widget-title">
+			<h4><i class="icon-filter"></i>Шүүлтүүр</h4>
+		</div>
+		<div class="widget-body">
+			<form method="GET" id="filter_form">
+              {% for f in filter_form %}
+              <div class="form-group">
+                {{f.label}}
+                {{f}}
+              </div>
+              {% endfor %}
+              <button type='submit' class="btn btn-primary">Шүүх</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("#filter_form").submit(function(event){
+	event.preventDefault();
+	$.ajax({
+		url: "{% url 'tza_us_tugeeh_list' %}",
+		method: 'GET',
+		data: $(this).serialize()
+	}).done(function(response){
+		$('#tonog_tohooromj_list').html(response)
+	});
+});
+</script>
+
+<script>
+$('#id_us_tugeeh_count').text("+{{object_list|length}}");
+</script>

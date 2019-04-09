@@ -1,0 +1,13 @@
+{% extends 'hzm_sidebar.html' %}
+
+
+  {% block content %}
+    <div id="main-content">
+      <div class="container-fluid">
+      	{% for i in object_list %}
+      	{{i}}<br>
+
+      	{% endfor %}
+      </div>
+    </div> 
+  {% endblock %} 

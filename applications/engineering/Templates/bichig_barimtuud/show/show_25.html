@@ -1,0 +1,67 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+
+{% block header_show %}
+Цэвэрлэх байгууламж:
+{% endblock %}
+
+{% block body_show %}
+<p><a url-data="{% url 'tz_ts_baig_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Цэвэрлэх байгууламж нэмэх</a></p>
+{% if tseverleh_baig %}
+
+    <div class="alert alert-block alert-info fade in">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын цэвэрлэх байгууламж нийт {{tseverleh_baig|length}} бүртгэлтэй байна.
+    </p>
+    <p>
+      Хэрвээ цэвэрлэх байгууламж нэмж бүртгэх бол "Цэвэрлэх байгууламж нэмэх" дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ материалын статус солих бол "Статус солих" дээр дарна уу.
+    </p>
+  </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Механик</th>
+          <th>Биологи</th>
+          <th>Физик</th>
+          <th>Хүчин чадал (м3/хон)</th> 
+          <th>Ашиглалтанд орсон огноо</th> 
+          <th>Дэлгэрэнгүй</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in tseverleh_baig %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{% if i.mehanik %}Тийм {% else %}Үгүй{% endif %}</td>
+          <td>{% if i.biologi %}Тийм {% else %}Үгүй{% endif %}</td>
+          <td>{% if i.fizik %}Тийм {% else %}Үгүй{% endif %}</td>
+          <td>{{i.huchin_chadal}}</td>
+          <td>{{i.ashiglaltand_orson_ognoo}}</td>
+          <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ts_baig_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+       </tr>
+       {% endfor %}
+
+
+     </tbody>
+   </table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Системд байгууллагын цэвэрлэх байгууламж бүртгэгдээгүй байна. "Цэвэрлэх байгууламж нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+ </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+{% if tseverleh_baig %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=25 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="space20"></div>
+				<h2>"{{ org.org_name }} {{ org.org_type }}"</h2>
+				<div class="space20"></div>
+				<h4>{{ sudalgaa.year }} оны санхүүгийн судалгаа</h4>
+				<div style="float:right;">12 - ТЕХНИКИЙН НӨХЦӨЛ</div>
+				<table class="table table-bordered table-fixed-header table-header-rotated">
+					<thead class="header">
+						<tr>
+							<th>Үзүүлэлт</th>
+							<th>Техникийн нөхцөл хүсч өргөдөл гаргасан иргэд, ААНБ</th>
+							<th>Усны хэрэглээ-м<sup>3</sup></th>
+							<th>Техникийн нөхцөл олгосон иргэд, ААНБ</th>
+							<th>Усны хэрэглээ-м<sup>3</sup></th>
+							<th>Техникийн нөхцөл олгоогүй өргөдлийн тоо иргэд, ААНБ</th>
+							<th>Усны хэрэглээ-м<sup>3</sup></th>
+						</tr>
+						<tr>
+							<th>Хэмжих нэгж</th>
+							<th>тоо</th>
+							<th>м<sup>3</sup></th>
+							<th>тоо</th>
+							<th>м<sup>3</sup></th>
+							<th>тоо</th>
+							<th>м<sup>3</sup></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ sudalgaa.year }} oн</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.0.too }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.0.us }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.1.too }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.1.us }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.sum0 }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.sum1 }}</td>
+						</tr>
+						<tr>
+							<td>Өссөн дүнгээр</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.0.too }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.0.us }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.1.too }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.tehnik_nohtsol.all.1.us }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.sum0 }}</td>
+							<td>{{ sudalgaa.tehnik_nohtsol.sum1 }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

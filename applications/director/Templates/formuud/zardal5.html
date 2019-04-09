@@ -1,0 +1,84 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Ариутгал, халдваргүйжүүлэлтийн зардал</h4>
+</div>
+<form action="{% url 'zardal5' %}" class="zardal5" method="post">{% csrf_token %}
+    <div id="zardal5-modal-body" class="modal1-uuganaa-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th rowspan="3"></th>
+                    <th rowspan="3">Хэмжих нэгж</th>
+                    <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+                    <th rowspan="3">Цахилгаан</th>
+                    <th rowspan="3">Дулаан</th>
+                    <th rowspan="3">Бусад</th>
+                </tr>
+                <tr>
+                    <th colspan="2">Төвлөрсөн шугамын</th>
+                    <th rowspan="2">Зөөвөр, УТБ</th>
+                    <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+                </tr>
+                <tr>
+                    <th>Цэвэр ус</th>
+                    <th>Бохир ус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Хлор</td>
+                    <td>мян.төгрөг</td>
+                    <td>{{ form.z5_0 }}</td>
+                    <td>{{ form.z5_1 }}</td>
+                    <td>{{ form.z5_2 }}</td>
+                    <td>{{ form.z5_3 }}</td>
+                    <td>{{ form.z5_4 }}</td>
+                    <td>{{ form.z5_5 }}</td>
+                    <td>{{ form.z5_6 }}</td>
+                </tr>
+                <tr>
+                    <td>Бусад ариутгалын бодис</td>
+                    <td>мян.төгрөг</td>
+                    <td>{{ form.z5_7 }}</td>
+                    <td>{{ form.z5_8 }}</td>
+                    <td>{{ form.z5_9 }}</td>
+                    <td>{{ form.z5_10 }}</td>
+                    <td>{{ form.z5_11 }}</td>
+                    <td>{{ form.z5_12 }}</td>
+                    <td>{{ form.z5_13 }}</td>
+                </tr>
+                <tr>
+                    <td>Лаг</td>
+                    <td>мян.төгрөг</td>
+                    <td>{{ form.z5_14 }}</td>
+                    <td>{{ form.z5_15 }}</td>
+                    <td>{{ form.z5_16 }}</td>
+                    <td>{{ form.z5_17 }}</td>
+                    <td>{{ form.z5_18 }}</td>
+                    <td>{{ form.z5_19 }}</td>
+                    <td>{{ form.z5_20 }}</td>
+                </tr>
+                <tr>
+                    <td>Бусад</td>
+                    <td>мян.төгрөг</td>
+                    <td>{{ form.z5_21 }}</td>
+                    <td>{{ form.z5_22 }}</td>
+                    <td>{{ form.z5_23 }}</td>
+                    <td>{{ form.z5_24 }}</td>
+                    <td>{{ form.z5_25 }}</td>
+                    <td>{{ form.z5_26 }}</td>
+                    <td>{{ form.z5_27 }}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    <div class="modal1-uuganaa-footer">
+        {% if tailan.zardal.z5 %}
+        <a href="javascript:;" url-data="{% if date %}{% url 'zardal5list' date %}{% else %}{% url 'zardal5list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+        {% else %}
+        <a data-data="close" class="btn btn-default">Цуцлах</a>
+        {% endif %}
+        <button type="submit" value="zardal5" name="action" class="btn btn-success">Хадгалах</button>
+    </div>
+</form>

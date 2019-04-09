@@ -1,0 +1,69 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Машин, тоног төхөөрөмж:
+{% endblock %}
+
+{% block body_show %}
+
+<p><a url-data="{% url 'tz_equipment_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Машин тоног төхөөрөмж нэмэх</a></p>
+<div class="space10"></div>
+{% if tonog %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын машин, тоног төхөөрөмж нийт {{ tonog|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ машин, тоног төхөөрөмж системд нэмж бүртгэх бол "Машин, тоног төхөөрөмж нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд хавсаргасан машин, тоног төхөөрөмжийн мэдээллийг өөрчлөх бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Нэр</th>
+        <th>Төрөл</th>
+        <th>Тоо</th>
+        <th>Хүчин чадал</th>
+        <th>Ашиглалтанд орсон огноо</th>
+        <th>Эх үүсвэр</th>
+        <th>Дэлгэрэнгүй</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in tonog %}
+      <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.torol_id}} </td>
+        <td>{{i.too}}</td>
+        <td>{{i.huchin_chadal}} </td>
+        <td>{{i.ashiglaltand_orson_ognoo}} </td>
+        <td>{{i.eh_uusver}}</td>
+        <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_tonog_tohooromj_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+     </tr>
+     {% endfor %}
+
+
+   </tbody>
+ </table>
+
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын машин, тоног төхөөрөмж бүртгэгдээгүй байна. Хэрвээ байгууллагын машин, тоног төхөөрөмжийн мэдээллийг системд бүртгэх бол "Машин, тоног төхөөрөмж нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if tonog %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=15 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+

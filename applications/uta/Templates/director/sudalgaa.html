@@ -1,0 +1,210 @@
+{% extends 'base_base.html' %}
+{% block sidebar %}
+<div class="sidebar-scroll">
+    <div id="sidebar" class="nav-collapse collapse">
+        <ul class="sidebar-menu">
+            <li class="sub-menu active">
+                <a>
+                    <i class=" icon-cog"></i>
+                    <span>Хүсэлт</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    {% if user.has_uta_darga_permission %}
+                    <li><a href="{% url 'uta darga huselt huvaarilah' %}">ТЗ хуваарьлах</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'uta huselt check' %}">ТЗ хүсэлт шалгах</a></li>
+                    <li class="active"><a href="{% url 'sudalgaa_list' %}">Судалгаа шалгах</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="{% url 'check_sez' %}" class="">
+                    <i class=" icon-cog"></i>
+                    <span>Шалгах</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>ТЗ Эзэмшигч</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li class="sub"><a href="/uta/baiguullaga/">Байгууллага</a></li>
+                    <li><a href="/uta/ajiltan/">Хүний нөөц</a></li>
+                    <li><a href="/uta/tohooromj/">Тоног төхөөрөмж</a></li>
+                    <li><a href="{% url 'uta_tz_gerchilgee_list' %}">ТЗ гэрчилгээ</a></li>
+                </ul>
+            </li>       
+            <li class="sub-menu">
+                <a class="">
+                    <i class=" icon-cog"></i>
+                    <span>Тайлан</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                  <li><a href="{% url 'uta_report' %}">СЭЗ тайлан</a></li>
+                  <li><a href="{% url 'uta_gshu_menu' %}">Гүйцэтгэлийн шалгуур үзүүлэлт</a></li>
+                  <li><a href="javascript:;">Нэгтгэл</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span8">
+        <div class="space20"></div>
+        <h4>"{{ sudalgaa.tze.org_name }} {{ sudalgaa.tze.org_type }}"</h4>
+        <div class="space20"></div>
+				<div class="widget purple active">
+					<div class="widget-title">
+						<h4>{{ sudalgaa.year }} оны санхүүгийн тайлан</h4>
+            <span class="tools">
+              <a href="javascript:;" class="icon-chevron-down"></a>
+            </span>
+					</div>
+					<div class="widget-body">
+            {% if sudalgaa.yvts != "Хүлээн авсан" %}
+            <div class="bs-docs-example">
+              <ul class="nav nav-pills">
+                <li class="active dropdown">
+                  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Төлөв өөрчлөх <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#modal1" data-data="gold">Хүлээн авах</a></li>
+                    <li><a href="#modal2" data-data="gold">Буцаах</a></li>
+                  </ul>
+                </li>
+                <li><a url-data="{% url 'message_uta' sudalgaa.tze.id %}" href="javascript:;" class="ajax_div_load">Мессеж</a></li>
+              </ul>
+            </div>
+            {% endif %}
+						<table class="table table-bordered table-nemelt table-height table-striped">
+              <thead>
+                <tr>
+                	<th class="nem"><input type="checkbox"></th>
+                  <th>№</th>
+                  <th class="nem">НЭР</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<tr>
+              		<td class="nem"><input type="checkbox"></td>
+              		<td class="nem">1</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 1 %}" target="_blank">БАЙГУУЛЛАГЫН ТОДОРХОЙЛОЛТ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">2</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 2 %}" target="_blank">1 - НИЙТ ТЭЗҮ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">3</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 3 %}" target="_blank">2 - НИЙТ ЗАРДАЛ, ОРЛОГО</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">4</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 4 %}" target="_blank">3 - ТЗ - ТЭЗҮ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">5</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 5 %}" target="_blank">4 - ОРЛОГЫН БҮТЭЦ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">6</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 6 %}" target="_blank">4A,4Б - ОРЛОГЫН ЗАДАРГАА САРААР</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">7</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 7 %}" target="_blank">5 - ЗАРДАЛ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">8</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 8 %}" target="_blank">5А - ЗАРДАЛ САРААР</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">9</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 9 %}" target="_blank">6 - ЦАЛИН</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">10</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 10 %}" target="_blank">7 - ӨРТӨГ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">11</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 11 %}" target="_blank">8 - ХЭРЭГЛЭГЧ СУУРЬ ҮНЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">12</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 12 %}" target="_blank">9 - ААНБ ГОЛЧИЙН СУДАЛГАА</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">13</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 13 %}" target="_blank">10 - ХӨРӨНГӨ ОРУУЛАЛТЫН МЭДЭЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">14</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 14 %}" target="_blank">11 - УСНЫ ТАСАЛДЛЫН МЭДЭЭ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">15</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 15 %}" target="_blank">12 - ТЕХНИКИЙН НӨХЦӨЛ</a></td>
+              	</tr>
+              	<tr>
+              		<td><input type="checkbox"></td>
+              		<td class="nem">16</td>
+              		<td class="nem"><a href="{% url 'sudalgaa_husnegt' sudalgaa.tze.id sudalgaa.id 16 %}" target="_blank">13 - ХЭРЭГЛЭГЧИЙН САНАЛ ГОМДОЛ</a></td>
+              	</tr>
+              </tbody>
+          	</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modal1" class="gold">
+  <div class="gold-header">
+    <button type="button" class="close">&times</button>
+    <h4>Төлөв өөрчлөх</h4>
+  </div>
+  <div class="gold-body">
+    Тайлангийн төлөв өөрчлөх үү?  <span id="sp" class="label label-success">Хүлээн авах</span>
+  </div>
+  <div class="gold-footer">
+    <button type="button" data-data="gold" class="btn btn-default">Цуцлах</button>
+    <a href="{% url 'sudalgaa_tolov_huleen_avah' sudalgaa.id %}" class="btn btn-success">Зөвшөөрөх</a>
+  </div>
+</div>
+<div id="modal2" class="gold">
+  <div class="gold-header">
+    <button type="button" class="close">&times</button>
+    <h4>Төлөв өөрчлөх</h4>
+  </div>
+  <div class="gold-body">
+    Тайлангийн төлөв өөрчлөх үү?  <span id="sp" class="label label-important">Буцаах</span>
+  </div>
+  <div class="gold-footer">
+    <button type="button" data-data="gold" class="btn btn-default">Цуцлах</button>
+    <a href="{% url 'sudalgaa_tolov_butsaah' sudalgaa.id %}" class="btn btn-success">Зөвшөөрөх</a>
+  </div>
+</div>
+<div id="Modal_general" class="modal1-uuganaa">
+</div>
+{% endblock %}

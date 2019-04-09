@@ -1,0 +1,83 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Тусгай зөвшөөрөл эзэмшигч</h4>
+</div>
+<form action="{% url 'orlogo' %}" method="post">{% csrf_token %}
+  <div id="orlogo-modal-body" class="modal1-uuganaa-body portlet-scroll-2">
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th>Үзүүлэлтүүд</th>
+        <th>Хэмжих нэгж</th>
+        <th>Цэвэр ус</th>
+        <th>Бохир ус</th>
+      </tr>
+      <tr>
+        <td>Олборлосон ус</td>
+        <td>мян.м3</td>
+        <td colspan="2">{{ form.fields_18}}</td>
+      </tr>
+      <tr>
+        <td>Дулааны хэсэг/өөрийн/</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_0}}</td>
+        <td>{{ form.fields_1}}</td>
+      </tr>
+      <tr>
+        <td>ААНБайгууллага</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_2}}</td>
+        <td>{{ form.fields_3}}</td>
+      </tr>
+      <tr>
+        <td>Спирт, архи, пиво, усны үйлдвэр, машин угаалга</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_4}}</td>
+        <td>{{ form.fields_5}}</td>
+      </tr>
+      <tr>
+        <td>Ноос ноолуур, арьс шир, өлөн гэдэс боловсруулах үйлдвэр</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_6}}</td>
+        <td>{{ form.fields_7}}</td>
+      </tr>
+      <tr>
+        <td>Зөөврөөр</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_8}}</td>
+        <td>{{ form.fields_9}}</td>
+      </tr>
+      <tr>
+        <td>Айл өрх /тоолууртай/</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_10}}</td>
+        <td>{{ form.fields_11}}</td>
+      </tr>
+      <tr>
+        <td>Айл өрх /тоолуургүй/</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_12 }}</td>
+        <td>{{ form.fields_13 }}</td>
+      </tr>
+      <tr>
+        <td>Айл өрх -УТБ, зөөврөөр</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_14 }}</td>
+        <td>{{ form.fields_15 }}</td>
+      </tr>
+      <tr>
+        <td>Айл өрх зөөврөөр</td>
+        <td>мян.м3</td>
+        <td>{{ form.fields_16 }}</td>
+        <td>{{ form.fields_17 }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.orlogo.buteegdehuun.all %}
+    <a url-data="{% if date %}{% url 'orlogolist' date %}{% else %}{% url 'orlogolist' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

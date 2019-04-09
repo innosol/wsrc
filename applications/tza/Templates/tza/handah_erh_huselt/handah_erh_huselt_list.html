@@ -1,0 +1,83 @@
+{% extends 'tza_darga_base.html' %}
+{% block content %}
+<div class="overlay"></div>
+<div id="main-content">
+  {% if messages %}
+    <div class="feedback_messages">
+      {% for message in messages %}
+      <div {% if message.tags %}class="feedback_message_{{message.tags}}" {% else %} class="feedback_message_default" {% endif %}>
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="space10"></div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget green active">
+         <div class="widget-title">
+          <h4>Хандах эрх аваагүй байгууллагууд</h4>
+          <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a></span>
+        </div>
+        <div class="widget-body">
+          <div class="space20"></div>
+          <table class="table table-striped table-bordered" >
+            <thead>
+              <tr>
+                <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
+                <th>Байгууллагын нэр</th>
+                <th>Дэлгэрэнгүй</th>
+                <th>Хандах эрх олгох</th>
+              </tr>
+            </thead>
+            <tbody>
+              <form action="/tza/baig_huvaarilalt_bundle/" method="POST">{%csrf_token%}
+              {% for t in tze %}
+              <tr class="odd gradeX">
+                <td><input type="checkbox" class="checkboxes" value="{{ t.id }}" name = "org_ids" /></td>
+                <td>{{ t.org_name }} {{ t.org_type }}</td>
+                <td><a href = "javascript:;" class="ajax_div_load" url-data="{% url 'handah_erh_baig_delgerengui' t.id %}">Дэлгэрэнгүй</a></td>
+                <td><a href = "{% url 'agree' t.id %}">Хандах эрх олгох</a></td>
+                <div id=""></div>
+              </tr>
+              {% endfor %}
+            </form>
+            </tbody>
+          </table>
+          <div class="">
+            <span class="step-links">
+              {% if tze.has_previous %}
+              <a href="?page={{ tze.previous_page_number }}">Өмнөх</a>
+              {% endif %}
+              <span class="current">
+               Нийт {{ tze.paginator.num_pages }} мөрөөс {{ tze.number }}-г харуулав .
+             </span>
+             {% if tze.has_next %}
+             <a href="?page={{ tze.next_page_number }}">Дараах</a>
+             {% endif %}
+           </span>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+
+
+<div id="Modal_general" class="modal1-uuganaa">
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h3></h3>
+  </div>
+    <div class="modal1-uuganaa-body">
+      {{ forms.huseltform }}
+      <input readonly="True" name="baiguullaga" type="hidden" class="input" value="{{ baiguullaga.org_name }}">
+    </div>
+    <div class="modal1-uuganaa-footer">
+      <button type="submit" value="huseltform" name="action" class="btn btn-primary">Хүсэлт үүсгэх</button>
+    </div>
+</div>
+{% endblock %}

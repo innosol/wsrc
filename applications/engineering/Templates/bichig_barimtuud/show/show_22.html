@@ -1,0 +1,65 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+
+
+{% block header_show %}
+Шугам сүлжээ:
+{% endblock %}
+
+{% block body_show %}
+<a url-data="{% url 'tz_sh_suljee_insert' h.id %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Шугам сүлжээ нэмэх</a>
+<div class="space10"></div>
+{% if shugam_suljee %}
+<div class="alert alert-block alert-info fade in">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд шугам сүлжээ нийт {{shugam_suljee|length}} бүртгэлтэй байна.
+    </p>
+    <p>
+      Хэрвээ шугам сүлжээ нэмж бүртгэх бол "Шугам нэмэх" дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ материалын статус солих бол "Статус солих" дээр дарна уу.
+    </p>
+  </div>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>№</th>
+			<th>Шугам сүлжээ</th>
+			<th>Шугамын төрөл</th>
+			<th>Шугамын урт (м)</th>
+			<th>Хяналтын худгийн тоо</th>
+			<th>Жилд гарсан гэмтлийн тоо</th>
+			<th>Дэлгэрэнгүй</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for i in shugam_suljee %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{i.shugam_helber}}</td>
+			<td>{{i.shugam_torol}}</td>
+			<td>{{i.shugam_urt}}</td>
+			<td>{{i.hudgiin_too}}</td>
+			<td>{{i.gemtliin_too}}</td>
+			<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_sh_suljee_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<div class="alert alert-block alert-info fade in">
+  <p>
+    Системд шугам сүлжээ бүртгэгдээгүй байна. "Шугам нэмэх" дээр дарж бүртгэнэ үү.
+  </p>
+</div>
+ {% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if shugam_suljee %}
+<a href="javascript:;" url-data='{% url "material_choose 16" huselt_id=h.id material_number=22 %}' class="btn btn-primary ajax_div_load">Статус солих</a>
+{% endif %}
+{% endblock %}
+

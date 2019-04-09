@@ -1,0 +1,133 @@
+<div class="span8">
+  <div class="widget blue active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>{{baiguullaga.org_name}} {{baiguullaga.org_type}} -ийн мэдээлэл</h4>
+    </div>
+    <div class="widget-body">
+      {% if perms.app.change_baiguullaga %}
+      <p><a class="btn btn-primary" href="{% url 'org_update'%}"><i class="icon-update"></i>Мэдээлэл засах</a></p>
+      {% endif %}
+      <div class="bio">
+        <h2>Товч танилцуулга</h2>
+        <p>{% if baiguullaga.tovch_taniltsuulga %}
+              {{baiguullaga.tovch_taniltsuulga}}
+            {% else %}
+             Товч танилцуулга байхгүй байна.
+            {% endif %}
+        </p>
+        <div class="space15"></div>
+        <h2>Байгууллагын бүртгэл</h2>
+        <p>
+          <label style="width: 200px;">Регистерийн дугаар:</label> {{baiguullaga.reg_num}}
+        </p>
+        <p>
+          <label style="width: 200px;">УБ-ийн дугаар:</label> {{baiguullaga.ubd}}
+        </p>
+        <p>
+          <label style="width: 200px;">Байгуулагын нэр, хэлбэр:</label> {{baiguullaga.org_name}} {{baiguullaga.org_type}}
+        </p>
+        <p>
+          <label style="width: 200px;">Байгуулагдсан огноо:</label> {{baiguullaga.org_date|date:"Y-m-d"}}
+        </p>
+        <p>
+          <label style="width: 200px;">Гэрчилгээний зураг (урд тал):</label> {% if baiguullaga.gerchilgee_picture %}
+                <a href="/media/{{baiguullaga.gerchilgee_picture}}" target="_blank">Зураг</a>
+                {% else %}
+                Зураг байхгүй
+                {% endif %}
+        </p>
+        <p>
+          <label style="width: 200px;">Гэрчилгээний зураг (ар тал):</label> {% if baiguullaga.gerchilgee_picture1 %}
+                <a href="/media/{{baiguullaga.gerchilgee_picture1}}" target="_blank">Зураг</a>
+                {% else %}
+                Зураг байхгүй
+                {% endif %}
+        </p>
+        <p>
+          <label style="width: 200px;">Татварын алба:</label> 
+          {% if baiguullaga.tax %} 
+            {{baiguullaga.tax}}
+          {% else %}
+            Мэдээлэл байхгүй.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="span4">
+  <div class="widget yellow active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>Байгууллагын хаяг</h4>
+    </div>
+    <div class="widget-body">
+      <div class="bio">
+        <p>
+          <label>Аймаг, хот:</label> {{baiguullaga.city}}
+        </p>
+        <p>
+          <label>Сум, дүүрэг:</label> {{baiguullaga.district}}
+        </p>
+        <p>
+          <label>Баг, хороо:</label> {{baiguullaga.khoroo}}
+        </p>
+        <p>
+          <label>Хаяг:</label> {{baiguullaga.address}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="widget green active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>Холбоо барих</h4>
+    </div>
+    <div class="widget-body">
+      <div class="bio">
+        <h5><strong>Байгууллага</strong></h5>
+        <p>
+          <label>Утас:</label> {% if baiguullaga.phone %}{{baiguullaga.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label> {% if baiguullaga.e_mail %}{{baiguullaga.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Факс:</label> {% if baiguullaga.fax %}{{baiguullaga.fax}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Шуудангийн хайрцаг:</label> {% if baiguullaga.post %}{{baiguullaga.post}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Диспетчерийн утас:</label> {% if baiguullaga.phone_dispetcher %}{{baiguullaga.phone_dispetcher}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <h5><strong>Захирал</strong></h5>
+        <p>
+          <label>Утас:</label>{% if baiguullaga.tze_users_bind.user_zahiral.user_id.phone %}{{baiguullaga.tze_users_bind.user_zahiral.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if baiguullaga.tze_users_bind.user_zahiral.user_id.e_mail %}{{baiguullaga.tze_users_bind.user_zahiral.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+
+        {% if baiguullaga.tze_users_bind.user_engineer %}
+        <h5><strong>Инженер</strong></h5>
+        <p>
+          <label>Утас:</label>{% if baiguullaga.tze_users_bind.engineer.user_id.phone %}{{baiguullaga.tze_users_bind.engineer.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if baiguullaga.tze_users_bind.engineer.user_id.e_mail %}{{baiguullaga.tze_users_bind.engineer.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        {% endif %}
+
+        {% if baiguullaga.tze_users_bind.user_account %}
+        <h5><strong>Нягтлан</strong></h5>
+        <p>
+          <label>Утас:</label>{% if baiguullaga.tze_users_bind.user_account.user_id.phone %}{{baiguullaga.tze_users_bind.user_account.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if baiguullaga.tze_users_bind.user_account.user_id.e_mail %}{{baiguullaga.tze_users_bind.user_account.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>

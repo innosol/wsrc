@@ -1,0 +1,84 @@
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>ААНБайгууллага цэвэр усны голчийн судалгаа</h4>
+</div>
+<div class="modal1-uuganaa-body portlet-scroll-2">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Цэвэр усны оролтын шугамын голч, мм-р</th>
+                <th>ААНБ-н тоо</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>15</td>
+                <td>{{ golch.buteegdehuun.all.0.too }}</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>{{ golch.buteegdehuun.all.1.too }}</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>{{ golch.buteegdehuun.all.2.too }}</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td>{{ golch.buteegdehuun.all.3.too }}</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td>{{ golch.buteegdehuun.all.4.too }}</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>{{ golch.buteegdehuun.all.5.too }}</td>
+            </tr>
+            <tr>
+                <td>65</td>
+                <td>{{ golch.buteegdehuun.all.6.too }}</td>
+            </tr>
+            <tr>
+                <td>80</td>
+                <td>{{ golch.buteegdehuun.all.7.too }}</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>{{ golch.buteegdehuun.all.8.too }}</td>
+            </tr>
+            <tr>
+                <td>125</td>
+                <td>{{ golch.buteegdehuun.all.9.too }}</td>
+            </tr>
+            <tr>
+                <td>150</td>
+                <td>{{ golch.buteegdehuun.all.10.too }}</td>
+            </tr>
+            <tr>
+                <td>200</td>
+                <td>{{ golch.buteegdehuun.all.11.too }}</td>
+            </tr>
+            <tr>
+                <td>250</td>
+                <td>{{ golch.buteegdehuun.all.12.too }}</td>
+            </tr>
+            <tr>
+                <td>300</td>
+                <td>{{ golch.buteegdehuun.all.13.too }}</td>
+            </tr>
+            <tr>
+                <td>400-с дээш</td>
+                <td>{{ golch.buteegdehuun.all.14.too }}</td>
+            </tr>
+            <tr>
+                <th>Нийт</th>
+                <th>{{ golch.total }}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal1-uuganaa-footer">
+    <button data-data="close" class="btn btn-default">Цуцлах</button>
+    <button url-data="{% url 'golch' %}" class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

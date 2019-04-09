@@ -1,0 +1,24 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>"{{tz_huselt.tze.org_name}} {{tz_huselt.tze.org_type}}"-ийн {{tz_huselt.ilgeesen_datetime|date:"Y-m-d"}} өдөр илгээсэн тусгай зөвшөөрлийн хүсэлт</h4>
+ </div>
+ <form  id="form_id" action="{% url 'huseltiin hural tovloh' huselt_id=huselt_id%}" id="equipmentform" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {{form}}
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+    <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+  </div>
+</form>   
+
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>

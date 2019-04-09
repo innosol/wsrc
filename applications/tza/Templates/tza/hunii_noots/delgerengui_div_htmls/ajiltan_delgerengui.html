@@ -1,0 +1,162 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Ажилтны дэлгэрэнгүй мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    {% if ajiltan %}
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">Ажилтны {{date|date:"Y-m-d H:i"}} үеийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Ажилтны одоогийн мэдээлэл</div>
+        {% endif %}
+      <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Ажилтны овог:</th>
+                <td>{{ajiltan.emp_lname}}</td>
+            </tr>
+            <tr>
+                <th>Ажилтны нэр:</th>
+                <td>{{ajiltan.emp_name}}</td>
+            </tr>
+            <tr>
+                <th>Хүйс:</th>
+                <td>{{ajiltan.gender}}</td>
+            </tr>
+            <tr>
+                <th>Регистрийн дугаар:</th>
+                <td>{{ajiltan.emp_reg}}</td>
+            </tr>
+            <tr>
+                <th>НДД дугаар:</th>
+                <td>{{ajiltan.ndd}}</td>
+            </tr>
+            <tr>
+                <th>Төрсөн огноо:</th>
+                <td>{{ajiltan.emp_birth|date:"Y-m-d"}}</td>
+            </tr>
+            <tr>
+                <th>Нас:</th>
+                <td>{{ajiltan.calculate_nas}}</td>
+            </tr>
+            <tr>
+                <th>Ажиллаж буй байгууллага:</th>
+                <td>{{ajiltan.baiguullaga.org_name}} {{ajiltan.baiguullaga.org_type}}</td>
+            </tr>
+            <tr>
+                <th>Зэрэг:</th>
+                <td>{{ajiltan.zereg}}</td>
+            </tr>
+            <tr>
+                <th>Албан тушаал:</th>
+                <td>{{ajiltan.alban_tushaal}}</td>
+            </tr>
+            <tr>
+                <th>Нийт ажилласан жил:</th>
+                <td>{{ajiltan.naj}}</td>
+            </tr>
+            <tr>
+                <th>Уг компанид ажилласан жил:</th>
+                <td>{{ajiltan.tzeaj}}</td>
+            </tr>
+            <tr>
+                <th>Утас:</th>
+                <td>{{ajiltan.phone}}</td>
+            </tr>
+            <tr>
+                <th>И-мэйл:</th>
+                <td>{{ajiltan.e_mail}}</td>
+            </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+      <div class="row-fluid">
+        <div class="span12">
+            <h4>Ажилтны төгссөн сургуулийн жагсаалт</h4>
+            {% if schools %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Сургуулийн нэр</th>
+                        <th>Диплом, мэргэжлийн үнэмлэхний дугаар</th>
+                        <th>Эзэмшсэн мэргэжил</th>
+                        <th>Боловсролын зэрэг</th>
+                        <th>Диплом, мэргэжлийн үнэмлэхний хуулбар</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for i in schools %}
+                  <tr>
+                        <td>{{i.school_name}}</td>
+                        <td>{{i.diplom_num}}</td>
+                        <td>{{i.mergejil}}</td>
+                        <td>{{i.degree}}</td>
+                        <td><a href="/media/{{i.diplom_picture}}" target="_blank">Диплом, мэргэжлийн үнэмлэхний хуулбар файл</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class='alert alert-info'>
+                Бүртгэгдсэн сургууль байхгүй байна.
+            </div>
+            {% endif %}
+        </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>Мэргэшсэн, зөвлөх зэргийн гэрчилгээний жагсаалт</h4>
+        {% if engineer_certificates %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Зэргийн хүрээ</th>
+              <th>Гэрчилгээний дугаар</th>
+              <th>Гэрчилгээний зураг</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in engineer_certificates %}
+            <tr>
+              <td>
+                {{forloop.counter}}
+              </td>
+              <td>{{i.zergiin_huree}}</td>
+              <td>
+                {{i.certificate_num}}
+              </td>
+              <td>
+                <a href="/media/{{i.certificate_picture}}" target="_blank">Гэрчилгээний зураг</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class='alert alert-info'>
+          Бүртгэгдсэн мэргэшсэн, зөвлөх зэргийн гэрчилгээ байхгүй байна.
+        </div>
+        {% endif %}
+      </div>
+    </div><!-- row-fluid -->
+    {% else %}
+    <div class="alert alert-info">
+      Ажилтны мэдээлэл олдсонгүй
+    </div>
+    {% endif %}
+    
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary" href="{% url 'ajiltan_update' ajiltan.id %}">Мэдээлэл засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

@@ -1,0 +1,58 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Ашиглалтыг хариуцаж буй барилга, орон сууцны жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_abb %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'hariutssan_barilguud_insert' %}"><i class="icon-edit"></i>Барилга, орон сууц нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>Байршил</th>
+			          	<th>Барилгын нэр, дугаар</th>
+			          	<th>Бүртгэсэн огноо</th>
+			          	{% if perms.app.add_abb %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			          	<th>Дэлгэрэнгүй</th>
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+	    				<td>
+	    					{{i.city.aimag_name}},<br>
+	    					{{i.district.sum_name}},<br>
+	    					{{i.khoroo.bag_name}},<br>
+	    					{{i.address}}
+	    				</td>
+	    				<td>
+	    					{{i.barilga_ner}}
+	    				</td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_abb %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'hariutssan_barilguud_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			         	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_abb_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+
+<script>
+$('#id_hariutsaj_barilguud_count').text("+{{object_list|length}}");
+</script>

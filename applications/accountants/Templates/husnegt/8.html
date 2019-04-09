@@ -1,0 +1,695 @@
+
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      		<h5 class="pull-right">Хүснэгт1</h5>
+      		<div class="space5"></div>
+      		<h5 class="pull-right">Санхүү эдийн засгийн судалгаа</h5>
+			<h5>"..............................................." .......ХК-ний Нийт үйл ажиллагааны Санхүү - эдийн засгийн үндсэн үзүүлэлтүүд /ТЭЗҮ/</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+					<tr>
+						<th rowspan="2">№</th>
+						<th width="150px" rowspan="2">Зардлын төрлүүд</th>
+						<th rowspan="2">Хэмжих нэгж</th>
+						<th colspan = "13">2014 оны Зардлыг 2014 он 1-6 сар гүйцэтгэлээр, 7-12 сарыг төлөвлөлтөөр тооцно.</th>
+					</tr>
+					<tr>
+						<th>1-р сар</th>
+						<th>2-р сар</th>
+						<th>3-р сар</th>
+						<th>4-р сар</th>
+						<th>5-р сар</th>
+						<th>6-р сар</th>
+						<th>7-р сар</th>
+						<th>8-р сар</th>
+						<th>9-р сар</th>
+						<th>10-р сар</th>
+						<th>11-р сар</th>
+						<th>12-р сар</th>
+						<th>2014 онд</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><b>Үндсэн түүхий эд усны</b></td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{tailan.zardal.z1}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>2</td> <td>Үндсэн ба нэмэгдэл цалин</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z2.undsen_ba_nemegdel_tsalin.niit }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>3</td> <td>Байгууллагаас төлөх ЭМ, НДШ</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Цахилгаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Дулаан - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Ус - өөрийн хэрэглээ</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Түлш шатахуун, тээврийн зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Харуул хамгаалалтын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Засвар үйлчилгээний зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z4.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Ариутгал халдваргүйжүүлэлтийн зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z5.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Конторын хангамжийн зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z6.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Хөдөлмөр хамгааллын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z7.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Маркетинг, борлуулалтын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z8.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Лаборатори, шинжилгээний зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z9.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Гүйцэтгэх удирдлагын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z10.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>ТУЗ-ын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z11.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Үндсэн хөрөнгийн элэгдэл зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z12.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>Зохицуулах үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>Гадны үйлчилгээний хөлс</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z13.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Татварын зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z14.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td>Даатгалын зардал</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z15.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>Үндсэн үйл ажиллагааны бусад зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">Үндсэн үйл ажиллагааны зардлын дүн</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Ажиллагсдын нийгмийн зардал</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z17.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Хөрөнгө оруулалтын зардалд</td>
+						<td>мян.төг</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ tailan.zardal.z18.total }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">Хөрөнгө оруулалтын өгөөжийн дүн</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>27</td> <td>АТӨЯХ-ийн албан татвар</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>28</td> <td>Газрын төлбөр</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>29</td> <td>Бусад татвар хураамж</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">Орлогын албан татвараас бусад татвар</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">Бүрэн өөрийн өртөг</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>30</td> <td>Ажиллагсадын нийгмийн зардал</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>31</td> <td>Аваарийн нөөц</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>32</td> <td>Зээлийн хүүгийн зардал</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td>33</td> <td>Урт хугацаат зээлийн үндсэн төлбөр</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">Хөрөнгө оруулалтын өгөөжийн дүн</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">Борлуулалтын орлогын шаардагдах хэмжээ /БОШ/</td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">Борлуулсан цэвэр ус - мян.м<sup>3</sup></td> <td>мян.төг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+					<tr>
+						<td colspan="2">1 м<sup>3</sup> усны дундаж өртөг</td> <td>төгрөг</td> <td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

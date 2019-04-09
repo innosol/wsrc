@@ -1,0 +1,94 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Шугам сүлжээний мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Шугам сүлжээний ангилал</td>
+            <td>{{obj.shugam_helber}}</td>
+          </tr>
+          <tr>
+            <td>Шугам сүлжээний төрөл</td>
+            <td>{{obj.shugam_torol}}</td>
+          </tr>
+          <tr>
+            <td>Шугам сүлжээний нийт урт</td>
+            <td>{{obj.shugam_urt}}</td>
+          </tr>
+          <tr>
+            <td>Хяналтын худгийн тоо</td>
+            <td>{{obj.hudgiin_too}}</td>
+          </tr>
+          <tr>
+            <td>Жилд гарсан гэмтлийн тоо</td>
+            <td>{{obj.gemtliin_too}}</td>
+          </tr>
+          <tr>
+            <td>Шугам сүлжээний схем зураг</td>
+            <td><a href="/media/{{obj.schema}}" target="_blank">Схем зураг</a></td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+    <div class="row-fluid">
+        <div class="span12">
+          <h4>Хоолойн жагсаалт</h4>
+          {% if sub_objects %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Төрөл</th>
+                <th>Диаметр</th>
+                <th>Урт</th>
+                <th>Ашиглалтанд орсон он</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in sub_objects %}
+              <tr>
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <td>
+                  {{i.torol}}
+                </td>
+                <td>
+                  {{i.diametr}}
+                </td>
+                <td>
+                  {{i.urt}}
+                </td>
+                <td>
+                  {{i.ashiglaltand_orson_ognoo}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class='alert alert-info'>
+          Бүртгэгдсэн багаж, тоног төхөөрөмж байхгүй байна.
+          </div>
+          {% endif %}
+        </div>
+      </div>
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'shugam_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

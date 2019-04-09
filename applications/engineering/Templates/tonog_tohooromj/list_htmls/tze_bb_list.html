@@ -1,0 +1,44 @@
+{% load tag_extras %}
+<div class="span12">
+	<div class="widget blue">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Барилга байгууламжийн жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+	    				<th>№</th>
+	    				<th>Барилга байгууламжийн нэр</th>
+	    				<th>Хадгалсан</th>
+	    				{% if perms.app.add_bb %}
+	    				<th class="text-center"><i class="icon-remove"></i></th>
+	    				{% endif %}
+		                <th>Дэлгэрэнгүй</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+	    				<td>{{forloop.counter}}</td>
+	    				<td>{{names_dic|get_item:i.id}}</td>
+	    				<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+	    				{% if perms.app.add_bb %}
+	    				<td>
+							<a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_bb_delete' i.id %}"><i class="icon-remove"></i></a>
+		                </td>
+		                {% endif %}
+		                <td><a href="javascript:;" class="ajax_div_load" url-data="{{ delgerengui_urls_dic|get_item:i.id }}">Дэлгэрэнгүй...</a></td>
+	    			</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>

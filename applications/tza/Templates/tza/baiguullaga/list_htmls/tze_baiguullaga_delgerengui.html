@@ -1,0 +1,133 @@
+<div class="span8">
+  <div class="widget blue active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>{{tze.org_name}} {{tze.org_type}} -ийн мэдээлэл</h4>
+    </div>
+    <div class="widget-body">
+      {% if perms.app.change_baiguullaga %}
+      <p><a class="btn btn-primary" href="{% url 'org_update'%}"><i class="icon-update"></i>Мэдээлэл засах</a></p>
+      {% endif %}
+      <div class="bio">
+        <h2>Товч танилцуулга</h2>
+        <p>{% if tze.tovch_taniltsuulga %}
+              {{tze.tovch_taniltsuulga}}
+            {% else %}
+             Товч танилцуулга байхгүй байна.
+            {% endif %}
+        </p>
+        <div class="space15"></div>
+        <h2>Байгууллагын бүртгэл</h2>
+        <p>
+          <label style="width: 200px;">Регистерийн дугаар:</label> {{tze.reg_num}}
+        </p>
+        <p>
+          <label style="width: 200px;">УБ-ийн дугаар:</label> {{tze.ubd}}
+        </p>
+        <p>
+          <label style="width: 200px;">Байгуулагын нэр, хэлбэр:</label> {{tze.org_name}} {{tze.org_type}}
+        </p>
+        <p>
+          <label style="width: 200px;">Байгуулагдсан огноо:</label> {{tze.org_date|date:"Y-m-d"}}
+        </p>
+        <p>
+          <label style="width: 200px;">Гэрчилгээний зураг (урд тал):</label> {% if tze.gerchilgee_picture %}
+                <a href="/media/{{tze.gerchilgee_picture}}" target="_blank">Зураг</a>
+                {% else %}
+                Зураг байхгүй
+                {% endif %}
+        </p>
+        <p>
+          <label style="width: 200px;">Гэрчилгээний зураг (ар тал):</label> {% if tze.gerchilgee_picture1 %}
+                <a href="/media/{{tze.gerchilgee_picture1}}" target="_blank">Зураг</a>
+                {% else %}
+                Зураг байхгүй
+                {% endif %}
+        </p>
+        <p>
+          <label style="width: 200px;">Татварын алба:</label> 
+          {% if tze.tax %} 
+            {{tze.tax}}
+          {% else %}
+            Мэдээлэл байхгүй.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="span4">
+  <div class="widget yellow active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>Байгууллагын хаяг</h4>
+    </div>
+    <div class="widget-body">
+      <div class="bio">
+        <p>
+          <label>Аймаг, хот:</label> {{tze.city}}
+        </p>
+        <p>
+          <label>Сум, дүүрэг:</label> {{tze.district}}
+        </p>
+        <p>
+          <label>Баг, хороо:</label> {{tze.khoroo}}
+        </p>
+        <p>
+          <label>Хаяг:</label> {{tze.address}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="widget green active">
+    <div class="widget-title">
+      <h4><i class="icon-reorder"></i>Холбоо барих</h4>
+    </div>
+    <div class="widget-body">
+      <div class="bio">
+        <h5><strong>Байгууллага</strong></h5>
+        <p>
+          <label>Утас:</label> {% if tze.phone %}{{tze.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label> {% if tze.e_mail %}{{tze.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Факс:</label> {% if tze.fax %}{{tze.fax}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Шуудангийн хайрцаг:</label> {% if tze.post %}{{tze.post}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>Диспетчерийн утас:</label> {% if tze.phone_dispetcher %}{{tze.phone_dispetcher}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <h5><strong>Захирал</strong></h5>
+        <p>
+          <label>Утас:</label>{% if tze.tze_users_bind.user_zahiral.user_id.phone %}{{tze.tze_users_bind.user_zahiral.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if tze.tze_users_bind.user_zahiral.user_id.e_mail %}{{tze.tze_users_bind.user_zahiral.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+
+        {% if tze.tze_users_bind.user_engineer %}
+        <h5><strong>Инженер</strong></h5>
+        <p>
+          <label>Утас:</label>{% if tze.tze_users_bind.engineer.user_id.phone %}{{tze.tze_users_bind.engineer.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if tze.tze_users_bind.engineer.user_id.e_mail %}{{tze.tze_users_bind.engineer.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        {% endif %}
+
+        {% if tze.tze_users_bind.user_account %}
+        <h5><strong>Нягтлан</strong></h5>
+        <p>
+          <label>Утас:</label>{% if tze.tze_users_bind.user_account.user_id.phone %}{{tze.tze_users_bind.user_account.user_id.phone}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        <p>
+          <label>И-мэйл:</label>{% if tze.tze_users_bind.user_account.user_id.e_mail %}{{tze.tze_users_bind.user_account.user_id.e_mail}} {% else %} Мэдээлэл байхгүй {% endif %}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>

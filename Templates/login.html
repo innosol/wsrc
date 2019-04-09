@@ -1,0 +1,48 @@
+{% extends 'base_base.html' %}
+{% load static %}
+{% block header %}
+{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<body style="background-color:#f8f8f8;">
+<div class="space20"></div>
+<div class="space20"></div>
+<div class="space20"></div>
+<div class="row-fluid">
+    <div class="span6 offset3">
+        <img style="float: left;" width="80" height="80" src="{% static 'assets/img/logos.png' %}">
+        <h5 style="margin-top: 40px; margin-left: 100px;">ХОТ, СУУРИНЫ УС ХАНГАМЖ, АРИУТГАХ ТАТУУРГЫН АШИГЛАЛТ, ҮЙЛЧИЛГЭЭГ ЗОХИЦУУЛАХ ЗӨВЛӨЛ</h5>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span4 offset4">
+        <div class="space20"></div>
+        <div class="widget blue active" style="border-radius:5px;">
+            <div class="widget-title" style="height:60px;">
+                <h3 style="margin:0px; color:white; text-align:center; padding-top:10px;">НЭВТРЭХ ЦОНХ</h3>
+            </div>
+            <div class="widget-body">
+                <form action="/" method="post" class="form">{% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div style="text-align:center;" class="non-field-errors">
+                            {{ form.non_field_error }}
+                        </div>
+                    {% endif %}
+                    {{ form }}
+                    <div class="space10"></div>
+                    <button style="margin-left:135px" type="sumbit" class="btn btn-large btn-primary">Нэвтрэх</button>
+                </form>
+                <h4 style="text-align:center;"><a style="color:#4A8BC2;" href="/request/">Хандах эрхийн хүсэлт илгээх</a></h4>
+            </div>
+        </div>
+        <!-- END GRID SAMPLE PORTLET-->
+    </div>
+</div>
+</body>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+

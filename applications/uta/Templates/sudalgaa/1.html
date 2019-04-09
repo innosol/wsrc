@@ -1,0 +1,167 @@
+{% extends 'husnegt/husnegt1.html' %}
+{% block content %}
+<div id="main-content" style="margin-left: 0px;">
+	<div class="container-fluid">
+		<div class="span7">
+			<div class="space20"></div>
+			<table class="table table-bordered table-header-rotated">
+				<thead>
+					<tr>
+						<th>№</th>
+						<th colspan="2"><b>БҮРТГЭЛИЙН ҮЗҮҮЛЭЛТ</b></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="20px">1</td>
+						<td width="300px">Оноосон нэр</td>
+						<td><b>{{ org.org_name }}</b></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Өмчийн хэлбэр</td>
+						<td><b>{% if org.org_type %}{{ org.org_type }}{% else %}Бүртгэл байхгүй байна{% endif %}</b></td>	
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Улсын бүртгэлийн дугаар</td>
+						<td><b>{{ org.ubd }}</b></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Регистерийн дугаар</td>
+						<td><b>{{ org.reg_num }}</b></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Байгуулагдсан огноо</td>
+						<td><b>{% if org.org_date %}{{ org.org_date }}{% else %}Бүртгэл байхгүй байна{% endif %}</b></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Байгууллагын албан хаяг</td>
+						<td>
+							<b>
+								{% if org.city and org.district and org.khoroo and org.address %}
+									{{ org.city }}, {{ org.district }}, {{ org.khoroo }}, {{ org.address }}
+								{% else %}
+									Мэдээлэл дутуу байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Удирдлагын нэр</td>
+						<td><b>{{ director.emp_name }}</b></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Э-мэйл хаяг</td>
+						<td><b>{% if director.e_mail %}{{ director.e_mail }}{% endif %}</b></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Холбоо барих утас</td>
+						<td><b>{% if director.phone %}{{ director.phone }}{% else %}Бүртгэл байхгүй байна{% endif %}</b></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Тусгай зөвшөөрлийн хүрээнд үйл ажиллагааны чиглэл</td>
+						<td>
+							<b>
+								{% if cer %}
+									{% for c in cer %}
+										<ul>
+											{% for i in c.tz_id.all %}
+												<li>{{ i.tz }} - {{ i.name }}</li>
+											{% endfor %}
+										</ul>
+									{% endfor %}
+								{% else %}
+									Тусгай зөвшөөрөл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Тухайн чиглэлээр үйл ажиллагаа явуулсан хугацаа</td>
+						<td><b></b></td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Бусад үйл ажиллагааны чиглэл</td>
+						<td><b></b></td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Ерөнхий инженер - нэр /утас/ э-мэйл хаяг</td>
+						<td>
+							<b>
+								{% if engineering %}
+									{{ engineering.emp_name }}
+								{% else %}
+									Бүртгэл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Ерөнхий нягтлан - нэр /утас/ э-мэйл хаяг</td>
+						<td>
+							<b>
+								{% if accountants %}
+									{{ accountants.emp_name }}
+								{% else %}
+									Бүртгэл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Ус хангамжийн инженер - нэр /утас/ э-мэйл хаяг</td>
+						<td>
+							<b>
+								{% if us_eng %}
+									{{ us_eng.emp_name }}
+								{% else %}
+									Бүртгэл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Эдийн засагч - нэр /утас/ э-мэйл хаяг</td>
+						<td>
+							<b>
+								{% if ediin %}
+									{{ ediin.emp_name }}
+								{% else %}
+									Бүртгэл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td>Тооцооны нягтлан - нэр /утас/ э-мэйл хаяг</td>
+						<td>
+							<b>
+								{% if too_acc %}
+									{{ too_acc.emp_name }}
+								{% else %}
+									Бүртгэл байхгүй байна
+								{% endif %}
+							</b>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

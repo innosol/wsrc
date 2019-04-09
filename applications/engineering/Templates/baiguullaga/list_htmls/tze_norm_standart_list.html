@@ -1,0 +1,53 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Байгууллагын мөрддөг стандартын жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_normstandart %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'norm_standart_insert' %}"><i class="icon-edit"></i>Стандарт нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>Стандартын код</th>
+			          	<th>Стандартын нэр</th>
+			          	<th>Бүртгэгдсэн</th>
+			          	{% if perms.app.add_normstandart %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			          	<td>
+                          {{i.standart.code}}
+                        </td>
+                        <td>
+                          {{i.standart.standart_name}}
+                        </td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_normstandart %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'norm_standart_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+
+<script>
+$('#id_norm_standart_count').text("+{{object_list|length}}");
+</script>

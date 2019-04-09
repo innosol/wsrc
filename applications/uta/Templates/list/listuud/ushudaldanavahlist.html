@@ -1,0 +1,49 @@
+<div class="modal1-uuganaa-header">
+    <button class="close">×</button>
+    <h4>Ус худалдан авах тариф үнэ</h4>
+</div>
+<div class="modal1-uuganaa-body">
+	<table class="table table-bordered">
+		<tbody>
+			{% if ol.torol1 and ol.torol2 %}
+			<tr>
+				<td>Өөрөө олборлогч</td>
+				<td>{% if ol.torol1 %}Үнэн{% else %}Худал{% endif %}</td>
+			</tr>
+			<tr>
+				<td>Худалдан авагч</td>
+				<td>{% if ol.torol2 %}Үнэн{% else %}Худал{% endif %}</td>
+			</tr>
+			<tr>
+				<td>Цэвэр ус</td>
+				<td>{{ ol.tsever }}</td>
+			</tr>
+			<tr>
+				<td>Бохир ус</td>
+				<td>{{ ol.bohir }}</td>
+			</tr>
+			{% elif ol.torol1 and not ol.torol2 %}
+			<tr>
+				<td>Өөрөө олборлогч</td>
+				<td>{% if ol.torol1 %}Үнэн{% else %}Худал{% endif %}</td>
+			</tr>
+			{% elif not ol.torol1 and ol.torol2 %}
+			<tr>
+				<td>Худалдан авагч</td>
+				<td>{% if ol.torol2 %}Үнэн{% else %}Худал{% endif %}</td>
+			</tr>
+			<tr>
+				<td>Цэвэр ус</td>
+				<td>{{ ol.tsever }}</td>
+			</tr>
+			<tr>
+				<td>Бохир ус</td>
+				<td>{{ ol.bohir }}</td>
+			</tr>
+			{% endif %}
+		</tbody>
+	</table>
+</div>
+<div class="modal1-uuganaa-footer">
+    <button data-data="modal" class="btn btn-default">Цуцлах</button>
+</div>

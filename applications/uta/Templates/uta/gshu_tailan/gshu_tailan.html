@@ -1,0 +1,99 @@
+{% extends 'uta_sidebar.html' %}
+{% load static %}
+{% load tag_extras %}
+
+{% block content %}
+<div id="main-content">
+  {% if messages %}
+    <div class="feedback_messages">
+        {% for message in messages %}
+        <div {% if message.tags %}class="feedback_message_{{message.tags}}" {% else %} class="feedback_message_default" {% endif %}>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+  {% endif %}
+  <div class="container-fluid">
+    <div class="widget-body">
+    <div class="row-fluid" id="ua_list">
+      <div class="span6">
+       <div class="widget active red">
+         <div class="widget-title">
+          <h4>
+            <i class="icon-reorder"></i>
+            ГШҮ тайлангууд
+          </h4>
+        </div>
+        <div class="widget-body">
+          <div class="row-fluid">
+            <form method="GET" class="hidden-phone" style="margin: 0px;">
+              <div class="input-append search-input-area pull-right">
+                {{filter_form.search}}
+                <button type='submit'><i class="icon-search"></i></button>
+              </div>
+            </form>
+          </div>
+          {% if object_list %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>ТЗЭ</th>
+                <th>Тайлан</th>
+                <th>Төлөв</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in object_list %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.tze.org_name}} {{i.tze.org_type}}</td>
+                <td><a href="javascript:;" class="ajax_delgerengui_load" url-data="{% url 'gshu_materials_view' i.id %}", div-id="#gshu_materials">{{i.tailan_date|date:"Y"}} оны гүйцэтгэлийн шалгуур үзүүлэлтийн тайлан</a></td>
+                <td>
+                  {% if i.tolov == 'Мэдээлэл дутуу' %}
+                  <span class="label">{{i.tolov}}</span>
+                  {% elif i.tolov == 'Илгээсэн' %}
+                  <span class="label label-info">{{i.tolov}}</span>
+                  {% elif i.tolov == 'Хүлээн авсан' %}
+                  <span class="label label-success">{{i.tolov}}</span>
+                  {% elif i.tolov == 'Буцаасан' %}
+                  <span class="label label-important">{{i.tolov}}</span>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class="alert alert-info">
+            Гүйцэтгэлийн шалгуур үзүүлэлтийн тайлан олдсонгүй.
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div id="gshu_materials">
+          <div class="widget active green">
+            <div class="widget-title">
+              <h4><i class="icon-reorder"></i>ГШҮ тайлангийн материал</h4>
+            </div>
+            <div class="widget-body">
+              <div class="alert alert-info">
+                Гүйцэтгэлийн шалгуур үзүүлэлтийн тайлангаа сонгоно уу.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- ****************************MODALS*************************-->
+  <div id="Modal_general" class="modal1-uuganaa">
+    
+  </div>
+{% endblock %}

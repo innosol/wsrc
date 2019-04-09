@@ -1,0 +1,50 @@
+  <div id="sample1"  class="widget blue active">
+    <div class="widget-title">
+      <h4>
+        <i class="icon-reorder"></i>
+        Бохир усны шинжилгээний жагсаалт
+      </h4>
+      <span class="tools">
+        <a href="javascript:;" class="icon-chevron-down"></a>
+      </span>
+    </div>
+    <div class="widget-body" >
+      {% if perms.app.add_analysisbohir %}
+        <p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'tze_bohir_analysis_insert' %}"><i class="icon-edit"></i>Бохир усны шинжилгээ нэмэх</a></p>
+      {% endif %}
+      {% if object_list %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+           <th>№</th>
+           <th>Төрөл</th>
+           <th>Шинжилгээний огноо</th>
+           <th>МХЕГ-ын дүгнэлт</th>
+           <th>Бүртгэгдсэн огноо</th>
+           <th>Дэлгэрэнгүй</th>
+         </tr>
+       </thead>
+       <tbody>
+        {% for i in object_list %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{i.torol_char}}</td>
+          <td>{{i.ognoo|date:"Y-m-d"}}</td>
+          <td>
+            <a href="/media/{{i.mheg_dugnelt}}" target="_blank">МХЕГ-ын дүгнэлт файл</a>
+          </td>
+          <td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+         <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_bohir_water_analysis_delgerengui' i.id%}">Дэлгэрэнгүй...</a></td>
+       </tr>
+       {% endfor %}
+
+
+        </tbody>
+      </table>
+      {% else %}
+      <div class='alert alert-info'>
+        Бүртгэсэн шинжилгээний мэдээлэл байхгүй байна.
+      </div>
+      {% endif %}
+ </div>
+</div>

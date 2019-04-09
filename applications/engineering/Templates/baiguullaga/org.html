@@ -1,0 +1,117 @@
+{% extends 'base_base.html' %}
+{% load static %}
+{% block content %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div id="main-content">
+  <div class="container-fluid">
+    <div class="space20"></div>
+    <div class="row-fluid">
+
+      <h4>Байгууллагын мэдээлэл засах</h4>
+
+      <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <div class="row-fluid">
+            <div class="span4">
+              <div class="form1-group">
+                <label class="form1-label">{{ form.org_date.label }}</label>
+                <div class="form1s">
+                  {{ form.org_date.errors }}{{ form.org_date  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.gerchilgee_picture.label }}</label>
+                <div class="form1s">
+                  {{ form.gerchilgee_picture.errors }}{{ form.gerchilgee_picture  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.gerchilgee_picture1.label }}</label>
+                <div class="form1s">
+                  {{ form.gerchilgee_picture1.errors }}{{ form.gerchilgee_picture1  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.tax.label }}</label>{{ form.tax }}
+              </div>
+            </div>
+            <div class="span4">
+              <div class="form1-group">
+                <label class="form1-label">{{ form.city.label }}</label>
+                <div class="form1s">
+                  <div>{{ form.city.errors }}{{form.city}}</div>
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.district.label }}</label>
+                <div class="form1s">
+                  {{ form.district.errors }}{{form.district}}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.khoroo.label }}</label>
+                <div class="form1s">
+                  {{ form.khoroo.errors }}{{form.khoroo}}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.address.label }}</label>
+                <div class="form1s">
+                  {{ form.address.errors }}{{ form.address  }}
+                </div>
+              </div>
+            </div>
+            <div class="span4">
+              <div class="form1-group">
+                <label class="form1-label">{{ form.phone.label }}</label>
+                <div class="form1s">
+                  {{ form.phone.errors }}{{ form.phone  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.e_mail.label }}</label>
+                <div class="form1s">
+                  {{ form.e_mail.errors }}{{ form.e_mail  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.post.label }}</label>
+                <div class="form1s">
+                  {{ form.post.errors }}{{ form.post  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.fax.label }}</label>
+                <div class="form1s">
+                  {{ form.fax.errors }}{{ form.fax  }}
+                </div>
+              </div>
+              <div class="form1-group">
+                <label class="form1-label">{{ form.phone_dispetcher.label }}</label>
+                <div class="form1s">
+                  {{ form.phone_dispetcher.errors }}{{ form.phone_dispetcher  }}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="form1-group">
+                <label class="form1-label">{{ form.tovch_taniltsuulga.label }}</label>
+                <div class="form1s">
+                  {{ form.tovch_taniltsuulga.errors }}{{ form.tovch_taniltsuulga  }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Хадгалах</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+
+
+{% endblock %}

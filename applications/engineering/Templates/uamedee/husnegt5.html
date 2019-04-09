@@ -1,0 +1,123 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Маягт № 1,3</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны мэдээ</h5>
+			<h5>"{{ baiguullaga }}"  ХК-ний тодорхойлолт</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th rowspan="2">№</th> <th rowspan="2">Үзүүлэлт</th> <th rowspan="4">Тайлбар</th> 
+				</tr>
+				
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>Оноосон нэр, өмчийн хэлбэр</td>
+					<td>{{baiguullaga.org_name}} {{baiguullaga.org_type}} </td>
+					
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Улсын бүртгэлийн дугаар</td>
+					<td>{{baiguuullaga.ubd}}</td>
+			
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Регистрийн дугаар</td>
+					<td>{{baiguullaga.reg_num}}</td>
+			
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Аж ахуй нэгжийн дүрмийн сан</td>
+					<td></td>
+		
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Энэ чиглэлээр үйл ажиллагаа эрхэлсэн хугацаа</td>
+					<td></td>
+	
+				</tr>
+			
+				<tr>
+					<td>6</td>
+					<td>Аж ахуйн албан ёсны хаяг</td>
+					<td>{{baiguullaga.city}},{{baiguullaga.district}}, {{baiguullaga.khoroo}}, {{baiguullaga.address}} </td>
+				
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Шуудангийн хайрцаг</td>
+					<td>{{baiguullaga.post}}</td>
+	
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Харилцах утас</td>
+					<td>{{baiguullaga.phone}}</td>
+			
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Факс</td>
+					<td>{{baiguullaga.fax}}</td>
+
+				</tr>
+		
+				<tr>
+					<td>10</td>
+					<td>имэйл хаяг</td>
+					<td>{{baiguullaga.e_mail}} </td>
+				
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Эрхэлдэг ажлын үндсэн чиглэл</td>
+					<td> </td>
+				
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>Харъяалагдах татварын алба</td>
+					<td>{{baiguullaga.tax}}</td>
+				
+				</tr>
+			
+				<tr>
+					<td>13</td>
+					<td>Байгууллагдсан он</td>
+					<td>{{baiguullaga.org_date}}</td>
+			
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>Байгууллагын ерөнхий танилцуулга</td>
+					<td>{{baiguullaga.tovch_taniltsuulga}}</td>
+					
+				</tr>
+			
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>".......................".......ХК-ний Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

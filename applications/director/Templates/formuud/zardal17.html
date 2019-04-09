@@ -1,0 +1,94 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Ажиллагсдын нийгмийн зардалд</h4>
+</div>
+<form action="{% url 'zardal17' %}" method="post">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="3"></th>
+          <th rowspan="3">Хэмжих нэгж</th>
+          <th colspan="4" style="text-align: center;">Цэвэр, бохир ус</th>
+          <th rowspan="3">Цахилгаан</th>
+          <th rowspan="3">Дулаан</th>
+          <th rowspan="3">Бусад</th>
+        </tr>
+        <tr>
+          <th colspan="2">Төвлөрсөн шугамын</th>
+          <th rowspan="2">Зөөвөр, УТБ</th>
+          <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+        </tr>
+        <tr>
+          <th>Цэвэр ус</th>
+          <th>Бохир ус</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Хоолны хөнгөлөлт</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z17_0 }}</td>
+          <td>{{ form.z17_1 }}</td>
+          <td>{{ form.z17_2 }}</td>
+          <td>{{ form.z17_3 }}</td>
+          <td>{{ form.z17_4 }}</td>
+          <td>{{ form.z17_5 }}</td>
+          <td>{{ form.z17_6 }}</td>
+        </tr>
+        <tr>
+          <td>Унааны хөнгөлөлт</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z17_7 }}</td>
+          <td>{{ form.z17_8 }}</td>
+          <td>{{ form.z17_9 }}</td>
+          <td>{{ form.z17_10 }}</td>
+          <td>{{ form.z17_11 }}</td>
+          <td>{{ form.z17_12 }}</td>
+          <td>{{ form.z17_13 }}</td>
+        </tr>
+        <tr>
+          <td>Түлээний хөнгөлөлт</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z17_14 }}</td>
+          <td>{{ form.z17_15 }}</td>
+          <td>{{ form.z17_16 }}</td>
+          <td>{{ form.z17_17 }}</td>
+          <td>{{ form.z17_18 }}</td>
+          <td>{{ form.z17_19 }}</td>
+          <td>{{ form.z17_20 }}</td>
+        </tr>
+        <tr>
+          <td>Тэтгэмж тусламж</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z17_21 }}</td>
+          <td>{{ form.z17_22 }}</td>
+          <td>{{ form.z17_23 }}</td>
+          <td>{{ form.z17_24 }}</td>
+          <td>{{ form.z17_25 }}</td>
+          <td>{{ form.z17_26 }}</td>
+          <td>{{ form.z17_27 }}</td>
+        </tr>
+        <tr>
+          <td>Бусад</td>
+          <td>мян.төгрөг</td>
+          <td>{{ form.z17_28 }}</td>
+          <td>{{ form.z17_29 }}</td>
+          <td>{{ form.z17_30 }}</td>
+          <td>{{ form.z17_31 }}</td>
+          <td>{{ form.z17_32 }}</td>
+          <td>{{ form.z17_33 }}</td>
+          <td>{{ form.z17_34 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z17 %}
+    <a href="javascript:;" url-data="{% if date %}{% url 'zardal17list' date %}{% else %}{% url 'zardal17list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" value="zardal17" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

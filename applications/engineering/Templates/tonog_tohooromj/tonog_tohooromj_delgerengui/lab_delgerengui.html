@@ -1,0 +1,114 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Лабораторийн мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <h4>Лабораторийн ерөнхий мэдээлэл</h4>
+        <table class="table table-bordered">
+          <tr>
+            <td>Лабораторийн төрөл</td>
+            <td>{{obj.torol}}</td>
+          </tr>
+          <tr>
+            <td>Ажиллагааны байдал</td>
+            <td>{{obj.ajillagaa}}</td>
+          </tr>
+          <tr>
+            <td>Тайлбар</td>
+            <td>{{obj.tailbar}}</td>
+          </tr>
+          <tr>
+            <td>Хийдэг шинжилгээний тоо</td>
+            <td>{{obj.shinjilgee_count}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <h4>Лабораторийн багаж, тоног төхөөрөмжийн жагсаалт</h4>
+          {% if lab_bagaj %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Багаж, тоног төхөөрөмжийн нэр</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in lab_bagaj %}
+              <tr>
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <td>
+                  {{i.bagaj}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class='alert alert-info'>
+          Бүртгэгдсэн багаж, тоног төхөөрөмж байхгүй байна.
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>Лабораторийн өргөтгөлийн жагсаалт</h4>
+        {% if lab_orgotgol %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Хөрөнгө оруулалтын эх үүсвэр</th>
+              <th>Өргөтгөл хийсэн он</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in lab_orgotgol %}
+            <tr>
+              <td>
+                {{forloop.counter}}
+              </td>
+              <td>
+                {{i.horongo_uusver}}
+              </td>
+              <td>
+                {{i.ognoo}}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class='alert alert-info'>
+          Бүртгэгдсэн өргөтгөлийн мэдээлэл байхгүй байна.
+        </div>
+        {% endif %}
+      </div>
+    </div><!-- row-fluid -->
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'lab_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

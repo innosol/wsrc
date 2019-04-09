@@ -1,0 +1,53 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Байгууллагын мөрддөг хууль дүрэм, норм нормативын жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_baig_huuli_durem %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'tze_huuli_durem_insert' %}"><i class="icon-edit"></i>Хууль дүрэм, норм норматив нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>БНбД-ийн код</th>
+			          	<th>БНбД-ийн нэр</th>
+			          	<th>Бүртгэгдсэн</th>
+			          	{% if perms.app.add_baig_huuli_durem %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			          	<td>
+                          {{i.durem.code}}
+                        </td>
+                        <td>
+                          {{i.durem.name}}
+                        </td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_baig_huuli_durem %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'tze_huuli_durem_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+
+<script>
+$('#id_huuli_durem_count').text("+{{object_list|length}}");
+</script>

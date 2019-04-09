@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="main-content">
+<div class="container-fluid">
+<h3>Алба тасаг</h3>
+
+{% for a in user.permission_group.all %}
+{% if a.id == 6 %}
+<a href="#tasag" data-toggle="modal1" class="btn btn-primary">Алба тасаг +</a><br>
+{% endif %}
+{% endfor %}
+
+{% for t in tasag %}
+{{ t }}<br>
+{% endfor %}
+
+<h3>Албан тушаал</h3>
+
+{% for a in user.permission_group.all %}
+{% if a.id == 7 %}
+<a href="#albantushaal" data-toggle="modal1" class="btn btn-primary">Албан тушаал +</a><br>
+{% endif %}
+{% endfor %}
+
+{% for a in albantushaal %}
+{{ a }}<br>
+{% endfor %}
+
+<h3>Ажилтан</h3>
+
+{% for a in user.permission_group.all %}
+{% if a.id == 8 %}
+<a href="#ajiltan" data-toggle="modal1" class="btn btn-primary">Ажилтан +</a><br>
+{% endif %}
+{% endfor %}
+
+{% for aj in ajiltan %}
+{{ aj }}<br>
+{% endfor %}
+</div>
+</div>
+
+<div id="tasag" class="modal1 hide fade">
+	adasdasdasdasdasds
+</div>
+<div id="albantushaal" class="modal1 hide fade">
+	adasdasdasdasdasds
+</div>
+<div id="ajiltan" class="modal1 hide fade">
+	adasdasdasdasdasds
+</div>
+{% endblock %}

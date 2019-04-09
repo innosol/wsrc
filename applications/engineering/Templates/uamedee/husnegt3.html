@@ -1,0 +1,49 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Маягт № 6</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны мэдээ</h5>
+			<h5>"{{ baiguullaga }}"  ХК-ний Норм ба стандарт, техникийн баримт бичгийн жагсаалт</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+				<tr>
+					<th >№</th> 
+					<th >Код</th> 
+					<th >Нэр</th> 
+					<th >Тоо</th> 
+									 
+				</tr>
+				
+				</thead>
+				<tbody>
+					{% for norm in norm %}
+
+				<tr>
+					<td>1 </td>
+					<td>{{norm.code}}</td>
+					<td>{{norm.ner}}</td>
+					<td>{{norm.too}}</td>
+					{% endfor %}				
+				</tr>
+			
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>".......................".......ХК-ний Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<script>
+</script>
+{% endblock %}

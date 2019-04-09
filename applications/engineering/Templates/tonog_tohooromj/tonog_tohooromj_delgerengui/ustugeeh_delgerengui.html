@@ -1,0 +1,81 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Ус түгээх байр</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Ус түгээх байрны төрөл</td>
+            <td>{{obj.barilga}}</td>
+          </tr>
+          <tr>
+            <td>Ус түгээх байрны дугаар (нэр)</td>
+            <td>{{obj.dugaar}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Аймаг, хот/</td>
+            <td>{{obj.city}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Сум, дүүрэг/</td>
+            <td>{{obj.district}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Баг, хороо/</td>
+            <td>{{obj.khoroo}}</td>
+          </tr>
+          <tr>
+            <td>Байршил</td>
+            <td>{{obj.ustugeeh_address}}</td>
+          </tr>
+          <tr>
+            <td>Ус нөөцлөх савтай эсэх</td>
+            <td>{% if obj.ustugeeh_sav %}Тийм{% else %} Үгүй{% endif %}</td>
+          </tr>
+          {% if obj.ustugeeh_sav %}
+          <tr>
+            <td>Ус нөөцлөх савны багтаамж</td>
+            <td>{{obj.savnii_bagtaamj}}</td>
+          </tr>
+          {% endif %}
+          <tr>
+            <td>УТБ-р борлуулж буй ус(м3/хон)</td>
+            <td>{{obj.borluulj_bui_us}}</td>
+          </tr>
+          <tr>
+            <td>УТБ-р үйлчлүүлж буй хүн амын тоо</td>
+            <td>{{obj.hun_amiin_too}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Гадна талын зураг</td>
+            <td><a href="/media/{{obj.gadna_tal_picture}}" target="_blank">Гадна талын зураг</a></td>
+          </tr>
+          <tr>
+            <td>Дотор талын зураг</td>
+            <td><a href="/media/{{obj.dotor_tal_picture}}" target="_blank">Дотор талын зураг</a></td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'us_tugeeh_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

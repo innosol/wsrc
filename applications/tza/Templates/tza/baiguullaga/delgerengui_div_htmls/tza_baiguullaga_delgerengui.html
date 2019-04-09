@@ -1,0 +1,103 @@
+    {% extends "ajax_div_base.html" %}
+    {% load static %}
+    
+    {% block header_name %}
+        {{baig.org_name}} компанийн дэлгэрэнгүй мэдээлэл
+    {% endblock %}
+    {% block body %}
+    <a class="btn btn-info" href="{% url 'baiguullaga_profile' baig.id %}">Профайл</a>
+    <a class="btn btn-info" href="{% url 'ajiltan' baig.id %}">Хүний нөөц</a>
+    <a class="btn btn-info" href="{% url 'tohooromj_menu' baig.id %}">Тоног төхөөрөмж</a>
+    <div class="space10"></div>
+      <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Байгууллагын нэр, хэлбэр:</th>
+                <td>{{baig.org_name}} {{baig.org_type}}</td>
+            </tr>
+            <tr>
+                <th>Регистерийн дугаар:</th>
+                <td>{{baig.reg_num}}</td>
+            </tr>
+            <tr>
+                <th>УБ-ийн дугаар:</th>
+                <td>{{baig.ubd}}</td>
+            </tr>
+            <tr>
+                <th>Гэрчилгээ зураг:</th>
+                <td>
+                    {% if baig.gerchilgee_picture %}
+                    <a href="/media/{{baig.gerchilgee_picture}}" target="_blank">Зураг</a>
+                    {% else %}
+                    Зураг байхгүй
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Гэрчилгээ зураг (ар тал):</th>
+                <td>
+                    {% if baig.gerchilgee_picture1 %}
+                    <a href="/media/{{baig.gerchilgee_picture1}}" target="_blank">Зураг</a>
+                    {% else %}
+                    Зураг байхгүй
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Байгууллагдсан огноо:</th>
+                <td>{{baig.org_date|date:"Y-m-d"}}</td>
+            </tr>
+            <tr>
+                <th>Утас:</th>
+                <td>{{baig.phone}}</td>
+            </tr>
+            <tr>
+                <th>И-майл:</th>
+                <td>{{baig.e_mail}}</td>
+            </tr>
+            <tr>
+                <th>Факс:</th>
+                <td>{{baig.fax}}</td>
+            </tr>
+            <tr>
+                <th>Аймаг, хот:</th>
+                <td>{{baig.city}}</td>
+            </tr>
+            <tr>
+                <th>Сум, дүүрэг:</th>
+                <td>{{baig.district}}</td>
+            </tr>
+            <tr>
+                <th>Баг, хороо:</th>
+                <td>{{baig.khoroo}}</td>
+            </tr>
+            <tr>
+                <th>Хаяг:</th>
+                <td>{{baig.address}}</td>
+            </tr>
+            <tr>
+                <th>Утас:</th>
+                <td>{{baig.phone}}</td>
+            </tr>
+            <tr>
+                <th>Хариуцсан ТЗА мэргэжилтэн</th>
+                <td>{{baig.rel_baig_zz_ajilchid.tza_mergejilten}}</td>
+            </tr>
+            <tr>
+                <th>Эзэмшиж буй ТЗ гэрчилгээ</th>
+                <td>
+                    {% if cert %}
+                        {{cert|length}}
+                    {% else %}
+                    Байхгүй
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    {% endblock %}
+    {% block footer %}
+      <button class="btn btn-default div-close-button" data-data="modal" aria-hidden="true">Хаах</button>
+    {% endblock %}
+
+

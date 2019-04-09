@@ -1,0 +1,51 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Усан сангийн угаалга акт</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if object_list %}
+        <h4>Усан сангийн угаалга</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>
+                Угаалга огноо
+              </th>
+              <th>
+                Угаалга акт
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in object_list %}
+            <tr>
+              <td>
+                {{i.ognoo|date:"Y-m-d"}}
+              </td>
+              <td>
+                <a href="/media/{{i.akt}}" target="_blank">Угаалга акт, баримт</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="alert alert-info">
+          Усан сангийн угаалга хийсэн акт байхгүй байна.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'tze_usan_san_wash_edit' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

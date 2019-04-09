@@ -1,0 +1,47 @@
+{% extends 'uta/uta_home.html' %}
+{% block content %}
+<div id="main-content">
+	<div class="container-fluid">
+		<div class="space20"></div>
+		<h2>{{ org.org_name }} {{ org.org_type }}</h2>
+		<div class="row-fluid">
+			<div class="span8">
+				<div class="widget blue active">
+					<div class="widget-title">
+						<h4> Санхүү эдийн засгийн мэдээ</h4>
+			    </div>
+					<div class="widget-body">
+            <table class="table table-nemelt table-striped">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th class="nem">БАЙГУУЛЛАГЫН НЭР</th>
+                  <th class="nem">ТАЙЛАН</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for t in tailan %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td class="nem">{{ org.org_name }} {{ org.org_type }}</td>
+                  <td class="nem"><a href="{% url 'sudalgaa_self' t.id %}">{{ t.year }} оны санхүүгийн тайлан</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          	</table>
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="widget purple active">
+					<div class="widget-title">
+						<h4> Шүүлтүүр</h4>
+			    </div>
+					<div class="widget-body">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

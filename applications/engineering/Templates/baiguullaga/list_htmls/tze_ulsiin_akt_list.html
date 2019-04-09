@@ -1,0 +1,45 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Улсын комиссын актуудын жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_ulsiinakt %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'uls_akt_insert' %}"><i class="icon-edit"></i>Улсын комиссын акт нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>Улсын комиссын акт</th>
+			          	<th>Бүртгэсэн хугацаа</th>
+			          	{% if perms.app.add_ulsiinakt %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			          	<td>
+                          <a href="/media/{{i.akt}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.akt}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_ulsiinakt %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'uls_akt_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>

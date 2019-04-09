@@ -1,0 +1,92 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>Тоног төхөөрөмжийн мэдээлэл нэмэх</h4>
+ </div>
+ <form  id="form_id" action="{% url 'tonog_insert' %}" success-div-id="#tonog_tohooromj_list" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {{form.non_field_errors}}
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="control-group">
+              <label class="control-label">{{ form.name.label }}</label>
+              <div class="controls">
+                {{ form.name.errors }}{{ form.name }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.torol_id.label }}</label>
+              <div class="controls">
+                {{ form.torol_id.errors }}{{ form.torol_id }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.eh_uusver.label }}</label>
+              <div class="controls">
+                {{ form.eh_uusver.errors }}{{ form.eh_uusver }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.too.label }}</label>
+              <div class="controls">
+                {{ form.too.errors }}{{ form.too }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.huchin_chadal.label }}</label>
+              <div class="controls">
+                {{ form.huchin_chadal.errors }}{{ form.huchin_chadal }}
+              </div>
+            </div>
+          </div>
+          <div class="span6">
+            <div class="control-group">
+              <label class="control-label">{{ form.balans_une.label }}</label>
+              <div class="controls">
+                {{ form.balans_une.errors }}{{ form.balans_une }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.ashiglaltand_orson_ognoo.label }}</label>
+              <div class="controls">
+                {{ form.ashiglaltand_orson_ognoo.errors }}{{ form.ashiglaltand_orson_ognoo }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.hurimtlagdsan_elegdel.label }}</label>
+              <div class="controls">
+                {{ form.hurimtlagdsan_elegdel.errors }}{{ form.hurimtlagdsan_elegdel }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.elegdel_huvi.label }}</label>
+              <div class="controls">
+                {{ form.elegdel_huvi.errors }}{{ form.elegdel_huvi }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.elegdliin_chanar.label }}</label>
+              <div class="controls">
+                {{ form.elegdliin_chanar.errors }}{{ form.elegdliin_chanar }}
+              </div>
+            </div>
+          </div>
+        </div> <!--row-fluid-->
+
+
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+    <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+  </div>
+</form>   
+
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>

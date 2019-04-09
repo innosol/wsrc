@@ -1,0 +1,42 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="icon-remove close" style="float: right;"></button>
+  <h3>Орон тооны бүтцийн схем сонгох</h3>
+</div>
+
+<form id="form_id" success-div-id="#huselt_delgerengui_div" method="POST" action="/engineering/material_choose_7/{{huselt_id}}/"> {% csrf_token %}
+  <div id="Modal_huselt_body" class="modal1-uuganaa-body">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Орон тооны схем</th>
+      <th>Тайлбар</th>
+      <th>Бүртгэгдсэн огноо</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in OronTooniiSchema_all %}
+    <tr>
+      <td><input type="checkbox" name="ids" value={{i.id}}></td>
+      <td>
+        <a class="fancybox" rel="group" title="Орон тооны схем" href="/media/{{i.schemas}}" target="_blank">
+          <img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.schemas}}/" alt=""/> 
+        </a>
+      </td>
+      <td>{{i.tailbar}}</td>
+      <td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a data-data="modal" class="btn btn-default">Цуцлах</a>
+    <button onclick="submit_tz_choose_form('#form_id')" name="action" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>
+
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>

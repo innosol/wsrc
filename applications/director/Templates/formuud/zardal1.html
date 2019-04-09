@@ -1,0 +1,53 @@
+{% load static %}
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Үндсэн материалын зардал</h4>
+</div>
+<form class="form-horizontal" action="{% url 'zardal1' %}" method="post">{% csrf_token %}
+  <div id="zardal1-modal-body" class="modal1-uuganaa-body">
+    <div class="modal1-uuganaa-body">
+      <div class="control-group">
+        <label class="control-label"><b>Авсан ус:</b></label>
+        <div class="controls">
+          {{ form.z1_0 }}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"><b>Нийлүүлсэн ус бохир:</b></label>
+        <div class="controls">
+          {{ form.z1_1 }}
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2">Зөөвөр, УТБ</th>
+            <th width="120" rowspan="2">Бусад (Бохир өргөх насос, г,м)</th>
+            <th rowspan="2">Цахилгаан</th>
+            <th rowspan="2">Дулаан</th>
+            <th rowspan="2">Бусад</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr>
+            <td>Үндсэн түүхий эд усны</td>
+            <td>{{ form.z1_2 }}</td>
+            <td>{{ form.z1_3 }}</td>
+            <td>{{ form.z1_4 }}</td>
+            <td>{{ form.z1_5 }}</td>
+            <td>{{ form.z1_6 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal1-uuganaa-footer">
+    {% if tailan.zardal.z1 %}
+    <a url-data="{% if date %}{% url 'zardal1list' date %}{% else %}{% url 'zardal1list' %}{% endif %}" class="btn btn-default ajax_div_load">Буцах</a>
+    {% else %}
+    <a data-data="close" class="btn btn-default">Цуцлах</a>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Хадгалах</button>
+  </div>
+</form>

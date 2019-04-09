@@ -1,0 +1,368 @@
+{% extends user.is_uta_alba|yesno:"uta/uta_home.html,base_base.html" %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<div id="main-content">
+	<div class="container-fluid">
+        <div class="space20"></div>
+        <div class="row-fluid">          
+            {% if tailan %}
+            <div class="span6">
+                <div class="widget red active">
+                    <div class="widget-title">
+                        <h4>{{ tailan.year }} оны {{ tailan.month }} сарын санхүүгийн мэдээ</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                        </span>
+                    </div>
+                    <div class="widget-body">
+                        <a class="btn btn-primary" href="{% url 'sariin_export' tailan.id %}">Excel</a>
+                        {% if do %}
+                        {% if not tailan.yvts = "Хүлээн авсан" %}
+                        <ul class="nav nav-pills">
+                            <li class="active dropdown">
+                              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Төлөв өөрчлөх <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="s1" href="#modal" data-data="gold" style="olor: #468847;">Хүлээн авах</a></li>
+                                    <li><a id="s2" href="#modal" data-data="gold" style="olor: #953b39;">Буцаах</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        {% endif %}
+                        {% endif %}
+
+                        <div class="clearfix pull-right" {% if do %}{% if not tailan.yvts = "Хүлээн авсан" %}style="margin-top:-52px;"{% endif %}{% endif %}>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" data-toggle="dropdown">Тайлантай холбоотой тохиргоо <i class="icon-angle-down"></i></button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#hereglegchid" data-data="modal">Хэрэглэгчдийн тоо</a>
+                                    </li>
+                                    <li>
+                                        <a href="#golch" data-data="modal">ААНБайгууллага цэвэр усны голч</a>
+                                    </li>
+                                    <li>
+                                        <a href="#golchhangagch" data-data="modal">Хангагчаас авсан цэвэр усны голч</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space10"></div>
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-info" data-toggle="dropdown">Тариф <i class="icon-angle-down"></i></button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#tariff" data-data="modal">Усны үйлчилгээний үнэ</a></li>
+                                    <li>
+                                        {% if ol %}
+                                        <a href="#ushudaldah" data-data="modal">Ус худалдан авах үнэ</a>
+                                        {% else %}
+                                        <a id="ushudaldanavah" href="javascript:;">Ус худалдан авах үнэ</a>
+                                        {% endif %}
+                                    </li>
+                                    <li>
+                                        {% if tariffgolch %}
+                                        <a href="#golchiinsuuriune" data-data="modal">Голчийн суурь үнэ</a>
+                                        {% else %}
+                                        <a id="golchiinsuuriune-modal" href="javascript:;">Голчийн суурь үнэ</a>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="space20"></div>
+                        <table class="table table-nemelt table-height">
+                            <thead>
+                                <tr>
+                                    <th>ТАЙЛАН</th>
+                                    <th class="nem">НЭР</th>
+                                    <th>ТӨЛӨВ</th>
+                                </tr>    
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2" class="nem" style="vertical-align: top;">Орлого</td>
+                                    <td><a href="#orlogo" data-data="modal">Усны бичилт</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.orlogo.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.orlogo.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#busad_orlogo" data-data="modal">Бусад орлого</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.busad_orlogo.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.busad_orlogo.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="19" class="nem" style="vertical-align: top;">Зардал</td>
+                                    {% if ol.torol1 and not ol.torol2 %}
+                                    <td><p>Үндсэн материалын зардал</p></td>
+                                    <td><span class="label label-info label-mini">Хийгдэхгүй</span></td>
+                                    {% else %}
+                                    <td><a href="#zardal1" data-data="modal">Үндсэн материалын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z1.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z1.yvts }}</span>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal2" data-data="modal">Цалингийн зардал</a></td>
+                                    <td><span class="label {% if tailan.zardal.z2.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z2.yvts }}</span></td> 
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal3" data-data="modal">Ашиглалтын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z3.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z3.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal4" data-data="modal">Засвар үйлчилгээний зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z4.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z4.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal5" data-data="modal">Ариутгал халдваргүйжүүлэлтийн зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z5.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z5.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal6" data-data="modal">Конторын хангамжийн зардал</a></td>
+                                    <td>    
+                                        <span class="label {% if tailan.zardal.z6.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z6.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal7" data-data="modal">Хөдөлмөр хамгаалал, эрүүл ахуйн зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z7.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z7.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal8" data-data="modal">Маркетинг борлуулалтын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z8.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z8.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal9" data-data="modal">Лабораторын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z9.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z9.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal10" data-data="modal">Гүйцэтгэх удирдлагын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z10.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z10.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal11" data-data="modal">ТУЗ-н зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z11.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z11.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal12" data-data="modal">Үндсэн хөрөнгийн элэгдэл зардал зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z12.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z12.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal13" data-data="modal">Гадны үйлчилгээний зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z13.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z13.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal14" data-data="modal">Татварын зардал/ААНОАТ-аас бусад/</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z14.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z14.yvts }}</span>    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal15" data-data="modal">Даатгалын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z15.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z15.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal16" data-data="modal">Бусад зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z16.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z16.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal17" data-data="modal">Ажиллагсдын нийгмийн зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z17.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z17.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal18" data-data="modal">Хөрөнгө оруулалтын зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z18.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z18.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#zardal19" data-data="modal">Үндсэн бус үйл ажиллагааны зардал</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.zardal.z19.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.zardal.z19.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="nem" style="vertical-align: top;">Хэрэглэгч</td>
+                                    <td><a href="#sanalgomdol" data-data="modal">Санал гомдол</a></td>
+                                    <td>
+                                        <span class="label {% if tailan.sanal_gomdol.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.sanal_gomdol.yvts }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#tehniknohtsol" data-data="modal">Техникийн нөхцөл</a></td>
+                                    <td><span class="label {% if tailan.tehnik_nohtsol.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tehnik_nohtsol.yvts }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#tasaldal" data-data="modal">Тасалдал</a></td>
+                                    <td><span class="label {% if tailan.tasaldal.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tasaldal.yvts }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="nem">Цалин</td>
+                                    <td><a href="#tsalin" data-data="modal">Цалин</a></td>
+                                    <td><span class="label {% if tailan.tsalin.yvts == 'Хадгалсан' %} label-success {% else %} label-important {% endif %} label-mini">{{ tailan.tsalin.yvts }}</span></td>
+                                </tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div id="tariff" class="modal1-uuganaa">
+    {% include 'list/listuud/tarifflist.html' %}
+</div>
+<div id="hereglegchid" class="modal1-uuganaa">
+    {% include 'list/listuud/hereglegchlist.html' %}
+</div>
+<div id="golchiinsuuriune" class="modal1-uuganaa">
+    {% include 'list/listuud/golchiinsuuriune.html' %}
+</div>
+<div id="ushudaldah" class="modal1-uuganaa">
+    {% include 'list/listuud/ushudaldanavahlist.html' %}
+</div>
+<div id="golch" class="modal1-uuganaa">
+    {% include 'list/listuud/golchlist.html' %}
+</div>
+<div id="golchhangagch" class="modal1-uuganaa">
+    {% include 'list/listuud/golchhangagchlist.html' %}
+</div>
+<div id="busad_orlogo" class="modal1-uuganaa">
+    {% include 'list/listuud/busadorlogolist.html' %}
+</div>
+<div id="orlogo" class="modal1-uuganaa">
+    {% include 'list/listuud/orlogolist.html' %}
+</div>
+<div id="zardal1" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist1.html' %}
+</div>
+<div id="zardal2" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist2.html' %}
+</div>
+<div id="zardal3" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist3.html' %}
+</div>
+<div id="zardal4" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist4.html' %}
+</div>
+<div id="zardal5" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist5.html' %}
+</div>
+<div id="zardal6" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist6.html' %}
+</div>
+<div id="zardal7" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist7.html' %}
+</div>
+<div id="zardal8" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist8.html' %}
+</div>
+<div id="zardal9" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist9.html' %}
+</div>
+<div id="zardal10" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist10.html' %}
+</div>
+<div id="zardal11" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist11.html' %}
+</div>
+<div id="zardal12" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist12.html' %}
+</div>
+<div id="zardal13" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist13.html' %}
+</div>
+<div id="zardal14" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist14.html' %}
+</div>
+<div id="zardal15" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist15.html' %}
+</div>
+<div id="zardal16" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist16.html' %}
+</div>  
+<div id="zardal17" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist17.html' %}
+</div>
+<div id="zardal18" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist18.html' %}
+</div>
+<div id="zardal19" class="modal1-uuganaa">
+    {% include 'list/listuud/zardallist19.html' %}
+</div>
+<div id="sanalgomdol" class="modal1-uuganaa">
+    {% include 'list/listuud/sanalgomdol.html' %}
+</div>
+<div id="tehniknohtsol" class="modal1-uuganaa">
+    {% include 'list/listuud/tehniknohtsol.html' %}
+</div>
+<div id="tasaldal" class="modal1-uuganaa">
+    {% include 'list/listuud/tasaldal.html' %}
+</div>
+<div id="tsalin" class="modal1-uuganaa">
+    {% include 'list/listuud/tsalinlist.html' %}
+</div>
+<form id="status" action="{% url 'tolov' %}" method="post">
+<input id="t" type="hidden" value="1" name="t">
+<input type="hidden" name="tailan" value="{{ tailan.id }}">
+<div id="modal" class="gold">
+    <div class="gold-header">
+        <button type="button" class="close">&times</button>
+        <h4>Төлөв өөрчлөх</h4>
+    </div>
+    <div class="gold-body">
+        Тайлангийн төлөв өөрчлөх үү?  <span id="sp" class="label">Хүлээн авах</span>
+    </div>
+    <div class="gold-footer">
+        <button type="button" data-data="gold" class="btn btn-default">Цуцлах</button>
+        <button type="submit" class="btn btn-success">Зөвшөөрөх</button>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $("#s1").click(function () {
+            $('#sp').removeClass('label-important').addClass('label-success');
+            $('#sp').text('Хүлээн авах');
+            $('#t').val(0);
+        });
+
+        $("#s2").click(function () {
+            $('#sp').removeClass('label-success').addClass('label-important');
+            $('#sp').text('Буцаах');
+            $('#t').val(1);
+        });
+    });
+</script>
+{% endblock %}

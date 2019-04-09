@@ -1,0 +1,80 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>"{{tz_huselt.tze.org_name}} {{tz_huselt.tze.org_type}}"-ийн {{tz_huselt.ilgeesen_datetime|date:"Y-m-d"}} өдөр илгээсэн тусгай зөвшөөрлийн хүсэлт</h4>
+ </div>
+ <form  id="form_id" action="{% url 'hurliin_shiidver_saving' huselt_id=huselt_id%}" id="equipmentform" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {{form}}
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+    <button class="btn btn-success" onclick="submitForm_modal_general_ajax('#form_id')">Хадгалах</button>
+  </div>
+</form>   
+
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+  
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    if(!$('#id_shiidver_0').is(':checked'))
+    {
+      $('label[for="id_tz_id_0"]').hide();
+      $('#id_tz_id').hide();
+      $('label[for="id_cert_number"]').hide();
+      $('#id_cert_number').hide();
+      $('label[for="id_certificate_end_date"]').hide();
+      $('#id_certificate_end_date').hide();
+      $('label[for="id_togtool_number"]').hide();
+      $('#id_togtool_number').hide();
+      $('label[for="id_togtool_date"]').hide();
+      $('#id_togtool_date').hide();
+      $('label[for="id_tolov"]').hide();
+      $('#id_tolov').hide();
+    }
+    });
+
+  $('input[name$="shiidver"]').click(function(){
+
+    if($('#id_shiidver_0').is(':checked'))
+    {
+      $('label[for="id_tz_id_0"]').show();
+      $('#id_tz_id').show();
+      $('label[for="id_cert_number"]').show();
+      $('#id_cert_number').show();
+      $('label[for="id_certificate_end_date"]').show();
+      $('#id_certificate_end_date').show();
+      $('label[for="id_togtool_number"]').show();
+      $('#id_togtool_number').show();
+      $('label[for="id_togtool_date"]').show();
+      $('#id_togtool_date').show();
+      $('label[for="id_tolov"]').show();
+      $('#id_tolov').show();
+    }
+    else
+    {
+      $('label[for="id_tz_id_0"]').hide();
+      $('#id_tz_id').hide();
+      $('label[for="id_cert_number"]').hide();
+      $('#id_cert_number').hide();
+      $('label[for="id_certificate_end_date"]').hide();
+      $('#id_certificate_end_date').hide();
+      $('label[for="id_togtool_number"]').hide();
+      $('#id_togtool_number').hide();
+      $('label[for="id_togtool_date"]').hide();
+      $('#id_togtool_date').hide();
+      $('label[for="id_tolov"]').hide();
+      $('#id_tolov').hide();
+    }
+  });
+
+</script>

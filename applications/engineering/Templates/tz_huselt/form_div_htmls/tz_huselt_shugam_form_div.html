@@ -1,0 +1,194 @@
+{% load static %}
+<style type="text/css">
+  #demo {
+    font-size: 10px;
+    width: 300px;
+  }
+</style>
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+  <h4>Шугам сүлжээний мэдээлэл нэмэх</h4>
+</div>
+<form id="form_id" action="{% url 'shugam_insert' %}" success-div-id="#huselt_delgerengui_div" method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="control-group">
+              <input type="hidden" value="{{ baiguullaga }}" name="tze">
+              <label class="control-label">{{ form.shugam_helber.label }}</label>
+              <div class="controls">
+                {{ form.shugam_helber.errors }}{{ form.shugam_helber }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.shugam_torol.label }}</label>
+              <div class="controls">
+                {{ form.shugam_torol.errors }}{{form.shugam_torol}}
+              </div>
+              <p id="demo"></p>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.shugam_urt.label }}</label>
+              <div class="controls">
+                {{ form.shugam_urt.errors }}{{ form.shugam_urt }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.diametr.label }}</label>
+              <div class="controls">
+                {{ form.diametr.errors }}{{ form.diametr }}
+              </div>
+            </div>
+          </div>
+          <div class="span6">
+            <div class="control-group">
+              <label class="control-label">{{ form.hudgiin_too.label }}</label>
+              <div class="controls">
+                {{ form.hudgiin_too.errors }}{{ form.hudgiin_too }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.ashiglaltand_orson_ognoo.label }}</label>
+                <div class="controls">
+                  {{ form.ashiglaltand_orson_ognoo.errors }}{{ form.ashiglaltand_orson_ognoo }}
+                </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.gemtliin_too.label }}</label>
+              <div class="controls">
+                {{ form.gemtliin_too.errors }}{{ form.gemtliin_too }}
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{ form.schema.label }}</label>
+              <div class="controls">
+                {{ form.schema.errors }}{{ form.schema }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <h4>Шугам сүлжээний хоолойны материалын жагсаалт</h4>
+          <table class="table table-bordered" id="sh_suljee_table">
+            <thead>
+              <tr>
+                <th width="10px">№</th>
+                {% for form in formset.forms %}
+                  {% if forloop.first %}
+                    {% for field in form.visible_fields %}
+                      {% if field == form.DELETE %}
+                      <th style="display: none;">{{field.label_tag}}</th>
+                      {% else %}
+                      <th>{{field.label_tag}}</th>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for form in formset.forms %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                {% for field in form %}
+                  {% if field == form.DELETE or field == form.id %}
+                  <td style="display: none;">
+                      {{ field.errors }}{{ field }}
+                  </td>
+                  {% else %}
+                  <td>
+                      {{ field.errors }}{{ field }}
+                  </td>
+                  {% endif %}
+                {% endfor %}
+                {% if formset.can_delete %}
+                <td>{{ form.DELETE }}</td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {{ formset.management_form }}
+        </div> <!--row-fluid-->
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+    <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+  </div>
+</form>   
+
+<script src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+$('#sh_suljee_table tbody tr').formset({
+  'table_numbering': true,
+  'addText': 'Нэмэх',
+  'deleteText': 'Устгах',
+  'prefix': '{{formset.prefix}}',
+  'formCssClass': 'dynamic-formset'
+});
+</script>
+
+
+<script type="text/javascript">
+function hide_torol_some(){
+  var a=$('#id_shugam_helber').find("option:selected").text();
+    if (a == "Цэвэр усны шугам сүлжээ") {
+      $('#torol option[value="Бохир усны гаргалгааны шугам"]').hide()
+      $('#torol option[value="Бохир усны цуглуулах шугам"]').hide()
+      $('#torol option[value="Бохир ус татан зайлуулах шугам"]').hide()
+      $('#torol option[value="Эх үүсвэрийн цуглуулах"]').show()
+      $('#torol option[value="Цэвэр усны дамжуулах шугам"]').show()
+      $('#torol option[value="Цэвэр ус түгээх шугам"]').show()
+    }
+    else if (a == "Бохир усны шугам сүлжээ") {
+      $('#torol option[value="Бохир усны гаргалгааны шугам"]').show()
+      $('#torol option[value="Бохир усны цуглуулах шугам"]').show()
+      $('#torol option[value="Бохир ус татан зайлуулах шугам"]').show()
+      $('#torol option[value="Эх үүсвэрийн цуглуулах"]').hide()
+      $('#torol option[value="Цэвэр усны дамжуулах шугам"]').hide()
+      $('#torol option[value="Цэвэр ус түгээх шугам"]').hide()
+    }
+}
+$(document).ready(function () {
+  $("#torol option").hide()
+  hide_torol_some();
+  $('#id_shugam_helber').change(function() {
+    hide_torol_some();
+  });
+
+
+
+
+
+
+  $("#torol").change(function() {
+    var a= $(this).find("option:selected").text();
+    if ( "Эх үүсвэрийн цуглуулах" == a ) {
+      document.getElementById("demo").innerHTML = "";
+    }
+    else if ( "Бохир усны гаргалгааны шугам" == a ) {
+      document.getElementById("demo").innerHTML = "<i>Хэрэглэгчийн сантехникийн хэрэгслээс барилгын гадна талын эхний худаг хүртэлх шугам сүлжээг хэлнэ.</i>";
+    }
+    else if ( "Цэвэр усны дамжуулах шугам" == a ) {
+      document.getElementById("demo").innerHTML = "<i>Ус хангамжийн эх үүсвэрийнг барилга байгууламжаас ус дамжуулах төв болон удирдах зангилааны тоолуурын өмнөх хаалт хүртэлх шугам сүлжээг хэлнэ.</i>";
+    }
+    else if ( "Цэвэр ус түгээх шугам" == a ) {
+      document.getElementById("demo").innerHTML = "<i>Ус дамжуулах төв болон удирдах зангилааны тоолуурын өмнөх хаалтаас хэрэглэгчийн тоолуурын өмнөх заалт хүртэлх шугам сүлжээг хэлнэ.</i>";
+    }
+    else if ( "Бохир усны цуглуулах шугам" == a ) {
+      document.getElementById("demo").innerHTML = "<i>Барилгын гадна талын эхний худгаас бохир ус татан зайлуулах шугамд холбогдож байгаа худаг хүртэлх шугам сүлжээг хэлнэ.</i>";
+    }
+    else if ( "Бохир ус татан зайлуулах шугам" == a ) {
+      document.getElementById("demo").innerHTML = "<i>Бохир ус цуглуулах шугамд холбогдож байгаа эхний худгаас бохир ус цэвэрлэх байгууламжийн хүлээн авах сан хүртэлх шугам сүлжээг хэлнэ.</i>";
+    }
+  });
+});
+</script>

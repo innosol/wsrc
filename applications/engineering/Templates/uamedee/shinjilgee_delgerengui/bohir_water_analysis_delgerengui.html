@@ -1,0 +1,455 @@
+{% load static %}
+
+<div class="modal1-uuganaa-header">
+ <button class="close">&times</button>
+   <h4>Бохир усны шинжилгээ дэлгэрэнгүй</h4>
+ </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="control-group">
+          <label class="control-label">МХЕГ-ын дүгнэлт:</label>
+          <div class="controls">
+            <a href="/media/{{obj.mheg_dugnelt}}" target="_blank">МХЕГ-ын дүгнэлт файл</a>
+          </div>
+           </div>
+        </div>
+        <div class="span6">
+            <div class="control-group">
+            <label class="control-label">Шинжилгээний огноо:</label>
+          <div class="controls">
+            {{ obj.ognoo|date:"Y-m-d" }}
+          </div>
+           </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th rowspan="2">№</th>
+                    <th rowspan="2">Үзүүлэлтийн нэр</th>
+                    <th rowspan="2">Хэмжих нэгж</th>
+                    <th colspan="2">Оролт</th>
+                    <th colspan="2">Гаралт</th>
+                </tr>
+                <tr>
+                    <th>Зөвшөөрөгдөх дээд хэмжээ</th>
+                    <th>Шинжилгээний дүн</th>
+                    <th>Зөвшөөрөгдөх дээд хэмжээ</th>
+                    <th>Шинжилгээний дүн</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Усны температур:</td>
+                    <td>Цельс</td>
+                    <td>20</td>
+                    <td>{{obj.temperature_input}}</td>
+                    <td>20</td>
+                    <td>{{obj.temperature_output}}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Усны орчин:</td>
+                    <td>-</td>
+                    <td>6-9</td>
+                    <td>{{obj.orchin_input}}</td>
+                    <td>6-9</td>
+                    <td>{{obj.orchin_output}}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Үнэр:</td>
+                    <td>Мэдрэхүй</td>
+                    <td>Үнэргүй</td>
+                    <td>{{obj.uner_input}}</td>
+                    <td>Үнэргүй</td>
+                    <td>{{obj.uner_output}}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Умбуур бодисын тоо, мг/л:</td>
+                    <td>мг/л</td>
+                    <td>30</td>
+                    <td>{{obj.umbuuro_input}}</td>
+                    <td>30</td>
+                    <td>{{obj.umbuuro_output}}</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>БХХ мг/л O2:</td>
+                    <td>мгО/л</td>
+                    <td>20</td>
+                    <td>{{obj.bhho_input}}</td>
+                    <td>20</td>
+                    <td>{{obj.bhho_output}}</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>ХХХ мг/л O2:</td>
+                    <td>мгО/л</td>
+                    <td>50</td>
+                    <td>{{obj.hhho_input}}</td>
+                    <td>50</td>
+                    <td>{{obj.hhho_output}}</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Перманганатын исэлдэх чанар:</td>
+                    <td>мгО/л</td>
+                    <td>20</td>
+                    <td>{{obj.pich_input}}</td>
+                    <td>20</td>
+                    <td>{{obj.pich_output}}</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Ууссан давс/эрдэсжилт/:</td>
+                    <td>мг/л</td>
+                    <td>1000</td>
+                    <td>{{obj.davs_input}}</td>
+                    <td>1000</td>
+                    <td>{{obj.davs_output}}</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Нийт азот:</td>
+                    <td>мгN/л</td>
+                    <td>15</td>
+                    <td>{{obj.niit_azot_input}}</td>
+                    <td>15</td>
+                    <td>{{obj.niit_azot_output}}</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Нийт фосфор:</td>
+                    <td>мгP/л</td>
+                    <td>1.5</td>
+                    <td>{{obj.niit_phosphor_input}}</td>
+                    <td>1.5</td>
+                    <td>{{obj.niit_phosphor_output}}</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Хүхэрт устөрөгч:</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{obj.huhert_ustorogch_input}}</td>
+                    <td>0.5</td>
+                    <td>{{obj.huhert_ustorogch_output}}</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Үлдэгдэл хлор:</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{obj.uldegdel_hlor_input}}</td>
+                    <td>1</td>
+                    <td>{{obj.uldegdel_hlor_output}}</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Барий:</td>
+                    <td>мг/л</td>
+                    <td>1.5</td>
+                    <td>{{obj.barii_input}}</td>
+                    <td>1.5</td>
+                    <td>{{obj.barii_output}}</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Биндэр:</td>
+                    <td>мг/л</td>
+                    <td>0.0001</td>
+                    <td>{{obj.binder_input}}</td>
+                    <td>0.0001</td>
+                    <td>{{obj.binder_output}}</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Бор:</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{obj.bor_input}}</td>
+                    <td>0.5</td>
+                    <td>{{obj.bor_output}}</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Ванадий:</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{obj.vanadii_input}}</td>
+                    <td>0.1</td>
+                    <td>{{obj.vanadii_output}}</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Зэс:</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{obj.zes_input}}</td>
+                    <td>1</td>
+                    <td>{{obj.zes_output}}</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Кадми:</td>
+                    <td>мг/л</td>
+                    <td>0.03</td>
+                    <td>{{obj.kadmi_input}}</td>
+                    <td>0.03</td>
+                    <td>{{obj.kadmi_output}}</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Кобальт:</td>
+                    <td>мг/л</td>
+                    <td>0.02</td>
+                    <td>{{obj.kobalt_input}}</td>
+                    <td>0.02</td>
+                    <td>{{obj.kobalt_output}}</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Манган:</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{obj.mangan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{obj.mangan_output}}</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>Анзан/Молибден:</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{obj.anzan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{obj.anzan_output}}</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>Мөнгөн ус:</td>
+                    <td>мг/л</td>
+                    <td>0.001</td>
+                    <td>{{obj.mongon_us_input}}</td>
+                    <td>0.001</td>
+                    <td>{{obj.mongon_us_output}}</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>Никель:</td>
+                    <td>мг/л</td>
+                    <td>0.2</td>
+                    <td>{{obj.nikel_input}}</td>
+                    <td>0.2</td>
+                    <td>{{obj.nikel_output}}</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>Селен:</td>
+                    <td>мг/л</td>
+                    <td>0.02</td>
+                    <td>{{obj.selen_input}}</td>
+                    <td>0.02</td>
+                    <td>{{obj.selen_output}}</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>Стронций:</td>
+                    <td>мг/л</td>
+                    <td>2</td>
+                    <td>{{obj.strontsi_input}}</td>
+                    <td>2</td>
+                    <td>{{obj.strontsi_output}}</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>Нийт төмөр:</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{obj.tomor_input}}</td>
+                    <td>1</td>
+                    <td>{{obj.tomor_output}}</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>Уран:</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{obj.uran_input}}</td>
+                    <td>0.05</td>
+                    <td>{{obj.uran_output}}</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Хар тугалга:</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{obj.har_tugalga_input}}</td>
+                    <td>0.1</td>
+                    <td>{{obj.har_tugalga_output}}</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>Нийт хром:</td>
+                    <td>мг/л</td>
+                    <td>0.3</td>
+                    <td>{{obj.niit_hrom_input}}</td>
+                    <td>0.3</td>
+                    <td>{{obj.niit_hrom_output}}</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>6 валенттай хром:</td>
+                    <td>мг/л</td>
+                    <td>0.01</td>
+                    <td>{{obj.valent_6_hrom_input}}</td>
+                    <td>0.01</td>
+                    <td>{{obj.valent_6_hrom_output}}</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td>Хөнгөн цагаан:</td>
+                    <td>мг/л</td>
+                    <td>0.5</td>
+                    <td>{{obj.hongon_tsagaan_input}}</td>
+                    <td>0.5</td>
+                    <td>{{obj.hongon_tsagaan_output}}</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Хүнцэл:</td>
+                    <td>мг/л</td>
+                    <td>0.01</td>
+                    <td>{{obj.huntsel_input}}</td>
+                    <td>0.01</td>
+                    <td>{{obj.huntsel_output}}</td>
+                </tr>
+                <tr>
+                    <td>33</td>
+                    <td>Цайр:</td>
+                    <td>мг/л</td>
+                    <td>3</td>
+                    <td>{{obj.tsair_input}}</td>
+                    <td>3</td>
+                    <td>{{obj.tsair_output}}</td>
+                </tr>
+                <tr>
+                    <td>34</td>
+                    <td>Цагаан тугалга:</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{obj.tsagaan_tugalga_input}}</td>
+                    <td>0.05</td>
+                    <td>{{obj.tsagaan_tugalga_output}}</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>Нийт цианид:</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{obj.niit_tsianid_input}}</td>
+                    <td>0.05</td>
+                    <td>{{obj.niit_tsianid_output}}</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td>Чөлөөт цианид:</td>
+                    <td>мг/л</td>
+                    <td>0.005</td>
+                    <td>{{obj.choloot_tsianid_input}}</td>
+                    <td>0.005</td>
+                    <td>{{obj.choloot_tsianid_output}}</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>Фенол:</td>
+                    <td>мг/л</td>
+                    <td>0.05</td>
+                    <td>{{obj.phenol_input}}</td>
+                    <td>0.05</td>
+                    <td>{{obj.phenol_output}}</td>
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td>Бенза(а)пирен:</td>
+                    <td>мг/л</td>
+                    <td>0.005</td>
+                    <td>{{obj.benza_piren_input}}</td>
+                    <td>0.005</td>
+                    <td>{{obj.benza_piren_output}}</td>
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td>Өөх тос:</td>
+                    <td>мг/л</td>
+                    <td>5</td>
+                    <td>{{obj.ooh_tos_input}}</td>
+                    <td>5</td>
+                    <td>{{obj.ooh_tos_output}}</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>Эрдэс тос:</td>
+                    <td>мг/л</td>
+                    <td>1</td>
+                    <td>{{obj.erdes_tos_input}}</td>
+                    <td>1</td>
+                    <td>{{obj.erdes_tos_output}}</td>
+                </tr>
+                <tr>
+                    <td>41</td>
+                    <td>Бүх төрлийн угаагч бодис:</td>
+                    <td>мг/л</td>
+                    <td>2.5</td>
+                    <td>{{obj.ugaagch_bodis_input}}</td>
+                    <td>2.5</td>
+                    <td>{{obj.ugaagch_bodis_output}}</td>
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td>Трихлорэтилен:</td>
+                    <td>мг/л</td>
+                    <td>0.2</td>
+                    <td>{{obj.trichlor_ethylen_input}}</td>
+                    <td>0.2</td>
+                    <td>{{obj.trichlor_ethylen_output}}</td>
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td>Тетрахлорэтилен:</td>
+                    <td>мг/л</td>
+                    <td>0.1</td>
+                    <td>{{obj.tetrachlor_ethylen_input}}</td>
+                    <td>0.1</td>
+                    <td>{{obj.tetrachlor_ethylen_output}}</td>
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td>Гэдэсний бүлгийн эмгэг төрөгч нян:</td>
+                    <td>-</td>
+                    <td>1мл-т илрэхгүй</td>
+                    <td>{{obj.gedes_nyan_input}}</td>
+                    <td>1мл-т илрэхгүй</td>
+                    <td>{{obj.gedes_nyan_output}}</td>
+                </tr>
+            </tbody>
+        </table>
+      
+      </div> <!-- span 12 -->
+    </div><!-- row-fluid -->
+  </div>
+
+    <div class="modal1-uuganaa-footer">
+      <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+      {% if do %}
+      <button class="btn btn-primary" onclick="submitForm_modal_general_ajax('#form_id')">Засах</button>
+      {% endif %}
+    </div>
+
+<script src="{% static 'assets/js/a.js' %}"></script>

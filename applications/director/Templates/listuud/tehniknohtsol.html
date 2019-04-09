@@ -1,0 +1,36 @@
+<div class="modal1-uuganaa-header">
+  <button class="close">×</button>
+  <h4>Техник нөхцөл</h4>
+</div>
+<div class="modal1-uuganaa-body">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Үзүүлэлт</th>
+        <th>Тоо</th>
+        <th>м3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Техникийн нөхцөл хүсч өргөдөл гаргасан иргэд, ААНБ</td>
+        <td>{{ tailan.tehnik_nohtsol.tehnik_nohtsol.all.0.too }}</td>
+        <td>{{ tailan.tehnik_nohtsol.tehnik_nohtsol.all.0.us }}</td>
+      </tr>
+      <tr>
+        <td>Техникийн нөхцөл олгосон иргэд, ААНБ</td>
+        <td>{{ tailan.tehnik_nohtsol.tehnik_nohtsol.all.1.too }}</td>
+        <td>{{ tailan.tehnik_nohtsol.tehnik_nohtsol.all.1.us }}</td>
+      </tr>
+      <tr>
+        <th>Техникийн нөхцөл олгоогүй өргөдлийн тоо</th>
+        <th>{{ tailan.tehnik_nohtsol.sum0 }}</th>
+        <th>{{ tailan.tehnik_nohtsol.sum1 }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal1-uuganaa-footer">
+  <button data-data="close" class="btn btn-default">Цуцлах</button>
+  <button url-data="{% if date %}{% url 'tehniknohtsol' date %}{% else %}{% url 'tehniknohtsol' %}{% endif %}" class="btn btn-primary ajax_div_load">Засварлах</button>
+</div>

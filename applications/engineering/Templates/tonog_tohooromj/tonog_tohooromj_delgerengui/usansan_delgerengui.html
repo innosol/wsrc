@@ -1,0 +1,71 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Усан сангийн мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Усан сангийн төрөл</td>
+            <td>{{obj.usansan_helber}}</td>
+          </tr>
+          <tr>
+            <td>Багтаамж (м3)</td>
+            <td>{{obj.bagtaamj}}</td>
+          </tr>
+          <tr>
+            <td>Хуурай хлор</td>
+            <td>{% if obj.huurai_hlor %}Тийм{% else %} Үгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Шингэн хлор</td>
+            <td>{% if obj.shingen_hlor %}Тийм{% else %} Үгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Давсны уусмал</td>
+            <td>{% if obj.davsnii_uusmal %}Тийм{% else %} Үгүй{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Аймаг, хот/</td>
+            <td>{{obj.city}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Сум, дүүрэг/</td>
+            <td>{{obj.district}}</td>
+          </tr>
+          <tr>
+            <td>Байршил /Баг, хороо/</td>
+            <td>{{obj.khoroo}}</td>
+          </tr>
+          <tr>
+            <td>Байршил</td>
+            <td>{{obj.usansan_address}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Харуул, хамгаалалт</td>
+            <td>{{obj.usansan_haruul}}</td>
+          </tr>
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'usansan_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

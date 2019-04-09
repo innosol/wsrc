@@ -1,0 +1,49 @@
+{% load static %}
+{% load tag_extras %}
+<div class="modal1-uuganaa-header">
+  <button class="close">&times</button>
+ <h4>Стандарт нэмэх</h4>
+</div>
+<form id="form_id" success-div-id="#baiguullaga_delgerengui_div" class="form-horizontal" action="{{view_url}}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="row-fluid">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Стандартын код</th>
+                <th>Стандартын нэр</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for i in standarts %}
+            <tr>
+              {% if initial_dic|get_item:i.id %}
+              <td><input type="checkbox" checked name="chosen_standarts" value="{{i.id}}"></td>
+              {% else %}
+              <td><input type="checkbox" name="chosen_standarts" value="{{i.id}}"></td>
+              {% endif %}
+              <td>{{i.code}}</td>
+              <td>{{i.standart_name}}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+      </div> <!--row-fluid-->
+    </div> <!-- span 12 -->
+  </div><!-- row-fluid -->
+</div>
+
+<div class="modal1-uuganaa-footer">
+  <a class="btn btn-default" data-data="modal" aria-hidden="true">Цуцлах</a>
+  <button class="btn btn-success" onclick="submit_tz_choose_form('#form_id')">Хадгалах</button>
+</div>
+</form>   
+
+<script src="{% static 'assets/js/submit_form.js' %}"></script>
+<script src="{% static 'assets/js/a.js' %}"></script>
+
+

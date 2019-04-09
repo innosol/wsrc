@@ -1,0 +1,51 @@
+{% load static %}
+<div class="span12">
+	<div class="widget orange">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Хангагч байгууллагуудын жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_hangagchbaiguullaga %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'han_baig_insert' %}"><i class="icon-edit"></i>Хангагч байгууллага нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          	<th>Хангагч байгууллагын тодорхойлолт</th>
+			          	<th>Байгуулсан гэрээ</th>
+			          	<th>Нэр</th>
+			          	<th>Бүртгэсэн хугацаа</th>
+			          	{% if perms.app.add_hangagchbaiguullaga %}
+			          	<th>Устгах</th>
+			          	{% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    			<tr>
+			          	<td>
+                          <a href="/media/{{i.h_b_todorhoilolt}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.h_b_todorhoilolt}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+                        <td>
+                          <a href="/media/{{i.baiguulsan_geree}}" target="_blank"><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{i.baiguulsan_geree}}/" alt="Засаг даргын тодорхойлолт зураг"/></a>
+                        </td>
+                        <td>{{ i.name }}</td>
+			          	<td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+			          	{% if perms.app.add_hangagchbaiguullaga %}
+			          	<td>
+			           		<a class="btn btn-danger ajax_div_load" url-data="{% url 'han_baig_delete' i.id %}"><i class="icon-remove"></i></a>
+			         	</td>
+			         	{% endif %}
+			       	</tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>

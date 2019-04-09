@@ -1,0 +1,91 @@
+{% load static %}
+
+  <div class="modal1-uuganaa-header">
+    <button class="icon-remove close" style="float: right;"></button>
+    <h4>Ус, дулаан дамжуулах төвийн мэдээлэл</h4>
+  </div>
+  <div class="modal1-uuganaa-body">
+    <div class="row-fluid">
+      <div class="span12">
+        {% if is_history %}
+        <div class="alert alert-info">{{date|date:"Y-m-d H:i"}} өдрийн мэдээлэл</div>
+        {% else %}
+        <div class="alert alert-info">Одоогийн мэдээлэл</div>
+        {% endif %}
+        <table class="table table-bordered">
+          <tr>
+            <td>Ус, дулаан дамжуулах төвийн төрөл</td>
+            <td>{{obj.torol}}</td>
+          </tr>
+          <tr>
+            <td>Ашиглалтанд орсон огноо</td>
+            <td>{{obj.ashiglaltand_orson_ognoo}}</td>
+          </tr>
+          <tr>
+            <td>Тоног төхөөрөмжийн зураг</td>
+            <td><a href="/media/{{obj.picture}}" target="_blank">Тоног төхөөрөмжийн зураг</a></td>
+          </tr>
+          <tr>
+            <td>Байр узель холболтын зураг</td>
+            <td><a href="/media/{{obj.bair_uzeli_holbolt_schema}}" target="_blank">Байр узель холболтын зураг</a></td>
+          </tr>
+          
+        </table>
+      </div>
+    </div><!-- row-fluid -->
+        <div class="row-fluid">
+        <div class="span12">
+          <h4>Тоног төхөөрөмжийн жагсаалт</h4>
+          {% if sub_objects %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Тоног төхөөрөмж</th>
+                <th>Хүчин чадал</th>
+                <th>Тоо</th>
+                <th>Ашиглалтанд орсон огноо</th>
+                <th>Тайлбар</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in sub_objects %}
+              <tr>
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <td>
+                  {{i.tonog}}
+                </td>
+                <td>
+                  {{i.huchin_chadal}}
+                </td>
+                <td>
+                  {{i.too}}
+                </td>
+                <td>
+                  {{i.ognoo}}
+                </td>
+                <td>
+                  {{i.tailbar}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class='alert alert-info'>
+          Бүртгэгдсэн тоног төхөөрөмж байхгүй байна.
+          </div>
+          {% endif %}
+        </div>
+      </div>
+   </div>
+  <div class="modal1-uuganaa-footer">
+    <a class="btn btn-default" data-data="modal">Хаах</a>
+    {% if do %}
+    <a class="btn btn-primary ajax_div_load" url-data="{% url 'us_damjuulah_insert' obj.id %}">Засах</a>
+    {% endif %}
+  </div>
+
+  <script src="{% static 'assets/js/a.js' %}"></script>

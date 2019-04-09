@@ -1,0 +1,86 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+{% block header_show %}
+Хүний нөөц:
+{% endblock %}
+
+{% block body_show %}
+
+{% if perms.app.add_ajiltan %}
+<p><a class="btn btn-primary" href="{% url 'ajiltan_create' %}"><i class="icon-edit"></i>Ажилтан нэмэх</a></p>
+{% endif %}
+
+<div class="space10"></div>
+{% if ajiltan %}
+  {% if h.burdel.ajiltans.all %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагын нийт {{ ajiltan|length }} ажилтан бүртгэгдсэн байгаагаас доорх {{ h.burdel.ajiltans.all|length }} {% if h.burdel.ajiltans.all|length == 1 %} ажилтны {% else %} ажилтны {% endif %} мэдээлэл тусгай зөвшөөрөл хүсэх хүсэлтэд хавсаргагдсан байна.
+    </p>
+    <p>
+      Хэрвээ ажилтан нэмж бүртгэх бол "Ажилтан нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд холбосон ажилтанг өөрчлөх бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th >Овог</th>
+          <th >Нэр</th>
+          <th >РД</th>
+          <th>Утас</th>
+          <th >Нас</th>
+          <th>Хүйс</th>
+          <th>Бүртгэгдсэн огноо</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in h.burdel.ajiltans.all %}
+        <tr>
+          <td >{{i.emp_lname}} </td>
+          <td>{{i.emp_name}}</td>
+          <td>{{i.emp_reg}}</td>
+          <td>{{i.phone}}</td>
+          <td>{{i.nas}}</td>
+          <td>{{i.gender}}</td>
+          <td>{{i.begin_time|date:"Y-m-d H:i"}}</td>
+          <td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_ajiltan_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын ажилтан нийт {{ ajiltan|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ ажилтан системд нэмж бүртгэх бол "Ажилтан нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ ажилтны мэдээллийг хүсэлтэд хавсаргах бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+   {% endif %}
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагын ажилтан бүртгэгдээгүй байна. Хэрвээ байгууллагын ажилтны мэдээллийг системд бүртгэх бол "Ажилтан нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button">Хаах</a>
+{% if ajiltan %}
+<a href="javascript:;" url-data='{% url "material_choose 14" huselt_id=h.id %}' class="btn btn-primary ajax_div_load">Сонгох</a>
+{% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,60 @@
+<div class="span12">
+	<div class="widget red">
+		<div class="widget-title">
+	        <h4><i class="icon-reorder"></i>Алба хэлтсийн жагсаалт</h4>
+	    </div>
+	    <div class="widget-body">
+	    	{% if perms.app.add_tasag %}
+	    	<p><a class="btn btn-primary ajax_div_load" url-data= "{% url 'tze_alba_tasag_insert' %}"><i class="icon-edit"></i>Алба, хэлтэс нэмэх</a></p>
+	    	{% endif %}
+	    	{% if object_list %}
+	    	<table class="table table-bordered">
+	    		<thead>
+	    			<tr>
+			          <th>№</th>
+			          <th>Алба, хэлтсийн нэр</th>
+			          <th>Албан тушаалын тоо</th>
+			          <th>Ажилтны тоо</th>
+			          <th>Утас</th>
+			          <th>Э-майл</th>
+			          {% if perms.app.add_tasag %}
+			          <th><i class="icon-edit"></i>Албан тушаал нэмэх</th>
+			          <th><i class="icon-edit"></i>Алба, хэлтэс өөрчлөх</th>
+			          <th><i class="icon-remove"></i></th>
+			          {% endif %}
+			        </tr>
+	    		</thead>
+	    		<tbody>
+	    			{% for i in object_list %}
+	    				<tr>
+			          <td>{{forloop.counter}}</td>
+			          <td>{{i.dep_name}}</td>
+			          <td class="ajax_div_load" url-data="{% url 'tze_alban_tushaal_list' i.id %}">{{i.get_alban_tushaal_count}}</td>
+			          <td class="ajax_div_load" url-data="{% url 'tze_alba_tasgiin_ajilchid_list' i.id %}">{{i.get_ajiltan_count}}</td>
+			          <td>{{i.phone}}</td>
+			          <td>{{i.mail}}</td>
+			          {% if perms.app.add_tasag %}
+			          <td>
+			           	<a class="btn btn-success ajax_div_load" url-data= "{% url 'tze_alban_tushaal_edit' i.id %}"><i class="icon-plus"></i></a>
+			         	</td>
+			          <td>
+			           	<a class="btn btn-primary ajax_div_load" url-data= "{% url 'tze_alba_tasag_update' i.id %}"><i class="icon-edit"></i></a>
+			       		</td>
+			          <td>
+			            <a class="btn btn-danger ajax_div_load" url-data= "{% url 'tze_alba_tasag_delete' i.id %}"><i class="icon-remove"></i></a>
+			          </td>
+			          {% endif %}
+			        </tr>
+	    			{% endfor %}
+	    		</tbody>
+	    	</table>
+	    	{% else %}
+	    	<div class='alert alert-info'>
+	    		Мэдээлэл олдсонгүй.
+	    	</div>
+	    	{% endif %}
+	    </div>
+	</div>
+</div>
+
+

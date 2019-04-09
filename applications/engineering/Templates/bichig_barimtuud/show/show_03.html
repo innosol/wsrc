@@ -1,0 +1,81 @@
+{% extends "bichig_barimtuud/show_modal_base.html" %}
+{% load static %}
+
+
+{% block header_show %}
+Хангагч байгууллагуудтай хийсэн гэрээ, тодорхойлолт
+{% endblock %}
+
+{% block body_show %}
+  <div><a url-data="{% url 'han_baig_insert_tz' %}" class="btn btn-primary ajax_div_load"><i class="icon-edit"></i>Хангагч байгууллагуудтай хийсэн гэрээ, тодорхойлолт нэмэх</a></div>
+<div class="space10"></div>
+{% if han %}
+  {% if h.burdel.hangagch_baigs %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <p>
+      Системд байгууллагатай холбоотой хангагч байгууллагын мэдээлэл нийт {{ han|length }} бүртгэгдсэн байгаагаас доорх {{ h.burdel.hangagch_baigs.all|length }} {% if h.burdel.hangagch_baigs.all|length == 1 %} тодорхойлолт, гэрээг {% else %} тодорхойлолт, гэрээнүүдийг {% endif %} тусгай зөвшөөрөл хүсэх хүсэлтэд хавсаргасан байна.
+    </p>
+    <p>
+      Хэрвээ байгууллагатай холбоотой хангагч байгууллагын гэрээ, тодорхойлолтыг системд нэмж бүртгэх бол "Хангагч байгууллагуудтай хийсэн гэрээ, тодорхойлолт нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд хавсаргасан хангагч байгууллагыг өөрчлөх бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Хангагч байгууллагуудын тодорхойлолт</th>
+        <th>Хангагч байгууллагуудтай хийсэн гэрээ</th>
+        <th>Бүртгэгдсэн огноо</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sss in h.burdel.hangagch_baigs.all %}
+      <tr>
+        <td>
+          <a class="fancybox" title="Хангагч байгууллагуудын тодорхойлолт - {{sss.id}}" rel="group" href="/media/{{sss.h_b_todorhoilolt}}" ><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{sss.h_b_todorhoilolt}}/" alt="Istanbul"/></a>
+        </td>
+        <td>
+          <a class="fancybox"  title="Хангагч байгууллагуудтай хийсэн гэрээ - {{sss.id}}" rel="group" href="/media/{{sss.baiguulsan_geree}}" ><img style="height:100px; width:150px; border:1px solid;" onerror="this.src='{% static 'assets/img/pdf.png'%}'" src="/media/{{sss.baiguulsan_geree}}/" alt="Istanbul"/></a>
+        </td>
+        <td>{{sss.begin_time|date:"Y-m-d H:i"}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагатай холбоотой хангагч байгууллагын мэдээлэл нийт {{ han|length }} бүртгэгдсэн байна.
+    </p>
+    <p>
+      Хэрвээ байгууллагатай холбоотой хангагч байгууллагын гэрээ, тодорхойлолтыг системд нэмж бүртгэх бол "Хангагч байгууллагуудтай хийсэн гэрээ, тодорхойлолт нэмэх" товчлуур дээр дарна уу.
+    </p>
+    <p>
+      Хэрвээ хүсэлтэд хангагч байгууллагын тодорхойлолт, түүнтэй байгуулсан гэрээг хавсаргах бол "Сонгох" товчлуур дээр дарна уу.
+    </p>
+   </div>
+
+  {% endif %}
+
+{% else %}
+  <div class="alert alert-block alert-info fade in maxWidth600px">
+    <p>
+      Системд байгууллагатай холбоотойгоор бүртгэгдсэн хангагч байгууллагын гэрээ, тодорхойлолт байхгүй байна. Хэрвээ хангагч байгууллагын гэрээ, тодорхойлолтыг системд бүртгэх бол "Хангагч байгууллагуудтай хийсэн гэрээ, тодорхойлолт нэмэх" товчлуур дээр дарна уу.
+    </p>
+  </div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer_show %}
+<a class="btn btn-default div-close-button" aria-hidden="true">Хаах</a>
+{% if han %}
+<a href="javascript:;" url-data='{% url "material_choose 3" huselt_id=h.id %}' class="btn btn-primary ajax_div_load">Сонгох</a>
+{% endif %}
+{% endblock %}
+

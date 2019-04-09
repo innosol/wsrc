@@ -1,0 +1,57 @@
+{% extends 'base_base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+<div id="main-content" style="margin:0;">
+	<div class="container-fluid">
+		<div class="span12">
+			<div class="space5"></div>
+      <h5 class="pull-right">Хүснэгт № 2</h5>
+      <div class="space5"></div>
+      <h5 class="pull-right">Үйл ажиллагааны тайлан</h5>
+			<h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Бохир усны насос станцын судалгаа</h5>
+			<table class="table table-bordered table-striped table-fixed-header">
+				<thead class="header">
+					<tr>
+						<th >№</th>
+						<th>Байршил</th> 
+						<th>Станцын нэр</th>
+						<th>Ажиллагааны хэлбэр</th>
+						<th>Хүчин чадал</th> 
+						<th>Ашиглалтанд орсон огноо</th>
+						<th>Дэлгэрэнгүй</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in object_list %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.city}}<br>{{i.district}}<br>{{i.khoroo}}<br>{{i.nasos_address}}</td>
+						<td>{{i.nasos_name}}</td>
+						<td>{{i.nasos_ajillagaa}}</td>
+						<td>{{i.huchin_chadal}}</td>
+						<td>{{i.ashiglaltand_orson_ognoo}}</td>
+						{% if is_history %}
+			          	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_nasosStants_delgerengui' i.id history_date.year history_date.month history_date.day history_date.hour history_date.minute %}">Дэлгэрэнгүй...</a></td>
+			          	{% else %}
+			          	<td><a href="javascript:;" class="ajax_div_load" url-data="{% url 'tze_nasosStants_delgerengui' i.id %}">Дэлгэрэнгүй...</a></td>
+			          	{% endif %}
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+      <div class="space5"></div>
+      <div class="span4 offset2">
+      <h5>"{{ baiguullaga }}" {{ baiguullaga.org_type }}-ний  Захирал ..................../..................../</h5>
+      <h5>Ерөнхий инженер............./..................../</h5>
+  		<h5> </h5>
+      </div>
+		</div>
+	</div>
+</div>
+<!-- ****************************MODALS*************************-->
+  <div id="Modal_general" class="modal1-uuganaa">
+    
+  </div>
+{% endblock %}
